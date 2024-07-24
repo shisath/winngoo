@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:winggoo_gala/common_file/functions.dart';
-import 'package:winggoo_gala/common_file/getXcontroller.dart';
+
+import '../common_file/functions.dart';
+import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
 
 homeWidget() {

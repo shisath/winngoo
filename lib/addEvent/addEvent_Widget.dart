@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
- import '../common_file/getXcontroller.dart';
+import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 

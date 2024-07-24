@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:winggoo_gala/common_file/functions.dart';
-
+import '../common_file/functions.dart';
 import '../common_file/widgets.dart';
 import 'addEvent_Widget.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:winggoo_gala/common_file/functions.dart';
-import 'package:winggoo_gala/shedule_date_time/shedule_date_time_widget.dart';
+
+import '../common_file/functions.dart';
 import '../common_file/widgets.dart';
 
 class ChooseYourPlaneScreen extends StatefulWidget {
