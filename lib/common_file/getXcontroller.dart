@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:winggoo_gala/addEvent/addEvent_controller.dart';
+ import '../addEvent/addEvent_controller.dart';
 import '../home/home_controller.dart';
 import '../otp/otp_controller.dart';
 import '../resetPassword/reset_password_controller.dart';

@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:winggoo_gala/common_file/functions.dart';
-import 'package:winggoo_gala/signup/signup_widget.dart';
 
+
+import '../common_file/functions.dart';
 import '../common_file/widgets.dart';
 import 'Home_widget.dart';
 
