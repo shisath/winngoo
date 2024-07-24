@@ -1,0 +1,14 @@
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+
+class SignUpController extends GetxController {
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController yourPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  final nameFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
+  final confirmPasswordFocusNode = FocusNode();
+}
