@@ -19,8 +19,11 @@ class _SheduleDateAndTimeScreenState extends State<SheduleDateAndTimeScreen> {
       appBar: AppBar(
         backgroundColor: primaryColor,
         actions: [
-          GestureDetector(
-            child: const Icon(Icons.menu),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: GestureDetector(
+              child: const Icon(Icons.menu),
+            ),
           ),
         ],
       ),
@@ -30,10 +33,10 @@ class _SheduleDateAndTimeScreenState extends State<SheduleDateAndTimeScreen> {
             headingContainer(
                 height: MediaQuery.sizeOf(context).height * 0.21,
                 widget: Padding(
-                  padding: const EdgeInsets.only(left: 22),
+                  padding: const EdgeInsets.only(left: 22, right: 22),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
                         "Schedule the Time and Date",

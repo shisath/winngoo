@@ -6,34 +6,39 @@ import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
 
 Widget selector() {
-  return Obx(
-    () => Container(
+  return Center(
+    child: Container(
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white),
         borderRadius: const BorderRadius.all(Radius.circular(30)),
       ),
+      width: MediaQuery.sizeOf(Get.context!).width,
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: ToggleButtons(
-          isSelected: sheduleDateTimeController.seleted,
-          onPressed: (int index) {},
-          color: Colors.black,
-          fillColor: sheduleButtonColor,
-          selectedColor: sheduleButtonColor,
-          borderRadius: BorderRadius.circular(30.0),
-          borderColor: sheduleButtonColor,
-          children: const <Widget>[
-            Text(
-              "                   DATE                ",
-              style: TextStyle(color: Colors.white),
+          padding: const EdgeInsets.all(5.0),
+          child: SizedBox(
+            width: MediaQuery.sizeOf(Get.context!).width,
+            child: Container(
+              decoration: BoxDecoration(
+                color: sheduleButtonColor,
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "Date",
+                    style:
+                        TextStyle(color: Colors.white, fontSize: headingSize),
+                  ),
+                  Text(
+                    "Time",
+                    style:
+                        TextStyle(color: Colors.white, fontSize: headingSize),
+                  ),
+                ],
+              ),
             ),
-            Text(
-              "               TIME                  ",
-              style: TextStyle(color: Colors.white),
-            ),
-          ],
-        ),
-      ),
+          )),
     ),
   );
 }

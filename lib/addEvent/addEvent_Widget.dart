@@ -64,8 +64,9 @@ circleAvatarWidget({
                     : Colors.white),
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: Padding(
-          padding: const EdgeInsets.all(7.0),
+          padding: const EdgeInsets.only(top: 3.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               CircleAvatar(
                 radius: 30,

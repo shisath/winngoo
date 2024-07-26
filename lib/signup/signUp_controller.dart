@@ -6,6 +6,8 @@ class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController yourPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  RxBool passwordObsecure = true.obs;
+  RxBool confirmObsecure = true.obs;
 
   final nameFocusNode = FocusNode();
   final emailFocusNode = FocusNode();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../signIn/signIn_screen.dart';
 import 'functions.dart';
 
 Widget titleBoxCard(
@@ -183,20 +184,22 @@ Widget buttonWidget(
 }
 
 /// commonText field
-Widget textField({
-  required TextEditingController controller,
-  required String label,
-  required String hint,
-  required Widget prefixIcon,
-  required String? Function(String?) validate,
-  focusNode,
-  suffixIcon,
-  void Function()? ontab,
-  required void Function(String) onFieldSubmited,
-}) {
+Widget textField(
+    {required TextEditingController controller,
+    required String label,
+    required String hint,
+    required Widget prefixIcon,
+    required String? Function(String?) validate,
+    focusNode,
+    suffixIcon,
+    obscureText,
+    void Function()? ontab,
+    required void Function(String) onFieldSubmited,
+    key}) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: TextFormField(
+      obscureText: obscureText ?? false,
       onTap: ontab,
       focusNode: focusNode,
       maxLength: getInputSettings(type: label)["maxLength"],
@@ -209,7 +212,7 @@ Widget textField({
           errorBorder: outlineInputBorder(color: Colors.red),
           focusedErrorBorder: outlineInputBorder(color: Colors.red),
           enabledBorder: outlineInputBorder(color: Colors.grey),
-          focusedBorder: outlineInputBorder(color: Colors.blue),
+          focusedBorder: outlineInputBorder(color: Color(0xff5669FF)),
           counterText: "",
           prefix: label == "Phone Number" ? const Text("91+ ") : null),
       validator: validate,
@@ -272,23 +275,22 @@ Widget togleButton({
   required String headingText,
   required void Function(bool) onchanged,
 }) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-    child: Row(
-      children: [
-        Switch(
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: [
+      Transform.scale(
+        alignment: Alignment.centerLeft,
+        scale: 0.8,
+        child: Switch(
           value: controller,
           onChanged: onchanged,
         ),
-        const SizedBox(
-          width: 10,
-        ),
-        Text(
-          headingText,
-          style: TextStyle(fontSize: contentSize),
-        ),
-      ],
-    ),
+      ),
+      Text(
+        headingText,
+        style: TextStyle(fontSize: contentSize - 3),
+      ),
+    ],
   );
 }
 

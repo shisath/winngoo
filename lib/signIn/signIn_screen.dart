@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:winggoo/signIn/signIn_widget.dart';
 
-import '../signup/signup_widget.dart';
-
-final signInformKey = GlobalKey<FormState>();
-
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 

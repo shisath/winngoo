@@ -23,7 +23,7 @@ class AddEventController extends GetxController {
       "img": "",
     },
     {
-      "title": "Launching party",
+      "title": "Launching pary",
       "img": "",
     },
     {
