@@ -56,12 +56,8 @@ Map<String, dynamic> getInputSettings({required String type}) {
       maxLength = 3;
       inputFormatters = [FilteringTextInputFormatter.digitsOnly];
       break;
-    case 'Address':
-      keyboardType = TextInputType.streetAddress;
-      maxLength = 60;
-      inputFormatters = null;
-      break;
-    case 'Phone Number':
+
+    case 'Mobile No':
       keyboardType = TextInputType.phone;
       maxLength = 10;
       inputFormatters = [FilteringTextInputFormatter.digitsOnly];
