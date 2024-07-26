@@ -63,6 +63,29 @@ signUpWidget() {
             focusNode: signUpController.emailFocusNode,
             onFieldSubmited: (val) {
               FocusScope.of(Get.context!)
+                  .requestFocus(signUpController.phoneNumberFocusNode);
+            }),
+        const SizedBox(
+          height: 10,
+        ),
+        textField(
+            label: "Mobile No",
+            hint: "91+",
+            prefixIcon: const Icon(
+              Icons.phone,
+              color: Colors.grey,
+            ),
+            validate: (value) {
+              if (value == null || value.isEmpty) {
+                return 'This field cannot be empty';
+              } else {
+                return null;
+              }
+            },
+            controller: signUpController.phoneNumber,
+            focusNode: signUpController.phoneNumberFocusNode,
+            onFieldSubmited: (val) {
+              FocusScope.of(Get.context!)
                   .requestFocus(signUpController.passwordFocusNode);
             }),
         const SizedBox(
