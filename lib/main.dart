@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:winggoo/signIn/signIn_screen.dart';
+import 'package:winggoo/signIn/sign_in_screen.dart';
 
 import 'common_file/router.dart';
 

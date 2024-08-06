@@ -32,7 +32,7 @@ homeWidget() {
             focusNode: homeController.emailFocusNode,
             onFieldSubmited: (val) {
               FocusScope.of(Get.context!)
-                  .requestFocus(signUpController.nameFocusNode);
+                  .requestFocus(signUpController.fullnameFocusNode);
             }),
         const SizedBox(
           height: 20,
@@ -62,7 +62,7 @@ homeWidget() {
             focusNode: signUpController.emailFocusNode,
             onFieldSubmited: (val) {
               FocusScope.of(Get.context!)
-                  .requestFocus(signUpController.nameFocusNode);
+                  .requestFocus(signUpController.fullnameFocusNode);
             }),
         const SizedBox(
           height: 80,

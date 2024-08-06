@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../signIn/signIn_screen.dart';
 import 'functions.dart';
 
 Widget titleBoxCard(
@@ -196,30 +195,32 @@ Widget textField(
     void Function()? ontab,
     required void Function(String) onFieldSubmited,
     key}) {
-  return Padding(
-    padding: const EdgeInsets.all(5.0),
-    child: TextFormField(
-      obscureText: obscureText ?? false,
-      onTap: ontab,
-      focusNode: focusNode,
-      maxLength: getInputSettings(type: label)["maxLength"],
-      controller: controller,
-      decoration: InputDecoration(
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-          labelText: label,
-          hintText: hint,
-          errorBorder: outlineInputBorder(color: Colors.red),
-          focusedErrorBorder: outlineInputBorder(color: Colors.red),
-          enabledBorder: outlineInputBorder(color: Colors.grey),
-          focusedBorder: outlineInputBorder(color: Color(0xff5669FF)),
-          counterText: "",
-          prefix: label == "Phone Number" ? const Text("91+ ") : null),
-      validator: validate,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
-      keyboardType: getInputSettings(type: label)["keyboardType"],
-      inputFormatters: getInputSettings(type: label)["inputFormatters"],
-      onFieldSubmitted: onFieldSubmited,
+  return SingleChildScrollView(
+    child: Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: TextFormField(
+        obscureText: obscureText ?? false,
+        onTap: ontab,
+        focusNode: focusNode,
+        maxLength: getInputSettings(type: label)["maxLength"],
+        controller: controller,
+        decoration: InputDecoration(
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            labelText: label,
+            hintText: hint,
+            errorBorder: outlineInputBorder(color: Colors.red),
+            focusedErrorBorder: outlineInputBorder(color: Colors.red),
+            enabledBorder: outlineInputBorder(color: Colors.grey),
+            focusedBorder: outlineInputBorder(color: const Color(0xff5669FF)),
+            counterText: "",
+            prefix: label == "Phone Number" ? const Text("91+ ") : null),
+        validator: validate,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        keyboardType: getInputSettings(type: label)["keyboardType"],
+        inputFormatters: getInputSettings(type: label)["inputFormatters"],
+        onFieldSubmitted: onFieldSubmited,
+      ),
     ),
   );
 }

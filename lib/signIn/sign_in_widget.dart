@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
@@ -98,14 +99,15 @@ signInWidget() {
               togleButton(
                   headingText: "Remeber Me",
                   controller: signInController.rememberMe.value,
-                  onchanged: (bool) {
-                    signInController.rememberMe.value = bool;
+                  onchanged: (b) {
+                    signInController.rememberMe.value = b;
                   }),
               Text(
                 "Forget Password?",
                 style: TextStyle(fontSize: contentSize - 3),
               ).onTap(() {
-                Get.toNamed("/otp");
+                signInController.forgotPassword();
+                // Get.toNamed("/otp");
               })
             ],
           ),
@@ -115,7 +117,9 @@ signInWidget() {
           buttonWidget(
             onPress: () {
               if (signInformKey.currentState?.validate() == true) {
-                Get.toNamed("/signUp");
+                //
+                // Get.toNamed("/signUp");
+                signInController.signInApi();
               }
             },
             text: "SIGN IN",
@@ -135,7 +139,9 @@ signInWidget() {
           googelFacebook(
               text: "Sign Up",
               ontap: () {
-                Get.offNamed("/signUp");
+                signInController.signInApi();
+
+                // Get.offNamed("/signUp");
               }),
           const SizedBox(
             height: 20,

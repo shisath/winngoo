@@ -6,13 +6,13 @@ import '../home/home_screen.dart';
 import '../otp/otp_screen.dart';
 import '../resetPassword/reset_password_screen.dart';
 import '../shedule_date_time/shedule_date_time_Screen.dart';
-import '../signIn/signIn_screen.dart';
+import '../signIn/sign_in_screen.dart';
 import '../signup/signUp_screen.dart';
 
 final routes = [
   GetPage(
     name: '/signIn',
-    page: () => const SignInScreen(),
+    page: () => SignInScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(

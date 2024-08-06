@@ -4,7 +4,6 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
-import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
 signUpWidget() {
@@ -26,8 +25,8 @@ signUpWidget() {
             height: 10,
           ),
           textField(
-              label: "Name",
-              hint: "Eg.Sathish",
+              label: "Full name",
+              hint: "",
               prefixIcon: const Icon(
                 Icons.person,
                 color: Colors.grey,
@@ -40,7 +39,30 @@ signUpWidget() {
                 }
               },
               controller: signUpController.fullNameController,
-              focusNode: signUpController.nameFocusNode,
+              focusNode: signUpController.fullnameFocusNode,
+              onFieldSubmited: (val) {
+                FocusScope.of(Get.context!)
+                    .requestFocus(signUpController.surnameFocusNode);
+              }),
+          const SizedBox(
+            height: 10,
+          ),
+          textField(
+              label: "Surname",
+              hint: "Enter your sure name",
+              prefixIcon: const Icon(
+                Icons.person,
+                color: Colors.grey,
+              ),
+              validate: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Please enter your full name";
+                } else {
+                  return null;
+                }
+              },
+              controller: signUpController.surNameController,
+              focusNode: signUpController.surnameFocusNode,
               onFieldSubmited: (val) {
                 FocusScope.of(Get.context!)
                     .requestFocus(signUpController.emailFocusNode);
@@ -49,15 +71,15 @@ signUpWidget() {
             height: 10,
           ),
           textField(
-              label: "Gmail",
-              hint: "Eg.winngoo@gmail.com",
+              label: "Email",
+              hint: " ",
               prefixIcon: const Icon(
                 Icons.mail,
                 color: Colors.grey,
               ),
               validate: (value) {
                 if (value == null || value.isEmpty) {
-                  return "Please enter your Gmail";
+                  return "Please enter your email";
                 } else {
                   return null;
                 }
@@ -66,27 +88,27 @@ signUpWidget() {
               focusNode: signUpController.emailFocusNode,
               onFieldSubmited: (val) {
                 FocusScope.of(Get.context!)
-                    .requestFocus(signUpController.phoneNumberFocusNode);
+                    .requestFocus(signUpController.confirmEmailFocusNode);
               }),
           const SizedBox(
             height: 10,
           ),
           textField(
-              label: "Mobile No",
+              label: "Confirm email",
               hint: " ",
               prefixIcon: const Icon(
-                Icons.phone,
+                Icons.mail,
                 color: Colors.grey,
               ),
               validate: (value) {
                 if (value == null || value.isEmpty) {
-                  return "Mobile number can't be empty";
+                  return "Please enter your Email";
                 } else {
                   return null;
                 }
               },
-              controller: signUpController.phoneNumber,
-              focusNode: signUpController.phoneNumberFocusNode,
+              controller: signUpController.confirmEmailController,
+              focusNode: signUpController.confirmEmailFocusNode,
               onFieldSubmited: (val) {
                 FocusScope.of(Get.context!)
                     .requestFocus(signUpController.passwordFocusNode);
@@ -97,7 +119,7 @@ signUpWidget() {
           textField(
               obscureText: signUpController.passwordObsecure.value,
               label: "Password",
-              hint: "Your Password",
+              hint: "",
               prefixIcon: const Icon(
                 Icons.lock_outline,
                 color: Colors.grey,
@@ -134,7 +156,7 @@ signUpWidget() {
           ),
           textField(
               obscureText: signUpController.confirmObsecure.value,
-              label: "Please enter your confirm password",
+              label: "Confirm password",
               hint: "",
               prefixIcon: const Icon(
                 Icons.lock_outline,
@@ -165,15 +187,98 @@ signUpWidget() {
               focusNode: signUpController.confirmPasswordFocusNode,
               onFieldSubmited: (val) {
                 FocusScope.of(Get.context!)
-                    .requestFocus(signUpController.confirmPasswordFocusNode);
+                    .requestFocus(signUpController.mobileNumberFocusNode);
               }),
+          const SizedBox(
+            height: 10,
+          ),
+          textField(
+              label: "Mobile No",
+              hint: " ",
+              prefixIcon: const Icon(
+                Icons.phone,
+                color: Colors.grey,
+              ),
+              validate: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Mobile number can't be empty";
+                } else {
+                  return null;
+                }
+              },
+              controller: signUpController.phoneNumber,
+              focusNode: signUpController.mobileNumberFocusNode,
+              onFieldSubmited: (val) {
+                FocusScope.of(Get.context!)
+                    .requestFocus(signUpController.passwordFocusNode);
+              }),
+          Align(
+              alignment: Alignment.topRight,
+              child: TextButton(
+                  onPressed: () {
+                    signUpController.sendOtp.value =
+                        !signUpController.sendOtp.value;
+                  },
+                  child: signUpController.sendOtp.value
+                      ? Text("ReSend OTP")
+                      : Text("Send OTP"))),
+          const SizedBox(
+            height: 10,
+          ),
+          if (signUpController.sendOtp.value) ...[
+            textField(
+                label: "Enter OTP",
+                hint: " ",
+                prefixIcon: const Icon(
+                  Icons.phone,
+                  color: Colors.grey,
+                ),
+                validate: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Mobile number can't be empty";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: signUpController.enterOTPController,
+                focusNode: signUpController.enterOTPFocusNode,
+                onFieldSubmited: (val) {
+                  FocusScope.of(Get.context!)
+                      .requestFocus(signUpController.countryFocusNode);
+                }),
+            const SizedBox(
+              height: 20,
+            ),
+          ],
+          DropdownButtonFormField(
+            items: const [
+              DropdownMenuItem<String>(
+                value: "sathish",
+                child: Text("sathjosh"),
+              )
+            ],
+            onChanged: (s) {
+              signUpController.countryController.text = s!;
+            },
+          ),
           const SizedBox(
             height: 20,
           ),
           buttonWidget(
             onPress: () {
+              print("Name ${signUpController.fullNameController.text}");
+              print("surename ${signUpController.surNameController.text}");
+              print("email ${signUpController.emailController.text}");
+              print(
+                  "confirm mail ${signUpController.confirmEmailController.text}");
+              print("password ${signUpController.yourPasswordController.text}");
+              print(
+                  "confirm password ${signUpController.confirmPasswordController.text}");
+              print("Mobile No ${signUpController.phoneNumber.text}");
+              print("country ${signUpController.countryController.text}");
+
               if (signUpformKey.currentState?.validate() == true) {
-                Get.toNamed("/otp");
+                signUpController.signUpApi();
               }
             },
             text: "SIGN UP",
@@ -181,19 +286,20 @@ signUpWidget() {
           const SizedBox(
             height: 20,
           ),
-          Center(
-            child: Text(
-              "OR",
-              style: TextStyle(color: Colors.grey, fontSize: contentSize),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
           googelFacebook(
             text: "Sign In",
             ontap: () {
-              Get.offNamed("/signIn");
+              print("Name ${signUpController.fullNameController.text}");
+              print("surename ${signUpController.surNameController.text}");
+              print("email ${signUpController.emailController.text}");
+              print(
+                  "confirm mail ${signUpController.confirmEmailController.text}");
+              print("password ${signUpController.yourPasswordController.text}");
+              print(
+                  "confirm password ${signUpController.confirmPasswordController.text}");
+              print("Mobile No ${signUpController.phoneNumber.text}");
+              print("country ${signUpController.countryController.text}");
+              // Get.offNamed("/signIn");
             },
           ),
         ],
@@ -206,27 +312,27 @@ Widget googelFacebook({required void Function()? ontap, required String text}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      pngButton(
-        onTap: () {},
-        text: "Login with Google",
-        png: Image.asset(
-          googlePng,
-          height: 60,
-          width: 60,
-        ),
-      ),
-      const SizedBox(
-        height: 20,
-      ),
-      pngButton(
-        onTap: () {},
-        text: "Login with FaceBook",
-        png: Image.asset(
-          fbPng,
-          height: 40,
-          width: 60,
-        ),
-      ),
+      // pngButton(
+      //   onTap: () {},
+      //   text: "Login with Google",
+      //   png: Image.asset(
+      //     googlePng,
+      //     height: 60,
+      //     width: 60,
+      //   ),
+      // ),
+      // const SizedBox(
+      //   height: 20,
+      // ),
+      // pngButton(
+      //   onTap: () {},
+      //   text: "Login with FaceBook",
+      //   png: Image.asset(
+      //     fbPng,
+      //     height: 40,
+      //     width: 60,
+      //   ),
+      // ),
       const SizedBox(height: 30),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
