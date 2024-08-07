@@ -204,17 +204,13 @@ Widget textField(
         focusNode: focusNode,
         maxLength: getInputSettings(type: label)["maxLength"],
         controller: controller,
-        decoration: InputDecoration(
+        decoration: inputDecoration(
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-            labelText: label,
-            hintText: hint,
-            errorBorder: outlineInputBorder(color: Colors.red),
-            focusedErrorBorder: outlineInputBorder(color: Colors.red),
-            enabledBorder: outlineInputBorder(color: Colors.grey),
-            focusedBorder: outlineInputBorder(color: const Color(0xff5669FF)),
-            counterText: "",
-            prefix: label == "Phone Number" ? const Text("91+ ") : null),
+            label: label,
+            hint: hint,
+            prefix:
+                label == "Phone Number" ? const Text("91+ ") : const Text("")),
         validator: validate,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         keyboardType: getInputSettings(type: label)["keyboardType"],
@@ -223,6 +219,25 @@ Widget textField(
       ),
     ),
   );
+}
+
+InputDecoration inputDecoration(
+    {required Widget prefixIcon,
+    suffixIcon,
+    required String label,
+    required String hint,
+    required Text prefix}) {
+  return InputDecoration(
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      labelText: label,
+      hintText: hint,
+      errorBorder: outlineInputBorder(color: Colors.red),
+      focusedErrorBorder: outlineInputBorder(color: Colors.red),
+      enabledBorder: outlineInputBorder(color: Colors.grey),
+      focusedBorder: outlineInputBorder(color: const Color(0xff5669FF)),
+      counterText: "",
+      prefix: prefix);
 }
 
 Widget textFieldSmall(

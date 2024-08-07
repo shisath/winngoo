@@ -14,10 +14,11 @@ class SignUpController extends GetxController {
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController enterOTPController = TextEditingController();
   TextEditingController countryController = TextEditingController();
+  RxBool isChecked = false.obs;
   RxBool sendOtp = false.obs;
 
   RxBool passwordObsecure = true.obs;
-  RxBool confirmObsecure = true.obs;
+  RxBool confirmPasswordObsecure = true.obs;
 
   final fullnameFocusNode = FocusNode();
   final surnameFocusNode = FocusNode();

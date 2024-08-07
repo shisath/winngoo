@@ -6,8 +6,8 @@ import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
-import '../signup/signup_widget.dart';
 
+///not use
 Widget logo() {
   return Image.asset(
     winngoo,
@@ -28,8 +28,9 @@ signInWidget() {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              "Sign In",
-              style: TextStyle(fontSize: headingSize),
+              "LOG IN",
+              style:
+                  TextStyle(fontSize: headingSize, fontWeight: FontWeight.w600),
             ),
           ),
           const SizedBox(
@@ -93,58 +94,61 @@ signInWidget() {
                 // FocusScope.of(Get.context!)
                 //     .requestFocus(signInController.passwordFocusNode);
               }),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              togleButton(
-                  headingText: "Remeber Me",
-                  controller: signInController.rememberMe.value,
-                  onchanged: (b) {
-                    signInController.rememberMe.value = b;
-                  }),
-              Text(
+          const SizedBox(
+            height: 8,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
                 "Forget Password?",
-                style: TextStyle(fontSize: contentSize - 3),
+                style: TextStyle(
+                    fontSize: contentSize - 3, fontWeight: FontWeight.w600),
               ).onTap(() {
                 signInController.forgotPassword();
                 // Get.toNamed("/otp");
-              })
-            ],
+              }),
+            ),
           ),
           const SizedBox(
             height: 20,
           ),
           buttonWidget(
             onPress: () {
-              if (signInformKey.currentState?.validate() == true) {
-                //
-                // Get.toNamed("/signUp");
-                signInController.signInApi();
-              }
+              Get.toNamed("/signUp");
+
+              // if (signInformKey.currentState?.validate() == true) {
+              //   //
+              //    signInController.signInApi();
+              // }
             },
             text: "SIGN IN",
           ),
           const SizedBox(
-            height: 20,
+            height: 40,
           ),
           Center(
-            child: Text(
-              "OR",
-              style: TextStyle(color: Colors.grey, fontSize: contentSize),
+            child: Column(
+              children: [
+                Text(
+                  "Welcome to our Winngoo Gala",
+                  style: TextStyle(fontSize: contentSize),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Sign up here",
+                  style: TextStyle(color: primaryColor, fontSize: contentSize),
+                ).onTap(() {
+                  Get.offNamed("/signUp");
+                }),
+              ],
             ),
           ),
           const SizedBox(
-            height: 20,
-          ),
-          googelFacebook(
-              text: "Sign Up",
-              ontap: () {
-                signInController.signInApi();
-
-                // Get.offNamed("/signUp");
-              }),
-          const SizedBox(
-            height: 20,
+            height: 40,
           ),
         ],
       ),
@@ -152,6 +156,7 @@ signInWidget() {
   );
 }
 
+///not use
 Widget pngButton({
   png,
   required String text,

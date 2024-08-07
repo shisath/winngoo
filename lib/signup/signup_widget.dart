@@ -4,6 +4,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
+import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
 signUpWidget() {
@@ -49,7 +50,7 @@ signUpWidget() {
           ),
           textField(
               label: "Surname",
-              hint: "Enter your sure name",
+              hint: " ",
               prefixIcon: const Icon(
                 Icons.person,
                 color: Colors.grey,
@@ -129,7 +130,7 @@ signUpWidget() {
                     signUpController.passwordObsecure.value =
                         !signUpController.passwordObsecure.value;
                   },
-                  icon: signInController.obsecure.value
+                  icon: signUpController.passwordObsecure.value
                       ? const Icon(
                           Icons.visibility_off,
                           color: Colors.grey,
@@ -155,7 +156,7 @@ signUpWidget() {
             height: 10,
           ),
           textField(
-              obscureText: signUpController.confirmObsecure.value,
+              obscureText: signUpController.confirmPasswordObsecure.value,
               label: "Confirm password",
               hint: "",
               prefixIcon: const Icon(
@@ -164,10 +165,10 @@ signUpWidget() {
               ),
               suffixIcon: IconButton(
                   onPressed: () {
-                    signUpController.confirmObsecure.value =
-                        !signUpController.confirmObsecure.value;
+                    signUpController.confirmPasswordObsecure.value =
+                        !signUpController.confirmPasswordObsecure.value;
                   },
-                  icon: signInController.obsecure.value
+                  icon: signUpController.confirmPasswordObsecure.value
                       ? const Icon(
                           Icons.visibility_off,
                           color: Colors.grey,
@@ -220,8 +221,16 @@ signUpWidget() {
                         !signUpController.sendOtp.value;
                   },
                   child: signUpController.sendOtp.value
-                      ? Text("ReSend OTP")
-                      : Text("Send OTP"))),
+                      ? const Text(
+                          "RESEND OTP",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                          ),
+                        )
+                      : const Text("SEND OTP",
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                          )))),
           const SizedBox(
             height: 10,
           ),
@@ -230,7 +239,7 @@ signUpWidget() {
                 label: "Enter OTP",
                 hint: " ",
                 prefixIcon: const Icon(
-                  Icons.phone,
+                  Icons.lock_reset_outlined,
                   color: Colors.grey,
                 ),
                 validate: (value) {
@@ -247,60 +256,65 @@ signUpWidget() {
                       .requestFocus(signUpController.countryFocusNode);
                 }),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
           ],
-          DropdownButtonFormField(
-            items: const [
-              DropdownMenuItem<String>(
-                value: "sathish",
-                child: Text("sathjosh"),
-              )
-            ],
-            onChanged: (s) {
-              signUpController.countryController.text = s!;
-            },
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: DropdownButtonFormField(
+              decoration: inputDecoration(
+                  prefixIcon: const Icon(
+                    Icons.account_balance_outlined,
+                    color: Colors.grey,
+                  ),
+                  label: 'Country',
+                  hint: '',
+                  prefix: const Text("")),
+              items: const [
+                DropdownMenuItem<String>(
+                  value: "sathish",
+                  child: Text("sathjosh"),
+                )
+              ],
+              onChanged: (s) {
+                signUpController.countryController.text = s!;
+              },
+            ),
           ),
           const SizedBox(
             height: 20,
           ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: CheckboxListTile(
+              title: Text(
+                'Privacy policy & Accept terms and conditions',
+                style: TextStyle(
+                    color: primaryColor, decoration: TextDecoration.underline),
+              ).onTap(() {
+                print("sdssd");
+              }),
+              value: signUpController.isChecked.value,
+              onChanged: (bool? value) {
+                signUpController.isChecked.value =
+                    !signUpController.isChecked.value;
+              },
+              controlAffinity:
+                  ListTileControlAffinity.leading, // Position of the checkbox
+            ),
+          ),
           buttonWidget(
             onPress: () {
-              print("Name ${signUpController.fullNameController.text}");
-              print("surename ${signUpController.surNameController.text}");
-              print("email ${signUpController.emailController.text}");
-              print(
-                  "confirm mail ${signUpController.confirmEmailController.text}");
-              print("password ${signUpController.yourPasswordController.text}");
-              print(
-                  "confirm password ${signUpController.confirmPasswordController.text}");
-              print("Mobile No ${signUpController.phoneNumber.text}");
-              print("country ${signUpController.countryController.text}");
+              Get.toNamed("/homeScreen");
 
-              if (signUpformKey.currentState?.validate() == true) {
-                signUpController.signUpApi();
-              }
+              // if (signUpformKey.currentState?.validate() == true) {
+              //   signUpController.signUpApi();
+              // }
             },
             text: "SIGN UP",
           ),
           const SizedBox(
             height: 20,
-          ),
-          googelFacebook(
-            text: "Sign In",
-            ontap: () {
-              print("Name ${signUpController.fullNameController.text}");
-              print("surename ${signUpController.surNameController.text}");
-              print("email ${signUpController.emailController.text}");
-              print(
-                  "confirm mail ${signUpController.confirmEmailController.text}");
-              print("password ${signUpController.yourPasswordController.text}");
-              print(
-                  "confirm password ${signUpController.confirmPasswordController.text}");
-              print("Mobile No ${signUpController.phoneNumber.text}");
-              print("country ${signUpController.countryController.text}");
-              // Get.offNamed("/signIn");
-            },
           ),
         ],
       ),
@@ -308,48 +322,60 @@ signUpWidget() {
   );
 }
 
+///not use
 Widget googelFacebook({required void Function()? ontap, required String text}) {
   return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      // pngButton(
-      //   onTap: () {},
-      //   text: "Login with Google",
-      //   png: Image.asset(
-      //     googlePng,
-      //     height: 60,
-      //     width: 60,
-      //   ),
-      // ),
-      // const SizedBox(
-      //   height: 20,
-      // ),
-      // pngButton(
-      //   onTap: () {},
-      //   text: "Login with FaceBook",
-      //   png: Image.asset(
-      //     fbPng,
-      //     height: 40,
-      //     width: 60,
-      //   ),
-      // ),
+      pngButton(
+        onTap: () {},
+        text: "Login with Google",
+        png: Image.asset(
+          googlePng,
+          height: 60,
+          width: 60,
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      pngButton(
+        onTap: () {},
+        text: "Login with FaceBook",
+        png: Image.asset(
+          fbPng,
+          height: 40,
+          width: 60,
+        ),
+      ),
       const SizedBox(height: 30),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Already have an account?",
-            style: TextStyle(fontSize: contentSize),
-          ),
-          const SizedBox(
-            width: 5,
-          ),
-          Text(
-            text,
-            style: TextStyle(fontSize: contentSize, color: secondarycolor),
-          ).onTap(ontap),
-        ],
-      )
+      pngButton(
+        onTap: () {},
+        text: "Login with Google",
+        png: Image.asset(
+          googlePng,
+          height: 60,
+          width: 60,
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      pngButton(
+        onTap: () {},
+        text: "Login with FaceBook",
+        png: Image.asset(
+          fbPng,
+          height: 40,
+          width: 60,
+        ),
+      ),
+      const SizedBox(height: 30),
+      Text(
+        text,
+        style: TextStyle(fontSize: contentSize, color: secondarycolor),
+      ).onTap(ontap)
     ],
   );
 }
