@@ -106,7 +106,8 @@ signInWidget() {
                 style: TextStyle(
                     fontSize: contentSize - 3, fontWeight: FontWeight.w600),
               ).onTap(() {
-                signInController.forgotPassword();
+                Get.toNamed("/forgotPassword");
+                // signInController.forgotPassword();
                 // Get.toNamed("/otp");
               }),
             ),

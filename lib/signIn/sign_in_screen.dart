@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/signIn/sign_in_widget.dart';
 
+import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class SignInScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // logo(),
-            headingContainer(widget: Image.asset("assets/login.png")),
+            headingContainer(widget: Image.asset(loginPng)),
             const SizedBox(
               height: 20,
             ),

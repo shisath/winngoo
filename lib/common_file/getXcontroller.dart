@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../addEvent/addEvent_controller.dart';
+import '../forgotPassword/forgot_password_controller.dart';
 import '../home/home_controller.dart';
 import '../otp/otp_controller.dart';
 import '../resetPassword/reset_password_controller.dart';
@@ -12,6 +13,7 @@ final signInController = Get.put(SignInController());
 final signUpController = Get.put(SignUpController());
 final otpController = Get.put(OtpController());
 final resetPasswordController = Get.put(ResetPasswordController());
+final forgotPasswordController = Get.put(ForgotPasswordController());
 final homeController = Get.put(HomeController());
 final addEventController = Get.put(AddEventController());
 final sheduleDateTimeController = Get.put(SheduleDateTimeController());

@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import '../addEvent/addEvent_Screen.dart';
+import '../forgotPassword/forgot_password_screen.dart';
 import '../home/home_screen.dart';
 import '../otp/otp_screen.dart';
 import '../resetPassword/reset_password_screen.dart';
@@ -28,6 +29,11 @@ final routes = [
   GetPage(
     name: '/resetPassword',
     page: () => const ResetPasswordScreen(),
+    transition: Transition.fadeIn,
+  ),
+  GetPage(
+    name: '/forgotPassword',
+    page: () => const ForgotPasswordScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(

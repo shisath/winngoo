@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:winggoo/common_file/images.dart';
 
-import '../common_file/functions.dart';
+import 'forgot_password_Widget.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -8,20 +9,19 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        actions: [
-          GestureDetector(
-            child: const Icon(Icons.menu),
-          ),
-          const SizedBox(
-            width: 10,
-          )
-        ],
-      ),
-      body: const SingleChildScrollView(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
         child: Column(
-          children: [Text("FORGOT PASSWORD")],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Image.asset(
+                forgotPasswordPng,
+                height: MediaQuery.sizeOf(context).height * 0.4,
+              ),
+            ),
+            forgotPasswordWidget()
+          ],
         ),
       ),
     );

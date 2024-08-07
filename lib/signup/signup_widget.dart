@@ -291,9 +291,7 @@ signUpWidget() {
                 'Privacy policy & Accept terms and conditions',
                 style: TextStyle(
                     color: primaryColor, decoration: TextDecoration.underline),
-              ).onTap(() {
-                print("sdssd");
-              }),
+              ).onTap(() {}),
               value: signUpController.isChecked.value,
               onChanged: (bool? value) {
                 signUpController.isChecked.value =
