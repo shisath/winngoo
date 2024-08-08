@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/functions.dart';
+import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 import 'addEvent_Widget.dart';
 
@@ -12,6 +12,7 @@ class AddEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: buttonWidget(onPress: () {}, text: "Next"),
       appBar: AppBar(
         backgroundColor: primaryColor,
         actions: [
@@ -23,42 +24,29 @@ class AddEventScreen extends StatelessWidget {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            headingContainer(
-                height: MediaQuery.sizeOf(context).height * 0.21,
-                widget: Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "ADD EVENT",
-                        style: TextStyle(
-                            fontSize: headingSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text("Explore Categories",
-                          style: TextStyle(
-                            fontSize: headingSize,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                          )),
-                      SizedBox(
-                        height: 30,
-                      )
-                    ],
-                  ),
-                )),
-            addEventWidget()
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          headingContainer(
+              widget: Stack(children: [
+            Center(child: Image.asset(celebrationPng)),
+          ])),
+          recommendWidget(),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+            ),
+            child: WinngooText(
+              text: "Your events",
+              fontSize: headingSize,
+              weight: FontWeight.w500,
+            ),
+          ),
+          yourEventWidget(),
+          const SizedBox(
+            height: 68,
+          ),
+        ],
       ),
     );
   }

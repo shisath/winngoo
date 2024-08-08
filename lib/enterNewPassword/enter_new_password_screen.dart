@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 import 'package:winggoo/common_file/images.dart';
 
 import '../common_file/widgets.dart';
-import 'forgot_password_Widget.dart';
+import 'enter_new_password_Widget.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class EnterNewPasswordScreen extends StatelessWidget {
+  const EnterNewPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +14,21 @@ class ForgotPasswordScreen extends StatelessWidget {
       appBar: AppBar(),
       floatingActionButton: buttonWidget(
           onPress: () {
-            Get.toNamed("/enterNewPassword");
+            Get.offAllNamed("/signIn");
           },
-          text: "SEND"),
+          text: "DONE"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Image.asset(
-                forgotPasswordPng,
-                height: MediaQuery.sizeOf(context).height * 0.4,
+                width: 200,
+                enterPasswordPng,
+                // height: MediaQuery.sizeOf(context).height * 0.4,
               ),
             ),
-            forgotPasswordWidget()
+            enterNewPassword()
           ],
         ),
       ),

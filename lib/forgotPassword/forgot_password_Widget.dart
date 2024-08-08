@@ -6,7 +6,7 @@ import '../common_file/widgets.dart';
 
 Widget forgotPasswordWidget() {
   return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 20),
+    padding: const EdgeInsets.symmetric(horizontal: 20),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,8 +25,8 @@ Widget forgotPasswordWidget() {
           height: 10,
         ),
         textField(
-            label: "Email",
-            hint: "Eg.winngoo@gmail.com",
+            label: "Enter your email id",
+            hint: "",
             prefixIcon: const Icon(
               Icons.mail,
               color: Colors.grey,
@@ -44,7 +44,6 @@ Widget forgotPasswordWidget() {
         const SizedBox(
           height: 10,
         ),
-        buttonWidget(onPress: () {}, text: "SEND")
       ],
     ),
   );

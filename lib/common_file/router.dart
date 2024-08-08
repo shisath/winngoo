@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import '../addEvent/addEvent_Screen.dart';
+import '../enterNewPassword/enter_new_password_screen.dart';
 import '../forgotPassword/forgot_password_screen.dart';
 import '../home/home_screen.dart';
 import '../otp/otp_screen.dart';
@@ -49,6 +50,11 @@ final routes = [
   GetPage(
     name: '/sheduleScreen',
     page: () => const SheduleDateAndTimeScreen(),
+    transition: Transition.fadeIn,
+  ),
+  GetPage(
+    name: '/enterNewPassword',
+    page: () => const EnterNewPasswordScreen(),
     transition: Transition.fadeIn,
   ),
 ];

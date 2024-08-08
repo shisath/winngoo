@@ -11,8 +11,8 @@ Color headingTextColor = Colors.white;
 Color circleColor = Colors.indigoAccent;
 
 ///Font size
-double contentSize = 18;
-double headingSize = 25;
+double contentSize = 16;
+double headingSize = 20;
 
 ///images
 var psycoPng = "assets/psyco.png";

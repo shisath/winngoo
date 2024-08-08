@@ -147,35 +147,81 @@ handleGestureAction({screens}) {
 }
 
 Widget buttonWidget(
-    {required void Function() onPress, required String text, buttonTextSize}) {
-  return Center(
-    child: SizedBox(
-      width: 300,
-      height: 65,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(16), // Rectangular border radius
-            ),
-            backgroundColor: primaryColor),
-        onPressed: onPress,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(),
-            Text(
+    {required void Function() onPress,
+    required String text,
+    buttonTextSize,
+    width,
+    height,
+    icon}) {
+  return SizedBox(
+    width: width ?? MediaQuery.sizeOf(Get.context!).width * 0.9,
+    height: height ?? 50,
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.circular(16), // Rectangular border radius
+          ),
+          backgroundColor: primaryColor),
+      onPressed: onPress,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(),
+          Center(
+            child: Text(
               text,
-              style: TextStyle(color: Colors.white, fontSize: contentSize),
+              style: TextStyle(
+                  color: Colors.white, fontSize: buttonTextSize ?? contentSize),
             ),
-            CircleAvatar(
-              backgroundColor: secondarycolor,
-              child: const Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
+          ),
+          CircleAvatar(
+            backgroundColor: secondarycolor,
+            child: icon ??
+                const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+Widget buttonWidgetSmall(
+    {required void Function() onPress,
+    required String text,
+    buttonTextSize,
+    width,
+    height,
+    icon}) {
+  return SizedBox(
+    width: width ?? MediaQuery.sizeOf(Get.context!).width * 0.9,
+    height: height ?? 50,
+    child: GestureDetector(
+      onTap: onPress,
+      child: Container(
+        decoration: BoxDecoration(
+            color: primaryColor, borderRadius: BorderRadius.circular(20)),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                text,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: buttonTextSize ?? contentSize),
               ),
-            )
-          ],
+              icon ??
+                  const Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                  )
+            ],
+          ),
         ),
       ),
     ),
@@ -187,6 +233,7 @@ Widget textField(
     {required TextEditingController controller,
     required String label,
     required String hint,
+    heading,
     required Widget prefixIcon,
     required String? Function(String?) validate,
     focusNode,
@@ -198,24 +245,40 @@ Widget textField(
   return SingleChildScrollView(
     child: Padding(
       padding: const EdgeInsets.all(5.0),
-      child: TextFormField(
-        obscureText: obscureText ?? false,
-        onTap: ontab,
-        focusNode: focusNode,
-        maxLength: getInputSettings(type: label)["maxLength"],
-        controller: controller,
-        decoration: inputDecoration(
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            label: label,
-            hint: hint,
-            prefix:
-                label == "Phone Number" ? const Text("91+ ") : const Text("")),
-        validator: validate,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        keyboardType: getInputSettings(type: label)["keyboardType"],
-        inputFormatters: getInputSettings(type: label)["inputFormatters"],
-        onFieldSubmitted: onFieldSubmited,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          heading != null
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Text(
+                    heading,
+                    style: TextStyle(
+                        fontSize: headingSize - 3, fontWeight: FontWeight.bold),
+                  ),
+                )
+              : Container(),
+          TextFormField(
+            obscureText: obscureText ?? false,
+            onTap: ontab,
+            focusNode: focusNode,
+            maxLength: getInputSettings(type: label)["maxLength"],
+            controller: controller,
+            decoration: inputDecoration(
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                label: label,
+                hint: hint,
+                prefix: label == "Phone Number"
+                    ? const Text("91+ ")
+                    : const Text("")),
+            validator: validate,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            keyboardType: getInputSettings(type: label)["keyboardType"],
+            inputFormatters: getInputSettings(type: label)["inputFormatters"],
+            onFieldSubmitted: onFieldSubmited,
+          ),
+        ],
       ),
     ),
   );
@@ -322,7 +385,7 @@ Widget headingContainer({
       ),
       color: primaryColor,
     ),
-    height: height ?? MediaQuery.sizeOf(Get.context!).height * 0.3,
+    height: height ?? MediaQuery.sizeOf(Get.context!).height * 0.25,
     width: MediaQuery.sizeOf(Get.context!).width,
     child: widget,
   );

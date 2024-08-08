@@ -8,7 +8,9 @@ import 'package:http/http.dart' as http;
 class SignInController extends GetxController {
   TextEditingController signInMailController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
+
   RxBool obsecure = true.obs;
+
   RxBool rememberMe = false.obs;
 
   final mailFocusNode = FocusNode();

@@ -117,7 +117,7 @@ signInWidget() {
           ),
           buttonWidget(
             onPress: () {
-              Get.toNamed("/signUp");
+              Get.toNamed("/addEventScreen");
 
               // if (signInformKey.currentState?.validate() == true) {
               //   //
