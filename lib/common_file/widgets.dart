@@ -205,7 +205,7 @@ Widget buttonWidgetSmall(
         decoration: BoxDecoration(
             color: primaryColor, borderRadius: BorderRadius.circular(20)),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -219,6 +219,7 @@ Widget buttonWidgetSmall(
                   const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
+                    size: 20,
                   )
             ],
           ),
@@ -254,7 +255,7 @@ Widget textField(
                   child: Text(
                     heading,
                     style: TextStyle(
-                        fontSize: headingSize - 3, fontWeight: FontWeight.bold),
+                        fontSize: contentSize, fontWeight: FontWeight.bold),
                   ),
                 )
               : Container(),
@@ -404,21 +405,25 @@ Widget headingWidget({required String title, align, color}) {
   );
 }
 
-Widget smallBoxWidget({required void Function()? ontap, lable, controller}) {
-  return GestureDetector(
-    onTap: ontap,
-    child: Container(
-      height: 50,
-      width: 50,
-      decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
-      child: Center(
-          child: Text(
-        controller.toString(),
-        textAlign: TextAlign.center,
-        style: TextStyle(fontSize: contentSize),
-      )),
+Widget smallBoxWidget(
+    {required void Function()? ontap, lable, controller, height, width}) {
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: GestureDetector(
+      onTap: ontap,
+      child: Container(
+        height: height ?? 50,
+        width: width ?? 50,
+        decoration: BoxDecoration(
+            border: Border.all(),
+            borderRadius: const BorderRadius.all(Radius.circular(10))),
+        child: Center(
+            child: Text(
+          controller.toString(),
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: contentSize),
+        )),
+      ),
     ),
   );
 }

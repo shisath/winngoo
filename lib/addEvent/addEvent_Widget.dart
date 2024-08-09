@@ -6,44 +6,50 @@ import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_box.dart';
+import '../common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import '../common_file/winngoo_widgets/winngoo_text.dart';
 
 Widget recommendWidget() {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+    padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
     child: Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            WinngooText(
-              text: "Recommend",
-              fontSize: headingSize,
-              weight: FontWeight.w500,
-            ),
-            buttonWidgetSmall(
-                width: 150.00,
-                height: 30.00,
-                onPress: () {},
-                text: "Add your event",
-                icon: const Icon(
-                  Icons.add,
-                  color: Colors.white,
-                ))
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 13),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              WinngooText(
+                text: "Recommend",
+                fontSize: headingSize,
+                weight: FontWeight.w500,
+              ),
+              buttonWidgetSmall(
+                  width: 150.00,
+                  height: 30.00,
+                  onPress: () {
+                    dialogBox();
+                  },
+                  text: "Add your event",
+                  icon: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 21,
+                  ))
+            ],
+          ),
         ),
         const SizedBox(
           height: 10,
         ),
         SizedBox(
-            height: 60,
+            height: 61,
             width: MediaQuery.sizeOf(Get.context!).width,
             child: ListView(
                 scrollDirection: Axis.horizontal,
                 // Set to horizontal for horizontal scrolling
                 children: List.generate(8, (index) {
-                  return circleAvatarWidget(
-                      png: Image.asset(googlePng), index: 2);
+                  return circleAvatarWidget(png: googlePng, index: index);
                 }))),
       ],
     ),
@@ -52,73 +58,98 @@ Widget recommendWidget() {
 
 Widget yourEventWidget() {
   return Expanded(
-    child: ListView(scrollDirection: Axis.vertical, children: [
-      for (var i in addEventController.eventList) ...[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-          child: eventListbox(
-              image: celebrationBg,
-              date: i["date"] ?? "",
-              isPaid: i["ispaid"] ?? true,
-              title: i["title"] ?? ""),
-        )
-      ]
-    ]),
+    child: addEventController.eventList.isEmpty
+        ? Center(
+            child: WinngooText(
+              text: "No Events Available",
+              color: Colors.black,
+              // weight: FontWeight.w600,
+            ),
+          )
+        : ListView(
+            scrollDirection: Axis.vertical,
+            children:
+                List.generate(addEventController.eventList.length, (index) {
+              final i = addEventController.eventList[index];
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+                child: eventListboxModel(
+                    index: index,
+                    image: celebrationBg,
+                    date: i["date"] ?? "",
+                    isPaid: i["ispaid"] ?? true,
+                    title: i["title"] ?? ""),
+              );
+            })),
   );
 }
 
-Widget eventListbox({
+Widget eventListboxModel({
   required String image,
   required bool isPaid,
   required String title,
   required String date,
+  required int index,
 }) {
-  return WinngooBox(
-    width: MediaQuery.sizeOf(Get.context!).width,
-    borderColor: Colors.grey,
-    // height: 65,
-    radius: 10,
-    borderWidth: 1.0,
-    child: Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
+  return Obx(
+    () => GestureDetector(
+      onTap: () {
+        addEventController.isSelectedEvent.value = index;
+        addEventController.isSelected.value = -1;
+      },
+      child: WinngooBox(
+        width: MediaQuery.sizeOf(Get.context!).width,
+        borderColor: addEventController.isSelectedEvent.value == index
+            ? const Color(0xff5669FF)
+            : Colors.grey,
+        // height: 65,
+        radius: 10,
+
+        borderWidth:
+            addEventController.isSelectedEvent.value == index ? 2.0 : 1.0,
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CircleAvatar(
-                child: Image.asset(
-                  image,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  WinngooText(
-                    text: title,
+                  CircleAvatar(
+                    child: Image.asset(
+                      image,
+                      fit: BoxFit.fitWidth,
+                    ),
                   ),
-                  WinngooText(
-                    text: date,
-                    fontSize: contentSize - 3,
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      WinngooText(
+                        text: title,
+                      ),
+                      WinngooText(
+                        text: date,
+                        fontSize: contentSize - 3,
+                      ),
+                    ],
                   ),
                 ],
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: WinngooText(
+                  text: isPaid ? "Paid" : "UnPaid",
+                  color: isPaid ? Colors.green : Colors.red,
+                ),
+              )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: WinngooText(
-              text: isPaid ? "Paid" : "UnPaid",
-              color: isPaid ? Colors.green : Colors.red,
-            ),
-          )
-        ],
+        ),
       ),
     ),
   );
@@ -143,12 +174,12 @@ Widget addEventWidget() {
 }
 
 circleAvatarWidget({
-  required Image png,
+  required String png,
   required int index,
 }) {
   return Obx(
     () => Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(5.0),
       child: GestureDetector(
         onTap: () {
           addEventController.isSelected.value = index;
@@ -156,39 +187,14 @@ circleAvatarWidget({
         child: Container(
           decoration: BoxDecoration(
               border: Border.all(
-                  width: 3,
+                  width: addEventController.isSelected.value == index ? 3 : 1,
                   color: addEventController.isSelected.value == index
                       ? const Color(0xff5669FF)
-                      : Colors.white),
-              borderRadius: const BorderRadius.all(Radius.circular(20))),
-          child: CircleAvatar(
-            radius: 30,
-            child: png,
-          ),
+                      : Colors.grey.withOpacity(0.5)),
+              borderRadius: const BorderRadius.all(Radius.circular(30))),
+          child: Image.asset(png),
         ),
       ),
     ),
   );
 }
-
-// LayoutBuilder(
-// builder: (context, constraints) {
-// return GridView.builder(
-// primary: false,
-// shrinkWrap: true,
-// gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-// crossAxisSpacing: 4, crossAxisCount: 7),
-// itemBuilder: (BuildContext context, int index) {
-// final list = addEventController.addEvent[index];
-//
-// return circleAvatarWidget(
-// index: index,
-// png: Image.asset(
-// googlePng,
-// ),
-// );
-// },
-// itemCount: addEventController.addEvent.length,
-// );
-// },
-// ),

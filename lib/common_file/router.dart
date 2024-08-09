@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:winggoo/choose_your_plane/choose_your_plane_screen.dart';
 
 import '../addEvent/addEvent_Screen.dart';
 import '../enterNewPassword/enter_new_password_screen.dart';
@@ -14,7 +15,7 @@ import '../signup/signUp_screen.dart';
 final routes = [
   GetPage(
     name: '/signIn',
-    page: () => SignInScreen(),
+    page: () => const SignInScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(
@@ -55,6 +56,11 @@ final routes = [
   GetPage(
     name: '/enterNewPassword',
     page: () => const EnterNewPasswordScreen(),
+    transition: Transition.fadeIn,
+  ),
+  GetPage(
+    name: '/chooseYourPlane',
+    page: () => const ChooseYourPlaneScreen(),
     transition: Transition.fadeIn,
   ),
 ];

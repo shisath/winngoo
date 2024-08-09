@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/functions.dart';
@@ -12,7 +13,11 @@ class AddEventScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: buttonWidget(onPress: () {}, text: "Next"),
+      floatingActionButton: buttonWidget(
+          onPress: () {
+            Get.toNamed("/chooseYourPlane");
+          },
+          text: "Next"),
       appBar: AppBar(
         backgroundColor: primaryColor,
         actions: [
@@ -43,9 +48,7 @@ class AddEventScreen extends StatelessWidget {
             ),
           ),
           yourEventWidget(),
-          const SizedBox(
-            height: 68,
-          ),
+          SizedBox(height: MediaQuery.sizeOf(context).height * 0.08),
         ],
       ),
     );

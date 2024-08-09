@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/functions.dart';
+import '../common_file/images.dart';
 import '../common_file/widgets.dart';
+import 'choose_your_plane_widget.dart';
 
 class ChooseYourPlaneScreen extends StatefulWidget {
   const ChooseYourPlaneScreen({super.key});
@@ -27,29 +30,32 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
           children: [
             headingContainer(
                 height: MediaQuery.sizeOf(context).height * 0.21,
-                widget: Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Choose Your Plane",
-                        style: TextStyle(
-                            fontSize: headingSize,
+                widget: Stack(
+                  children: [
+                    Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            chooseYourPlanePng,
+                            height: 120,
+                          ),
+                          WinngooText(
+                            text: "Choose Your Plane",
                             color: Colors.white,
-                            fontWeight: FontWeight.w600),
+                            weight: FontWeight.w600,
+                            fontSize: contentSize,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          )
+                        ],
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 )),
-           ],
+            choosePlaneWidget(),
+          ],
         ),
       ),
     );

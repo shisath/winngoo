@@ -4,9 +4,23 @@ import 'package:get/get.dart';
 class AddEventController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController linkController = TextEditingController();
+  TextEditingController eventNameController = TextEditingController();
+  TextEditingController eventDateController = TextEditingController();
+  TextEditingController eventTimeController = TextEditingController();
+  TextEditingController eventImageController = TextEditingController();
+  RxString date = "".obs;
+  RxString time = "".obs;
+
+  // TextEditingController evnetImageController = TextEditingController();
+
   RxInt isSelected = 0.obs;
+  RxInt isSelectedEvent = 0.obs;
   final emailFocusNode = FocusNode();
   final linkFocusNode = FocusNode();
+  final eventNameFocusNode = FocusNode();
+  final eventDateFocusNode = FocusNode();
+  final eventTimeFocusNode = FocusNode();
+  final eventImageFocusNode = FocusNode();
 
   List<Map<String, dynamic>> eventList = [
     {

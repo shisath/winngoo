@@ -10,7 +10,7 @@ import '../common_file/widgets.dart';
 ///not use
 Widget logo() {
   return Image.asset(
-    winngoo,
+    winngooLogo,
     width: 400,
     height: 200,
   );

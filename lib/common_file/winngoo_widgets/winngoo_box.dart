@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 
 class WinngooBox extends StatelessWidget {
   final double? height;
-  final double width;
+  final double? width;
   final double borderWidth;
   final double radius;
   final Color borderColor;
-  final Color boxColor;
+  final Color? fillColor;
   final Widget child;
 
   const WinngooBox({
     super.key,
     this.borderColor = Colors.transparent,
     this.height,
-    this.width = 0.0,
+    this.width,
     this.radius = 0.0,
-    this.boxColor = Colors.transparent,
+    this.fillColor,
     required this.child,
     this.borderWidth = 1.0,
   });
@@ -26,7 +26,7 @@ class WinngooBox extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: boxColor,
+        color: fillColor,
         border: Border.all(color: borderColor, width: borderWidth),
         borderRadius: BorderRadius.circular(radius),
       ),
