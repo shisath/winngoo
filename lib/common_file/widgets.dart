@@ -205,7 +205,7 @@ Widget buttonWidgetSmall(
         decoration: BoxDecoration(
             color: primaryColor, borderRadius: BorderRadius.circular(20)),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -215,12 +215,14 @@ Widget buttonWidgetSmall(
                     color: Colors.white,
                     fontSize: buttonTextSize ?? contentSize),
               ),
-              icon ??
-                  const Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 20,
-                  )
+
+              // if()...[]
+              // icon ??
+              //     const Icon(
+              //       Icons.arrow_forward,
+              //       color: Colors.white,
+              //       size: 20,
+              //     )
             ],
           ),
         ),
@@ -235,6 +237,7 @@ Widget textField(
     required String label,
     required String hint,
     heading,
+    headingSize,
     required Widget prefixIcon,
     required String? Function(String?) validate,
     focusNode,
@@ -243,44 +246,43 @@ Widget textField(
     void Function()? ontab,
     required void Function(String) onFieldSubmited,
     key}) {
-  return SingleChildScrollView(
-    child: Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          heading != null
-              ? Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Text(
-                    heading,
-                    style: TextStyle(
-                        fontSize: contentSize, fontWeight: FontWeight.bold),
-                  ),
-                )
-              : Container(),
-          TextFormField(
-            obscureText: obscureText ?? false,
-            onTap: ontab,
-            focusNode: focusNode,
-            maxLength: getInputSettings(type: label)["maxLength"],
-            controller: controller,
-            decoration: inputDecoration(
-                prefixIcon: prefixIcon,
-                suffixIcon: suffixIcon,
-                label: label,
-                hint: hint,
-                prefix: label == "Phone Number"
-                    ? const Text("91+ ")
-                    : const Text("")),
-            validator: validate,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            keyboardType: getInputSettings(type: label)["keyboardType"],
-            inputFormatters: getInputSettings(type: label)["inputFormatters"],
-            onFieldSubmitted: onFieldSubmited,
-          ),
-        ],
-      ),
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        heading != null
+            ? Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Text(
+                  heading,
+                  style: TextStyle(
+                      fontSize: headingSize ?? contentSize,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            : Container(),
+        TextFormField(
+          obscureText: obscureText ?? false,
+          onTap: ontab,
+          focusNode: focusNode,
+          maxLength: getInputSettings(type: label)["maxLength"],
+          controller: controller,
+          decoration: inputDecoration(
+              prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
+              label: label,
+              hint: hint,
+              prefix: label == "Phone Number"
+                  ? const Text("91+ ")
+                  : const Text("")),
+          validator: validate,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          keyboardType: getInputSettings(type: label)["keyboardType"],
+          inputFormatters: getInputSettings(type: label)["inputFormatters"],
+          onFieldSubmitted: onFieldSubmited,
+        ),
+      ],
     ),
   );
 }

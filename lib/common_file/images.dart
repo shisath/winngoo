@@ -7,3 +7,7 @@ var enterPasswordPng = "assets/enterNewPassword.png";
 var celebrationPng = "assets/group_celebration.png";
 var celebrationBg = "assets/celebration_paper.png";
 var chooseYourPlanePng = "assets/choose_your_plane.png";
+var ballonBg = "assets/baloon_bg.png";
+var paymentPng = "assets/payment.png";
+var conferencePng = "assets/conferenceCall.png";
+var giftCoupon = "assets/giftCoupon.png";

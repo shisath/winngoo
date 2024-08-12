@@ -7,132 +7,391 @@ import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../../shedule_date_time/shedule_date_time_widget.dart';
 import '../getXcontroller.dart';
+import '../images.dart';
 import '../widgets.dart';
 
-Future dialogBox() {
+Future dialogBox({required String type}) {
   return showModalBottomSheet(
+    isScrollControlled: true,
+    enableDrag: true,
     context: Get.context!,
     builder: (BuildContext context) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: WinngooBox(
-          width: MediaQuery.sizeOf(context).width,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                WinngooText(
-                  text: "Create Event",
-                  weight: FontWeight.w600,
-                  fontSize: headingSize,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                textField(
-                    label: "Enter event name",
-                    hint: " ",
-                    prefixIcon: const Icon(
-                      Icons.celebration,
-                      color: Colors.grey,
-                    ),
-                    validate: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Please enter value";
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: addEventController.eventNameController,
-                    focusNode: addEventController.eventNameFocusNode,
-                    onFieldSubmited: (val) {
-                      FocusScope.of(Get.context!)
-                          .requestFocus(addEventController.eventDateFocusNode);
-                    }),
-                GestureDetector(
-                  onTap: () async {
-                    DateTime? selectedDate = await showDialog(
-                        context: Get.context!,
-                        builder: (BuildContext context) {
-                          return DatePickerDialog(
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime.now(),
-                            lastDate: DateTime(2026),
-                            onDatePickerModeChange: (s) {
-                              print("sk done ${s}");
-                              // Navigator.of(context).pop();
-                            },
-                          );
-                        });
+      if (type == "add event") {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: WinngooBox(
+            width: MediaQuery.sizeOf(context).width,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  WinngooText(
+                    text: "Create Event",
+                    weight: FontWeight.w600,
+                    fontSize: headingSize,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  textField(
+                      label: "Enter event name",
+                      hint: " ",
+                      prefixIcon: const Icon(
+                        Icons.celebration,
+                        color: Colors.grey,
+                      ),
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter value";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: addEventController.eventNameController,
+                      focusNode: addEventController.eventNameFocusNode,
+                      onFieldSubmited: (val) {
+                        FocusScope.of(Get.context!).requestFocus(
+                            addEventController.eventDateFocusNode);
+                      }),
+                  GestureDetector(
+                    onTap: () async {
+                      DateTime? selectedDate = await showDialog(
+                          context: Get.context!,
+                          builder: (BuildContext context) {
+                            return DatePickerDialog(
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime.now(),
+                              lastDate: DateTime(2026),
+                              onDatePickerModeChange: (s) {
+                                // Navigator.of(context).pop();
+                              },
+                            );
+                          });
 
-                    DateFormat format = DateFormat("dd/mm/yyyy");
-                    DateTime? finalDate = selectedDate?.toLocal();
-                    addEventController.eventDateController.text =
-                        DateFormat('dd/MM/yyyy').format(finalDate!);
-                  },
-                  child: AbsorbPointer(
-                    absorbing: true,
-                    child: textField(
-                      controller: addEventController.eventDateController,
-                      label: 'Enter event date',
-                      validate: (String) {},
-                      onFieldSubmited: (String) {},
-                      ontab: () {},
-                      focusNode: addEventController.eventDateFocusNode,
-                      hint: '',
-                      prefixIcon: Icon(Icons.date_range_outlined),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    timePicker();
-                  },
-                  child: AbsorbPointer(
-                    absorbing: true,
-                    child: textField(
-                      controller: addEventController.eventTimeController,
-                      label: 'Enter event time',
-                      validate: (String) {},
-                      onFieldSubmited: (String) {},
-                      ontab: () {},
-                      focusNode: addEventController.eventTimeFocusNode,
-                      hint: '',
-                      prefixIcon: const Icon(Icons.access_time),
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: AbsorbPointer(
-                    absorbing: true,
-                    child: textField(
-                      controller: addEventController.eventImageController,
-                      label: 'Upload Image',
-                      validate: (String) {},
-                      onFieldSubmited: (String) {},
-                      ontab: () {},
-                      focusNode: addEventController.eventImageFocusNode,
-                      hint: '',
-                      prefixIcon: const Icon(Icons.upload_sharp),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Center(
-                    child: buttonWidget(
-                        onPress: () {
-                          Navigator.of(context).pop();
+                      DateTime? finalDate = selectedDate?.toLocal();
+                      addEventController.eventDateController.text =
+                          DateFormat('dd/MM/yyyy').format(finalDate!);
+                    },
+                    child: AbsorbPointer(
+                      absorbing: true,
+                      child: textField(
+                        controller: addEventController.eventDateController,
+                        label: 'Enter event date',
+                        validate: (s) {
+                          return null;
                         },
-                        text: "Done")),
+                        onFieldSubmited: (g) {},
+                        ontab: () {},
+                        focusNode: addEventController.eventDateFocusNode,
+                        hint: '',
+                        prefixIcon: const Icon(Icons.date_range_outlined),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      timePicker();
+                    },
+                    child: AbsorbPointer(
+                      absorbing: true,
+                      child: textField(
+                        controller: addEventController.eventTimeController,
+                        label: 'Enter event time',
+                        validate: (g) {
+                          return null;
+                        },
+                        onFieldSubmited: (g) {},
+                        ontab: () {},
+                        focusNode: addEventController.eventTimeFocusNode,
+                        hint: '',
+                        prefixIcon: const Icon(Icons.access_time),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: AbsorbPointer(
+                      absorbing: true,
+                      child: textField(
+                        controller: addEventController.eventImageController,
+                        label: 'Upload Image',
+                        validate: (g) {
+                          return null;
+                        },
+                        onFieldSubmited: (g) {},
+                        ontab: () {},
+                        focusNode: addEventController.eventImageFocusNode,
+                        hint: '',
+                        prefixIcon: const Icon(Icons.upload_sharp),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                      child: buttonWidget(
+                          onPress: () {
+                            Navigator.of(context).pop();
+                          },
+                          text: "Done")),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      } else if (type == "credit Card") {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: WinngooBox(
+            width: MediaQuery.sizeOf(context).width,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  textField(
+                      heading: "Card number",
+                      headingSize: headingSize,
+                      label: "",
+                      hint: " ",
+                      prefixIcon: const Text(""),
+                      suffixIcon: const Icon(Icons.credit_card_sharp),
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter value";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: addEventController.eventNameController,
+                      focusNode: addEventController.eventNameFocusNode,
+                      onFieldSubmited: (val) {
+                        FocusScope.of(Get.context!).requestFocus(
+                            addEventController.eventDateFocusNode);
+                      }),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        height: 110,
+                        width: 150,
+                        child: textField(
+                            heading: "Valid Thru",
+                            headingSize: headingSize,
+                            label: "",
+                            hint: " ",
+                            prefixIcon: const Text(""),
+                            suffixIcon: const Icon(Icons.credit_card_sharp),
+                            validate: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter value";
+                              } else {
+                                return null;
+                              }
+                            },
+                            controller: addEventController.eventNameController,
+                            focusNode: addEventController.eventNameFocusNode,
+                            onFieldSubmited: (val) {
+                              FocusScope.of(Get.context!).requestFocus(
+                                  addEventController.eventDateFocusNode);
+                            }),
+                      ),
+                      SizedBox(
+                        height: 110,
+                        width: 150,
+                        child: textField(
+                            heading: "CCV",
+                            headingSize: headingSize,
+                            label: "",
+                            hint: " ",
+                            prefixIcon: const Text(""),
+                            suffixIcon: const Icon(Icons.credit_card_sharp),
+                            validate: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Please enter value";
+                              } else {
+                                return null;
+                              }
+                            },
+                            controller: addEventController.eventNameController,
+                            focusNode: addEventController.eventNameFocusNode,
+                            onFieldSubmited: (val) {
+                              FocusScope.of(Get.context!).requestFocus(
+                                  addEventController.eventDateFocusNode);
+                            }),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Center(
+                      child: buttonWidget(
+                          onPress: () {
+                            Navigator.of(context).pop();
+                          },
+                          text: "OK")),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      } else if (type == "net banking") {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: WinngooBox(
+            width: MediaQuery.sizeOf(context).width,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  WinngooText(
+                    text: "Net banking",
+                    weight: FontWeight.w600,
+                    fontSize: headingSize,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  textField(
+                      label: "Account no",
+                      hint: " ",
+                      prefixIcon: const Icon(
+                        Icons.celebration,
+                        color: Colors.grey,
+                      ),
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter value";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: addEventController.eventNameController,
+                      focusNode: addEventController.eventNameFocusNode,
+                      onFieldSubmited: (val) {
+                        FocusScope.of(Get.context!).requestFocus(
+                            addEventController.eventDateFocusNode);
+                      }),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  textField(
+                      label: "IFSC Code",
+                      hint: " ",
+                      prefixIcon: const Icon(
+                        Icons.celebration,
+                        color: Colors.grey,
+                      ),
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter value";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: addEventController.eventNameController,
+                      focusNode: addEventController.eventNameFocusNode,
+                      onFieldSubmited: (val) {
+                        FocusScope.of(Get.context!).requestFocus(
+                            addEventController.eventDateFocusNode);
+                      }),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  textField(
+                      label: "Card number",
+                      hint: " ",
+                      prefixIcon: const Icon(
+                        Icons.celebration,
+                        color: Colors.grey,
+                      ),
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Please enter value";
+                        } else {
+                          return null;
+                        }
+                      },
+                      controller: addEventController.eventNameController,
+                      focusNode: addEventController.eventNameFocusNode,
+                      onFieldSubmited: (val) {
+                        FocusScope.of(Get.context!).requestFocus(
+                            addEventController.eventDateFocusNode);
+                      }),
+                  Center(
+                      child: buttonWidget(
+                          onPress: () {
+                            Navigator.of(context).pop();
+                          },
+                          text: "OK")),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      } else {
+        return Container();
+      }
+    },
+  );
+}
+
+void showDialogBox() {
+  showDialog(
+    context: Get.context!,
+    builder: (BuildContext context) {
+      return Dialog(
+        child: WinngooBox(
+          height: 300,
+          width: 300,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Image.asset(
+                  giftCoupon,
+                  height: 150,
+                  width: 150,
+                ),
+                WinngooText(text: "Enter Your Coupon Code"),
+                textFieldSmall(
+                  onFieldSubmited: (s) {},
+                  h: 45,
+                  w: 150,
+                  ontab: () {},
+                  focusNode: paymentController.focusNode,
+                  controller: paymentController.couponCode,
+                  label: '',
+                  validate: (t) {
+                    return null;
+                  },
+                  (p0) {},
+                ),
                 const SizedBox(
                   height: 10,
                 ),
+                buttonWidgetSmall(
+                    width: 100.00, height: 30.00, onPress: () {}, text: "APPLY")
               ],
             ),
           ),

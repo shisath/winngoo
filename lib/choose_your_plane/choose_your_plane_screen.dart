@@ -25,38 +25,44 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            headingContainer(
-                height: MediaQuery.sizeOf(context).height * 0.21,
-                widget: Stack(
-                  children: [
-                    Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            chooseYourPlanePng,
-                            height: 120,
-                          ),
-                          WinngooText(
-                            text: "Choose Your Plane",
-                            color: Colors.white,
-                            weight: FontWeight.w600,
-                            fontSize: contentSize,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          )
-                        ],
+      body: Stack(
+        children: [
+          Image.asset(
+            ballonBg, // Path to your image
+            fit: BoxFit.cover, // Adjust this as needed
+          ),
+          Column(
+            children: [
+              headingContainer(
+                  height: MediaQuery.sizeOf(context).height * 0.21,
+                  widget: Stack(
+                    children: [
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              chooseYourPlanePng,
+                              height: 120,
+                            ),
+                            WinngooText(
+                              text: "Choose Your Plane",
+                              color: Colors.white,
+                              weight: FontWeight.w600,
+                              fontSize: contentSize,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                )),
-            choosePlaneWidget(),
-          ],
-        ),
+                    ],
+                  )),
+              Expanded(child: choosePlaneWidget()),
+            ],
+          )
+        ],
       ),
     );
   }

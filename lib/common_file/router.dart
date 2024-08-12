@@ -7,10 +7,12 @@ import '../enterNewPassword/enter_new_password_screen.dart';
 import '../forgotPassword/forgot_password_screen.dart';
 import '../home/home_screen.dart';
 import '../otp/otp_screen.dart';
+import '../payment/payment_screen.dart';
 import '../resetPassword/reset_password_screen.dart';
 import '../shedule_date_time/shedule_date_time_Screen.dart';
 import '../signIn/sign_in_screen.dart';
 import '../signup/signUp_screen.dart';
+import '../summary/summary_screen.dart';
 
 final routes = [
   GetPage(
@@ -61,6 +63,16 @@ final routes = [
   GetPage(
     name: '/chooseYourPlane',
     page: () => const ChooseYourPlaneScreen(),
+    transition: Transition.fadeIn,
+  ),
+  GetPage(
+    name: '/summary',
+    page: () => const SummaryScreen(),
+    transition: Transition.fadeIn,
+  ),
+  GetPage(
+    name: '/payment',
+    page: () => const PaymentScreen(),
     transition: Transition.fadeIn,
   ),
 ];

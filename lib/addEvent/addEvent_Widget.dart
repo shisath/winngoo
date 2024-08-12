@@ -28,7 +28,7 @@ Widget recommendWidget() {
                   width: 150.00,
                   height: 30.00,
                   onPress: () {
-                    dialogBox();
+                    dialogBox(type: "add event");
                   },
                   text: "Add your event",
                   icon: const Icon(
