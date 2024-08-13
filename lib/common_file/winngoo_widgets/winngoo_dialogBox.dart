@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../../shedule_date_time/shedule_date_time_widget.dart';
+import '../functions.dart';
 import '../getXcontroller.dart';
 import '../images.dart';
 import '../widgets.dart';
@@ -13,14 +13,14 @@ import '../widgets.dart';
 Future dialogBox({required String type}) {
   return showModalBottomSheet(
     isScrollControlled: true,
-    enableDrag: true,
     context: Get.context!,
     builder: (BuildContext context) {
       if (type == "add event") {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(Get.context!).viewInsets.bottom),
           child: WinngooBox(
-            width: MediaQuery.sizeOf(context).width,
+            // width: MediaQuery.sizeOf(Get.context!).width,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +148,8 @@ Future dialogBox({required String type}) {
         );
       } else if (type == "credit Card") {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(Get.context!).viewInsets.bottom),
           child: WinngooBox(
             width: MediaQuery.sizeOf(context).width,
             child: SingleChildScrollView(
@@ -160,11 +161,13 @@ Future dialogBox({required String type}) {
                   ),
                   textField(
                       heading: "Card number",
-                      headingSize: headingSize,
+                      headingSize: contentSize,
                       label: "",
                       hint: " ",
-                      prefixIcon: const Text(""),
-                      suffixIcon: const Icon(Icons.credit_card_sharp),
+                      suffixIcon: const Icon(
+                        Icons.credit_card_sharp,
+                        color: Colors.grey,
+                      ),
                       validate: (value) {
                         if (value == null || value.isEmpty) {
                           return "Please enter value";
@@ -179,18 +182,19 @@ Future dialogBox({required String type}) {
                             addEventController.eventDateFocusNode);
                       }),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: 110,
                         width: 150,
                         child: textField(
                             heading: "Valid Thru",
-                            headingSize: headingSize,
-                            label: "",
-                            hint: " ",
-                            prefixIcon: const Text(""),
-                            suffixIcon: const Icon(Icons.credit_card_sharp),
+                            headingSize: contentSize,
+                            label: "MM/YYYY",
+                            hint: "",
+                            suffixIcon: const Icon(
+                              Icons.calendar_month,
+                              color: Colors.grey,
+                            ),
                             validate: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Please enter value";
@@ -210,11 +214,13 @@ Future dialogBox({required String type}) {
                         width: 150,
                         child: textField(
                             heading: "CCV",
-                            headingSize: headingSize,
-                            label: "",
-                            hint: " ",
-                            prefixIcon: const Text(""),
-                            suffixIcon: const Icon(Icons.credit_card_sharp),
+                            headingSize: contentSize,
+                            label: "235****",
+                            hint: "",
+                            suffixIcon: const Icon(
+                              Icons.vpn_key,
+                              color: Colors.grey,
+                            ),
                             validate: (value) {
                               if (value == null || value.isEmpty) {
                                 return "Please enter value";
@@ -250,7 +256,11 @@ Future dialogBox({required String type}) {
         );
       } else if (type == "net banking") {
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(Get.context!).viewInsets.bottom,
+              top: 10,
+              left: 10,
+              right: 10),
           child: WinngooBox(
             width: MediaQuery.sizeOf(context).width,
             child: SingleChildScrollView(
@@ -272,7 +282,7 @@ Future dialogBox({required String type}) {
                       label: "Account no",
                       hint: " ",
                       prefixIcon: const Icon(
-                        Icons.celebration,
+                        Icons.account_circle,
                         color: Colors.grey,
                       ),
                       validate: (value) {
@@ -295,7 +305,7 @@ Future dialogBox({required String type}) {
                       label: "IFSC Code",
                       hint: " ",
                       prefixIcon: const Icon(
-                        Icons.celebration,
+                        Icons.vpn_key,
                         color: Colors.grey,
                       ),
                       validate: (value) {
@@ -318,7 +328,7 @@ Future dialogBox({required String type}) {
                       label: "Card number",
                       hint: " ",
                       prefixIcon: const Icon(
-                        Icons.celebration,
+                        Icons.credit_card,
                         color: Colors.grey,
                       ),
                       validate: (value) {
@@ -334,6 +344,9 @@ Future dialogBox({required String type}) {
                         FocusScope.of(Get.context!).requestFocus(
                             addEventController.eventDateFocusNode);
                       }),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Center(
                       child: buttonWidget(
                           onPress: () {

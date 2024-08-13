@@ -238,9 +238,9 @@ Widget textField(
     required String hint,
     heading,
     headingSize,
-    required Widget prefixIcon,
     required String? Function(String?) validate,
     focusNode,
+    prefixIcon,
     suffixIcon,
     obscureText,
     void Function()? ontab,
@@ -262,25 +262,28 @@ Widget textField(
                 ),
               )
             : Container(),
-        TextFormField(
-          obscureText: obscureText ?? false,
-          onTap: ontab,
-          focusNode: focusNode,
-          maxLength: getInputSettings(type: label)["maxLength"],
-          controller: controller,
-          decoration: inputDecoration(
-              prefixIcon: prefixIcon,
-              suffixIcon: suffixIcon,
-              label: label,
-              hint: hint,
-              prefix: label == "Phone Number"
-                  ? const Text("91+ ")
-                  : const Text("")),
-          validator: validate,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          keyboardType: getInputSettings(type: label)["keyboardType"],
-          inputFormatters: getInputSettings(type: label)["inputFormatters"],
-          onFieldSubmitted: onFieldSubmited,
+        SizedBox(
+          height: 50,
+          child: TextFormField(
+            obscureText: obscureText ?? false,
+            onTap: ontab,
+            focusNode: focusNode,
+            maxLength: getInputSettings(type: label)["maxLength"],
+            controller: controller,
+            decoration: inputDecoration(
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                label: label,
+                hint: hint,
+                prefix: label == "Phone Number"
+                    ? const Text("91+ ")
+                    : const Text("")),
+            validator: validate,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            keyboardType: getInputSettings(type: label)["keyboardType"],
+            inputFormatters: getInputSettings(type: label)["inputFormatters"],
+            onFieldSubmitted: onFieldSubmited,
+          ),
         ),
       ],
     ),
@@ -288,7 +291,7 @@ Widget textField(
 }
 
 InputDecoration inputDecoration(
-    {required Widget prefixIcon,
+    {prefixIcon,
     suffixIcon,
     required String label,
     required String hint,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/images.dart';
 import 'package:winggoo/common_file/widgets.dart';
@@ -11,7 +12,12 @@ class PaymentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: buttonWidget(onPress: () {}, text: "CONTINUE"),
+      floatingActionButton: buttonWidget(
+          onPress: () {
+            Get.toNamed("/profile");
+          },
+          text: "CONTINUE"),
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: primaryColor,
       ),

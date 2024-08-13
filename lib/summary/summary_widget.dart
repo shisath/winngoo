@@ -49,16 +49,23 @@ Widget summaryRowModel({
   required String valueText,
 }) {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 5.0),
+    padding: const EdgeInsets.symmetric(vertical: 10.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        WinngooText(text: keyText).w(130),
+        WinngooText(
+          text: keyText,
+          color: Colors.white,
+        ).w(130),
         SizedBox(
           width: MediaQuery.sizeOf(Get.context!).width * 0.1,
         ),
-        Flexible(child: WinngooText(text: valueText)),
+        Flexible(
+            child: WinngooText(
+          text: valueText,
+          color: Colors.white,
+        )),
       ],
     ),
   );

@@ -49,7 +49,7 @@ Widget recommendWidget() {
                 scrollDirection: Axis.horizontal,
                 // Set to horizontal for horizontal scrolling
                 children: List.generate(8, (index) {
-                  return circleAvatarWidget(png: googlePng, index: index);
+                  return circleAvatarWidget(png: winngooLogo, index: index);
                 }))),
       ],
     ),
@@ -76,7 +76,7 @@ Widget yourEventWidget() {
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                 child: eventListboxModel(
                     index: index,
-                    image: celebrationBg,
+                    image: winngooLogo,
                     date: i["date"] ?? "",
                     isPaid: i["ispaid"] ?? true,
                     title: i["title"] ?? ""),

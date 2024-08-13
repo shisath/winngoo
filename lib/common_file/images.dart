@@ -11,3 +11,4 @@ var ballonBg = "assets/baloon_bg.png";
 var paymentPng = "assets/payment.png";
 var conferencePng = "assets/conferenceCall.png";
 var giftCoupon = "assets/giftCoupon.png";
+var profileBg = "assets/profileBg.png";

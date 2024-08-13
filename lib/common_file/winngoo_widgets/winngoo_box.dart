@@ -8,17 +8,19 @@ class WinngooBox extends StatelessWidget {
   final Color borderColor;
   final Color? fillColor;
   final Widget child;
+  final BorderRadius? radiusOnly;
 
-  const WinngooBox({
-    super.key,
-    this.borderColor = Colors.transparent,
-    this.height,
-    this.width,
-    this.radius = 0.0,
-    this.fillColor,
-    required this.child,
-    this.borderWidth = 1.0,
-  });
+  const WinngooBox(
+      {super.key,
+      this.borderColor = Colors.transparent,
+      this.height,
+      this.width,
+      this.radius = 0.0,
+      this.fillColor,
+      required this.child,
+      this.borderWidth = 1.0,
+      th,
+      this.radiusOnly});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class WinngooBox extends StatelessWidget {
       decoration: BoxDecoration(
         color: fillColor,
         border: Border.all(color: borderColor, width: borderWidth),
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: radiusOnly ?? BorderRadius.circular(radius),
       ),
       child: child,
     );

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 ///Global Colors
 
 Color? primaryColor = const Color(0xff5669FF);
+Color? primaryColor2 = const Color(0xff3D50DF);
 Color? secondarycolor = const Color(0xff4a5fed);
 Color? buttonColor = const Color(0xff5669FF);
 Color? sheduleButtonColor = const Color(0xff182490);
