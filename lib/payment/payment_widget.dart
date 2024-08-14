@@ -71,6 +71,9 @@ Widget paymentWidget() {
             ontap: () {
               dialogBox(type: "net banking");
             }),
+        const SizedBox(
+          height: 50,
+        )
       ],
     ),
   );

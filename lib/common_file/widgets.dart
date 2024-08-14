@@ -246,7 +246,7 @@ Widget textField(
     suffixIcon,
     obscureText,
     void Function()? ontab,
-    required void Function(String) onFieldSubmited,
+    void Function(String)? onFieldSubmited,
     key}) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
@@ -280,7 +280,7 @@ Widget textField(
                 prefix: label == "Phone Number"
                     ? const Text("91+ ")
                     : const Text("")),
-            validator: validate,
+            // validator: validate,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             keyboardType: getInputSettings(type: label)["keyboardType"],
             inputFormatters: getInputSettings(type: label)["inputFormatters"],

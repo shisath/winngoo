@@ -42,7 +42,7 @@ Widget forgotPasswordWidget() {
             focusNode: forgotPasswordController.emailFocusNode,
             onFieldSubmited: (val) {}),
         const SizedBox(
-          height: 10,
+          height: 90,
         ),
       ],
     ),

@@ -1,84 +1,122 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:winggoo/common_file/widgets.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/functions.dart';
-import '../common_file/getXcontroller.dart';
-import '../common_file/widgets.dart';
 
-homeWidget() {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10),
+Widget homeWidget() {
+  return Center(
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(
-          height: 80,
+          height: 40,
         ),
-        textField(
-            label: "Email",
-            hint: "Eg.sk@gmail.com",
-            prefixIcon: const Icon(
-              Icons.mail,
-              color: Colors.grey,
-            ),
-            validate: (value) {
-              if (value == null || value.isEmpty) {
-                return 'This field cannot be empty';
-              } else {
-                return null;
-              }
-            },
-            controller: homeController.emailController,
-            focusNode: homeController.emailFocusNode,
-            onFieldSubmited: (val) {
-              FocusScope.of(Get.context!)
-                  .requestFocus(signUpController.fullnameFocusNode);
-            }),
-        const SizedBox(
-          height: 20,
-        ),
-        Text(
-          "OR",
-          style: TextStyle(fontSize: contentSize),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        textField(
-            label: "Link",
-            hint: "Eg.http//link.com",
-            prefixIcon: const Icon(
-              Icons.link_rounded,
-              color: Colors.grey,
-            ),
-            validate: (value) {
-              if (value == null || value.isEmpty) {
-                return 'This field cannot be empty';
-              } else {
-                return null;
-              }
-            },
-            controller: signUpController.emailController,
-            focusNode: signUpController.emailFocusNode,
-            onFieldSubmited: (val) {
-              FocusScope.of(Get.context!)
-                  .requestFocus(signUpController.fullnameFocusNode);
-            }),
-        const SizedBox(
-          height: 80,
-        ),
-        buttonWidget(
-            onPress: () {
-              Get.toNamed("/addEventScreen");
-            },
-            text: "CREATE ROOM"),
-        const SizedBox(
-          height: 20,
-        ),
+        WinngooBox(
+            radius: 10,
+            height: MediaQuery.sizeOf(Get.context!).height * 0.5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                WinngooText(
+                  text: "Let’s connect with winngoo gala",
+                ),
+                buttonWidget(onPress: () {}, text: "Join event"),
+                WinngooText(
+                  text: "OR",
+                ),
+                buttonWidget(
+                    onPress: () {
+                      Get.toNamed("/addEventScreen");
+                    },
+                    text: "Creating event"),
+                WinngooText(
+                  align: TextAlign.center,
+                  text: "Bringing Conversations Closer, One Call at a Time.",
+                ),
+              ],
+            ))
       ],
     ),
   );
 }
+
+//
+// homeWidget() {
+//   return Padding(
+//     padding: const EdgeInsets.symmetric(horizontal: 10),
+//     child: Column(
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       children: [
+//         const SizedBox(
+//           height: 80,
+//         ),
+//         textField(
+//             label: "Email",
+//             hint: "Eg.sk@gmail.com",
+//             prefixIcon: const Icon(
+//               Icons.mail,
+//               color: Colors.grey,
+//             ),
+//             validate: (value) {
+//               if (value == null || value.isEmpty) {
+//                 return 'This field cannot be empty';
+//               } else {
+//                 return null;
+//               }
+//             },
+//             controller: homeController.emailController,
+//             focusNode: homeController.emailFocusNode,
+//             onFieldSubmited: (val) {
+//               FocusScope.of(Get.context!)
+//                   .requestFocus(signUpController.fullnameFocusNode);
+//             }),
+//         const SizedBox(
+//           height: 20,
+//         ),
+//         Text(
+//           "OR",
+//           style: TextStyle(fontSize: contentSize),
+//         ),
+//         const SizedBox(
+//           height: 20,
+//         ),
+//         textField(
+//             label: "Link",
+//             hint: "Eg.http//link.com",
+//             prefixIcon: const Icon(
+//               Icons.link_rounded,
+//               color: Colors.grey,
+//             ),
+//             validate: (value) {
+//               if (value == null || value.isEmpty) {
+//                 return 'This field cannot be empty';
+//               } else {
+//                 return null;
+//               }
+//             },
+//             controller: signUpController.emailController,
+//             focusNode: signUpController.emailFocusNode,
+//             onFieldSubmited: (val) {
+//               FocusScope.of(Get.context!)
+//                   .requestFocus(signUpController.fullnameFocusNode);
+//             }),
+//         const SizedBox(
+//           height: 80,
+//         ),
+//         buttonWidget(
+//             onPress: () {
+//               Get.toNamed("/addEventScreen");
+//             },
+//             text: "CREATE ROOM"),
+//         const SizedBox(
+//           height: 20,
+//         ),
+//       ],
+//     ),
+//   );
+// }
 
 Widget pngButton({
   png,

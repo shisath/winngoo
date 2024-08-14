@@ -53,8 +53,8 @@ Future dialogBox({required String type}) {
                       controller: addEventController.eventNameController,
                       focusNode: addEventController.eventNameFocusNode,
                       onFieldSubmited: (val) {
-                        FocusScope.of(Get.context!).requestFocus(
-                            addEventController.eventDateFocusNode);
+                        // FocusScope.of(Get.context!).requestFocus(
+                        //     addEventController.eventDateFocusNode);
                       }),
                   GestureDetector(
                     onTap: () async {
@@ -175,11 +175,11 @@ Future dialogBox({required String type}) {
                           return null;
                         }
                       },
-                      controller: addEventController.eventNameController,
-                      focusNode: addEventController.eventNameFocusNode,
+                      controller: paymentController.cdCardNumber,
+                      focusNode: paymentController.cdCardNumberfocusNode,
                       onFieldSubmited: (val) {
                         FocusScope.of(Get.context!).requestFocus(
-                            addEventController.eventDateFocusNode);
+                            paymentController.validityDatefocusNode);
                       }),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,38 +202,35 @@ Future dialogBox({required String type}) {
                                 return null;
                               }
                             },
-                            controller: addEventController.eventNameController,
-                            focusNode: addEventController.eventNameFocusNode,
+                            controller: paymentController.validityDate,
+                            focusNode: paymentController.validityDatefocusNode,
                             onFieldSubmited: (val) {
-                              FocusScope.of(Get.context!).requestFocus(
-                                  addEventController.eventDateFocusNode);
+                              FocusScope.of(Get.context!)
+                                  .requestFocus(paymentController.ccvfocusNode);
                             }),
                       ),
                       SizedBox(
                         height: 110,
                         width: 150,
                         child: textField(
-                            heading: "CCV",
-                            headingSize: contentSize,
-                            label: "235****",
-                            hint: "",
-                            suffixIcon: const Icon(
-                              Icons.vpn_key,
-                              color: Colors.grey,
-                            ),
-                            validate: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Please enter value";
-                              } else {
-                                return null;
-                              }
-                            },
-                            controller: addEventController.eventNameController,
-                            focusNode: addEventController.eventNameFocusNode,
-                            onFieldSubmited: (val) {
-                              FocusScope.of(Get.context!).requestFocus(
-                                  addEventController.eventDateFocusNode);
-                            }),
+                          heading: "CCV",
+                          headingSize: contentSize,
+                          label: "235****",
+                          hint: "",
+                          suffixIcon: const Icon(
+                            Icons.vpn_key,
+                            color: Colors.grey,
+                          ),
+                          validate: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Please enter value";
+                            } else {
+                              return null;
+                            }
+                          },
+                          controller: paymentController.ccv,
+                          focusNode: paymentController.ccvfocusNode,
+                        ),
                       ),
                     ],
                   ),
@@ -289,11 +286,11 @@ Future dialogBox({required String type}) {
                           return null;
                         }
                       },
-                      controller: addEventController.eventNameController,
-                      focusNode: addEventController.eventNameFocusNode,
+                      controller: paymentController.accountNumber,
+                      focusNode: paymentController.accountNumberfocusNode,
                       onFieldSubmited: (val) {
-                        FocusScope.of(Get.context!).requestFocus(
-                            addEventController.eventDateFocusNode);
+                        FocusScope.of(Get.context!)
+                            .requestFocus(paymentController.ifscCodefocusNode);
                       }),
                   const SizedBox(
                     height: 10,
@@ -312,35 +309,32 @@ Future dialogBox({required String type}) {
                           return null;
                         }
                       },
-                      controller: addEventController.eventNameController,
-                      focusNode: addEventController.eventNameFocusNode,
+                      controller: paymentController.ifscCode,
+                      focusNode: paymentController.ifscCodefocusNode,
                       onFieldSubmited: (val) {
                         FocusScope.of(Get.context!).requestFocus(
-                            addEventController.eventDateFocusNode);
+                            paymentController.nBCardNumberfocusNode);
                       }),
                   const SizedBox(
                     height: 10,
                   ),
                   textField(
-                      label: "Card number",
-                      hint: " ",
-                      prefixIcon: const Icon(
-                        Icons.credit_card,
-                        color: Colors.grey,
-                      ),
-                      validate: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Please enter value";
-                        } else {
-                          return null;
-                        }
-                      },
-                      controller: addEventController.eventNameController,
-                      focusNode: addEventController.eventNameFocusNode,
-                      onFieldSubmited: (val) {
-                        FocusScope.of(Get.context!).requestFocus(
-                            addEventController.eventDateFocusNode);
-                      }),
+                    label: "Card number",
+                    hint: " ",
+                    prefixIcon: const Icon(
+                      Icons.credit_card,
+                      color: Colors.grey,
+                    ),
+                    validate: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter value";
+                      } else {
+                        return null;
+                      }
+                    },
+                    controller: paymentController.nBCardNumber,
+                    focusNode: paymentController.nBCardNumberfocusNode,
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -404,7 +398,9 @@ void showDialogBox({required String type}) {
                   buttonWidgetSmall(
                       width: 100.00,
                       height: 30.00,
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.of(context).pop();
+                      },
                       text: "APPLY")
                 ],
               ),

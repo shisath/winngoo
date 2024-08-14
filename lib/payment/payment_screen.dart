@@ -46,6 +46,9 @@ class PaymentScreen extends StatelessWidget {
                 height: 20,
               ),
               paymentWidget(),
+              const SizedBox(
+                height: 10,
+              )
             ],
           ),
         ),

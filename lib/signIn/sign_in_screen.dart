@@ -12,12 +12,12 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: primaryColor, automaticallyImplyLeading: false),
+        backgroundColor: primaryColor,
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // logo(),
             headingContainer(widget: Image.asset(loginPng)),
             const SizedBox(
               height: 20,

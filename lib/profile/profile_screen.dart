@@ -7,6 +7,7 @@ import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
 
+import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import '../summary/summary_widget.dart';
@@ -90,13 +91,21 @@ class ProfileScreen extends StatelessWidget {
                           child: CircleAvatar(
                             radius: 75,
                             child: ClipOval(
-                              child: Image.file(
-                                File(profileController
-                                    .selectedMedia.value!.path),
-                                fit: BoxFit.cover,
-                                width: 140,
-                                height: 150,
-                              ),
+                              child:
+                                  profileController.selectedMedia.value != null
+                                      ? Image.file(
+                                          File(profileController
+                                              .selectedMedia.value!.path),
+                                          fit: BoxFit.cover,
+                                          width: 140,
+                                          height: 150,
+                                        )
+                                      : Image.asset(
+                                          winngooLogo,
+                                          fit: BoxFit.cover,
+                                          height: 150,
+                                          width: 150,
+                                        ),
                             ),
                           ),
                         )),

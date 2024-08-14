@@ -5,6 +5,7 @@ class WinngooText extends StatelessWidget {
   final double fontSize;
   final FontWeight weight;
   final Color color;
+  final TextAlign? align;
 
   WinngooText({
     Key? key,
@@ -12,13 +13,14 @@ class WinngooText extends StatelessWidget {
     this.fontSize = 16.00,
     this.weight = FontWeight.normal,
     this.color = Colors.black,
+    this.align,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: TextAlign.justify,
+      textAlign: align ?? TextAlign.justify,
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: weight,

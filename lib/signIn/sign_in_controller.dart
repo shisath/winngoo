@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class SignInController extends GetxController {
-  TextEditingController signInMailController = TextEditingController();
-  TextEditingController signInPasswordController = TextEditingController();
+  TextEditingController mailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   RxBool obsecure = true.obs;
 
@@ -20,10 +20,8 @@ class SignInController extends GetxController {
     var headers = {'Content-Type': 'application/json'};
     var request = http.Request('POST',
         Uri.parse('https://winngoogala.winngooconsultancy.in/api/login'));
-    request.body = json.encode({
-      "email": signInMailController.text,
-      "password": signInPasswordController.text
-    });
+    request.body = json.encode(
+        {"email": mailController.text, "password": passwordController.text});
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();

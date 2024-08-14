@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../common_file/functions.dart';
+import '../common_file/images.dart';
 import '../common_file/widgets.dart';
+import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 import 'Home_widget.dart';
 
 final homeformKey = GlobalKey<FormState>();
@@ -12,6 +13,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
+      endDrawer: const CustomeDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -22,19 +25,9 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Welcome to\nWinngoo Gala",
-                    style:
-                        TextStyle(fontSize: headingSize, color: Colors.white),
+                  headingContainer(
+                    widget: Center(child: Image.asset(conferencePng)),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "This is the platform of online events",
-                    style: TextStyle(
-                        fontSize: contentSize + 3, color: Colors.white),
-                  )
                 ],
               ),
             )),

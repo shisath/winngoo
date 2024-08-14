@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
@@ -151,12 +152,13 @@ timePicker() async {
     print(" sdsk ${format.format(dt)} ");
 
     var time = format.format(dt);
-    sheduleDateTimeController.hours.value = time.split(":")[0];
+    // sheduleDateTimeController.hours.value = time.split(":")[0];
+    //
+    // sheduleDateTimeController.minutes.value =
+    //     time.split(":")[1].substring(0, 2);
+    //
+    // sheduleDateTimeController.day.value = time.split(":")[1].substring(2, 5);
 
-    sheduleDateTimeController.minutes.value =
-        time.split(":")[1].substring(0, 2);
-
-    sheduleDateTimeController.day.value = time.split(":")[1].substring(2, 5);
-    // print("sk$controller1");
+    addEventController.eventTimeController.text = time;
   }
 }

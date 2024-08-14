@@ -255,26 +255,33 @@ signUpWidget() {
                   height: 15,
                 ),
               ],
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: DropdownButtonFormField(
-                  decoration: inputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.account_balance_outlined,
-                        color: Colors.grey,
+              SizedBox(
+                height: 50,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: DropdownButtonFormField(
+                    decoration: inputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.account_balance_outlined,
+                          color: Colors.grey,
+                        ),
+                        label: 'Country',
+                        hint: '',
+                        prefix: const Text("")),
+                    items: const [
+                      DropdownMenuItem<String>(
+                        value: "India",
+                        child: Text("India"),
                       ),
-                      label: 'Country',
-                      hint: '',
-                      prefix: const Text("")),
-                  items: const [
-                    DropdownMenuItem<String>(
-                      value: "sathish",
-                      child: Text("sathjosh"),
-                    )
-                  ],
-                  onChanged: (s) {
-                    signUpController.countryController.text = s!;
-                  },
+                      DropdownMenuItem<String>(
+                        value: "UK",
+                        child: Text("UK"),
+                      ),
+                    ],
+                    onChanged: (s) {
+                      signUpController.countryController.text = s!;
+                    },
+                  ),
                 ),
               ),
               const SizedBox(
