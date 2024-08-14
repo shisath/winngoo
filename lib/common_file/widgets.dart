@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
 
 import 'functions.dart';
 
@@ -386,8 +388,8 @@ Widget headingContainer({
   return Container(
     decoration: BoxDecoration(
       borderRadius: const BorderRadius.only(
-        bottomRight: Radius.circular(60),
-        bottomLeft: Radius.circular(60),
+        bottomRight: Radius.circular(50),
+        bottomLeft: Radius.circular(50),
       ),
       color: primaryColor,
     ),
@@ -428,6 +430,77 @@ Widget smallBoxWidget(
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: contentSize),
         )),
+      ),
+    ),
+  );
+}
+
+AppBar buildAppBar() {
+  return AppBar(
+    backgroundColor: primaryColor,
+    leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: const Icon(
+          Icons.arrow_back_rounded,
+          color: Colors.white,
+        )),
+    actions: [
+      Builder(
+        builder: (BuildContext context) {
+          return IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Scaffold.of(context)
+                  .openEndDrawer(); // Open the right-side drawer
+            },
+          );
+        },
+      ),
+      // Removed duplicate menu icon
+      const SizedBox(
+        width: 10,
+      )
+    ],
+  );
+}
+
+Widget customAppbar({required bool menu, required String title}) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 30, right: 10, left: 10),
+    child: WinngooBox(
+      fillColor: primaryColor,
+      radius: 20,
+      height: 60,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          iconButton(
+              icon: Icons.arrow_back,
+              title: title,
+              onpress: () {
+                Get.back();
+              }),
+          if (menu == true) ...[
+            Builder(
+              builder: (BuildContext innerContext) => IconButton(
+                onPressed: () {
+                  Scaffold.of(innerContext).openEndDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ] else ...[
+            Container()
+          ]
+        ],
       ),
     ),
   );

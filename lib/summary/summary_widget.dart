@@ -47,6 +47,7 @@ Widget planeSummaryWidget() {
 Widget summaryRowModel({
   required String keyText,
   required String valueText,
+  color,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -56,7 +57,7 @@ Widget summaryRowModel({
       children: [
         WinngooText(
           text: keyText,
-          color: Colors.white,
+          color: color ?? Colors.black,
         ).w(130),
         SizedBox(
           width: MediaQuery.sizeOf(Get.context!).width * 0.1,
@@ -64,7 +65,7 @@ Widget summaryRowModel({
         Flexible(
             child: WinngooText(
           text: valueText,
-          color: Colors.white,
+          color: color ?? Colors.black,
         )),
       ],
     ),

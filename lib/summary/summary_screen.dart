@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/summary/summary_widget.dart';
+
+import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 
 class SummaryScreen extends StatelessWidget {
   const SummaryScreen({super.key});
@@ -16,8 +17,8 @@ class SummaryScreen extends StatelessWidget {
             Get.toNamed("/payment");
           },
           text: "Done"),
-      appBar: AppBar(
-          backgroundColor: primaryColor, automaticallyImplyLeading: true),
+      appBar: buildAppBar(),
+      endDrawer: const CustomeDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),

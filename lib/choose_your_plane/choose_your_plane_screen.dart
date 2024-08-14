@@ -4,6 +4,7 @@ import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import '../common_file/functions.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
+import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 import 'choose_your_plane_widget.dart';
 
 class ChooseYourPlaneScreen extends StatefulWidget {
@@ -17,14 +18,8 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        actions: [
-          GestureDetector(
-            child: const Icon(Icons.menu),
-          ),
-        ],
-      ),
+      appBar: buildAppBar(),
+      endDrawer: const CustomeDrawer(),
       body: Stack(
         children: [
           Image.asset(

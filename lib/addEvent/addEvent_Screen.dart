@@ -20,29 +20,7 @@ class AddEventScreen extends StatelessWidget {
         },
         text: "Next",
       ),
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        actions: [
-          Builder(
-            builder: (BuildContext context) {
-              return IconButton(
-                icon: const Icon(
-                  Icons.menu,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Scaffold.of(context)
-                      .openEndDrawer(); // Open the right-side drawer
-                },
-              );
-            },
-          ),
-          // Removed duplicate menu icon
-          const SizedBox(
-            width: 10,
-          )
-        ],
-      ),
+      appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

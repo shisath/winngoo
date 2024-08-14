@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/images.dart';
 import 'package:winggoo/common_file/widgets.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/payment/payment_widget.dart';
 
@@ -14,13 +14,12 @@ class PaymentScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: buttonWidget(
           onPress: () {
-            Get.toNamed("/profile");
+            Get.offAllNamed("/signIn");
           },
           text: "CONTINUE"),
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-      ),
+      appBar: buildAppBar(),
+      endDrawer: const CustomeDrawer(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/signup/signup_widget.dart';
+
+import '../common_file/widgets.dart';
+import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 
 final signUpformKey = GlobalKey<FormState>();
 
@@ -9,19 +13,28 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          // actions: [IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back))],
-          ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              signUpWidget(),
-            ],
-          ),
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          headingContainer(
+              widget: Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    iconButton(
+                        icon: Icons.arrow_back,
+                        title: "SIGN UP",
+                        onpress: () {
+                          Get.back();
+                        }),
+                  ],
+                ),
+              ),
+              height: 120.0),
+          Expanded(child: signUpWidget()),
+        ],
       ),
     );
   }
