@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 class CustomeDrawer extends StatelessWidget {
@@ -54,8 +55,7 @@ class CustomeDrawer extends StatelessWidget {
                 iconButton(
                     onpress: () {
                       Get.back();
-
-                      Get.offAllNamed("/signIn");
+                      showDialogBox(type: "logout");
                     },
                     icon: Icons.logout,
                     title: "Log out"),

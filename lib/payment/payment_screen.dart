@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/images.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
@@ -33,6 +34,7 @@ class PaymentScreen extends StatelessWidget {
               WinngooText(
                 text: "Payment",
                 weight: FontWeight.w600,
+                fontSize: headingSize,
               ),
               Center(
                 child: Image.asset(

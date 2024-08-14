@@ -15,6 +15,7 @@ Widget paymentWidget() {
         WinngooText(
           text: "Select your payment",
           weight: FontWeight.w600,
+          fontSize: contentSize + 2,
         ),
         const SizedBox(
           height: 10,
@@ -43,7 +44,7 @@ Widget paymentWidget() {
                     ),
                   ).onTap(
                     () {
-                      showDialogBox();
+                      showDialogBox(type: "coupon");
                     },
                   )
                 ],

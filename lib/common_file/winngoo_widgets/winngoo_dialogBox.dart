@@ -18,6 +18,9 @@ Future dialogBox({required String type}) {
       if (type == "add event") {
         return Padding(
           padding: EdgeInsets.only(
+              top: 20,
+              left: 10,
+              right: 10,
               bottom: MediaQuery.of(Get.context!).viewInsets.bottom),
           child: WinngooBox(
             // width: MediaQuery.sizeOf(Get.context!).width,
@@ -25,9 +28,6 @@ Future dialogBox({required String type}) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
                   WinngooText(
                     text: "Create Event",
                     weight: FontWeight.w600,
@@ -149,6 +149,9 @@ Future dialogBox({required String type}) {
       } else if (type == "credit Card") {
         return Padding(
           padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
               bottom: MediaQuery.of(Get.context!).viewInsets.bottom),
           child: WinngooBox(
             width: MediaQuery.sizeOf(context).width,
@@ -156,9 +159,6 @@ Future dialogBox({required String type}) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
                   textField(
                       heading: "Card number",
                       headingSize: contentSize,
@@ -258,7 +258,7 @@ Future dialogBox({required String type}) {
         return Padding(
           padding: EdgeInsets.only(
               bottom: MediaQuery.of(Get.context!).viewInsets.bottom,
-              top: 10,
+              top: 20,
               left: 10,
               right: 10),
           child: WinngooBox(
@@ -267,9 +267,6 @@ Future dialogBox({required String type}) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
                   WinngooText(
                     text: "Net banking",
                     weight: FontWeight.w600,
@@ -368,48 +365,158 @@ Future dialogBox({required String type}) {
   );
 }
 
-void showDialogBox() {
+void showDialogBox({required String type}) {
   showDialog(
     context: Get.context!,
     builder: (BuildContext context) {
-      return Dialog(
-        child: WinngooBox(
-          height: 300,
-          width: 300,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Image.asset(
-                  giftCoupon,
-                  height: 150,
-                  width: 150,
-                ),
-                WinngooText(text: "Enter Your Coupon Code"),
-                textFieldSmall(
-                  onFieldSubmited: (s) {},
-                  h: 45,
-                  w: 150,
-                  ontab: () {},
-                  focusNode: paymentController.focusNode,
-                  controller: paymentController.couponCode,
-                  label: '',
-                  validate: (t) {
-                    return null;
-                  },
-                  (p0) {},
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                buttonWidgetSmall(
-                    width: 100.00, height: 30.00, onPress: () {}, text: "APPLY")
-              ],
+      if (type == "coupon") {
+        return Dialog(
+          child: WinngooBox(
+            height: 300,
+            width: 300,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Image.asset(
+                    giftCoupon,
+                    height: 150,
+                    width: 150,
+                  ),
+                  WinngooText(text: "Enter Your Coupon Code"),
+                  textFieldSmall(
+                    onFieldSubmited: (s) {},
+                    h: 45,
+                    w: 150,
+                    ontab: () {},
+                    focusNode: paymentController.focusNode,
+                    controller: paymentController.couponCode,
+                    label: '',
+                    validate: (t) {
+                      return null;
+                    },
+                    (p0) {},
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  buttonWidgetSmall(
+                      width: 100.00,
+                      height: 30.00,
+                      onPress: () {},
+                      text: "APPLY")
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
+      } else if (type == "logouts") {
+        return Dialog(
+          child: WinngooBox(
+            height: 200,
+            width: 300,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  WinngooText(
+                    text: "Logout",
+                    fontSize: headingSize,
+                    weight: FontWeight.w600,
+                  ),
+                  WinngooText(text: "Are you sure you want to log out?"),
+                  //
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        buttonWidgetSmall(
+                            buttonTextSize: contentSize - 2,
+                            width: 100.00,
+                            height: 30.00,
+                            onPress: () {
+                              Navigator.of(context).pop();
+                            },
+                            text: "Cancel"),
+                        buttonWidgetSmall(
+                            buttonTextSize: contentSize - 2,
+                            width: 100.00,
+                            height: 30.00,
+                            onPress: () {
+                              Navigator.of(context).pop();
+                              Get.offAllNamed("/signIn");
+                            },
+                            text: "Yes, Logout")
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      } else if (type == "logout") {
+        return Dialog(
+          child: WinngooBox(
+            height: 200,
+            width: 300,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  WinngooText(
+                    text: "Choose your image",
+                    fontSize: headingSize,
+                    weight: FontWeight.w600,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        buttonWidgetSmall(
+                            buttonTextSize: contentSize - 2,
+                            width: 100.00,
+                            height: 30.00,
+                            onPress: () {
+                              Navigator.of(context).pop();
+                            },
+                            text: "Take a photo"),
+                        buttonWidgetSmall(
+                            buttonTextSize: contentSize - 2,
+                            width: 100.00,
+                            height: 30.00,
+                            onPress: () {
+                              Navigator.of(context).pop();
+                              Get.offAllNamed("/signIn");
+                            },
+                            text: "Gallery")
+                      ],
+                    ),
+                  ),
+                  buttonWidgetSmall(
+                      buttonTextSize: contentSize - 2,
+                      width: 100.00,
+                      height: 30.00,
+                      onPress: () {
+                        Navigator.of(context).pop();
+                      },
+                      text: "Cancel"),
+                ],
+              ),
+            ),
+          ),
+        );
+      } else {
+        return Container();
+      }
     },
   );
 }

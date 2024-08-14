@@ -471,7 +471,7 @@ AppBar buildAppBar() {
 
 Widget customAppbar({required bool menu, required String title}) {
   return Padding(
-    padding: const EdgeInsets.only(top: 30, right: 10, left: 10),
+    padding: const EdgeInsets.only(top: 40, right: 10, left: 10),
     child: WinngooBox(
       fillColor: primaryColor,
       radius: 20,
