@@ -9,8 +9,16 @@ class ProfileController extends GetxController {
   var selectedMedia = Rxn<XFile>();
   final ImagePicker _imagePicker = ImagePicker();
 
-  Future<void> pickImage() async {
+  Future<void> galleryPicker() async {
     XFile? result = await _imagePicker.pickImage(source: ImageSource.gallery);
+
+    if (result != null && result.toString().isNotEmpty) {
+      selectedMedia.value = result;
+    }
+  }
+
+  Future<void> cameraPicker() async {
+    XFile? result = await _imagePicker.pickImage(source: ImageSource.camera);
 
     if (result != null && result.toString().isNotEmpty) {
       selectedMedia.value = result;

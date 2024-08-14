@@ -8,6 +8,7 @@ import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
 
 import '../common_file/widgets.dart';
+import '../common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import '../summary/summary_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -103,8 +104,8 @@ class ProfileScreen extends StatelessWidget {
                       top: MediaQuery.sizeOf(context).height * 0.04,
                       width: MediaQuery.sizeOf(context).width * 1.3,
                       child: GestureDetector(
-                        onTap: () async {
-                          await profileController.pickImage();
+                        onTap: () {
+                          showDialogBox(type: 'galary');
                         },
                         child: const CircleAvatar(
                           radius: 18,

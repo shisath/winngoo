@@ -411,7 +411,7 @@ void showDialogBox({required String type}) {
             ),
           ),
         );
-      } else if (type == "logouts") {
+      } else if (type == "logout") {
         return Dialog(
           child: WinngooBox(
             height: 200,
@@ -460,7 +460,7 @@ void showDialogBox({required String type}) {
             ),
           ),
         );
-      } else if (type == "logout") {
+      } else if (type == "galary") {
         return Dialog(
           child: WinngooBox(
             height: 200,
@@ -485,17 +485,18 @@ void showDialogBox({required String type}) {
                             buttonTextSize: contentSize - 2,
                             width: 100.00,
                             height: 30.00,
-                            onPress: () {
+                            onPress: () async {
                               Navigator.of(context).pop();
+                              await profileController.cameraPicker();
                             },
                             text: "Take a photo"),
                         buttonWidgetSmall(
                             buttonTextSize: contentSize - 2,
                             width: 100.00,
                             height: 30.00,
-                            onPress: () {
+                            onPress: () async {
                               Navigator.of(context).pop();
-                              Get.offAllNamed("/signIn");
+                              await profileController.galleryPicker();
                             },
                             text: "Gallery")
                       ],
