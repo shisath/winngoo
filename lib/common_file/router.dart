@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:winggoo/choose_your_plane/choose_your_plane_screen.dart';
 
+import '../LogIn/login_screen.dart';
 import '../addEvent/addEvent_Screen.dart';
 import '../documents/aboutUs_screen.dart';
 import '../documents/privacyPolicy_screen.dart';
@@ -14,14 +15,13 @@ import '../payment/payment_screen.dart';
 import '../profile/profile_screen.dart';
 import '../resetPassword/reset_password_screen.dart';
 import '../shedule_date_time/shedule_date_time_Screen.dart';
-import '../signIn/sign_in_screen.dart';
 import '../signup/signUp_screen.dart';
 import '../summary/summary_screen.dart';
 
 final routes = [
   GetPage(
     name: '/signIn',
-    page: () => const SignInScreen(),
+    page: () => const LogInScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(

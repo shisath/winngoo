@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:winggoo/signIn/sign_in_screen.dart';
 
+import 'LogIn/login_screen.dart';
 import 'common_file/router.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen(),
+      home: const LogInScreen(),
       getPages: routes,
       initialRoute: '/signIn',
     );

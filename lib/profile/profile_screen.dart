@@ -72,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   valueText: "Sk@gmail.com",
                                   color: Colors.white),
                               summaryRowModel(
-                                  keyText: "Create Dater",
+                                  keyText: "Create at",
                                   valueText: "01/02/2024",
                                   color: Colors.white),
                             ],

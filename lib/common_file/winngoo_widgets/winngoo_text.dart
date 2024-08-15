@@ -7,7 +7,7 @@ class WinngooText extends StatelessWidget {
   final Color color;
   final TextAlign? align;
 
-  WinngooText({
+  const WinngooText({
     Key? key,
     required this.text,
     this.fontSize = 16.00,

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:winggoo/LogIn/login_widget.dart';
 import 'package:winggoo/common_file/functions.dart';
-import 'package:winggoo/signIn/sign_in_widget.dart';
 
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class LogInScreen extends StatefulWidget {
+  const LogInScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<LogInScreen> createState() => _LogInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: signInWidget(),
+              child: logInWidget(),
             ),
           ],
         ),

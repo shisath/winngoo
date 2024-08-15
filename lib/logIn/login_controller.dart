@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-class SignInController extends GetxController {
+class LogInController extends GetxController {
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -41,14 +41,16 @@ class SignInController extends GetxController {
         'POST',
         Uri.parse(
             'https://winngoogala.winngooconsultancy.in/api/forgot-password'));
-    request.body = json.encode({"email": "sathishkumarpersonal07@gmail.com"});
+    request.body = json.encode(
+      {
+        "email": "sathishkumarpersonal07@gmail.com",
+      },
+    );
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      // print("running123");
-
       // print(await response.stream.bytesToString());
       Get.toNamed("/otp");
     } else {

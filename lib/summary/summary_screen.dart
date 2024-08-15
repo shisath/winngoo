@@ -16,7 +16,7 @@ class SummaryScreen extends StatelessWidget {
           onPress: () {
             Get.toNamed("/payment");
           },
-          text: "Done"),
+          text: "CONTINUE"),
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),
       body: SingleChildScrollView(
@@ -29,7 +29,7 @@ class SummaryScreen extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-              WinngooText(
+              const WinngooText(
                 text: "SUMMARY",
                 weight: FontWeight.w600,
               ),

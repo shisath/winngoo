@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:winggoo/common_file/images.dart';
 
+import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
 import 'forgot_password_Widget.dart';
 
@@ -19,7 +19,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appBar: AppBar(),
       floatingActionButton: buttonWidget(
           onPress: () {
-            Get.toNamed("/enterNewPassword");
+            logInController.forgotPassword();
           },
           text: "SEND"),
       body: SingleChildScrollView(
