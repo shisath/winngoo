@@ -8,9 +8,14 @@ import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 import 'addEvent_Widget.dart';
 
-class AddEventScreen extends StatelessWidget {
+class AddEventScreen extends StatefulWidget {
   const AddEventScreen({super.key});
 
+  @override
+  State<AddEventScreen> createState() => _AddEventScreenState();
+}
+
+class _AddEventScreenState extends State<AddEventScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +31,7 @@ class AddEventScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           headingContainer(
+            context: context,
             widget: Stack(
               children: [
                 Center(child: Image.asset(celebrationPng)),

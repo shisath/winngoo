@@ -7,9 +7,14 @@ import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 
 final signUpformKey = GlobalKey<FormState>();
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +23,7 @@ class SignUpScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           headingContainer(
+              context: context,
               widget: Padding(
                 padding: const EdgeInsets.only(top: 30),
                 child: Row(

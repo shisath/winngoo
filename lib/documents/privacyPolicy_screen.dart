@@ -4,14 +4,19 @@ import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
-class PrivacyPolicyScreen extends StatelessWidget {
+class PrivacyPolicyScreen extends StatefulWidget {
+  const PrivacyPolicyScreen({
+    super.key,
+  });
+
+  @override
+  State<PrivacyPolicyScreen> createState() => _PrivacyPolicyScreenState();
+}
+
+class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   // final String type;
   final policyList =
       docController.content[0]['privacyPolicy'] as List<Map<String, String>>;
-
-  PrivacyPolicyScreen({
-    super.key,
-  });
 
   @override
   Widget build(BuildContext context) {

@@ -12,9 +12,14 @@ import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import '../summary/summary_widget.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -4,9 +4,14 @@ import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
-class CustomeDrawer extends StatelessWidget {
+class CustomeDrawer extends StatefulWidget {
   const CustomeDrawer({super.key});
 
+  @override
+  State<CustomeDrawer> createState() => _CustomeDrawerState();
+}
+
+class _CustomeDrawerState extends State<CustomeDrawer> {
   @override
   Widget build(BuildContext context) {
     return Align(

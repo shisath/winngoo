@@ -29,6 +29,7 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
           Column(
             children: [
               headingContainer(
+                  context: context,
                   height: MediaQuery.sizeOf(context).height * 0.21,
                   widget: Stack(
                     children: [

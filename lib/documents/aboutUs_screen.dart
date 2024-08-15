@@ -4,14 +4,19 @@ import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
-class AboutUsScreen extends StatelessWidget {
+class AboutUsScreen extends StatefulWidget {
+  const AboutUsScreen({
+    super.key,
+  });
+
+  @override
+  State<AboutUsScreen> createState() => _AboutUsScreenState();
+}
+
+class _AboutUsScreenState extends State<AboutUsScreen> {
   // final String type;
   final aboutUsList =
       docController.content[0]['aboutUs'] as List<Map<String, String>>;
-
-  AboutUsScreen({
-    super.key,
-  });
 
   @override
   Widget build(BuildContext context) {

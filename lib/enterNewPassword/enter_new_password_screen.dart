@@ -5,9 +5,14 @@ import 'package:winggoo/common_file/images.dart';
 import '../common_file/widgets.dart';
 import 'enter_new_password_Widget.dart';
 
-class EnterNewPasswordScreen extends StatelessWidget {
+class EnterNewPasswordScreen extends StatefulWidget {
   const EnterNewPasswordScreen({super.key});
 
+  @override
+  State<EnterNewPasswordScreen> createState() => _EnterNewPasswordScreenState();
+}
+
+class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -381,10 +381,8 @@ Widget togleButton({
   );
 }
 
-Widget headingContainer({
-  required Widget widget,
-  height,
-}) {
+Widget headingContainer(
+    {required Widget widget, height, required BuildContext context}) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: const BorderRadius.only(
@@ -393,8 +391,8 @@ Widget headingContainer({
       ),
       color: primaryColor,
     ),
-    height: height ?? MediaQuery.sizeOf(Get.context!).height * 0.25,
-    width: MediaQuery.sizeOf(Get.context!).width,
+    height: height ?? MediaQuery.sizeOf(context).height * 0.25,
+    width: MediaQuery.sizeOf(context).width,
     child: widget,
   );
 }

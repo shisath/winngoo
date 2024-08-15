@@ -31,6 +31,7 @@ class _SheduleDateAndTimeScreenState extends State<SheduleDateAndTimeScreen> {
         child: Column(
           children: [
             headingContainer(
+                context: context,
                 height: MediaQuery.sizeOf(context).height * 0.21,
                 widget: Padding(
                   padding: const EdgeInsets.only(left: 22, right: 22),

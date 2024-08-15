@@ -5,9 +5,14 @@ import 'package:winggoo/signIn/sign_in_widget.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +23,7 @@ class SignInScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            headingContainer(widget: Image.asset(loginPng)),
+            headingContainer(context: context, widget: Image.asset(loginPng)),
             const SizedBox(
               height: 20,
             ),

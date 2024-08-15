@@ -7,9 +7,14 @@ import 'Home_widget.dart';
 
 final homeformKey = GlobalKey<FormState>();
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,18 +24,20 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             headingContainer(
+                context: context,
                 widget: Padding(
-              padding: const EdgeInsets.only(left: 22),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  headingContainer(
-                    widget: Center(child: Image.asset(conferencePng)),
+                  padding: const EdgeInsets.only(left: 22),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      headingContainer(
+                        context: context,
+                        widget: Center(child: Image.asset(conferencePng)),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )),
+                )),
             homeWidget()
           ],
         ),

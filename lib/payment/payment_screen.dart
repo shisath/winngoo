@@ -7,9 +7,14 @@ import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/payment/payment_widget.dart';
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
 
+  @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
