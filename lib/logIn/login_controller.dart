@@ -16,6 +16,13 @@ class LogInController extends GetxController {
   final mailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
+  @override
+  void dispose() {
+    mailFocusNode.dispose();
+    passwordFocusNode.dispose();
+    super.dispose();
+  }
+
   signInApi() async {
     var headers = {'Content-Type': 'application/json'};
     var request = http.Request('POST',

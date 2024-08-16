@@ -23,7 +23,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             const SizedBox(
               height: 30,
             ),
-            resetPasswordWidget()
+            resetPasswordWidget(context: context)
           ],
         ),
       ),

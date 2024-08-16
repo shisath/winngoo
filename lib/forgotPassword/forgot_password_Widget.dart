@@ -4,7 +4,7 @@ import 'package:winggoo/common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
 
-Widget forgotPasswordWidget() {
+Widget forgotPasswordWidget({required BuildContext context}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20),
     child: Column(
@@ -25,6 +25,7 @@ Widget forgotPasswordWidget() {
           height: 10,
         ),
         textField(
+            context: context,
             label: "Enter your email id",
             hint: "",
             prefixIcon: const Icon(

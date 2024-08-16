@@ -33,7 +33,7 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
                 // height: MediaQuery.sizeOf(context).height * 0.4,
               ),
             ),
-            enterNewPassword()
+            enterNewPassword(context: context)
           ],
         ),
       ),

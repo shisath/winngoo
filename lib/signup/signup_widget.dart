@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../common_file/functions.dart';
@@ -7,7 +8,7 @@ import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
-signUpWidget() {
+signUpWidget({required BuildContext context}) {
   final signUpformKey = GlobalKey<FormState>();
   return Form(
     key: signUpformKey,
@@ -22,6 +23,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   label: "Full name",
                   hint: "",
                   prefixIcon: const Icon(
@@ -45,6 +47,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   label: "Surname",
                   hint: " ",
                   prefixIcon: const Icon(
@@ -68,6 +71,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   label: "Email",
                   hint: " ",
                   prefixIcon: const Icon(
@@ -91,6 +95,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   label: "Confirm email",
                   hint: " ",
                   prefixIcon: const Icon(
@@ -114,6 +119,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   obscureText: signUpController.passwordObsecure.value,
                   label: "Password",
                   hint: "",
@@ -152,6 +158,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   obscureText: signUpController.confirmPasswordObsecure.value,
                   label: "Confirm password",
                   hint: "",
@@ -190,6 +197,7 @@ signUpWidget() {
                 height: 10,
               ),
               textField(
+                  context: context,
                   label: "Mobile No",
                   hint: " ",
                   prefixIcon: const Icon(
@@ -231,26 +239,51 @@ signUpWidget() {
                 height: 10,
               ),
               if (signUpController.sendOtp.value) ...[
-                textField(
-                    label: "Enter OTP",
-                    hint: " ",
-                    prefixIcon: const Icon(
-                      Icons.lock_reset_outlined,
-                      color: Colors.grey,
+                Center(
+                  child: SizedBox(
+                    // height: 100,
+                    width: 300,
+                    child: PinCodeTextField(
+                      onChanged: (a) {
+                        signUpController.enterOTPController.text = a;
+                      },
+                      appContext: Get.context!,
+                      animationDuration: const Duration(milliseconds: 300),
+                      pinTheme: PinTheme(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          shape: PinCodeFieldShape.box,
+                          fieldHeight: 50,
+                          fieldWidth: 50,
+                          disabledColor: Colors.grey,
+                          selectedColor: primaryColor,
+                          selectedFillColor: primaryColor?.withOpacity(0.5),
+                          activeColor: primaryColor,
+                          activeFillColor: primaryColor!.withOpacity(0.9)),
+                      length: 4,
                     ),
-                    validate: (value) {
-                      if (value == null || value.isEmpty) {
-                        return "Mobile number can't be empty";
-                      } else {
-                        return null;
-                      }
-                    },
-                    controller: signUpController.enterOTPController,
-                    focusNode: signUpController.enterOTPFocusNode,
-                    onFieldSubmited: (val) {
-                      FocusScope.of(Get.context!)
-                          .requestFocus(signUpController.countryFocusNode);
-                    }),
+                  ),
+                ),
+                // textField(
+                //     label: "Enter OTP",
+                //     hint: " ",
+                //     prefixIcon: const Icon(
+                //       Icons.lock_reset_outlined,
+                //       color: Colors.grey,
+                //     ),
+                //     validate: (value) {
+                //       if (value == null || value.isEmpty) {
+                //         return "Mobile number can't be empty";
+                //       } else {
+                //         return null;
+                //       }
+                //     },
+                //     controller: signUpController.enterOTPController,
+                //     focusNode: signUpController.enterOTPFocusNode,
+                //     onFieldSubmited: (val) {
+                //       FocusScope.of(Get.context!)
+                //           .requestFocus(signUpController.countryFocusNode);
+                //     }),
                 const SizedBox(
                   height: 15,
                 ),
@@ -289,21 +322,30 @@ signUpWidget() {
               ),
               Align(
                 alignment: Alignment.centerLeft,
-                child: CheckboxListTile(
-                  title: Text(
-                    'Privacy policy & Accept terms and conditions',
-                    style: TextStyle(
-                        color: primaryColor,
-                        decoration: TextDecoration.underline),
-                  ).onTap(() {}),
-                  value: signUpController.isChecked.value,
-                  onChanged: (bool? value) {
-                    signUpController.isChecked.value =
-                        !signUpController.isChecked.value;
-                  },
-                  controlAffinity: ListTileControlAffinity
-                      .leading, // Position of the checkbox
+                child: Row(
+                  children: [
+                    Checkbox(
+                      value: signUpController.isChecked.value,
+                      onChanged: (bool? value) {
+                        if (value != null) {
+                          signUpController.isChecked.value = value;
+                        }
+                      },
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Privacy policy & Accept terms and conditions",
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: primaryColor,
+                              fontSize: contentSize),
+                        )),
+                  ],
                 ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               Center(
                 child: buttonWidget(

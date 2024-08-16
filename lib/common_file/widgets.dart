@@ -247,10 +247,12 @@ Widget textField(
     obscureText,
     void Function()? ontab,
     void Function(String)? onFieldSubmited,
+    required BuildContext context,
     key}) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
     child: Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         heading != null
@@ -264,28 +266,25 @@ Widget textField(
                 ),
               )
             : Container(),
-        SizedBox(
-          height: 50,
-          child: TextFormField(
-            obscureText: obscureText ?? false,
-            onTap: ontab,
-            focusNode: focusNode,
-            maxLength: getInputSettings(type: label)["maxLength"],
-            controller: controller,
-            decoration: inputDecoration(
-                prefixIcon: prefixIcon,
-                suffixIcon: suffixIcon,
-                label: label,
-                hint: hint,
-                prefix: label == "Phone Number"
-                    ? const Text("91+ ")
-                    : const Text("")),
-            // validator: validate,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            keyboardType: getInputSettings(type: label)["keyboardType"],
-            inputFormatters: getInputSettings(type: label)["inputFormatters"],
-            onFieldSubmitted: onFieldSubmited,
-          ),
+        TextFormField(
+          obscureText: obscureText ?? false,
+          onTap: ontab,
+          focusNode: focusNode,
+          maxLength: getInputSettings(type: label)["maxLength"],
+          controller: controller,
+          decoration: inputDecoration(
+              prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
+              label: label,
+              hint: hint,
+              prefix: label == "Phone Number"
+                  ? const Text("91+ ")
+                  : const Text("")),
+          // validator: validate,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          keyboardType: getInputSettings(type: label)["keyboardType"],
+          inputFormatters: getInputSettings(type: label)["inputFormatters"],
+          onFieldSubmitted: onFieldSubmited,
         ),
       ],
     ),

@@ -6,8 +6,8 @@ import 'package:winggoo/common_file/getXcontroller.dart';
 import '../common_file/functions.dart';
 import '../common_file/widgets.dart';
 
-logInWidget() {
-  // final signInformKey = GlobalKey<FormState>();
+logInWidget({required BuildContext context}) {
+  final signInformKey = GlobalKey<FormState>();
 
   return Obx(
     () => Column(
@@ -24,65 +24,72 @@ logInWidget() {
         const SizedBox(
           height: 20,
         ),
-        Column(
-          children: [
-            textField(
-              label: "Email",
-              hint: " ",
-              prefixIcon: const Icon(
-                Icons.mail,
-                color: Colors.grey,
+        Form(
+          key: signInformKey,
+          child: Column(
+            children: [
+              textField(
+                context: context,
+                label: "Email",
+                hint: " ",
+                prefixIcon: const Icon(
+                  Icons.mail,
+                  color: Colors.grey,
+                ),
+                validate: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'This field cannot be empty';
+                  } else {
+                    return null;
+                  }
+                },
+                controller: logInController.mailController,
+                // focusNode: logInController.mailFocusNode,
+                // onFieldSubmited: (val) {
+                //   WidgetsBinding.instance.addPostFrameCallback((_) {
+                //     FocusScope.of(context)
+                //         .requestFocus(logInController.passwordFocusNode);
+                //   });
+                // }
               ),
-              validate: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'This field cannot be empty';
-                } else {
-                  return null;
-                }
-              },
-              controller: logInController.mailController,
-              // focusNode: signInController.mailFocusNode,
-              // onFieldSubmited: (val) {
-              //   FocusScope.of(Get.context!)
-              //       .requestFocus(signInController.passwordFocusNode);
-              // }
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            textField(
-              label: "Password",
-              hint: " ",
-              obscureText: logInController.obsecure.value,
-              prefixIcon: const Icon(
-                Icons.lock,
-                color: Colors.grey,
+              const SizedBox(
+                height: 20,
               ),
-              suffixIcon: IconButton(
-                  onPressed: () {
-                    logInController.obsecure.value =
-                        !logInController.obsecure.value;
-                  },
-                  icon: logInController.obsecure.value
-                      ? const Icon(
-                          Icons.visibility_off,
-                          color: Colors.grey,
-                        )
-                      : const Icon(
-                          Icons.visibility,
-                          color: Colors.grey,
-                        )),
-              validate: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'This field cannot be empty';
-                } else {
-                  return null;
-                }
-              },
-              controller: logInController.passwordController,
-              // focusNode: signInController.passwordFocusNode,
-            ),
-          ],
+              textField(
+                context: context,
+                label: "Password",
+                hint: " ",
+                obscureText: logInController.obsecure.value,
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  color: Colors.grey,
+                ),
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      logInController.obsecure.value =
+                          !logInController.obsecure.value;
+                    },
+                    icon: logInController.obsecure.value
+                        ? const Icon(
+                            Icons.visibility_off,
+                            color: Colors.grey,
+                          )
+                        : const Icon(
+                            Icons.visibility,
+                            color: Colors.grey,
+                          )),
+                validate: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'This field cannot be empty';
+                  } else {
+                    return null;
+                  }
+                },
+                controller: logInController.passwordController,
+                // focusNode: logInController.passwordFocusNode,
+              ),
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 5),
@@ -130,10 +137,10 @@ logInWidget() {
                   ),
                   TextButton(
                     onPressed: () {
-                      Get.offNamed("/signUp");
+                      Get.toNamed("/signUp");
                     },
                     child: Text(
-                      "Sign up here",
+                      "Sign up",
                       style:
                           TextStyle(color: primaryColor, fontSize: contentSize),
                     ),

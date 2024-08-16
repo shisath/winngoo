@@ -4,7 +4,7 @@ import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/widgets.dart';
 
-Widget enterNewPassword() {
+Widget enterNewPassword({required BuildContext context}) {
   return Obx(
     () => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -18,6 +18,7 @@ Widget enterNewPassword() {
           style: TextStyle(fontSize: contentSize),
         ),
         textField(
+            context: context,
             heading: "Enter email",
             label: "",
             hint: "",
@@ -39,6 +40,7 @@ Widget enterNewPassword() {
                   .requestFocus(enterNewPasswordController.passwordFocusNode);
             }),
         textField(
+            context: context,
             obscureText: enterNewPasswordController.passwordObsecure.value,
             suffixIcon: IconButton(
                 onPressed: () {
@@ -75,6 +77,7 @@ Widget enterNewPassword() {
                   enterNewPasswordController.confirmPasswordFocusNode);
             }),
         textField(
+            context: context,
             obscureText:
                 enterNewPasswordController.confirmPasswordObsecure.value,
             suffixIcon: IconButton(

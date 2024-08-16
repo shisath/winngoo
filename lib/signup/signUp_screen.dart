@@ -39,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               height: 120.0),
-          Expanded(child: signUpWidget()),
+          Expanded(child: signUpWidget(context: context)),
         ],
       ),
     );

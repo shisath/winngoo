@@ -32,7 +32,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 height: MediaQuery.sizeOf(context).height * 0.4,
               ),
             ),
-            forgotPasswordWidget()
+            forgotPasswordWidget(context: context)
           ],
         ),
       ),

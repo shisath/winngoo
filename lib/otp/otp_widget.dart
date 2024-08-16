@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:velocity_x/velocity_x.dart';
+
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
@@ -16,7 +17,7 @@ otpWidget() {
           style: TextStyle(fontSize: headingSize),
         ),
         Text(
-          "We’ve send you the verification code\non +91 770834 49632",
+          "We’ve send you the verification code\n on satz@gmail.com",
           style: TextStyle(fontSize: contentSize),
         ),
         const SizedBox(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
 
-resetPasswordWidget() {
+resetPasswordWidget({required BuildContext context}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -19,6 +20,7 @@ resetPasswordWidget() {
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: textField(
+            context: context,
             label: "Email",
             hint: "Eg.sk@gmail.com",
             prefixIcon: const Icon(
@@ -45,6 +47,7 @@ resetPasswordWidget() {
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: textField(
+            context: context,
             label: "Phone Number",
             hint: "",
             prefixIcon: const Icon(

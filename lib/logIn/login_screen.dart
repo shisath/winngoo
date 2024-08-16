@@ -28,8 +28,8 @@ class _LogInScreenState extends State<LogInScreen> {
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: logInWidget(),
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: logInWidget(context: context),
             ),
           ],
         ),

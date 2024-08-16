@@ -37,6 +37,7 @@ Future dialogBox({required String type}) {
                     height: 10,
                   ),
                   textField(
+                      context: context,
                       label: "Enter event name",
                       hint: " ",
                       prefixIcon: const Icon(
@@ -78,6 +79,7 @@ Future dialogBox({required String type}) {
                     child: AbsorbPointer(
                       absorbing: true,
                       child: textField(
+                        context: context,
                         controller: addEventController.eventDateController,
                         label: 'Enter event date',
                         validate: (s) {
@@ -98,6 +100,7 @@ Future dialogBox({required String type}) {
                     child: AbsorbPointer(
                       absorbing: true,
                       child: textField(
+                        context: context,
                         controller: addEventController.eventTimeController,
                         label: 'Enter event time',
                         validate: (g) {
@@ -116,6 +119,7 @@ Future dialogBox({required String type}) {
                     child: AbsorbPointer(
                       absorbing: true,
                       child: textField(
+                        context: context,
                         controller: addEventController.eventImageController,
                         label: 'Upload Image',
                         validate: (g) {
@@ -160,6 +164,7 @@ Future dialogBox({required String type}) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   textField(
+                      context: context,
                       heading: "Card number",
                       headingSize: contentSize,
                       label: "",
@@ -187,6 +192,7 @@ Future dialogBox({required String type}) {
                       SizedBox(
                         width: 150,
                         child: textField(
+                            context: context,
                             heading: "Valid Thru",
                             headingSize: contentSize,
                             label: "MM/YYYY",
@@ -213,6 +219,7 @@ Future dialogBox({required String type}) {
                         height: 110,
                         width: 150,
                         child: textField(
+                          context: context,
                           heading: "CCV",
                           headingSize: contentSize,
                           label: "235****",
@@ -273,6 +280,7 @@ Future dialogBox({required String type}) {
                     height: 10,
                   ),
                   textField(
+                      context: context,
                       label: "Account no",
                       hint: " ",
                       prefixIcon: const Icon(
@@ -296,6 +304,7 @@ Future dialogBox({required String type}) {
                     height: 10,
                   ),
                   textField(
+                      context: context,
                       label: "IFSC Code",
                       hint: " ",
                       prefixIcon: const Icon(
@@ -319,6 +328,7 @@ Future dialogBox({required String type}) {
                     height: 10,
                   ),
                   textField(
+                    context: context,
                     label: "Card number",
                     hint: " ",
                     prefixIcon: const Icon(
