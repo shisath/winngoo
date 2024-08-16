@@ -35,7 +35,7 @@ resetPasswordWidget({required BuildContext context}) {
               }
             },
             controller: resetPasswordController.emailController,
-            focusNode: signUpController.emailFocusNode,
+            // focusNode: signUpController.emailFocusNode,
             onFieldSubmited: (val) {
               // FocusScope.of(Get.context!)
               //     .requestFocus(signUpController.nameFocusNode);
@@ -64,7 +64,7 @@ resetPasswordWidget({required BuildContext context}) {
             controller: resetPasswordController.phoneNumberController,
             onFieldSubmited: (val) {}),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       buttonWidget(

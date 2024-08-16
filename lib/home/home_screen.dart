@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar(showLeadingIcon: false),
       endDrawer: const CustomeDrawer(),
       body: SingleChildScrollView(
         child: Column(

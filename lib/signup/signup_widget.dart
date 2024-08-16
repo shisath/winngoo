@@ -330,6 +330,8 @@ signUpWidget({required BuildContext context}) {
                         if (value != null) {
                           signUpController.isChecked.value = value;
                         }
+
+                        print(signUpController.isChecked.value);
                       },
                     ),
                     TextButton(
@@ -344,17 +346,23 @@ signUpWidget({required BuildContext context}) {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Center(
                 child: buttonWidget(
+                  isLoading: signUpController.signUpLoader.value,
                   onPress: () {
-                    Get.toNamed("/homeScreen");
-
-                    // if (signUpformKey.currentState?.validate() == true) {
-                    //   signUpController.signUpApi();
-                    // }
+                    if (signUpformKey.currentState?.validate() == true) {
+                      if (signUpController.isChecked.value != true) {
+                        showSnackBarUsingGet(
+                            msg:
+                                'Please Accept Terms & Conditions and Policies',
+                            isBadReqested: true);
+                      } else {
+                        signUpController.signUpApi();
+                      }
+                    }
                   },
                   text: "SIGN UP",
                 ),

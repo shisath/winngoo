@@ -30,16 +30,16 @@ String? validatePhoneNumber(String? value) {
   return null;
 }
 
-// String? validateEmail(String? value) {
-//   final emailRegExp =
-//       RegExp(r'^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
-//   if (value == null || value.isEmpty) {
-//     return 'This field cannot be empty';
-//   } else if (!emailRegExp.hasMatch(value)) {
-//     return 'Enter a valid email address';
-//   }
-//   return null;
-//
+String? validateEmail(String? value) {
+  final emailRegExp =
+      RegExp(r'^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
+  if (value == null || value.isEmpty) {
+    return 'This field cannot be empty';
+  } else if (!emailRegExp.hasMatch(value)) {
+    return 'Enter a valid email address';
+  }
+  return null;
+}
 
 Map<String, dynamic> getInputSettings({required String type}) {
   TextInputType keyboardType;

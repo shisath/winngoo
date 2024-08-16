@@ -36,13 +36,7 @@ logInWidget({required BuildContext context}) {
                   Icons.mail,
                   color: Colors.grey,
                 ),
-                validate: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'This field cannot be empty';
-                  } else {
-                    return null;
-                  }
-                },
+                validate: validateEmail,
                 controller: logInController.mailController,
                 // focusNode: logInController.mailFocusNode,
                 // onFieldSubmited: (val) {
@@ -109,8 +103,14 @@ logInWidget({required BuildContext context}) {
           height: 30,
         ),
         buttonWidget(
+          isLoading: logInController.logInLoader.value,
           onPress: () {
-            Get.toNamed("/homeScreen");
+            if (signInformKey.currentState!.validate()) {
+              // Get.toNamed("/homeScreen");
+              logInController.signInApi();
+            } else {
+              print("Form is not valid");
+            }
           },
           text: "SIGN IN",
         ),

@@ -154,7 +154,8 @@ Widget buttonWidget(
     buttonTextSize,
     width,
     height,
-    icon}) {
+    icon,
+    bool? isLoading}) {
   return SizedBox(
     width: width ?? MediaQuery.sizeOf(Get.context!).width * 0.9,
     height: height ?? 50,
@@ -179,11 +180,18 @@ Widget buttonWidget(
           ),
           CircleAvatar(
             backgroundColor: secondarycolor,
-            child: icon ??
-                const Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
-                ),
+            child: isLoading ?? false
+                ? const SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ))
+                : (icon ??
+                    const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    )),
           )
         ],
       ),
@@ -280,7 +288,7 @@ Widget textField(
               prefix: label == "Phone Number"
                   ? const Text("91+ ")
                   : const Text("")),
-          // validator: validate,
+          validator: validate,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: getInputSettings(type: label)["keyboardType"],
           inputFormatters: getInputSettings(type: label)["inputFormatters"],
@@ -432,17 +440,20 @@ Widget smallBoxWidget(
   );
 }
 
-AppBar buildAppBar() {
+AppBar buildAppBar({bool? showLeadingIcon}) {
   return AppBar(
     backgroundColor: primaryColor,
-    leading: IconButton(
-        onPressed: () {
-          Get.back();
-        },
-        icon: const Icon(
-          Icons.arrow_back_rounded,
-          color: Colors.white,
-        )),
+    leading: showLeadingIcon ?? true
+        ? IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.white,
+            ))
+        : null,
+    automaticallyImplyLeading: false,
     actions: [
       Builder(
         builder: (BuildContext context) {
@@ -500,5 +511,25 @@ Widget customAppbar({required bool menu, required String title}) {
         ],
       ),
     ),
+  );
+}
+
+SnackbarController showSnackBarUsingGet({
+  required String msg,
+  required bool isBadReqested,
+}) {
+  return Get.snackbar(
+    isBadReqested ? "Sorry" : "Sucessfull!",
+    msg,
+    snackPosition: SnackPosition.BOTTOM,
+    duration: const Duration(seconds: 3),
+    backgroundColor: isBadReqested ? Colors.red : Colors.green,
+    colorText: Colors.white,
+    borderRadius: 10,
+    margin: const EdgeInsets.all(16),
+    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+    icon: isBadReqested
+        ? Icon(Icons.error_outline_rounded, color: Colors.white)
+        : Icon(Icons.check_circle, color: Colors.white),
   );
 }
