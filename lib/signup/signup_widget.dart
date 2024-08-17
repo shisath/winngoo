@@ -235,9 +235,9 @@ signUpWidget({required BuildContext context}) {
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
                               )))),
-              const SizedBox(
-                height: 10,
-              ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
               if (signUpController.sendOtp.value) ...[
                 Center(
                   child: SizedBox(
@@ -295,7 +295,7 @@ signUpWidget({required BuildContext context}) {
                   child: DropdownButtonFormField(
                     decoration: inputDecoration(
                         prefixIcon: const Icon(
-                          Icons.account_balance_outlined,
+                          Icons.circle,
                           color: Colors.grey,
                         ),
                         label: 'Country',
@@ -323,6 +323,7 @@ signUpWidget({required BuildContext context}) {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Checkbox(
                       value: signUpController.isChecked.value,
@@ -337,7 +338,7 @@ signUpWidget({required BuildContext context}) {
                     TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Privacy policy & Accept terms and conditions",
+                          "Accept terms and conditions",
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: primaryColor,
