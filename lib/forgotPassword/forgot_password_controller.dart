@@ -17,6 +17,7 @@ class ForgotPasswordController extends GetxController {
             "email": mailController.text,
           },
           route: "otp",
+          isGetOff: true,
           setLoader: (s) {
             loader.value = s;
           });

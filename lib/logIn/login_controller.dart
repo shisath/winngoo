@@ -48,6 +48,7 @@ class LogInController extends GetxController {
             "password": passwordController.text,
           },
           route: "homeScreen",
+          isGetOff: true,
           setLoader: (s) {
             logInLoader.value = s;
           });

@@ -214,8 +214,8 @@ signUpWidget({required BuildContext context}) {
                   controller: signUpController.phoneNumber,
                   focusNode: signUpController.mobileNumberFocusNode,
                   onFieldSubmited: (val) {
-                    FocusScope.of(Get.context!)
-                        .requestFocus(signUpController.passwordFocusNode);
+                    // FocusScope.of(Get.context!)
+                    //     .requestFocus(signUpController.passwordFocusNode);
                   }),
               Align(
                   alignment: Alignment.topRight,

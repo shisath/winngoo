@@ -26,7 +26,7 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
             onPress: () {
               if (resetPasswordFormKey.currentState!.validate()) {
                 // Get.toNamed("/homeScreen");
-                logInController.signInApi();
+                enterNewPasswordController.resetPassword();
               } else {
                 print("Form is not valid");
               }

@@ -102,6 +102,7 @@ Future<http.StreamedResponse> postMethod({
   required String endPoint,
   required Map<String, dynamic> body,
   String? route,
+  required bool isGetOff,
   required Function(bool) setLoader,
 }) async {
   try {
@@ -123,18 +124,56 @@ Future<http.StreamedResponse> postMethod({
       String successMessage = jsonResponse["message"];
       showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
 
-      if (route!.isNotEmpty) {
-        Get.toNamed("/$route");
+      ///Routes
+      if (route != null && route.isNotEmpty) {
+        switch (isGetOff) {
+          case true:
+            Get.offNamed("/$route");
+            break;
+          case false:
+            Get.toNamed("/$route");
+            break;
+        }
       }
       return response;
     } else {
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
+      print("bad response $jsonResponse");
+      String successMessage = jsonResponse["message"];
+      print("bad response $successMessage");
 
-      showSnackBarUsingGet(
-        isBadReqested: true,
-        msg: jsonResponse["errors"]["error"],
-      );
+      // showSnackBarUsingGet(
+      //   isBadReqested: true,
+      //   msg: jsonResponse["errors"]["error"],
+      // );
+
+      if (jsonResponse.containsKey('errors')) {
+        final errors = jsonResponse['errors'];
+
+        if (errors.containsKey('error')) {
+          final emailError =
+              errors['error']; // Access the first error message for email
+          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+        }
+
+        if (errors.containsKey('email')) {
+          final emailError =
+              errors['email'][0]; // Access the first error message for email
+          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+        }
+
+        if (errors.containsKey('confirm_email')) {
+          final confirmEmailError = errors['confirm_email']
+              [0]; // Access the first error message for confirm email
+          showSnackBarUsingGet(isBadReqested: true, msg: confirmEmailError);
+        }
+        if (errors.containsKey('token')) {
+          final confirmEmailError = errors['token']
+              [0]; // Access the first error message for confirm email
+          showSnackBarUsingGet(isBadReqested: true, msg: confirmEmailError);
+        }
+      }
     }
     setLoader(false);
     return response;
