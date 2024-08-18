@@ -102,7 +102,7 @@ Future<http.StreamedResponse> postMethod({
   required String endPoint,
   required Map<String, dynamic> body,
   String? route,
-  required bool isGetOff,
+  bool? isGetOff,
   required Function(bool) setLoader,
 }) async {
   try {
@@ -126,7 +126,7 @@ Future<http.StreamedResponse> postMethod({
 
       ///Routes
       if (route != null && route.isNotEmpty) {
-        switch (isGetOff) {
+        switch (isGetOff ?? false) {
           case true:
             Get.offNamed("/$route");
             break;
@@ -135,6 +135,8 @@ Future<http.StreamedResponse> postMethod({
             break;
         }
       }
+      setLoader(false);
+
       return response;
     } else {
       String responseBody = await response.stream.bytesToString();

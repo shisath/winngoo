@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
+import 'package:winggoo/common_file/functions.dart';
 
 class AddEventController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -10,7 +12,7 @@ class AddEventController extends GetxController {
   TextEditingController eventImageController = TextEditingController();
   RxString date = "".obs;
   RxString time = "".obs;
-
+  RxBool loader = false.obs;
   // TextEditingController evnetImageController = TextEditingController();
 
   RxInt isSelected = 0.obs;
@@ -91,4 +93,18 @@ class AddEventController extends GetxController {
       "ispaid": false
     }
   ];
+
+  createEvent() {
+    postMethod(
+        endPoint: "eventscreate",
+        body: {
+          "name": eventNameController.text,
+          "date": "2024-08-02",
+          "time": "13:00",
+          "user_id": "13"
+        },
+        setLoader: (bool) {
+          loader.value = bool;
+        });
+  }
 }

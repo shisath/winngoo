@@ -59,7 +59,7 @@ Widget recommendWidget() {
 Widget yourEventWidget() {
   return Expanded(
     child: addEventController.eventList.isEmpty
-        ? Center(
+        ? const Center(
             child: WinngooText(
               text: "No Events Available",
               color: Colors.black,

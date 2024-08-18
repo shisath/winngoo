@@ -144,14 +144,15 @@ timePicker() async {
     initialTime: TimeOfDay.now(),
   );
   final now = DateTime.now();
-  final format = DateFormat.jm();
 
   if (picked != null) {
+    final now = DateTime.now();
     final dt =
         DateTime(now.year, now.month, now.day, picked.hour, picked.minute);
-    print(" sdsk ${format.format(dt)} ");
 
-    var time = format.format(dt);
+    var time = DateFormat('HH:MM a');
+
+    var formated = time.format(dt);
     // sheduleDateTimeController.hours.value = time.split(":")[0];
     //
     // sheduleDateTimeController.minutes.value =
@@ -159,6 +160,6 @@ timePicker() async {
     //
     // sheduleDateTimeController.day.value = time.split(":")[1].substring(2, 5);
 
-    addEventController.eventTimeController.text = time;
+    addEventController.eventTimeController.text = formated;
   }
 }

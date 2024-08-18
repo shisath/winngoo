@@ -74,7 +74,7 @@ Future dialogBox({required String type}) {
 
                       DateTime? finalDate = selectedDate?.toLocal();
                       addEventController.eventDateController.text =
-                          DateFormat('dd/MM/yyyy').format(finalDate!);
+                          DateFormat('yyyy-MM-dd').format(finalDate!);
                     },
                     child: AbsorbPointer(
                       absorbing: true,
