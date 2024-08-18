@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -102,27 +103,45 @@ Future<http.StreamedResponse> postMethod({
   required String endPoint,
   required Map<String, dynamic> body,
   String? route,
+  int? statusCode,
   bool? isGetOff,
+  required String? token,
   required Function(bool) setLoader,
 }) async {
   try {
     setLoader(true);
-    var headers = {'Content-Type': 'application/json'};
+
+    var headers;
+
+    if (token.toString() == "" || token!.isEmpty) {
+      headers = {
+        'Content-Type': 'application/json',
+      };
+    } else {
+      headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      };
+    }
 
     var request = http.Request(
       'POST',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'),
     );
+
     request.body = json.encode(body);
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
-    if (response.statusCode == 200) {
+    if (response.statusCode == (statusCode ?? 200)) {
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
+      print(" dine $jsonResponse");
 
-      String successMessage = jsonResponse["message"];
-      showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
+      if (jsonResponse.toString().contains("message")) {
+        String successMessage = jsonResponse["message"];
+        showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
+      }
 
       ///Routes
       if (route != null && route.isNotEmpty) {
@@ -135,6 +154,7 @@ Future<http.StreamedResponse> postMethod({
             break;
         }
       }
+
       setLoader(false);
 
       return response;

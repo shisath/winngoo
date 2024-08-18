@@ -21,6 +21,7 @@ class EnterNewPasswordController extends GetxController {
 
   resetPassword() async {
     postMethod(
+      token: "",
       endPoint: 'reset-password',
       body: {
         "token": "vIqvZlO6ebH7tGJXB2KiXUmYEl3oqdVKvAq8Ne",

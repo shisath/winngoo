@@ -143,18 +143,17 @@ timePicker() async {
     context: Get.context!,
     initialTime: TimeOfDay.now(),
   );
-  final now = DateTime.now();
 
   if (picked != null) {
     final now = DateTime.now();
     final dt =
         DateTime(now.year, now.month, now.day, picked.hour, picked.minute);
 
-    var time = DateFormat('HH:MM a');
+    var time = DateFormat('HH:MM');
 
     var formated = time.format(dt);
     // sheduleDateTimeController.hours.value = time.split(":")[0];
-    //
+
     // sheduleDateTimeController.minutes.value =
     //     time.split(":")[1].substring(0, 2);
     //

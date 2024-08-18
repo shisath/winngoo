@@ -136,12 +136,16 @@ Future dialogBox({required String type}) {
                   const SizedBox(
                     height: 10,
                   ),
-                  Center(
-                      child: buttonWidget(
-                          onPress: () {
-                            Navigator.of(context).pop();
-                          },
-                          text: "Done")),
+                  Obx(
+                    () => Center(
+                        child: buttonWidget(
+                            isLoading: addEventController.loader.value,
+                            onPress: () {
+                              addEventController.createEventApi();
+                              Navigator.of(context).pop();
+                            },
+                            text: "Submit")),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),

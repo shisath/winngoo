@@ -42,6 +42,7 @@ class LogInController extends GetxController {
       print(logInLoader.value);
 
       postMethod(
+          token: "",
           endPoint: 'login',
           body: {
             "email": mailController.text,
