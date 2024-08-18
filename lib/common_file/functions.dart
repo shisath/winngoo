@@ -1,5 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:http/http.dart' as http;
+import 'package:winggoo/common_file/widgets.dart';
 
 ///Global Colors
 
@@ -90,4 +96,50 @@ Map<String, dynamic> getInputSettings({required String type}) {
     'maxLength': maxLength,
     'inputFormatters': inputFormatters,
   };
+}
+
+Future<http.StreamedResponse> postMethod({
+  required String endPoint,
+  required Map<String, dynamic> body,
+  String? route,
+  required Function(bool) setLoader,
+}) async {
+  try {
+    setLoader(true);
+    var headers = {'Content-Type': 'application/json'};
+
+    var request = http.Request(
+      'POST',
+      Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'),
+    );
+    request.body = json.encode(body);
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      String responseBody = await response.stream.bytesToString();
+      var jsonResponse = jsonDecode(responseBody);
+
+      String successMessage = jsonResponse["message"];
+      showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
+
+      if (route!.isNotEmpty) {
+        Get.toNamed("/$route");
+      }
+      return response;
+    } else {
+      String responseBody = await response.stream.bytesToString();
+      var jsonResponse = jsonDecode(responseBody);
+
+      showSnackBarUsingGet(
+        isBadReqested: true,
+        msg: jsonResponse["errors"]["error"],
+      );
+    }
+    setLoader(false);
+    return response;
+  } catch (e) {
+    print("Error in POST request: $e");
+    rethrow; // Optional: You can rethrow the error or handle it in your calling method
+  }
 }

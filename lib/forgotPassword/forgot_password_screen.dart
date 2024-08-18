@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/images.dart';
 
 import '../common_file/getXcontroller.dart';
@@ -15,25 +16,28 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      floatingActionButton: buttonWidget(
-          onPress: () {
-            logInController.forgotPassword();
-          },
-          text: "SEND"),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.asset(
-                forgotPasswordPng,
-                height: MediaQuery.sizeOf(context).height * 0.4,
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(),
+        floatingActionButton: buttonWidget(
+            isLoading: forgotPasswordController.loader.value,
+            onPress: () {
+              forgotPasswordController.forgotPassword();
+            },
+            text: "SEND"),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Image.asset(
+                  forgotPasswordPng,
+                  height: MediaQuery.sizeOf(context).height * 0.4,
+                ),
               ),
-            ),
-            forgotPasswordWidget(context: context)
-          ],
+              forgotPasswordWidget(context: context)
+            ],
+          ),
         ),
       ),
     );

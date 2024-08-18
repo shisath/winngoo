@@ -39,7 +39,7 @@ Widget forgotPasswordWidget({required BuildContext context}) {
                 return null;
               }
             },
-            controller: forgotPasswordController.emailController,
+            controller: forgotPasswordController.mailController,
             focusNode: forgotPasswordController.emailFocusNode,
             onFieldSubmited: (val) {}),
         const SizedBox(

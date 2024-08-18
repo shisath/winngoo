@@ -519,7 +519,7 @@ SnackbarController showSnackBarUsingGet({
   required bool isBadReqested,
 }) {
   return Get.snackbar(
-    isBadReqested ? "Sorry" : "Sucessfull!",
+    isBadReqested ? "Sorry" : "Success!",
     msg,
     snackPosition: SnackPosition.BOTTOM,
     duration: const Duration(seconds: 3),
