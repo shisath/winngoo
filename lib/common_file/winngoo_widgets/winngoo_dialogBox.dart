@@ -253,7 +253,7 @@ Future dialogBox({required String type}) {
                           onPress: () {
                             Navigator.of(context).pop();
                           },
-                          text: "OK")),
+                          text: "PAY NOW")),
                   const SizedBox(
                     height: 10,
                   ),

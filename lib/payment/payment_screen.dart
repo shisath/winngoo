@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/images.dart';
 import 'package:winggoo/common_file/widgets.dart';
@@ -18,11 +17,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: buttonWidget(
-          onPress: () {
-            Get.offAllNamed("/signIn");
-          },
-          text: "CONTINUE"),
+      // floatingActionButton: buttonWidget(
+      //     onPress: () {
+      //       Get.offAllNamed("/signIn");
+      //     },
+      //     text: "CONTINUE"),
+
       resizeToAvoidBottomInset: true,
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),

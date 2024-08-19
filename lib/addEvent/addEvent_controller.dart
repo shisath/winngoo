@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 
-import '../home/model/eventList.dart';
+import 'model/eventList.dart';
 
 class AddEventController extends GetxController {
   TextEditingController emailController = TextEditingController();
