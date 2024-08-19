@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../JoinMeeting (enter your code)/join_meeting_controller.dart';
 import '../LogIn/login_controller.dart';
 import '../addEvent/addEvent_controller.dart';
 import '../choose_your_plane/choose_your_plane_controller.dart';
@@ -27,3 +28,4 @@ final chooseYourPlaneConroller = Get.put(ChooseYourPlaneController());
 final paymentController = Get.put(PaymentController());
 final profileController = Get.put(ProfileController());
 final docController = Get.put(Documentcontroller());
+final joinMeetingController = Get.put(JoinMeetingController());

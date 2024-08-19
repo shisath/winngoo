@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:winggoo/choose_your_plane/choose_your_plane_screen.dart';
 
+import '../JoinMeeting (enter your code)/join_meeting_screen.dart';
 import '../LogIn/login_screen.dart';
 import '../addEvent/addEvent_Screen.dart';
 import '../documents/aboutUs_screen.dart';
@@ -91,12 +92,17 @@ final routes = [
   ),
   GetPage(
     name: '/privacyPolicy',
-    page: () => PrivacyPolicyScreen(),
+    page: () => const PrivacyPolicyScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(
     name: '/terms&cond',
     page: () => TermsAndConditionScreen(),
+    transition: Transition.fadeIn,
+  ),
+  GetPage(
+    name: '/joinMeeting',
+    page: () => const JoinMeetingScreen(),
     transition: Transition.fadeIn,
   ),
 ];

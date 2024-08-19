@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
-import 'LogIn/login_screen.dart';
+import 'JoinMeeting (enter your code)/join_meeting_screen.dart';
 import 'common_file/router.dart';
 
 void main() {
@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LogInScreen(),
+      home: const JoinMeetingScreen(),
       getPages: routes,
-      initialRoute: '/signIn',
+      initialRoute: '/joinMeeting',
     );
   }
 }

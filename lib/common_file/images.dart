@@ -12,3 +12,4 @@ const paymentPng = "assets/payment.png";
 const conferencePng = "assets/conferenceCall.png";
 const giftCoupon = "assets/giftCoupon.png";
 const profileBg = "assets/profileBg.png";
+const joinMeetingPng = "assets/enterCode.png";
