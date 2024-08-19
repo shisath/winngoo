@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:winggoo/LogIn/login_widget.dart';
 import 'package:winggoo/common_file/functions.dart';
-
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
