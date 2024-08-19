@@ -19,11 +19,15 @@ Widget homeWidget() {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                WinngooText(
+                const WinngooText(
                   text: "Let’s connect with winngoo gala",
                 ),
-                buttonWidget(onPress: () {}, text: "Join event"),
-                WinngooText(
+                buttonWidget(
+                    onPress: () {
+                      Get.toNamed("/joinMeeting");
+                    },
+                    text: "Join event"),
+                const WinngooText(
                   text: "OR",
                 ),
                 buttonWidget(
@@ -31,7 +35,7 @@ Widget homeWidget() {
                       Get.toNamed("/addEventScreen");
                     },
                     text: "Creating event"),
-                WinngooText(
+                const WinngooText(
                   align: TextAlign.center,
                   text: "Bringing Conversations Closer, One Call at a Time.",
                 ),

@@ -1,10 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'package:winggoo/common_file/widgets.dart';
 
@@ -202,5 +200,27 @@ Future<http.StreamedResponse> postMethod({
   } catch (e) {
     print("Error in POST request: $e");
     rethrow; // Optional: You can rethrow the error or handle it in your calling method
+  }
+}
+
+Future<dynamic> getMethod({required String endPoint}) async {
+  var headers = {
+    'Authorization':
+        'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5Y2FiNTFkNy04MTgwLTQyZDktYTY0Mi0zMGI5NTY0ZjYzNjIiLCJqdGkiOiIxM2E4ODFlZTk3ZTc2M2E1OTRhMWUzZWFlMzM3NThiZmE2MmQ0MTVhNWExYjllZGZjMzJmZDc0MzFiMDY3MDUzNDUyZmFkY2U5NTI3M2IwMCIsImlhdCI6MTcyNDA1NTYzNS41NDExMTYsIm5iZiI6MTcyNDA1NTYzNS41NDExMTksImV4cCI6MTc1NTU5MTYzNS41Mzc4NTksInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.qT7NtVUJz6Otm8m2sqk8Yw2gsVV03udZ-lmxiEYH8JOvg-3b76mGyfvqKK2-hxzGnXlWSvaH5R3Rhl9JG5qWAfQTVyquKZcpBCr7gP0n2gJaC73OR0gBEXB4MH7gDMFSrYp3lamALJ64wRkatPs1dKW8TNr03e5LP5bL6brqWB3LRayYZNI2zHc8scPFshv6Jv4HRT8w6dTz47Psda2bfb4ZUP0eZGrSsXHqxkKCmS4bO5MV0GzzE7VK7mOHmsqVI8dffv8-J8zuFU25OlSKSITeEfp1ALlfwWfs0m3AEuezMEKH16lmix1DxPfhCCnXZYGLVL-WmaHvnH27P5q2tJWG9Fp-2ya_IBCqTwvGD7pQt7AHMO4VTL_f9qBVkGLq1nS0eWO4mGlhg40JT0dIbUCo7ISbEKy16eg0r__U_ClTcqdUR1fhjOdLNmh6EGBWsp7rgHZo8UlMfzXFFMaGG-jcOu7FiKH3FzDV60dtuD-gpS5ccXLqZEoNRQ5DiAVdC-WGsw67aPbSu_0Gx9yHaYvV9iH0GtA1sFbgvPhY98eBMiuIVd2P4QIVVMQWsNjqQtUojJ7s-iqAopQMUMTjJfLeNKEOchNv0afo1dSuh3lY8vGkKH6C_woIgyYkV47DTfGzDquT6ftapqJ5xxVteHmb62yd7Ouci3R3Ixj3Pug'
+  };
+  var request = http.Request('GET',
+      Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'));
+  request.body = '''''';
+  request.headers.addAll(headers);
+
+  http.StreamedResponse response = await request.send();
+
+  if (response.statusCode == 200) {
+    var responseBody = await response.stream.bytesToString();
+    return responseBody;
+  } else {
+    print(response.reasonPhrase);
+    return showSnackBarUsingGet(
+        isBadReqested: true, msg: "Please Contact Admin");
   }
 }

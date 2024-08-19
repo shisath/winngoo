@@ -85,7 +85,7 @@ class SignUpController extends GetxController {
 
       showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
 
-      Get.toNamed("/otp");
+      Get.toNamed("/signIn");
     } else {
       String responseBody = await response.stream.bytesToString();
       final responseJson = json.decode(responseBody);

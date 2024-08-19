@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:winggoo/common_file/functions.dart';
+
+import '../home/model/eventList.dart';
 
 class AddEventController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -13,7 +14,9 @@ class AddEventController extends GetxController {
   RxString date = "".obs;
   RxString time = "".obs;
   RxBool loader = false.obs;
+
   // TextEditingController evnetImageController = TextEditingController();
+  var eventListApiData = EventList().obs;
 
   RxInt isSelected = 0.obs;
   RxInt isSelectedEvent = 0.obs;
@@ -109,5 +112,13 @@ class AddEventController extends GetxController {
         setLoader: (s) {
           loader.value = s;
         });
+  }
+
+  eventListApi() async {
+    var res = await getMethod(endPoint: 'events');
+    if (res.toString().isNotEmpty) {
+      eventListApiData.value = eventListData(res);
+      print(eventListApiData.value.data);
+    }
   }
 }

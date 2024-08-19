@@ -97,6 +97,7 @@ Widget eventListboxModel({
       onTap: () {
         addEventController.isSelectedEvent.value = index;
         addEventController.isSelected.value = -1;
+        addEventController.eventListApi();
       },
       child: WinngooBox(
         width: MediaQuery.sizeOf(Get.context!).width,
