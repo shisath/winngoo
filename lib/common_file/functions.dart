@@ -105,6 +105,7 @@ Future<http.StreamedResponse> postMethod({
   bool? isGetOff,
   required String? token,
   required Function(bool) setLoader,
+  // required Function(String) apiToken,
 }) async {
   try {
     setLoader(true);
@@ -136,8 +137,10 @@ Future<http.StreamedResponse> postMethod({
 
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
-      print(" dine $jsonResponse");
-
+      print("token ${jsonResponse["data"]['token']}");
+      // apiToken(jsonResponse["data"]['token']);
+      // solosathish7@gmail.com
+      // sk123123
       if (jsonResponse.toString().contains("message")) {
         String successMessage = jsonResponse["message"];
         showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
