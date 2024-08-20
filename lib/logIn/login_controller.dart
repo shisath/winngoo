@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:winggoo/logIn/model/loginMode.dart';
 
 import '../common_file/functions.dart';
 import '../common_file/widgets.dart';
 
 class LogInController extends GetxController {
+  final GetStorage localStorage = GetStorage();
+
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   RxString token = "".obs;
 
   RxBool obsecure = true.obs;
   RxBool logInLoader = false.obs;
-
+  var loginApi = LoginData().obs;
   RxBool rememberMe = false.obs;
 
   late FocusNode mailFocusNode = FocusNode();
@@ -39,7 +43,7 @@ class LogInController extends GetxController {
     try {
       print(logInLoader.value);
 
-      var res = postMethod(
+      dynamic res = await postMethod(
           token: "",
           endPoint: 'login',
           body: {
@@ -53,8 +57,11 @@ class LogInController extends GetxController {
           });
 
       if (res.toString().isNotEmpty) {
-        token.value = res.toString();
-        print("token data ${token.value}");
+        print("1");
+        loginApi.value = loginValueData(res);
+        print("2");
+
+        print("token res ks ${loginApi.value.data?.token}");
       }
     } catch (e) {
       print("Error in signInApi: $e");

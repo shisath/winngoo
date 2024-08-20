@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ Map<String, dynamic> getInputSettings({required String type}) {
   };
 }
 
-Future<http.StreamedResponse> postMethod({
+Future<String> postMethod({
   required String endPoint,
   required Map<String, dynamic> body,
   String? route,
@@ -140,8 +141,6 @@ Future<http.StreamedResponse> postMethod({
       var jsonResponse = jsonDecode(responseBody);
       print("token ${jsonResponse["data"]['token']}");
 
-      logInController.token.value = jsonResponse["data"]['token'];
-
       // apiToken(jsonResponse["data"]['token']);
       // solosathish7@gmail.com
       // sk123123
@@ -164,7 +163,7 @@ Future<http.StreamedResponse> postMethod({
 
       setLoader(false);
 
-      return response;
+      return responseBody;
     } else {
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
@@ -219,9 +218,10 @@ Future<http.StreamedResponse> postMethod({
           showSnackBarUsingGet(isBadReqested: true, msg: confirmEmailError);
         }
       }
+      setLoader(false);
+
+      return responseBody;
     }
-    setLoader(false);
-    return response;
   } catch (e) {
     print("Error in POST request: $e");
     rethrow; // Optional: You can rethrow the error or handle it in your calling method
