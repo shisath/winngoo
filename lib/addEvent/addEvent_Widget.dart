@@ -57,31 +57,39 @@ Widget recommendWidget() {
 }
 
 Widget yourEventWidget() {
-  return Expanded(
-    child: addEventController.eventList.isEmpty
-        ? const Center(
-            child: WinngooText(
-              text: "No Events Available",
-              color: Colors.black,
-              // weight: FontWeight.w600,
-            ),
-          )
-        : ListView(
-            scrollDirection: Axis.vertical,
-            children:
-                List.generate(addEventController.eventList.length, (index) {
-              final i = addEventController.eventList[index];
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-                child: eventListboxModel(
-                    index: index,
-                    image: winngooLogo,
-                    date: i["date"] ?? "",
-                    isPaid: i["ispaid"] ?? true,
-                    title: i["title"] ?? ""),
-              );
-            })),
+  return Obx(
+    () => Expanded(
+      child: addEventController.eventListApiData.value.data == null
+          ? const Center(
+              child: WinngooText(
+                text: "No Events Available",
+                color: Colors.black,
+                // weight: FontWeight.w600,
+              ),
+            )
+          : ListView(
+              scrollDirection: Axis.vertical,
+              children: List.generate(
+                  addEventController.eventListApiData.value.data!.length,
+                  (index) {
+                // dynamic i =
+                //     addEventController.eventListApiData.value.s![index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
+                  child: eventListboxModel(
+                      index: index,
+                      image: winngooLogo,
+                      isPaid: true,
+                      title: addEventController
+                          .eventListApiData.value.data![index].name
+                          .toString(),
+                      date: addEventController
+                          .eventListApiData.value.data![index].date
+                          .toString()),
+                );
+              })),
+    ),
   );
 }
 

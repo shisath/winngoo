@@ -42,7 +42,7 @@ class LogInController extends GetxController {
   signInApi() async {
     try {
       print(logInLoader.value);
-
+      final String? token = localStorage.read('api_token');
       dynamic res = await postMethod(
           token: "",
           endPoint: 'login',
@@ -60,6 +60,7 @@ class LogInController extends GetxController {
         print("1");
         loginApi.value = loginValueData(res);
         print("2");
+        localStorage.write('api_token', loginApi.value.data?.token);
 
         print("token res ks ${loginApi.value.data?.token}");
       }

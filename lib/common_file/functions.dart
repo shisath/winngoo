@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/widgets.dart';
 
 ///Global Colors
@@ -115,10 +115,12 @@ Future<String> postMethod({
     var headers;
 
     if (token.toString() == "" || token!.isEmpty) {
+      print("noauth");
       headers = {
         'Content-Type': 'application/json',
       };
     } else {
+      print("auth");
       headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -136,18 +138,20 @@ Future<String> postMethod({
     http.StreamedResponse response = await request.send();
     if (response.statusCode == (statusCode ?? 200)) {
       Navigator.of(Get.context!).pop();
-
+      print("print 1");
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
-      print("token ${jsonResponse["data"]['token']}");
+      print("print 2");
 
       // apiToken(jsonResponse["data"]['token']);
       // solosathish7@gmail.com
       // sk123123
+      print("print 3");
       if (jsonResponse.toString().contains("message")) {
         String successMessage = jsonResponse["message"];
         showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
       }
+      print("print 4");
 
       ///Routes
       if (route != null && route.isNotEmpty) {
@@ -160,9 +164,9 @@ Future<String> postMethod({
             break;
         }
       }
-
+      print("print 5");
       setLoader(false);
-
+      print("print 6");
       return responseBody;
     } else {
       String responseBody = await response.stream.bytesToString();
@@ -229,7 +233,10 @@ Future<String> postMethod({
 }
 
 Future<dynamic> getMethod({required String endPoint}) async {
-  var headers = {'Authorization': 'Bearer ${logInController.token.value}'};
+  GetStorage localStorage = GetStorage();
+  final String? token = localStorage.read('api_token');
+  print(" token done $token");
+  var headers = {'Authorization': 'Bearer $token'};
   var request = http.Request('GET',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'));
   request.body = '''''';

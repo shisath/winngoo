@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
@@ -33,6 +34,7 @@ Widget homeWidget() {
                 buttonWidget(
                     onPress: () {
                       Get.toNamed("/addEventScreen");
+                      addEventController.eventListApi();
                     },
                     text: "Creating event"),
                 const WinngooText(

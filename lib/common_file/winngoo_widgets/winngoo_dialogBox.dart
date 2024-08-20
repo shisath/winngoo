@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
@@ -354,6 +355,7 @@ Future dialogBox({required String type}) {
 }
 
 void showDialogBox({required String type}) {
+  final GetStorage localStorage = GetStorage();
   showDialog(
     context: Get.context!,
     builder: (BuildContext context) {
@@ -439,6 +441,7 @@ void showDialogBox({required String type}) {
                             height: 30.00,
                             onPress: () {
                               Navigator.of(context).pop();
+                              localStorage.remove('api_token');
                               Get.offNamed("/signIn");
                             },
                             text: "Yes, Logout")

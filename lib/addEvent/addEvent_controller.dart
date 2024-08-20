@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:winggoo/common_file/functions.dart';
 
 import '../common_file/getXcontroller.dart';
 import 'model/eventList.dart';
 
 class AddEventController extends GetxController {
+  GetStorage localStorage = GetStorage();
   TextEditingController emailController = TextEditingController();
   TextEditingController linkController = TextEditingController();
   TextEditingController eventNameController = TextEditingController();
@@ -28,7 +30,7 @@ class AddEventController extends GetxController {
   final eventTimeFocusNode = FocusNode();
   final eventImageFocusNode = FocusNode();
 
-  List<Map<String, dynamic>> eventList = [
+  List<Map<String, dynamic>> eventListss = [
     {
       "title": "Birthday Party",
       "img": "",
@@ -99,10 +101,12 @@ class AddEventController extends GetxController {
   ];
 
   createEventApi() {
+    GetStorage localStorage = GetStorage();
+    final String? token = localStorage.read('api_token');
     postMethod(
         statusCode: 201,
         endPoint: "eventscreate",
-        token: logInController.token.value,
+        token: token ?? "",
         body: {
           "name": eventNameController.text,
           "date": eventDateController.text,
@@ -120,7 +124,7 @@ class AddEventController extends GetxController {
     if (res.toString().isNotEmpty) {
       // print("eventlist Response ${res['data']}");
       eventListApiData.value = eventListData(res);
-      print("sk donr ${eventListApiData.value.data}");
+      print("sk donr ${eventListApiData.value.data?[0].name}");
     }
   }
 }
