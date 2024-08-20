@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/functions.dart';
@@ -27,33 +28,42 @@ class _AddEventScreenState extends State<AddEventScreen> {
       ),
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          headingContainer(
-            context: context,
-            widget: Stack(
-              children: [
-                Center(child: Image.asset(celebrationPng)),
-              ],
-            ),
-          ),
-          recommendWidget(),
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: WinngooText(
-                  text: "Your events",
-                  fontSize: headingSize,
-                  weight: FontWeight.w500,
-                ),
+      body: Obx(
+        () => addEventController.refreshLoader.value
+            ? const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ))
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  headingContainer(
+                    context: context,
+                    widget: Stack(
+                      children: [
+                        Center(child: Image.asset(celebrationPng)),
+                      ],
+                    ),
+                  ),
+                  recommendWidget(),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: WinngooText(
+                          text: "Your events",
+                          fontSize: headingSize,
+                          weight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  yourEventWidget(),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                ],
               ),
-            ],
-          ),
-          yourEventWidget(),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-        ],
       ),
     );
   }

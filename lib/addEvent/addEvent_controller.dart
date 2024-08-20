@@ -17,6 +17,7 @@ class AddEventController extends GetxController {
   RxString date = "".obs;
   RxString time = "".obs;
   RxBool loader = false.obs;
+  RxBool refreshLoader = false.obs;
 
   // TextEditingController evnetImageController = TextEditingController();
   var eventListApiData = EventList().obs;
@@ -30,82 +31,12 @@ class AddEventController extends GetxController {
   final eventTimeFocusNode = FocusNode();
   final eventImageFocusNode = FocusNode();
 
-  List<Map<String, dynamic>> eventListss = [
-    {
-      "title": "Birthday Party",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": true
-    },
-    {
-      "title": "Wedding Party",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": false
-    },
-    {
-      "title": "Baby showering",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": true
-    },
-    {
-      "title": "Wedding Party",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": false
-    },
-    {
-      "title": "Cradel Cermony",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": false
-    },
-    {
-      "title": "Launching pary",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": true
-    },
-    {"title": "Baby Party", "img": "", "date": "01/02/2000", "ispaid": false},
-    {
-      "title": "Corporate Event",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": false
-    },
-    {
-      "title": "Corporate Event",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": true
-    },
-    {
-      "title": "Corporate Event",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": false
-    },
-    {
-      "title": "Corporate Event",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": true
-    },
-    {
-      "title": "Corporate Event",
-      "img": "",
-      "date": "01/02/2000",
-      "ispaid": false
-    }
-  ];
-
-  createEventApi() {
+  createEventApi() async {
     GetStorage localStorage = GetStorage();
     print(
         "user id sk ${logInController.membersApiData.value.data![0].userId.toString()}");
     final String? token = localStorage.read('api_token');
-    postMethod(
+    await postMethod(
         statusCode: 201,
         endPoint: "eventscreate",
         token: token,
@@ -119,14 +50,18 @@ class AddEventController extends GetxController {
         setLoader: (s) {
           loader.value = s;
         });
+    await eventListApi();
   }
 
   eventListApi() async {
+    addEventController.refreshLoader.value = true;
     print("api token ${logInController.token.value}");
     var res = await getMethod(endPoint: 'events');
     if (res.toString().isNotEmpty) {
       // print("eventlist Response ${res['data']}");
       eventListApiData.value = eventListData(res);
+      addEventController.refreshLoader.value = false;
+
       print("sk donr ${eventListApiData.value.data?[0].name}");
     }
   }
