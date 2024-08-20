@@ -374,7 +374,7 @@ void showDialogBox({required String type}) {
                     height: 150,
                     width: 150,
                   ),
-                  WinngooText(text: "Enter Your Coupon Code"),
+                  const WinngooText(text: "Enter Your Coupon Code"),
                   textFieldSmall(
                     onFieldSubmited: (s) {},
                     h: 45,
@@ -395,7 +395,7 @@ void showDialogBox({required String type}) {
                       width: 100.00,
                       height: 30.00,
                       onPress: () {
-                        Navigator.of(context).pop();
+                        paymentController.discountApply();
                       },
                       text: "APPLY")
                 ],

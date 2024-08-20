@@ -34,8 +34,8 @@ Widget paymentWidget() {
                   WinngooBox(
                     fillColor: primaryColor,
                     radius: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(5.0),
                       child: WinngooText(
                         text: "Discount",
                         color: Colors.white,

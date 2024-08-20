@@ -23,6 +23,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
       floatingActionButton: buttonWidget(
         onPress: () {
           Get.toNamed("/chooseYourPlane");
+          chooseYourPlaneController.planeApi();
         },
         text: "Next",
       ),
