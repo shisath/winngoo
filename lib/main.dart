@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/logIn/login_screen.dart';
 
+import 'common_file/getXcontroller.dart';
 import 'common_file/router.dart';
 
 void main() {
+  initializeControllers();
   runApp(const MyApp());
 }
 

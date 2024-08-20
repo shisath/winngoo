@@ -3,10 +3,12 @@ import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:winggoo/common_file/getXcontroller.dart';
+import 'package:winggoo/choose_your_plane/choose_your_plane_controller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 
 import '../common_file/winngoo_widgets/winngoo_text.dart';
+
+final chooseYourPlaneConroller = Get.find<ChooseYourPlaneController>();
 
 Widget choosePlaneWidget() {
   return SingleChildScrollView(

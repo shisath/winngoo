@@ -439,7 +439,7 @@ void showDialogBox({required String type}) {
                             height: 30.00,
                             onPress: () {
                               Navigator.of(context).pop();
-                              Get.offAllNamed("/signIn");
+                              Get.offNamed("/signIn");
                             },
                             text: "Yes, Logout")
                       ],

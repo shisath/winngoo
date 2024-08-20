@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:winggoo/common_file/getXcontroller.dart';
 
 import '../common_file/functions.dart';
+import '../common_file/getXcontroller.dart';
 import '../common_file/widgets.dart';
 
 logInWidget({required BuildContext context}) {

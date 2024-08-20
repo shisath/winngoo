@@ -7,6 +7,7 @@ import '../common_file/widgets.dart';
 class LogInController extends GetxController {
   TextEditingController mailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  RxString token = "".obs;
 
   RxBool obsecure = true.obs;
   RxBool logInLoader = false.obs;
@@ -38,7 +39,7 @@ class LogInController extends GetxController {
     try {
       print(logInLoader.value);
 
-      postMethod(
+      var res = postMethod(
           token: "",
           endPoint: 'login',
           body: {
@@ -50,6 +51,11 @@ class LogInController extends GetxController {
           setLoader: (s) {
             logInLoader.value = s;
           });
+
+      if (res.toString().isNotEmpty) {
+        token.value = res.toString();
+        print("token data ${token.value}");
+      }
     } catch (e) {
       print("Error in signInApi: $e");
       showSnackBarUsingGet(isBadReqested: true, msg: "Something went wrong.");

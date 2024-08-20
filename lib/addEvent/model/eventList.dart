@@ -32,7 +32,7 @@ class Data {
   String? name;
   String? date;
   String? time;
-  String? userId;
+  int? user_id;
   String? updatedAt;
   String? createdAt;
   int? id;
@@ -41,7 +41,7 @@ class Data {
       {this.name,
       this.date,
       this.time,
-      this.userId,
+      this.user_id,
       this.updatedAt,
       this.createdAt,
       this.id});
@@ -50,7 +50,7 @@ class Data {
     name = json['name'];
     date = json['date'];
     time = json['time'];
-    userId = json['user_id'];
+    user_id = json['user_id'];
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];
     id = json['id'];
@@ -61,7 +61,7 @@ class Data {
     data['name'] = this.name;
     data['date'] = this.date;
     data['time'] = this.time;
-    data['user_id'] = this.userId;
+    data['user_id'] = this.user_id;
     data['updated_at'] = this.updatedAt;
     data['created_at'] = this.createdAt;
     data['id'] = this.id;
