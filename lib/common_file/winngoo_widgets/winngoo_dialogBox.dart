@@ -114,25 +114,6 @@ Future dialogBox({required String type}) {
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: AbsorbPointer(
-                      absorbing: true,
-                      child: textField(
-                        context: context,
-                        controller: addEventController.eventImageController,
-                        label: 'Upload Image',
-                        validate: (g) {
-                          return null;
-                        },
-                        onFieldSubmited: (g) {},
-                        ontab: () {},
-                        focusNode: addEventController.eventImageFocusNode,
-                        hint: '',
-                        prefixIcon: const Icon(Icons.upload_sharp),
-                      ),
-                    ),
-                  ),
                   const SizedBox(
                     height: 10,
                   ),
@@ -142,7 +123,6 @@ Future dialogBox({required String type}) {
                             isLoading: addEventController.loader.value,
                             onPress: () {
                               addEventController.createEventApi();
-                              Navigator.of(context).pop();
                             },
                             text: "Submit")),
                   ),

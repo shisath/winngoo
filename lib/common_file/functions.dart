@@ -132,6 +132,8 @@ Future<http.StreamedResponse> postMethod({
 
     http.StreamedResponse response = await request.send();
     if (response.statusCode == (statusCode ?? 200)) {
+      Navigator.of(Get.context!).pop();
+
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
       print(" dine $jsonResponse");
@@ -159,9 +161,10 @@ Future<http.StreamedResponse> postMethod({
     } else {
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
-      print("bad response $jsonResponse");
-      String successMessage = jsonResponse["message"];
-      print("bad response $successMessage");
+      print("bad response1 $jsonResponse");
+
+      // String successMessage = jsonResponse["message"];
+      // print("bad response2 $successMessage");
 
       // showSnackBarUsingGet(
       //   isBadReqested: true,
@@ -180,6 +183,21 @@ Future<http.StreamedResponse> postMethod({
         if (errors.containsKey('email')) {
           final emailError =
               errors['email'][0]; // Access the first error message for email
+          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+        }
+        if (errors.containsKey('name')) {
+          final emailError =
+              errors['name'][0]; // Access the first error message for email
+          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+        }
+        if (errors.containsKey('date')) {
+          final emailError =
+              errors['date'][0]; // Access the first error message for email
+          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+        }
+        if (errors.containsKey('time')) {
+          final emailError =
+              errors['time'][0]; // Access the first error message for email
           showSnackBarUsingGet(isBadReqested: true, msg: emailError);
         }
 
