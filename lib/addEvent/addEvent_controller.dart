@@ -102,16 +102,19 @@ class AddEventController extends GetxController {
 
   createEventApi() {
     GetStorage localStorage = GetStorage();
+    print(
+        "user id sk ${logInController.membersApiData.value.data![0].userId.toString()}");
     final String? token = localStorage.read('api_token');
     postMethod(
         statusCode: 201,
         endPoint: "eventscreate",
-        token: token ?? "",
+        token: token,
         body: {
           "name": eventNameController.text,
           "date": eventDateController.text,
           "time": eventTimeController.text,
-          "user_id": "10"
+          "user_id": logInController.membersApiData.value.data![0].id.toString()
+          //
         },
         setLoader: (s) {
           loader.value = s;
