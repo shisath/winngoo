@@ -419,7 +419,7 @@ void showDialogBox({required String type}) {
                     fontSize: headingSize,
                     weight: FontWeight.w600,
                   ),
-                  WinngooText(text: "Are you sure you want to log out?"),
+                  const WinngooText(text: "Are you sure you want to log out?"),
                   //
 
                   Padding(
@@ -441,8 +441,7 @@ void showDialogBox({required String type}) {
                             height: 30.00,
                             onPress: () {
                               Navigator.of(context).pop();
-                              localStorage.remove('api_token');
-                              Get.offNamed("/signIn");
+                              profileController.logOut();
                             },
                             text: "Yes, Logout")
                       ],

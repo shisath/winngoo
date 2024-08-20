@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:winggoo/common_file/functions.dart';
 
 class ProfileController extends GetxController {
+  GetStorage localStorage = GetStorage();
   TextEditingController signInMailController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
   var selectedMedia = Rxn<XFile>();
@@ -31,4 +34,16 @@ class ProfileController extends GetxController {
 
   final mailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
+
+  logOut() async {
+    final String? token = localStorage.read('api_token');
+
+    var a = await postMethod(
+        endPoint: "logout", token: token, setLoader: (s) {}, body: {});
+
+    if (a.toString().isNotEmpty) {
+      localStorage.remove('api_token');
+      Get.offNamed("/signIn");
+    }
+  }
 }
