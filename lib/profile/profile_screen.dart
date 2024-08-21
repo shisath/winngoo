@@ -53,27 +53,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               summaryRowModel(
                                   keyText: "Member ID",
-                                  valueText: "sash123",
+                                  valueText: logInController.membersApiData
+                                          .value.data![0].userId ??
+                                      "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Name",
-                                  valueText: "Sathish",
+                                  valueText: logInController.membersApiData
+                                          .value.data![0].firstName ??
+                                      "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Country",
-                                  valueText: "India",
+                                  valueText: logInController.membersApiData
+                                          .value.data![0].country ??
+                                      "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Phone number",
-                                  valueText: "7010996304",
+                                  valueText: logInController.membersApiData
+                                          .value.data![0].mobileNumber ??
+                                      "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Email",
-                                  valueText: "Sk@gmail.com",
+                                  valueText: logInController.membersApiData
+                                          .value.data![0].email ??
+                                      "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Create at",
-                                  valueText: "01/02/2024",
+                                  valueText: logInController.membersApiData
+                                          .value.data![0].createdAt ??
+                                      "",
                                   color: Colors.white),
                             ],
                           ),
