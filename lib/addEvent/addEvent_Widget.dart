@@ -29,6 +29,7 @@ Widget recommendWidget() {
                   height: 30.00,
                   onPress: () {
                     dialogBox(type: "add event");
+                    addEventController.eventNameController.text = "";
                   },
                   text: "Add your event",
                   icon: const Icon(
@@ -48,8 +49,11 @@ Widget recommendWidget() {
             child: ListView(
                 scrollDirection: Axis.horizontal,
                 // Set to horizontal for horizontal scrolling
-                children: List.generate(8, (index) {
-                  return circleAvatarWidget(png: winngooLogo, index: index);
+                children:
+                    List.generate(addEventController.recomeded.length, (index) {
+                  final a = addEventController.recomeded[index];
+
+                  return circleAvatarWidget(png: a["image"], index: index);
                 }))),
       ],
     ),
@@ -105,7 +109,7 @@ Widget eventListboxModel({
       onTap: () {
         addEventController.isSelectedEvent.value = index;
         addEventController.isSelected.value = -1;
-        addEventController.eventListApi();
+        // addEventController.eventListApi();
       },
       child: WinngooBox(
         width: MediaQuery.sizeOf(Get.context!).width,
@@ -126,10 +130,29 @@ Widget eventListboxModel({
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CircleAvatar(
-                    child: Image.asset(
-                      image,
-                      fit: BoxFit.fitWidth,
+                  Container(
+                    // width: 150, // Diameter of the circle
+                    // height: 150, // Diameter of the circle
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: addEventController.isSelectedEvent.value == index
+                            ? const Color(0xff5669FF)
+                            : Colors.black54,
+                        // Outline color
+                        width: 2, // Outline width
+                      ),
+                    ),
+                    child: CircleAvatar(
+                      radius: 20,
+                      child: ClipOval(
+                        child: Image.asset(
+                          addEventController.randomImage.value,
+                          fit: BoxFit.cover,
+                          height: 150,
+                          width: 150,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -192,6 +215,9 @@ circleAvatarWidget({
       child: GestureDetector(
         onTap: () {
           addEventController.isSelected.value = index;
+          addEventController.eventNameController.text =
+              addEventController.recomeded[index]["title"].toString();
+          dialogBox(type: "add event");
         },
         child: Container(
           decoration: BoxDecoration(
@@ -201,7 +227,17 @@ circleAvatarWidget({
                       ? const Color(0xff5669FF)
                       : Colors.grey.withOpacity(0.5)),
               borderRadius: const BorderRadius.all(Radius.circular(30))),
-          child: Image.asset(png),
+          child: CircleAvatar(
+            radius: 30,
+            child: ClipOval(
+              child: Image.asset(
+                png,
+                fit: BoxFit.cover,
+                height: 100,
+                width: 100,
+              ),
+            ),
+          ),
         ),
       ),
     ),

@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/images.dart';
 
 import '../common_file/getXcontroller.dart';
 import 'model/eventList.dart';
@@ -17,6 +20,7 @@ class AddEventController extends GetxController {
   RxString time = "".obs;
   RxBool loader = false.obs;
   RxBool refreshLoader = false.obs;
+  final RxString randomImage = "".obs;
 
   // TextEditingController evnetImageController = TextEditingController();
   var eventListApiData = EventList().obs;
@@ -33,6 +37,39 @@ class AddEventController extends GetxController {
     eventNameController.text = "";
     eventTimeController.text = "";
     eventDateController.text = "";
+  }
+
+  List recomeded = [
+    {
+      "title": "Birthday Celebration",
+      "image": cakePng,
+    },
+    {
+      "title": "Wedding Celebration",
+      "image": weddingPng,
+    },
+    {
+      "title": "Baby Shower",
+      "image": babyPng,
+    },
+    {
+      "title": "Ribbon",
+      "image": ribbonPng,
+    },
+  ].obs;
+
+  final RxList<String> images = [
+    celeb1,
+    celeb2,
+    celeb3,
+    celeb4,
+    celeb5,
+  ].obs;
+  final random = Random();
+
+  void getRandomImage() {
+    final random = Random();
+    randomImage.value = images[random.nextInt(images.length)];
   }
 
   createEventApi() async {
