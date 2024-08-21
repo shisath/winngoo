@@ -29,8 +29,8 @@ Widget paymentWidget() {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  WinngooText(text: "Amount"),
-                  WinngooText(text: "\$50.00"),
+                  const WinngooText(text: "Amount"),
+                  const WinngooText(text: "\$50.00"),
                   WinngooBox(
                     fillColor: primaryColor,
                     radius: 5,
@@ -53,11 +53,11 @@ Widget paymentWidget() {
         const SizedBox(
           height: 10,
         ),
-        paymentTypeCard(
-            titleText: "UPI",
-            subtitleText: "pay by any UPI app",
-            color: Colors.grey.withOpacity(0.3),
-            ontap: () {}),
+        // paymentTypeCard(
+        //     titleText: "UPI",
+        //     subtitleText: "pay by any UPI app",
+        //     color: Colors.grey.withOpacity(0.3),
+        //     ontap: () {}),
         paymentTypeCard(
             titleText: "Credit / Debit / ATM card",
             subtitleText: "Add and secure cards as per RBI guidelines",
@@ -65,12 +65,12 @@ Widget paymentWidget() {
             ontap: () {
               dialogBox(type: "credit Card");
             }),
-        paymentTypeCard(
-            titleText: "Net Banking",
-            color: Colors.red.withOpacity(0.3),
-            ontap: () {
-              dialogBox(type: "net banking");
-            }),
+        // paymentTypeCard(
+        //     titleText: "Net Banking",
+        //     color: Colors.red.withOpacity(0.3),
+        //     ontap: () {
+        //       dialogBox(type: "net banking");
+        //     }),
         const SizedBox(
           height: 50,
         )
