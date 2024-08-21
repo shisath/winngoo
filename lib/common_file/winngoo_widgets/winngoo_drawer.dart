@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_dialogBox.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
@@ -19,13 +20,21 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
       child: Padding(
         padding: const EdgeInsets.only(top: 50),
         child: SizedBox(
-          height: 300,
+          height: 350,
           child: Drawer(
             width: MediaQuery.sizeOf(context).width * 0.66,
             backgroundColor: primaryColor,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                iconButton(
+                    onpress: () async {
+                      await addEventController.eventListApi();
+                      Get.back();
+                      Get.toNamed("/addEventScreen");
+                    },
+                    icon: Icons.home,
+                    title: "Home"),
                 iconButton(
                     onpress: () {
                       Get.back();
