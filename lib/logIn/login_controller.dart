@@ -43,6 +43,8 @@ class LogInController extends GetxController {
 
   signInApi() async {
     try {
+      print("sin in wrk 1");
+
       print(logInLoader.value);
       final String? token = localStorage.read('api_token');
       dynamic res = await postMethod(
@@ -57,7 +59,7 @@ class LogInController extends GetxController {
           setLoader: (s) {
             logInLoader.value = s;
           });
-
+      print("sin in wrk 2");
       if (res.toString().isNotEmpty) {
         print("1");
         loginApi.value = loginValueData(res);

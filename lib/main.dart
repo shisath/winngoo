@@ -3,12 +3,13 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:winggoo/logIn/login_screen.dart';
 
-import 'common_file/getXcontroller.dart';
+import 'LogIn/login_controller.dart';
 import 'common_file/router.dart';
 
 void main() async {
   await GetStorage.init();
-  initializeControllers();
+  // HomeBinding();
+  Get.put(LogInController());
   runApp(const MyApp());
 }
 

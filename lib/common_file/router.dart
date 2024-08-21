@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:winggoo/choose_your_plane/choose_your_plane_screen.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 
 import '../JoinMeeting (enter your code)/join_meeting_screen.dart';
 import '../LogIn/login_screen.dart';
@@ -21,73 +22,73 @@ import '../summary/summary_screen.dart';
 
 final routes = [
   GetPage(
-    name: '/signIn',
-    page: () => const LogInScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/signIn',
+      page: () => const LogInScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/signUp',
-    page: () => const SignUpScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/signUp',
+      page: () => const SignUpScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/otp',
-    page: () => const OtpScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/otp',
+      page: () => const OtpScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/resetPassword',
-    page: () => const ResetPasswordScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/resetPassword',
+      page: () => const ResetPasswordScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/forgotPassword',
-    page: () => const ForgotPasswordScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/forgotPassword',
+      page: () => const ForgotPasswordScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
     name: '/homeScreen',
     page: () => const HomeScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(
-    name: '/addEventScreen',
-    page: () => const AddEventScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/addEventScreen',
+      page: () => const AddEventScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/sheduleScreen',
-    page: () => const SheduleDateAndTimeScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/sheduleScreen',
+      page: () => const SheduleDateAndTimeScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/enterNewPassword',
-    page: () => const EnterNewPasswordScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/enterNewPassword',
+      page: () => const EnterNewPasswordScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/chooseYourPlane',
-    page: () => const ChooseYourPlaneScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/chooseYourPlane',
+      page: () => const ChooseYourPlaneScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/summary',
-    page: () => const SummaryScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/summary',
+      page: () => const SummaryScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/payment',
-    page: () => const PaymentScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/payment',
+      page: () => const PaymentScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
-    name: '/profile',
-    page: () => const ProfileScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/profile',
+      page: () => const ProfileScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
     name: '/privacy',
-    page: () => AboutUsScreen(),
+    page: () => const AboutUsScreen(),
     transition: Transition.fadeIn,
   ),
   GetPage(
@@ -101,8 +102,8 @@ final routes = [
     transition: Transition.fadeIn,
   ),
   GetPage(
-    name: '/joinMeeting',
-    page: () => const JoinMeetingScreen(),
-    transition: Transition.fadeIn,
-  ),
+      name: '/joinMeeting',
+      page: () => const JoinMeetingScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
 ];

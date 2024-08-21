@@ -527,9 +527,9 @@ SnackbarController showSnackBarUsingGet({
     colorText: Colors.white,
     borderRadius: 10,
     margin: const EdgeInsets.all(16),
-    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
     icon: isBadReqested
-        ? Icon(Icons.error_outline_rounded, color: Colors.white)
-        : Icon(Icons.check_circle, color: Colors.white),
+        ? const Icon(Icons.error_outline_rounded, color: Colors.white)
+        : const Icon(Icons.check_circle, color: Colors.white),
   );
 }

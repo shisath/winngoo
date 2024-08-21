@@ -15,23 +15,43 @@ import '../resetPassword/reset_password_controller.dart';
 import '../shedule_date_time/shedule_date_time_controller.dart';
 import '../signup/signUp_controller.dart';
 
-void initializeControllers() {
-  // Initialize controllers
-  Get.lazyPut(() => LogInController());
-  Get.lazyPut(() => SignUpController());
-  Get.lazyPut(() => OtpController());
-  Get.lazyPut(() => ResetPasswordController());
-  Get.lazyPut(() => ForgotPasswordController());
-  Get.lazyPut(() => HomeController());
-  Get.lazyPut(() => AddEventController());
-  Get.lazyPut(() => SheduleDateTimeController());
-  Get.lazyPut(() => EnterNewPasswordController());
-  Get.lazyPut(() => ChooseYourPlaneController());
-  Get.lazyPut(() => PaymentController());
-  Get.lazyPut(() => ProfileController());
-  Get.lazyPut(() => Documentcontroller());
-  Get.lazyPut(() => JoinMeetingController());
+class HomeBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => LogInController());
+    Get.lazyPut(() => SignUpController());
+    Get.lazyPut(() => OtpController());
+    Get.lazyPut(() => ResetPasswordController());
+    Get.lazyPut(() => ForgotPasswordController());
+    Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => AddEventController());
+    Get.lazyPut(() => SheduleDateTimeController());
+    Get.lazyPut(() => EnterNewPasswordController());
+    Get.lazyPut(() => ChooseYourPlaneController());
+    Get.lazyPut(() => PaymentController());
+    Get.lazyPut(() => ProfileController());
+    Get.lazyPut(() => Documentcontroller());
+    Get.lazyPut(() => JoinMeetingController());
+  }
 }
+
+// void initializeControllers() {
+//   // Initialize controllers
+//   Get.lazyPut(() => LogInController());
+//   Get.lazyPut(() => SignUpController());
+//   Get.lazyPut(() => OtpController());
+//   Get.lazyPut(() => ResetPasswordController());
+//   Get.lazyPut(() => ForgotPasswordController());
+//   Get.lazyPut(() => HomeController());
+//   Get.lazyPut(() => AddEventController());
+//   Get.lazyPut(() => SheduleDateTimeController());
+//   Get.lazyPut(() => EnterNewPasswordController());
+//   Get.lazyPut(() => ChooseYourPlaneController());
+//   Get.lazyPut(() => PaymentController());
+//   Get.lazyPut(() => ProfileController());
+//   Get.lazyPut(() => Documentcontroller());
+//   Get.lazyPut(() => JoinMeetingController());
+// }
 
 // Access controllers in the same file
 final logInController = Get.find<LogInController>();
