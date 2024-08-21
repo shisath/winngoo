@@ -7,6 +7,7 @@ class PaymentController extends GetxController {
   final GetStorage localStorage = GetStorage();
 
   TextEditingController couponCode = TextEditingController();
+  TextEditingController cdCardHolderName = TextEditingController();
   TextEditingController cdCardNumber = TextEditingController();
   TextEditingController validityDate = TextEditingController();
   TextEditingController ccv = TextEditingController();
@@ -15,12 +16,23 @@ class PaymentController extends GetxController {
   TextEditingController nBCardNumber = TextEditingController();
 
   final FocusNode focusNode = FocusNode();
+  final FocusNode cdCardHolderfocusNode = FocusNode();
   final FocusNode cdCardNumberfocusNode = FocusNode();
   final FocusNode validityDatefocusNode = FocusNode();
   final FocusNode ccvfocusNode = FocusNode();
   final FocusNode accountNumberfocusNode = FocusNode();
   final FocusNode ifscCodefocusNode = FocusNode();
   final FocusNode nBCardNumberfocusNode = FocusNode();
+
+  cleaner() {
+    cdCardHolderName.text = "";
+    cdCardNumber.text = "";
+    validityDate.text = "";
+    ccv.text = "";
+    accountNumber.text = "";
+    ifscCode.text = "";
+    nBCardNumber.text = "";
+  }
 
   discountApply() async {
     final String? token = localStorage.read('api_token');

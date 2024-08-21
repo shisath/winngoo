@@ -137,7 +137,6 @@ Future<String> postMethod({
 
     http.StreamedResponse response = await request.send();
     if (response.statusCode == (statusCode ?? 200)) {
-      // Navigator.of(Get.context!).pop();
       print("print 1");
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);

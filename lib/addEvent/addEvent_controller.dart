@@ -13,7 +13,6 @@ class AddEventController extends GetxController {
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventDateController = TextEditingController();
   TextEditingController eventTimeController = TextEditingController();
-  TextEditingController eventImageController = TextEditingController();
   RxString date = "".obs;
   RxString time = "".obs;
   RxBool loader = false.obs;
@@ -21,7 +20,6 @@ class AddEventController extends GetxController {
 
   // TextEditingController evnetImageController = TextEditingController();
   var eventListApiData = EventList().obs;
-
   RxInt isSelected = 0.obs;
   RxInt isSelectedEvent = 0.obs;
   final emailFocusNode = FocusNode();
@@ -30,6 +28,12 @@ class AddEventController extends GetxController {
   final eventDateFocusNode = FocusNode();
   final eventTimeFocusNode = FocusNode();
   final eventImageFocusNode = FocusNode();
+
+  cleaner() {
+    eventNameController.text = "";
+    eventTimeController.text = "";
+    eventDateController.text = "";
+  }
 
   createEventApi() async {
     GetStorage localStorage = GetStorage();

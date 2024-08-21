@@ -19,6 +19,12 @@ class AddEventScreen extends StatefulWidget {
 class _AddEventScreenState extends State<AddEventScreen> {
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      addEventController.refreshLoader.value = true;
+      addEventController.cleaner();
+      addEventController.refreshLoader.value = false;
+    });
+
     return Scaffold(
       floatingActionButton: buttonWidget(
         onPress: () {

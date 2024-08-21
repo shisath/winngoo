@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/images.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
@@ -16,6 +17,10 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      paymentController.cleaner();
+    });
+
     return Scaffold(
       // floatingActionButton: buttonWidget(
       //     onPress: () {

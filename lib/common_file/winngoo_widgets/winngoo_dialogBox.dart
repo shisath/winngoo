@@ -124,6 +124,8 @@ Future dialogBox({required String type}) {
                             isLoading: addEventController.loader.value,
                             onPress: () {
                               addEventController.createEventApi();
+                              addEventController.cleaner();
+                              Navigator.of(context).pop();
                             },
                             text: "Submit")),
                   ),
@@ -136,6 +138,7 @@ Future dialogBox({required String type}) {
           ),
         );
       } else if (type == "credit Card") {
+        final debitCardKey = GlobalKey<FormState>();
         return Padding(
           padding: EdgeInsets.only(
               top: 10,
@@ -145,100 +148,130 @@ Future dialogBox({required String type}) {
           child: WinngooBox(
             width: MediaQuery.sizeOf(context).width,
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  textField(
-                      context: context,
-                      heading: "Card number",
-                      headingSize: contentSize,
-                      label: "",
-                      hint: " ",
-                      suffixIcon: const Icon(
-                        Icons.credit_card_sharp,
-                        color: Colors.grey,
-                      ),
-                      validate: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Please enter value";
-                        } else {
-                          return null;
-                        }
-                      },
-                      controller: paymentController.cdCardNumber,
-                      focusNode: paymentController.cdCardNumberfocusNode,
-                      onFieldSubmited: (val) {
-                        FocusScope.of(Get.context!).requestFocus(
-                            paymentController.validityDatefocusNode);
-                      }),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: 150,
-                        child: textField(
+              child: Form(
+                key: debitCardKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    textField(
+                        context: context,
+                        heading: "Card Holder Name",
+                        headingSize: contentSize,
+                        label: "",
+                        hint: " ",
+                        suffixIcon: const Icon(
+                          Icons.credit_card_sharp,
+                          color: Colors.grey,
+                        ),
+                        validate: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "This field is required";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: paymentController.cdCardHolderName,
+                        focusNode: paymentController.cdCardHolderfocusNode,
+                        onFieldSubmited: (val) {
+                          FocusScope.of(Get.context!).requestFocus(
+                              paymentController.validityDatefocusNode);
+                        }),
+                    textField(
+                        context: context,
+                        heading: "Card number",
+                        headingSize: contentSize,
+                        label: "",
+                        hint: " ",
+                        suffixIcon: const Icon(
+                          Icons.credit_card_sharp,
+                          color: Colors.grey,
+                        ),
+                        validate: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "This field is required";
+                          } else {
+                            return null;
+                          }
+                        },
+                        controller: paymentController.cdCardNumber,
+                        focusNode: paymentController.cdCardNumberfocusNode,
+                        onFieldSubmited: (val) {
+                          FocusScope.of(Get.context!).requestFocus(
+                              paymentController.validityDatefocusNode);
+                        }),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: 150,
+                          child: textField(
+                              context: context,
+                              heading: "Valid Thru",
+                              headingSize: contentSize,
+                              label: "MM/YYYY",
+                              hint: "",
+                              suffixIcon: const Icon(
+                                Icons.calendar_month,
+                                color: Colors.grey,
+                              ),
+                              validate: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "This field is required";
+                                } else {
+                                  return null;
+                                }
+                              },
+                              controller: paymentController.validityDate,
+                              focusNode:
+                                  paymentController.validityDatefocusNode,
+                              onFieldSubmited: (val) {
+                                // FocusScope.of(Get.context!)
+                                //     .requestFocus(paymentController.ccvfocusNode);
+                              }),
+                        ),
+                        SizedBox(
+                          width: 150,
+                          child: textField(
                             context: context,
-                            heading: "Valid Thru",
+                            heading: "CCV",
                             headingSize: contentSize,
-                            label: "MM/YYYY",
+                            label: "235****",
                             hint: "",
                             suffixIcon: const Icon(
-                              Icons.calendar_month,
+                              Icons.vpn_key,
                               color: Colors.grey,
                             ),
                             validate: (value) {
                               if (value == null || value.isEmpty) {
-                                return "Please enter value";
+                                return "This field is required";
                               } else {
                                 return null;
                               }
                             },
-                            controller: paymentController.validityDate,
-                            focusNode: paymentController.validityDatefocusNode,
-                            onFieldSubmited: (val) {
-                              FocusScope.of(Get.context!)
-                                  .requestFocus(paymentController.ccvfocusNode);
-                            }),
-                      ),
-                      SizedBox(
-                        height: 110,
-                        width: 150,
-                        child: textField(
-                          context: context,
-                          heading: "CCV",
-                          headingSize: contentSize,
-                          label: "235****",
-                          hint: "",
-                          suffixIcon: const Icon(
-                            Icons.vpn_key,
-                            color: Colors.grey,
+                            controller: paymentController.ccv,
+                            focusNode: paymentController.ccvfocusNode,
                           ),
-                          validate: (value) {
-                            if (value == null || value.isEmpty) {
-                              return "Please enter value";
-                            } else {
-                              return null;
-                            }
-                          },
-                          controller: paymentController.ccv,
-                          focusNode: paymentController.ccvfocusNode,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                      child: buttonWidget(
-                          onPress: () {
-                            Navigator.of(context).pop();
-                          },
-                          text: "PAY NOW")),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Center(
+                        child: buttonWidget(
+                            onPress: () {
+                              if (debitCardKey.currentState?.validate() ==
+                                  true) {
+                                paymentController.cleaner();
+                                Navigator.of(context).pop();
+                              }
+                            },
+                            text: "PAY NOW")),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -355,6 +388,8 @@ Future dialogBox({required String type}) {
 }
 
 void showDialogBox({required String type}) {
+  final couponKey = GlobalKey<FormState>();
+
   final GetStorage localStorage = GetStorage();
   showDialog(
     context: Get.context!,
@@ -362,7 +397,7 @@ void showDialogBox({required String type}) {
       if (type == "coupon") {
         return Dialog(
           child: WinngooBox(
-            height: 300,
+            height: 350,
             width: 300,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -375,27 +410,41 @@ void showDialogBox({required String type}) {
                     width: 150,
                   ),
                   const WinngooText(text: "Enter Your Coupon Code"),
-                  textFieldSmall(
-                    onFieldSubmited: (s) {},
-                    h: 45,
-                    w: 150,
-                    ontab: () {},
-                    focusNode: paymentController.focusNode,
-                    controller: paymentController.couponCode,
-                    label: '',
-                    validate: (t) {
-                      return null;
-                    },
-                    (p0) {},
-                  ),
                   const SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
+                  Form(
+                    key: couponKey,
+                    child: textFieldSmall(
+                      onFieldSubmited: (s) {},
+                      h: 70,
+                      w: 150,
+                      ontab: () {},
+                      focusNode: paymentController.focusNode,
+                      controller: paymentController.couponCode,
+                      label: '',
+                      validate: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "*This field is required";
+                        } else {
+                          return null;
+                        }
+                      },
+                      (p0) {},
+                    ),
+                  ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
                   buttonWidgetSmall(
                       width: 100.00,
                       height: 30.00,
                       onPress: () {
-                        paymentController.discountApply();
+                        if (couponKey.currentState?.validate() == true) {
+                          paymentController.discountApply();
+                          paymentController.couponCode.text = "";
+                          Navigator.of(context).pop();
+                        }
                       },
                       text: "APPLY")
                 ],

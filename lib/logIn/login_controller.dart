@@ -23,13 +23,18 @@ class LogInController extends GetxController {
   late FocusNode mailFocusNode = FocusNode();
   late FocusNode passwordFocusNode = FocusNode();
 
+  cleaner() {
+    mailController.text = "";
+    passwordController.text = "";
+  }
+
   @override
   void onInit() {
     super.onInit();
     // Initialize your controllers and focus nodes
     mailController = TextEditingController();
     passwordController = TextEditingController();
-
+ 
     mailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
   }
