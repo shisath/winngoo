@@ -31,8 +31,8 @@ class PlaneDetails {
 
 class Data {
   int? id;
-  int? minQuantity;
-  int? maxQuantity;
+  String? minQuantity;
+  String? maxQuantity;
   String? price;
   String? priceWithVat;
   Null? createdAt;

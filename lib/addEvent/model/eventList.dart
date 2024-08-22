@@ -32,7 +32,7 @@ class Data {
   String? name;
   String? date;
   String? time;
-  int? user_id;
+  String? user_id;
   String? updatedAt;
   String? createdAt;
   int? id;
