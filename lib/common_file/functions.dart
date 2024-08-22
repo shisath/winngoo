@@ -148,7 +148,7 @@ Future<String> postMethod({
       print("print 3");
       if (jsonResponse.toString().contains("message")) {
         String successMessage = jsonResponse["message"];
-        showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
+        snackBar(isBadReqested: false, msg: successMessage);
       }
       print("print 4");
 
@@ -186,39 +186,39 @@ Future<String> postMethod({
         if (errors.containsKey('error')) {
           final emailError =
               errors['error']; // Access the first error message for email
-          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+          snackBar(isBadReqested: true, msg: emailError);
         }
 
         if (errors.containsKey('email')) {
           final emailError =
               errors['email'][0]; // Access the first error message for email
-          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+          snackBar(isBadReqested: true, msg: emailError);
         }
         if (errors.containsKey('name')) {
           final emailError =
               errors['name'][0]; // Access the first error message for email
-          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+          snackBar(isBadReqested: true, msg: emailError);
         }
         if (errors.containsKey('date')) {
           final emailError =
               errors['date'][0]; // Access the first error message for email
-          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+          snackBar(isBadReqested: true, msg: emailError);
         }
         if (errors.containsKey('time')) {
           final emailError =
               errors['time'][0]; // Access the first error message for email
-          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+          snackBar(isBadReqested: true, msg: emailError);
         }
 
         if (errors.containsKey('confirm_email')) {
           final confirmEmailError = errors['confirm_email']
               [0]; // Access the first error message for confirm email
-          showSnackBarUsingGet(isBadReqested: true, msg: confirmEmailError);
+          snackBar(isBadReqested: true, msg: confirmEmailError);
         }
         if (errors.containsKey('token')) {
           final confirmEmailError = errors['token']
               [0]; // Access the first error message for confirm email
-          showSnackBarUsingGet(isBadReqested: true, msg: confirmEmailError);
+          snackBar(isBadReqested: true, msg: confirmEmailError);
         }
       }
       setLoader(false);
@@ -255,7 +255,6 @@ Future<dynamic> getMethod({
     return responseBody;
   } else {
     print(response.reasonPhrase);
-    return showSnackBarUsingGet(
-        isBadReqested: true, msg: "Please Contact Admin");
+    return snackBar(isBadReqested: true, msg: "Please Contact Admin");
   }
 }

@@ -15,10 +15,15 @@ logInWidget({required BuildContext context}) {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Text(
-            "LOG IN",
-            style:
-                TextStyle(fontSize: headingSize, fontWeight: FontWeight.w600),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "LOG IN",
+                style: TextStyle(
+                    fontSize: headingSize, fontWeight: FontWeight.w600),
+              ),
+            ],
           ),
         ),
         const SizedBox(

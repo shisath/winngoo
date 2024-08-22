@@ -28,52 +28,58 @@ class _AddEventScreenState extends State<AddEventScreen> {
       addEventController.refreshLoader.value = false;
     });
 
-    return Scaffold(
-      floatingActionButton: buttonWidget(
-        onPress: () {
-          Get.toNamed("/chooseYourPlane");
-          chooseYourPlaneController.planeApi();
-        },
-        text: "Next",
-      ),
-      appBar: buildAppBar(),
-      endDrawer: const CustomeDrawer(),
-      body: Obx(
-        () => addEventController.refreshLoader.value
-            ? const SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                ))
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  headingContainer(
-                    context: context,
-                    widget: Stack(
+    return Obx(
+      () => Scaffold(
+        floatingActionButton: buttonWidget(
+            onPress: () async {
+              if (addEventController.selectedId.isNotEmpty &&
+                  addEventController.isSelectedEvent.isNotEmpty) {
+                await chooseYourPlaneController.planeApi();
+              } else {
+                snackBar(msg: "Please select an event", isBadReqested: true);
+              }
+            },
+            text: "Next",
+            isLoading: chooseYourPlaneController.loader.value),
+        appBar: buildAppBar(),
+        endDrawer: const CustomeDrawer(),
+        body: Obx(
+          () => addEventController.refreshLoader.value
+              ? const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ))
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    headingContainer(
+                      context: context,
+                      widget: Stack(
+                        children: [
+                          Center(child: Image.asset(celebrationPng)),
+                        ],
+                      ),
+                    ),
+                    recommendWidget(),
+                    Column(
                       children: [
-                        Center(child: Image.asset(celebrationPng)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: WinngooText(
+                            text: "Your events",
+                            fontSize: headingSize,
+                            weight: FontWeight.w500,
+                          ),
+                        ),
                       ],
                     ),
-                  ),
-                  recommendWidget(),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: WinngooText(
-                          text: "Your events",
-                          fontSize: headingSize,
-                          weight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                  yourEventWidget(),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                ],
-              ),
+                    yourEventWidget(),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                  ],
+                ),
+        ),
       ),
     );
   }

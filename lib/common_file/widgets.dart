@@ -512,7 +512,7 @@ Widget customAppbar({required bool menu, required String title}) {
   );
 }
 
-SnackbarController showSnackBarUsingGet({
+SnackbarController snackBar({
   required String msg,
   required bool isBadReqested,
 }) {

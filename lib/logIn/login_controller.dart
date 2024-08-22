@@ -24,8 +24,8 @@ class LogInController extends GetxController {
   late FocusNode passwordFocusNode = FocusNode();
 
   cleaner() {
-    mailController.text = "";
-    passwordController.text = "";
+    mailController.text = "sk@sk.com";
+    passwordController.text = "111111";
   }
 
   @override
@@ -34,7 +34,7 @@ class LogInController extends GetxController {
     // Initialize your controllers and focus nodes
     mailController = TextEditingController();
     passwordController = TextEditingController();
- 
+
     mailFocusNode = FocusNode();
     passwordFocusNode = FocusNode();
   }
@@ -77,7 +77,7 @@ class LogInController extends GetxController {
       }
     } catch (e) {
       print("Error in signInApi: $e");
-      showSnackBarUsingGet(isBadReqested: true, msg: "Something went wrong.");
+      snackBar(isBadReqested: true, msg: "Something went wrong.");
     }
 
     Future.delayed((const Duration(seconds: 2)), () {

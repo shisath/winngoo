@@ -19,6 +19,7 @@ import '../resetPassword/reset_password_screen.dart';
 import '../shedule_date_time/shedule_date_time_Screen.dart';
 import '../signup/signUp_screen.dart';
 import '../summary/summary_screen.dart';
+import '../thankYou/screen.dart';
 
 final routes = [
   GetPage(
@@ -104,6 +105,11 @@ final routes = [
   GetPage(
       name: '/joinMeeting',
       page: () => const JoinMeetingScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
+  GetPage(
+      name: '/thankYou',
+      page: () => const ThankYouScreen(),
       transition: Transition.fadeIn,
       binding: HomeBinding()),
 ];

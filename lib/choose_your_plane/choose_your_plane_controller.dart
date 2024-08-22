@@ -10,67 +10,27 @@ class ChooseYourPlaneController extends GetxController {
   RxString hours = "".obs;
   RxString minutes = "".obs;
   RxString day = "".obs;
+  RxBool loader = false.obs;
+  RxString selectedPlane = "".obs;
   var planeApiData = PlaneDetails().obs;
+
   List<bool> seleted = [true, true].obs;
-  List<Map<String, dynamic>> planeDetails = [
-    {
-      "title": "Free",
-      "amount": 0,
-      "spec": [
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-      ]
-    },
-    {
-      "title": "Premium",
-      "amount": 30,
-      "spec": [
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-      ]
-    },
-    {
-      "title": "Business",
-      "amount": 50,
-      "spec": [
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-      ]
-    },
-    {
-      "amount": 18,
-      "spec": [
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-        "Voice messages anywhere",
-      ]
-    },
-  ];
 
   RxBool isDate = false.obs;
   final hoursFocuNode = FocusNode();
   final minuteFocuNode = FocusNode();
 
   planeApi() async {
-    var res = await getMethod(endPoint: "prices");
+    var res = await getMethod(
+        endPoint: "prices",
+        setLoader: (s) {
+          loader.value = s;
+        });
 
     if (res.toString().isNotEmpty) {
       planeApiData.value = planeDetailsData(res);
+      Get.toNamed("/chooseYourPlane");
+
       print('plane details ${planeApiData.value.data![0].minQuantity}');
     }
   }

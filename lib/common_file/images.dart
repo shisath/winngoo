@@ -1,6 +1,7 @@
 const googlePng = "assets/google.png";
 const fbPng = "assets/fb.png";
 const winngooLogo = "assets/winngoo_logo.png";
+const winngooGalaLogo = "assets/winngooGala.png";
 const loginPng = "assets/login.png";
 const forgotPasswordPng = "assets/forgot_password.png";
 const enterPasswordPng = "assets/enterNewPassword.png";

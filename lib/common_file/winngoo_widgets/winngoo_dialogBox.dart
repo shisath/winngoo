@@ -82,7 +82,7 @@ Future dialogBox({required String type}) {
                       child: textField(
                         context: context,
                         controller: addEventController.eventDateController,
-                        label: 'Enter event date',
+                        label: 'Select event date',
                         validate: (s) {
                           return null;
                         },
@@ -103,7 +103,7 @@ Future dialogBox({required String type}) {
                       child: textField(
                         context: context,
                         controller: addEventController.eventTimeController,
-                        label: 'Enter event time',
+                        label: 'Select event time',
                         validate: (g) {
                           return null;
                         },

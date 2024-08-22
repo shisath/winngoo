@@ -24,7 +24,7 @@ class ForgotPasswordController extends GetxController {
           });
     } catch (e) {
       print("Error in signInApi: $e");
-      showSnackBarUsingGet(isBadReqested: true, msg: "Something went wrong.");
+      snackBar(isBadReqested: true, msg: "Something went wrong.");
     }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:winggoo/common_file/functions.dart';
+
 import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
@@ -82,6 +83,9 @@ Widget yourEventWidget() {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 10),
                   child: eventListboxModel(
+                      id: addEventController
+                          .eventListApiData.value.data![index].id!
+                          .toInt(),
                       index: index,
                       image: winngooLogo,
                       isPaid: true,
@@ -103,24 +107,31 @@ Widget eventListboxModel({
   required String title,
   required String date,
   required int index,
+  required int id,
 }) {
   return Obx(
     () => GestureDetector(
       onTap: () {
-        addEventController.isSelectedEvent.value = index;
-        addEventController.isSelected.value = -1;
+        addEventController.isSelectedEvent.value = index.toString();
+        addEventController.isRecomeded.value = -1;
+        addEventController.selectedId.value = id.toString();
+        print('selected id sk $id');
+
         // addEventController.eventListApi();
       },
       child: WinngooBox(
         width: MediaQuery.sizeOf(Get.context!).width,
-        borderColor: addEventController.isSelectedEvent.value == index
-            ? const Color(0xff5669FF)
-            : Colors.grey,
+        borderColor:
+            addEventController.isSelectedEvent.value == index.toString()
+                ? const Color(0xff5669FF)
+                : Colors.grey,
         // height: 65,
         radius: 10,
 
         borderWidth:
-            addEventController.isSelectedEvent.value == index ? 2.0 : 1.0,
+            addEventController.isSelectedEvent.value == index.toString()
+                ? 2.0
+                : 1.2,
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
@@ -136,9 +147,10 @@ Widget eventListboxModel({
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: addEventController.isSelectedEvent.value == index
+                        color: addEventController.isSelectedEvent.value ==
+                                index.toString()
                             ? const Color(0xff5669FF)
-                            : Colors.black54,
+                            : Colors.black12,
                         // Outline color
                         width: 2, // Outline width
                       ),
@@ -172,7 +184,13 @@ Widget eventListboxModel({
                   ),
                   IconButton(
                       onPressed: () async {
-                        await Share.share('All most done!');
+                        await Share.share("Join us for Celebrate the event!"
+                            "Date: 01-09-2024"
+                            "Time: 20:30"
+                            "Meeting Code: 256255"
+                            "Organizer: Sathish"
+                            "Please confirm your attendance! For any questions or rescheduling, let me know."
+                            "Looking forward to seeing you there");
                       },
                       icon: const Icon(Icons.share))
                 ],
@@ -219,7 +237,7 @@ circleAvatarWidget({
       padding: const EdgeInsets.all(5.0),
       child: GestureDetector(
         onTap: () {
-          addEventController.isSelected.value = index;
+          addEventController.isRecomeded.value = index;
           addEventController.eventNameController.text =
               addEventController.recomeded[index]["title"].toString();
           dialogBox(type: "add event");
@@ -227,8 +245,8 @@ circleAvatarWidget({
         child: Container(
           decoration: BoxDecoration(
               border: Border.all(
-                  width: addEventController.isSelected.value == index ? 3 : 1,
-                  color: addEventController.isSelected.value == index
+                  width: addEventController.isRecomeded.value == index ? 3 : 1,
+                  color: addEventController.isRecomeded.value == index
                       ? const Color(0xff5669FF)
                       : Colors.grey.withOpacity(0.5)),
               borderRadius: const BorderRadius.all(Radius.circular(30))),

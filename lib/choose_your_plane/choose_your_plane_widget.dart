@@ -52,6 +52,11 @@ Widget choosePlaneWidget() {
                             .planeApiData.value.data![index].price
                             .toString(),
                         onPressed: () {
+                          chooseYourPlaneConroller.selectedPlane.value =
+                              chooseYourPlaneConroller
+                                  .planeApiData.value.data![index].id
+                                  .toString();
+
                           Get.toNamed("/summary");
                         },
                       ),

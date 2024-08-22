@@ -211,27 +211,27 @@ signUpWidget({required BuildContext context}) {
                     // FocusScope.of(Get.context!)
                     //     .requestFocus(signUpController.passwordFocusNode);
                   }),
-              Align(
-                  alignment: Alignment.topRight,
-                  child: TextButton(
-                      onPressed: () {
-                        signUpController.sendOtp.value =
-                            !signUpController.sendOtp.value;
-                      },
-                      child: signUpController.sendOtp.value
-                          ? const Text(
-                              "RESEND OTP",
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                              ),
-                            )
-                          : const Text("SEND OTP",
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                              )))),
-              // const SizedBox(
-              //   height: 10,
-              // ),
+              // Align(
+              //     alignment: Alignment.topRight,
+              //     child: TextButton(
+              //         onPressed: () {
+              //           signUpController.sendOtp.value =
+              //               !signUpController.sendOtp.value;
+              //         },
+              //         child: signUpController.sendOtp.value
+              //             ? const Text(
+              //                 "RESEND OTP",
+              //                 style: TextStyle(
+              //                   decoration: TextDecoration.underline,
+              //                 ),
+              //               )
+              //             : const Text("SEND OTP",
+              //                 style: TextStyle(
+              //                   decoration: TextDecoration.underline,
+              //                 )))),
+              const SizedBox(
+                height: 10,
+              ),
               if (signUpController.sendOtp.value) ...[
                 Center(
                   child: SizedBox(
@@ -282,37 +282,43 @@ signUpWidget({required BuildContext context}) {
                   height: 15,
                 ),
               ],
-              SizedBox(
-                height: 50,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                  child: DropdownButtonFormField(
-                    decoration: inputDecoration(
-                        prefixIcon: const Icon(
-                          Icons.circle,
-                          color: Colors.grey,
-                        ),
-                        label: 'Country',
-                        hint: '',
-                        prefix: const Text("")),
-                    items: const [
-                      DropdownMenuItem<String>(
-                        value: "India",
-                        child: Text("India"),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
+                child: DropdownButtonFormField(
+                  focusNode: signUpController.countryFocusNode,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'This field cannot be empty';
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: inputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.circle,
+                        color: Colors.grey,
                       ),
-                      DropdownMenuItem<String>(
-                        value: "UK",
-                        child: Text("UK"),
-                      ),
-                    ],
-                    onChanged: (s) {
-                      signUpController.countryController.text = s!;
-                    },
-                  ),
+                      label: 'Country',
+                      hint: '',
+                      prefix: const Text("")),
+                  items: const [
+                    DropdownMenuItem<String>(
+                      value: "India",
+                      child: Text("India"),
+                    ),
+                    DropdownMenuItem<String>(
+                      value: "UK",
+                      child: Text("UK"),
+                    ),
+                  ],
+                  onChanged: (s) {
+                    signUpController.countryController.text = s!;
+                  },
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               Align(
                 alignment: Alignment.centerLeft,
@@ -350,7 +356,7 @@ signUpWidget({required BuildContext context}) {
                   onPress: () {
                     if (signUpformKey.currentState?.validate() == true) {
                       if (signUpController.isChecked.value != true) {
-                        showSnackBarUsingGet(
+                        snackBar(
                             msg:
                                 'Please Accept Terms & Conditions and Policies',
                             isBadReqested: true);

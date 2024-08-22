@@ -38,7 +38,7 @@ Widget homeWidget() {
                         Get.toNamed("/addEventScreen");
                         // addEventController.eventListApi();
                       },
-                      text: "Creating event"),
+                      text: "Create event"),
                 ),
                 const WinngooText(
                   align: TextAlign.center,

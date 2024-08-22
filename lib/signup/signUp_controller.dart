@@ -83,7 +83,7 @@ class SignUpController extends GetxController {
       var jsonResponse = jsonDecode(responseBody);
       String successMessage = jsonResponse["message"];
 
-      showSnackBarUsingGet(isBadReqested: false, msg: successMessage);
+      snackBar(isBadReqested: false, msg: successMessage);
 
       Get.toNamed("/signIn");
     } else {
@@ -96,13 +96,13 @@ class SignUpController extends GetxController {
         if (errors.containsKey('email')) {
           final emailError =
               errors['email'][0]; // Access the first error message for email
-          showSnackBarUsingGet(isBadReqested: true, msg: emailError);
+          snackBar(isBadReqested: true, msg: emailError);
         }
 
         if (errors.containsKey('confirm_email')) {
           final confirmEmailError = errors['confirm_email']
               [0]; // Access the first error message for confirm email
-          showSnackBarUsingGet(isBadReqested: true, msg: confirmEmailError);
+          snackBar(isBadReqested: true, msg: confirmEmailError);
         }
       }
     }

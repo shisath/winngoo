@@ -21,11 +21,13 @@ class AddEventController extends GetxController {
   RxBool loader = false.obs;
   RxBool refreshLoader = false.obs;
   final RxString randomImage = "".obs;
+  RxString selectedId = "".obs;
 
   // TextEditingController evnetImageController = TextEditingController();
   var eventListApiData = EventList().obs;
-  RxInt isSelected = 0.obs;
-  RxInt isSelectedEvent = 0.obs;
+
+  RxInt isRecomeded = 0.obs;
+  RxString isSelectedEvent = "".obs;
   final emailFocusNode = FocusNode();
   final linkFocusNode = FocusNode();
   final eventNameFocusNode = FocusNode();
@@ -37,6 +39,8 @@ class AddEventController extends GetxController {
     eventNameController.text = "";
     eventTimeController.text = "";
     eventDateController.text = "";
+    isSelectedEvent.value = "";
+    selectedId.value = "";
   }
 
   List recomeded = [
@@ -53,7 +57,7 @@ class AddEventController extends GetxController {
       "image": babyPng,
     },
     {
-      "title": "Ribbon",
+      "title": "Shop Inauguration",
       "image": ribbonPng,
     },
   ].obs;
@@ -74,10 +78,8 @@ class AddEventController extends GetxController {
 
   createEventApi() async {
     GetStorage localStorage = GetStorage();
-    print(
-        "user id sk ${logInController.membersApiData.value.data![0].userId.toString()}");
     final String? token = localStorage.read('api_token');
-    await postMethod(
+    postMethod(
         statusCode: 201,
         endPoint: "eventscreate",
         token: token,
@@ -91,6 +93,7 @@ class AddEventController extends GetxController {
         setLoader: (s) {
           loader.value = s;
         });
+
     await eventListApi();
   }
 
