@@ -41,7 +41,7 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
                   ],
                 )),
           ),
-          Expanded(flex: 2, child: joinMeetingWidget(contex: context))
+          Expanded(flex: 2, child: joinMeetingWidget(contex: context)),
         ],
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/choose_your_plane/choose_your_plane_controller.dart';
+import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 
 import '../common_file/winngoo_widgets/winngoo_text.dart';
@@ -22,8 +23,8 @@ Widget choosePlaneWidget() {
               ),
             )
           : SizedBox(
-              height: MediaQuery.sizeOf(Get.context!).height,
-              width: MediaQuery.sizeOf(Get.context!).width * 0.8,
+              height: MediaQuery.sizeOf(Get.context!).height * 0.7,
+              width: MediaQuery.sizeOf(Get.context!).width * 0.9,
               child: ListView(
                   scrollDirection: Axis.vertical,
                   children: List.generate(
@@ -107,10 +108,14 @@ Widget planeCard(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const WinngooText(
+                    WinngooText(
                       text: "Premium",
                       weight: FontWeight.w600,
                       color: Colors.white,
+                      fontSize: headingSize,
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     WinngooText(
                       text: "\$$amount/Yr",
@@ -164,6 +169,7 @@ Widget iconTextModel({required String content}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Icon(
           Icons.check_circle,
@@ -173,9 +179,12 @@ Widget iconTextModel({required String content}) {
         const SizedBox(
           width: 5,
         ),
-        WinngooText(
-          text: content,
-          color: Colors.white,
+        Flexible(
+          child: WinngooText(
+            text: content,
+            align: TextAlign.start,
+            color: Colors.white,
+          ),
         )
       ],
     ),
