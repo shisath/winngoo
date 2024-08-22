@@ -285,9 +285,7 @@ Widget textField(
               suffixIcon: suffixIcon,
               label: label,
               hint: hint,
-              prefix: label == "Phone Number"
-                  ? const Text("91+ ")
-                  : const Text("")),
+              prefix: label == "Mobile No" ? const Text("+ ") : const Text("")),
           validator: validate,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: getInputSettings(type: label)["keyboardType"],

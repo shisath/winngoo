@@ -31,7 +31,7 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
                     onpress: () async {
                       await addEventController.eventListApi();
                       Get.back();
-                      Get.toNamed("/addEventScreen");
+                      Get.offNamed("/addEventScreen");
                     },
                     icon: Icons.home,
                     title: "Home"),

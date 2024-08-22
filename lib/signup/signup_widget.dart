@@ -204,13 +204,7 @@ signUpWidget({required BuildContext context}) {
                     Icons.phone,
                     color: Colors.grey,
                   ),
-                  validate: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Mobile number can't be empty";
-                    } else {
-                      return null;
-                    }
-                  },
+                  validate: validatePhoneNumber,
                   controller: signUpController.phoneNumber,
                   focusNode: signUpController.mobileNumberFocusNode,
                   onFieldSubmited: (val) {

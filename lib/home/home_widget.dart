@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/functions.dart';
+import '../common_file/getXcontroller.dart';
 
 Widget homeWidget() {
   return Center(
@@ -31,12 +31,15 @@ Widget homeWidget() {
                 const WinngooText(
                   text: "OR",
                 ),
-                buttonWidget(
-                    onPress: () {
-                      Get.toNamed("/addEventScreen");
-                      addEventController.eventListApi();
-                    },
-                    text: "Creating event"),
+                Obx(
+                  () => buttonWidget(
+                      isLoading: addEventController.refreshLoader.value,
+                      onPress: () {
+                        Get.toNamed("/addEventScreen");
+                        // addEventController.eventListApi();
+                      },
+                      text: "Creating event"),
+                ),
                 const WinngooText(
                   align: TextAlign.center,
                   text: "Bringing Conversations Closer, One Call at a Time.",

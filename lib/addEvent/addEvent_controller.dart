@@ -97,7 +97,11 @@ class AddEventController extends GetxController {
   eventListApi() async {
     addEventController.refreshLoader.value = true;
     print("api token ${logInController.token.value}");
-    var res = await getMethod(endPoint: 'events');
+    var res = await getMethod(
+        endPoint: 'events',
+        setLoader: (l) {
+          loader.value = l;
+        });
     if (res.toString().isNotEmpty) {
       // print("eventlist Response ${res['data']}");
       eventListApiData.value = eventListData(res);

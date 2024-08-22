@@ -21,7 +21,9 @@ class _AddEventScreenState extends State<AddEventScreen> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       addEventController.refreshLoader.value = true;
-      addEventController.cleaner();
+      // addEventController.cleaner();
+      addEventController.eventListApi();
+
       addEventController.getRandomImage();
       addEventController.refreshLoader.value = false;
     });

@@ -52,7 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 height: 60,
                               ),
                               summaryRowModel(
-                                  keyText: "Member ID",
+                                  keyText: "User ID",
                                   valueText: logInController.membersApiData
                                           .value.data![0].userId ??
                                       "",
@@ -84,7 +84,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               summaryRowModel(
                                   keyText: "Create at",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].createdAt ??
+                                          .value.data![0].createdAt
+                                          .toString()
+                                          .substring(0, 10) ??
                                       "",
                                   color: Colors.white),
                             ],

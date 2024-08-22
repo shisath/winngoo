@@ -27,12 +27,12 @@ var psycoPng = "assets/psyco.png";
 
 ///validation
 String? validatePhoneNumber(String? value) {
-  final phoneRegExp =
-      RegExp(r'^\+?[1-9]\d{1,14}$'); // Basic international phone number regex
+  final specificStartUKPhoneRegExp = RegExp(
+      r'^(?:\+4477|077)\d{8}$'); // UK mobile number starting with +4477 or 077
   if (value == null || value.isEmpty) {
     return 'This field cannot be empty';
-  } else if (!phoneRegExp.hasMatch(value) || value.length < 10) {
-    return 'Enter a valid phone number';
+  } else if (!specificStartUKPhoneRegExp.hasMatch(value)) {
+    return 'Mobile no starting with +4477 or 077';
   }
   return null;
 }
@@ -67,7 +67,7 @@ Map<String, dynamic> getInputSettings({required String type}) {
 
     case 'Mobile No':
       keyboardType = TextInputType.phone;
-      maxLength = 10;
+      maxLength = 11;
       inputFormatters = [FilteringTextInputFormatter.digitsOnly];
       break;
     case 'Select Your Date':
@@ -231,7 +231,11 @@ Future<String> postMethod({
   }
 }
 
-Future<dynamic> getMethod({required String endPoint}) async {
+Future<dynamic> getMethod({
+  required String endPoint,
+  Function(bool)? setLoader,
+}) async {
+  setLoader!(true);
   GetStorage localStorage = GetStorage();
   final String? token = localStorage.read('api_token');
   print(" token done $token");
@@ -242,7 +246,7 @@ Future<dynamic> getMethod({required String endPoint}) async {
   request.headers.addAll(headers);
 
   http.StreamedResponse response = await request.send();
-
+  setLoader(false);
   if (response.statusCode == 200) {
     var responseBody = await response.stream.bytesToString();
 
