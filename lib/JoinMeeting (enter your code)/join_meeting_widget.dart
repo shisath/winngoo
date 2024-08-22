@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import '../common_file/getXcontroller.dart';
+import '../conferenceUI/vedioConferenceScreen.dart';
 
 Widget joinMeetingWidget({required BuildContext contex}) {
   return SingleChildScrollView(
@@ -41,7 +43,13 @@ Widget joinMeetingWidget({required BuildContext contex}) {
           ),
           buttonWidget(
               onPress: () {
-                // Get.toNamed("/addEventScreen");
+                Get.to(
+                  VideoConferencePage(
+                    conferenceID: joinMeetingController.enterCode.text,
+                    userId: "sathish",
+                    userName: "kumar",
+                  ),
+                );
               },
               text: "Join"),
         ],
