@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
@@ -66,7 +65,7 @@ Future dialogBox({required String type}) {
                             return DatePickerDialog(
                               initialDate: DateTime.now(),
                               firstDate: DateTime.now(),
-                              lastDate: DateTime(2026),
+                              lastDate: DateTime(2030),
                               onDatePickerModeChange: (s) {
                                 // Navigator.of(context).pop();
                               },
@@ -189,7 +188,11 @@ Future dialogBox({required String type}) {
                         validate: (value) {
                           if (value == null || value.isEmpty) {
                             return "This field is required";
-                          } else {
+                          }
+                          // else if (value.length <= 12 && value.length >= 19) {
+                          //   return "Enter valid number";
+                          // }
+                          else {
                             return null;
                           }
                         },
@@ -204,36 +207,61 @@ Future dialogBox({required String type}) {
                       children: [
                         SizedBox(
                           width: 150,
-                          child: textField(
-                              context: context,
-                              heading: "Valid Thru",
-                              headingSize: contentSize,
-                              label: "MM/YYYY",
-                              hint: "",
-                              suffixIcon: const Icon(
-                                Icons.calendar_month,
-                                color: Colors.grey,
-                              ),
-                              validate: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return "This field is required";
-                                } else {
-                                  return null;
-                                }
-                              },
-                              controller: paymentController.validityDate,
-                              focusNode:
-                                  paymentController.validityDatefocusNode,
-                              onFieldSubmited: (val) {
-                                // FocusScope.of(Get.context!)
-                                //     .requestFocus(paymentController.ccvfocusNode);
-                              }),
+                          child: GestureDetector(
+                            onTap: () async {
+                              DateTime? selectedDate = await showDialog(
+                                  context: Get.context!,
+                                  builder: (BuildContext context) {
+                                    return DatePickerDialog(
+                                      initialDate: DateTime.now(),
+                                      firstDate: DateTime.now(),
+                                      lastDate: DateTime(2030),
+                                      onDatePickerModeChange: (s) {
+                                        // Navigator.of(context).pop();
+                                      },
+                                    );
+                                  });
+
+                              DateTime? finalDate = selectedDate?.toLocal();
+
+                              paymentController.validityDate.text =
+                                  DateFormat('MM-yyyy').format(finalDate!);
+                            },
+                            child: AbsorbPointer(
+                              absorbing: true,
+                              child: textField(
+                                  context: context,
+                                  heading: "Valid Thru",
+                                  headingSize: contentSize,
+                                  label: "MM/YYYY",
+                                  hint: "",
+                                  suffixIcon: const Icon(
+                                    Icons.calendar_month,
+                                    color: Colors.grey,
+                                  ),
+                                  validate: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return "This field is required";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                  controller: paymentController.validityDate,
+                                  focusNode:
+                                      paymentController.validityDatefocusNode,
+                                  onFieldSubmited: (val) {
+                                    // FocusScope.of(Get.context!)
+                                    //     .requestFocus(paymentController.ccvfocusNode);
+                                  }),
+                            ),
+                          ),
                         ),
                         SizedBox(
                           width: 150,
                           child: textField(
+                            obscureText: true,
                             context: context,
-                            heading: "CCV",
+                            heading: "CVV",
                             headingSize: contentSize,
                             label: "235****",
                             hint: "",
@@ -248,7 +276,7 @@ Future dialogBox({required String type}) {
                                 return null;
                               }
                             },
-                            controller: paymentController.ccv,
+                            controller: paymentController.cvv,
                             focusNode: paymentController.ccvfocusNode,
                           ),
                         ),
@@ -262,8 +290,8 @@ Future dialogBox({required String type}) {
                             onPress: () {
                               if (debitCardKey.currentState?.validate() ==
                                   true) {
-                                paymentController.cleaner();
-                                Navigator.of(context).pop();
+                                print("done sk");
+                                paymentController.makePaymentApi();
                               }
                             },
                             text: "PAY NOW")),
@@ -390,7 +418,7 @@ Future dialogBox({required String type}) {
 void showDialogBox({required String type}) {
   final couponKey = GlobalKey<FormState>();
 
-  final GetStorage localStorage = GetStorage();
+  // final GetStorage localStorage = GetStorage();
   showDialog(
     context: Get.context!,
     builder: (BuildContext context) {

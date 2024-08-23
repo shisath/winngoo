@@ -17,7 +17,11 @@ class SummaryController extends GetxController {
         setLoader: (l) {
           loader.value = l;
         },
-        success: (s) {});
+        success: (s) {
+          if (s == true) {
+            summaryController.priceApi();
+          }
+        });
     if (res.toString().isNotEmpty) {
       eventApiData.value = eventData(res);
 
@@ -41,7 +45,8 @@ class SummaryController extends GetxController {
       print('sk sds');
 
       priceApiData.value = priceData(res);
-
+      paymentController.totalAmount.value =
+          priceApiData.value.data!.priceWithVat.toString();
       print("sk donrs ${priceApiData.value.data!.minQuantity}");
     }
   }

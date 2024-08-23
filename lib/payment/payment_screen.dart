@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/images.dart';
@@ -31,37 +32,47 @@ class _PaymentScreenState extends State<PaymentScreen> {
       resizeToAvoidBottomInset: true,
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 5,
-              ),
-              WinngooText(
-                text: "Payment",
-                weight: FontWeight.w600,
-                fontSize: headingSize,
-              ),
-              Center(
-                child: Image.asset(
-                  paymentPng,
-                  height: 200,
+      body: Obx(
+        () => paymentController.loader.value
+            ? const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ))
+            : SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 16.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      WinngooText(
+                        text: "Payment",
+                        weight: FontWeight.w600,
+                        fontSize: headingSize,
+                      ),
+                      Center(
+                        child: Image.asset(
+                          paymentPng,
+                          height: 200,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      paymentWidget(),
+                      const SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              paymentWidget(),
-              const SizedBox(
-                height: 10,
-              )
-            ],
-          ),
-        ),
       ),
     );
   }

@@ -83,17 +83,25 @@ Widget yourEventWidget() {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 10),
                   child: eventListboxModel(
-                      id: addEventController
-                          .eventListApiData.value.data![index].id!
+                      id: addEventController.eventListApiData.value.data![index].id!
                           .toInt(),
+                      userData: addEventController
+                          .eventListApiData.value.data![index].user
+                          .toString(),
                       index: index,
                       image: winngooLogo,
-                      isPaid: true,
-                      title: addEventController
-                          .eventListApiData.value.data![index].name
+                      isPaid: addEventController.eventListApiData.value
+                              .data![index].user!.meetingCode
+                              .toString()
+                              .isNotEmpty
+                          ? true
+                          : false,
+                      title: addEventController.eventListApiData.value.data![index].name
                           .toString(),
-                      date: addEventController
-                          .eventListApiData.value.data![index].date
+                      date: addEventController.eventListApiData.value.data![index].date
+                          .toString(),
+                      inviteCode: addEventController
+                          .eventListApiData.value.data![index].user!.meetingCode
                           .toString()),
                 );
               })),
@@ -108,6 +116,8 @@ Widget eventListboxModel({
   required String date,
   required int index,
   required int id,
+  required String inviteCode,
+  required String userData,
 }) {
   return Obx(
     () => GestureDetector(
@@ -182,17 +192,26 @@ Widget eventListboxModel({
                       ),
                     ],
                   ),
-                  IconButton(
-                      onPressed: () async {
-                        await Share.share("Join us for Celebrate the event!"
-                            "Date: 01-09-2024"
-                            "Time: 20:30"
-                            "Meeting Code: 256255"
-                            "Organizer: Sathish"
-                            "Please confirm your attendance! For any questions or rescheduling, let me know."
-                            "Looking forward to seeing you there");
-                      },
-                      icon: const Icon(Icons.share))
+                  if (addEventController
+                          .eventListApiData.value.data![index].user!.meetingCode
+                          .toString()
+                          .isNotEmpty &&
+                      addEventController.eventListApiData.value.data![index]
+                              .user!.meetingCode !=
+                          null) ...[
+                    IconButton(
+                        onPressed: () async {
+                          await Share.share(
+                              "Join us for Celebrate the event through the WINNGOO GALA!"
+                              "Date: ${addEventController.eventListApiData.value.data![index].user!.updatedAt.toString().substring(0, 10)}"
+                              "Time:  ${addEventController.eventListApiData.value.data![index].time}"
+                              "Meeting Code: 256255"
+                              "Organizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()}"
+                              "Please confirm your attendance! For any questions or rescheduling, let me know."
+                              "Looking forward to seeing you there");
+                        },
+                        icon: const Icon(Icons.share))
+                  ]
                 ],
               ),
               Padding(

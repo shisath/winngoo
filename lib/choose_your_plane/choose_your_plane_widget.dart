@@ -59,7 +59,6 @@ Widget choosePlaneWidget() {
                                   .toString();
                           print("choose 1");
                           summaryController.eventApi();
-                          summaryController.priceApi();
                         },
                       ),
                     );

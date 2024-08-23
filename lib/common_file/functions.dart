@@ -190,20 +190,35 @@ Future<String> postMethod({
         String successMessage = jsonResponse["message"];
         snackBar(isBadReqested: true, msg: successMessage);
       }
-      if (jsonResponse.containsKey('errors')) {
-        final errors = jsonResponse['errors'];
 
-        if (errors.containsKey('error')) {
-          final emailError =
-              errors['error']; // Access the first error message for email
+      if (jsonResponse.containsKey('error')) {
+        final errors = jsonResponse['error'];
+      }
+
+      if (jsonResponse.containsKey('error')) {
+        final errors = jsonResponse['error'];
+
+        if (errors.containsKey('card_number')) {
+          final emailError = errors['card_number']
+              [0]; // Access the first error message for email
           snackBar(isBadReqested: true, msg: emailError);
         }
+        if (errors.containsKey('card_number')) {
+          final emailError = errors['card_number']
+              [0]; // Access the first error message for email
+          snackBar(isBadReqested: true, msg: emailError);
+        }
+      }
+
+      if (jsonResponse.containsKey('errors')) {
+        final errors = jsonResponse['errors'];
 
         if (errors.containsKey('email')) {
           final emailError =
               errors['email'][0]; // Access the first error message for email
           snackBar(isBadReqested: true, msg: emailError);
         }
+
         if (errors.containsKey('name')) {
           final emailError =
               errors['name'][0]; // Access the first error message for email
