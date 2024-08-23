@@ -12,35 +12,34 @@ class SplashScreen extends StatelessWidget {
     return AnimatedSplashScreen(
       backgroundColor: Colors.transparent,
       // pageTransitionType: PageTransitionType.bottomToTopPop,
-      nextRoute: "/callPage",
+      nextRoute: "/conference",
       curve: Curves.easeIn,
       animationDuration: const Duration(seconds: 5),
       splash: Stack(
         children: [
           Center(
             child: LottieBuilder.asset(
-              "asset/lottie/cakesplash.json",
+              "assets/lottie/cakesplash.json",
               // backgroundLoading: false,
             ),
           ),
           Center(
             child: LottieBuilder.asset(
-              "asset/lottie/flower2.json",
+              "assets/lottie/flower2.json",
               // backgroundLoading: false,
             ),
           )
         ],
       ),
       nextScreen: VideoConferencePage(
-        conferenceID:
-            logInController.membersApiData.value.data![0].userId.toString(),
-        userId: conferenceController.userId.text,
-        userName: conferenceController.userName.text,
+        conferenceID: joinMeetingController.enterCode.text,
+        userId: joinMeetingController.enterCode.text,
+        userName: joinMeetingController.enterCode.text,
       ),
       centered: true,
       splashIconSize: 500,
       splashTransition: SplashTransition.fadeTransition,
-      duration: 3800,
+      duration: 3,
     );
   }
 }

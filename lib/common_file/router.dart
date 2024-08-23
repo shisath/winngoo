@@ -6,6 +6,8 @@ import 'package:winggoo/common_file/getXcontroller.dart';
 import '../JoinMeeting (enter your code)/join_meeting_screen.dart';
 import '../LogIn/login_screen.dart';
 import '../addEvent/addEvent_Screen.dart';
+import '../conferenceUI/splashScreen.dart';
+import '../conferenceUI/vedioConferenceScreen.dart';
 import '../documents/aboutUs_screen.dart';
 import '../documents/privacyPolicy_screen.dart';
 import '../documents/terms&cond_screen.dart';
@@ -110,6 +112,20 @@ final routes = [
   GetPage(
       name: '/thankYou',
       page: () => const ThankYouScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
+  GetPage(
+      name: '/splash',
+      page: () => const SplashScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
+  GetPage(
+      name: '/conference',
+      page: () => VideoConferencePage(
+            conferenceID: joinMeetingController.enterCode.text,
+            userId: joinMeetingController.enterCode.text,
+            userName: joinMeetingController.enterCode.text,
+          ),
       transition: Transition.fadeIn,
       binding: HomeBinding()),
 ];

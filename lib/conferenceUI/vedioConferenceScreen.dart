@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/widgets.dart';
+import 'package:winggoo/conferenceUI/splashScreen.dart';
 import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
 
 class VideoConferencePage extends StatefulWidget {
@@ -74,15 +76,14 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
               left: _position.dx,
               top: _position.dy,
               child: Draggable(
-                feedback:
-                    _buildDraggableButton(), // What is shown while dragging
-                child: _buildDraggableButton(), // The actual button
+                feedback: _buildDraggableButton(), // The actual button
                 childWhenDragging: Container(), // What is shown when dragging
                 onDragUpdate: (details) {
                   setState(() {
                     _position = details.globalPosition;
                   });
-                },
+                }, // What is shown while dragging
+                child: _buildDraggableButton(),
               ),
             ),
           ],
@@ -95,9 +96,7 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
     return ElevatedButton(
       onPressed: () {
         // Your button action here
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Button pressed')),
-        );
+        Get.toNamed('/splash');
       },
       child: Text('Drag Me'),
     );
