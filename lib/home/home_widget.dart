@@ -4,8 +4,10 @@ import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
+import '../addEvent/addEvent_controller.dart';
 import '../common_file/functions.dart';
-import '../common_file/getXcontroller.dart';
+
+final addEventController = Get.put(AddEventController());
 
 Widget homeWidget() {
   return Center(

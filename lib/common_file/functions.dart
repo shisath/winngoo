@@ -179,7 +179,10 @@ Future<String> postMethod({
       //   isBadReqested: true,
       //   msg: jsonResponse["errors"]["error"],
       // );
-
+      if (jsonResponse.toString().contains("message")) {
+        String successMessage = jsonResponse["message"];
+        snackBar(isBadReqested: true, msg: successMessage);
+      }
       if (jsonResponse.containsKey('errors')) {
         final errors = jsonResponse['errors'];
 

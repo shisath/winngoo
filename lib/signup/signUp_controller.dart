@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:winggoo/common_file/functions.dart';
 
 import '../common_file/widgets.dart';
+import 'model/countryModel.dart';
 
 class SignUpController extends GetxController {
   TextEditingController fullNameController = TextEditingController();
@@ -22,7 +24,7 @@ class SignUpController extends GetxController {
 
   RxBool passwordObsecure = true.obs;
   RxBool confirmPasswordObsecure = true.obs;
-
+  var countryApiData = CountryApi().obs;
   final fullnameFocusNode = FocusNode();
   final surnameFocusNode = FocusNode();
   final emailFocusNode = FocusNode();
@@ -105,6 +107,18 @@ class SignUpController extends GetxController {
           snackBar(isBadReqested: true, msg: confirmEmailError);
         }
       }
+    }
+  }
+
+  countryApi() async {
+    var res = await getMethod(
+      endPoint: "countries",
+      setLoader: (s) {},
+    );
+
+    if (res.toString().isNotEmpty) {
+      countryApiData.value = countryModelData(res);
+      print("sk done ${countryApiData.value.data![0].name}");
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -282,39 +284,38 @@ signUpWidget({required BuildContext context}) {
                   height: 15,
                 ),
               ],
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
-                child: DropdownButtonFormField(
-                  focusNode: signUpController.countryFocusNode,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'This field cannot be empty';
-                    } else {
-                      return null;
-                    }
-                  },
-                  decoration: inputDecoration(
-                      prefixIcon: const Icon(
-                        Icons.circle,
-                        color: Colors.grey,
-                      ),
-                      label: 'Country',
-                      hint: '',
-                      prefix: const Text("")),
-                  items: const [
-                    DropdownMenuItem<String>(
-                      value: "India",
-                      child: Text("India"),
-                    ),
-                    DropdownMenuItem<String>(
-                      value: "UK",
-                      child: Text("UK"),
-                    ),
-                  ],
-                  onChanged: (s) {
-                    signUpController.countryController.text = s!;
-                  },
+              Obx(
+                () => Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5.0, vertical: 2.0),
+                  child: DropdownButtonFormField(
+                    focusNode: signUpController.countryFocusNode,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'This field cannot be empty';
+                      } else {
+                        return null;
+                      }
+                    },
+                    decoration: inputDecoration(
+                        prefixIcon: const Icon(
+                          Icons.circle,
+                          color: Colors.grey,
+                        ),
+                        label: 'Country',
+                        hint: '',
+                        prefix: const Text("")),
+                    items: signUpController.countryApiData.value.data!
+                        .map((country) {
+                      return DropdownMenuItem<String>(
+                        value: country.name,
+                        child: Text(country.name.toString()),
+                      );
+                    }).toList(),
+                    onChanged: (s) {
+                      signUpController.countryController.text = s!;
+                    },
+                  ),
                 ),
               ),
               const SizedBox(

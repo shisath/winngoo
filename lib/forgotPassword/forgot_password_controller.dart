@@ -13,7 +13,7 @@ class ForgotPasswordController extends GetxController {
     try {
       postMethod(
           token: "",
-          endPoint: 'forgot-password',
+          endPoint: 'send-verification-code',
           body: {
             "email": mailController.text,
           },

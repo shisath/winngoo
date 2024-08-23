@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:winggoo/common_file/functions.dart';
 
 class EnterNewPasswordController extends GetxController {
@@ -24,7 +21,7 @@ class EnterNewPasswordController extends GetxController {
       token: "",
       endPoint: 'reset-password',
       body: {
-        "token": "vIqvZlO6ebH7tGJXB2KiXUmYEl3oqdVKvAq8Ne",
+        // "token": "vIqvZlO6ebH7tGJXB2KiXUmYEl3oqdVKvAq8Ne",
         "email": emailController.text,
         "password": passwordController.text,
         "password_confirmation": confirmPasswordController.text
