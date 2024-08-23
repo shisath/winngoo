@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
@@ -11,14 +12,28 @@ Widget summaryWidget() {
     radius: 10,
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 9.0, horizontal: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          summaryRowModel(keyText: "Event name", valueText: "Birthday event"),
-          summaryRowModel(keyText: "Date", valueText: "02/02/2024"),
-          summaryRowModel(keyText: "Time", valueText: "7.00 AM"),
-          summaryRowModel(keyText: "No. of people", valueText: "5"),
-        ],
+      child: Obx(
+        () => Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            summaryRowModel(
+                keyText: "Event name",
+                valueText:
+                    "${summaryController.eventApiData.value.data!.name}"),
+            summaryRowModel(
+                keyText: "Date",
+                valueText:
+                    "${summaryController.eventApiData.value.data!.date}"),
+            summaryRowModel(
+                keyText: "Time",
+                valueText:
+                    "${summaryController.eventApiData.value.data!.time}"),
+            summaryRowModel(
+                keyText: "No. of people",
+                valueText:
+                    "${summaryController.eventApiData.value.data!.name}"),
+          ],
+        ),
       ),
     ),
   );

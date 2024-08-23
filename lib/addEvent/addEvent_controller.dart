@@ -80,6 +80,7 @@ class AddEventController extends GetxController {
     GetStorage localStorage = GetStorage();
     final String? token = localStorage.read('api_token');
     postMethod(
+        success: (s) {},
         statusCode: 201,
         endPoint: "eventscreate",
         token: token,

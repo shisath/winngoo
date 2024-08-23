@@ -12,6 +12,7 @@ class ForgotPasswordController extends GetxController {
   forgotPassword() async {
     try {
       postMethod(
+          success: (s) {},
           token: "",
           endPoint: 'send-verification-code',
           body: {

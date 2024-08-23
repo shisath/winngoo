@@ -39,7 +39,11 @@ class ProfileController extends GetxController {
     final String? token = localStorage.read('api_token');
 
     var a = await postMethod(
-        endPoint: "logout", token: token, setLoader: (s) {}, body: {});
+        success: (s) {},
+        endPoint: "logout",
+        token: token,
+        setLoader: (s) {},
+        body: {});
 
     if (a.toString().isNotEmpty) {
       localStorage.remove('api_token');

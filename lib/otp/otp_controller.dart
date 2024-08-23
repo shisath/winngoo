@@ -1,10 +1,17 @@
 import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 
 class OtpController extends GetxController {
+  TextEditingController verificationCode = TextEditingController();
   var countdown = 30.obs; // Observable variable
-
+  RxBool loader = false.obs;
   Timer? _timer;
+
   @override
   void onInit() {
     super.onInit();
@@ -28,5 +35,25 @@ class OtpController extends GetxController {
   void onClose() {
     _timer?.cancel();
     super.onClose();
+  }
+
+  otpVerification() async {
+    GetStorage localStorage = GetStorage();
+    final String? token = localStorage.read('api_token');
+
+    var res = await postMethod(
+        endPoint: "verify-code",
+        body: {
+          "email": forgotPasswordController.mailController.text,
+          "code": verificationCode.text,
+        },
+        token: "",
+        setLoader: (s) {},
+        success: (s) {
+          if (s == true) {
+            Get.toNamed("/enterNewPassword");
+          }
+        });
+    // if (res.toString().isNotEmpty) {}
   }
 }

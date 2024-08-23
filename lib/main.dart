@@ -4,11 +4,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:winggoo/logIn/login_screen.dart';
 
 import 'LogIn/login_controller.dart';
+import 'common_file/getXcontroller.dart';
 import 'common_file/router.dart';
 
 void main() async {
   await GetStorage.init();
-  // HomeBinding();
+
   Get.put(LogInController());
   runApp(const MyApp());
 }
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: const LogInScreen(),
+      initialBinding: HomeBinding(),
       getPages: routes,
       initialRoute: '/signIn',
     );

@@ -24,7 +24,9 @@ otpWidget() {
           height: 50,
         ),
         PinCodeTextField(
-          onChanged: (a) {},
+          onChanged: (a) {
+            otpController.verificationCode.text = a;
+          },
           appContext: Get.context!,
           animationDuration: const Duration(milliseconds: 300),
           pinTheme: PinTheme(
@@ -43,8 +45,9 @@ otpWidget() {
           height: 30,
         ),
         buttonWidget(
+            isLoading: otpController.loader.value,
             onPress: () {
-              Get.toNamed("/enterNewPassword");
+              otpController.otpVerification();
 
               // Get.toNamed('/homeScreen');
             },

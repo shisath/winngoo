@@ -36,10 +36,10 @@ class Data {
   String? email;
   Null? emailVerifiedAt;
   String? country;
-  int? agreement;
+  String? agreement;
   String? createdAt;
   String? updatedAt;
-  String? userId;
+  String? user_id;
   Null? inviteCode;
   Null? invitedBy;
 
@@ -54,7 +54,7 @@ class Data {
       this.agreement,
       this.createdAt,
       this.updatedAt,
-      this.userId,
+      this.user_id,
       this.inviteCode,
       this.invitedBy});
 
@@ -69,7 +69,7 @@ class Data {
     agreement = json['agreement'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    userId = json['user_id'];
+    user_id = json['user_id'];
     inviteCode = json['invite_code'];
     invitedBy = json['invited_by'];
   }
@@ -86,7 +86,7 @@ class Data {
     data['agreement'] = this.agreement;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['user_id'] = this.userId;
+    data['user_id'] = this.user_id;
     data['invite_code'] = this.inviteCode;
     data['invited_by'] = this.invitedBy;
     return data;

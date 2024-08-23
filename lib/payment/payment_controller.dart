@@ -38,6 +38,7 @@ class PaymentController extends GetxController {
     final String? token = localStorage.read('api_token');
 
     var a = await postMethod(
+        success: (s) {},
         endPoint: "apply-discount",
         body: {"discount_id": couponCode.text},
         token: token,

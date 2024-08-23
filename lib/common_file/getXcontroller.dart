@@ -15,6 +15,7 @@ import '../profile/profile_controller.dart';
 import '../resetPassword/reset_password_controller.dart';
 import '../shedule_date_time/shedule_date_time_controller.dart';
 import '../signup/signUp_controller.dart';
+import '../summary/summary_controller.dart';
 
 class HomeBinding extends Bindings {
   @override
@@ -31,6 +32,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut(() => ChooseYourPlaneController());
     Get.lazyPut(() => PaymentController());
     Get.lazyPut(() => ProfileController());
+    Get.lazyPut(() => SummaryController());
     Get.lazyPut(() => Documentcontroller());
     Get.lazyPut(() => JoinMeetingController());
     Get.lazyPut(() => ConferenceController());
@@ -71,3 +73,4 @@ final profileController = Get.find<ProfileController>();
 final docController = Get.find<Documentcontroller>();
 final joinMeetingController = Get.find<JoinMeetingController>();
 final conferenceController = Get.find<ConferenceController>();
+final summaryController = Get.find<SummaryController>();

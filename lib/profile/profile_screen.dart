@@ -54,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               summaryRowModel(
                                   keyText: "User ID",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].userId ??
+                                          .value.data![0].user_id ??
                                       "",
                                   color: Colors.white),
                               summaryRowModel(

@@ -53,6 +53,7 @@ class LogInController extends GetxController {
       print(logInLoader.value);
       final String? token = localStorage.read('api_token');
       dynamic res = await postMethod(
+          success: (s) {},
           token: "",
           endPoint: 'login',
           body: {
@@ -86,11 +87,12 @@ class LogInController extends GetxController {
   }
 
   membersApi() async {
-    var res = await getMethod(endPoint: "members");
+    print("Members API");
+    var res = await getMethod(endPoint: "members", setLoader: (s) {});
     if (res.toString().isNotEmpty) {
       membersApiData.value = membersData(res);
-      localStorage.write('userId', membersApiData.value.data![0].userId);
-      print('user Id ${membersApiData.value.data![0].userId}');
+      localStorage.write('userId', membersApiData.value.data![0].user_id);
+      print('user Id ${membersApiData.value.data![0].user_id}');
     }
   }
 }

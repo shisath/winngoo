@@ -107,6 +107,8 @@ Future<String> postMethod({
   bool? isGetOff,
   required String? token,
   required Function(bool) setLoader,
+  required Function(bool) success,
+
   // required Function(String) apiToken,
 }) async {
   try {
@@ -126,16 +128,19 @@ Future<String> postMethod({
         'Authorization': 'Bearer $token',
       };
     }
-
+    print("enterOne 1");
     var request = http.Request(
       'POST',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'),
     );
 
+    print("enterOne 2");
     request.body = json.encode(body);
+    print("enterOne 3");
     request.headers.addAll(headers);
-
+    print("enterOne 4");
     http.StreamedResponse response = await request.send();
+    print("enterOne 5");
     if (response.statusCode == (statusCode ?? 200)) {
       print("print 1");
       String responseBody = await response.stream.bytesToString();
@@ -145,6 +150,8 @@ Future<String> postMethod({
       // apiToken(jsonResponse["data"]['token']);
       // solosathish7@gmail.com
       // sk123123
+      success(true);
+
       print("print 3");
       if (jsonResponse.toString().contains("message")) {
         String successMessage = jsonResponse["message"];
@@ -171,7 +178,7 @@ Future<String> postMethod({
       String responseBody = await response.stream.bytesToString();
       var jsonResponse = jsonDecode(responseBody);
       print("bad response1 $jsonResponse");
-
+      success(false);
       // String successMessage = jsonResponse["message"];
       // print("bad response2 $successMessage");
 
@@ -236,23 +243,30 @@ Future<String> postMethod({
 
 Future<dynamic> getMethod({
   required String endPoint,
-  Function(bool)? setLoader,
+  required Function(bool) setLoader,
 }) async {
-  setLoader!(true);
+  print('1');
+  setLoader(true);
   GetStorage localStorage = GetStorage();
   final String? token = localStorage.read('api_token');
+  print('2');
   print(" token done $token");
+  print('3');
   var headers = {'Authorization': 'Bearer $token'};
+  print('4');
   var request = http.Request('GET',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'));
+  print('4');
   request.body = '''''';
   request.headers.addAll(headers);
-
+  print('5');
   http.StreamedResponse response = await request.send();
+  print('6');
   setLoader(false);
   if (response.statusCode == 200) {
+    print('7');
     var responseBody = await response.stream.bytesToString();
-
+    print('8');
     print("${responseBody}");
 
     return responseBody;
