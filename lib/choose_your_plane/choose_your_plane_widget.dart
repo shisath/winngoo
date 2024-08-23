@@ -7,6 +7,7 @@ import 'package:winggoo/choose_your_plane/choose_your_plane_controller.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 
+import '../common_file/getXcontroller.dart ';
 import '../common_file/winngoo_widgets/winngoo_text.dart';
 
 final chooseYourPlaneConroller = Get.find<ChooseYourPlaneController>();
@@ -56,8 +57,9 @@ Widget choosePlaneWidget() {
                               chooseYourPlaneConroller
                                   .planeApiData.value.data![index].id
                                   .toString();
-
-                          Get.toNamed("/summary");
+                          print("choose 1");
+                          summaryController.eventApi();
+                          summaryController.priceApi();
                         },
                       ),
                     );

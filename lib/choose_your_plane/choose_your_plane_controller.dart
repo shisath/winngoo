@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
-import 'package:winggoo/common_file/getXcontroller.dart';
 
 import 'model/planeDetails.dart';
 
@@ -26,7 +25,8 @@ class ChooseYourPlaneController extends GetxController {
         endPoint: "prices",
         setLoader: (s) {
           loader.value = s;
-        });
+        },
+        success: (s) {});
 
     if (res.toString().isNotEmpty) {
       planeApiData.value = planeDetailsData(res);
@@ -34,7 +34,5 @@ class ChooseYourPlaneController extends GetxController {
 
       print('plane details ${planeApiData.value.data![0].minQuantity}');
     }
-
-    summaryController.eventApi();
   }
 }

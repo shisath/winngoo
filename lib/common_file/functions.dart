@@ -244,9 +244,11 @@ Future<String> postMethod({
 Future<dynamic> getMethod({
   required String endPoint,
   required Function(bool) setLoader,
+  required Function(bool) success,
 }) async {
   print('1');
   setLoader(true);
+
   GetStorage localStorage = GetStorage();
   final String? token = localStorage.read('api_token');
   print('2');
@@ -263,14 +265,17 @@ Future<dynamic> getMethod({
   http.StreamedResponse response = await request.send();
   print('6');
   setLoader(false);
+
   if (response.statusCode == 200) {
     print('7');
     var responseBody = await response.stream.bytesToString();
+    success(true);
     print('8');
     print("${responseBody}");
 
     return responseBody;
   } else {
+    success(false);
     print(response.reasonPhrase);
     return snackBar(isBadReqested: true, msg: "Please Contact Admin");
   }

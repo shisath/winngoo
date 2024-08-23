@@ -105,7 +105,8 @@ class AddEventController extends GetxController {
         endPoint: 'events',
         setLoader: (l) {
           loader.value = l;
-        });
+        },
+        success: (s) {});
     if (res.toString().isNotEmpty) {
       // print("eventlist Response ${res['data']}");
       eventListApiData.value = eventListData(res);

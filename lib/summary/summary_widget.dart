@@ -6,32 +6,28 @@ import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 Widget summaryWidget() {
-  return WinngooBox(
-    width: MediaQuery.sizeOf(Get.context!).width * 10,
-    borderColor: Colors.grey,
-    radius: 10,
-    child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 9.0, horizontal: 10),
-      child: Obx(
-        () => Column(
+  return Obx(
+    () => WinngooBox(
+      width: MediaQuery.sizeOf(Get.context!).width * 10,
+      borderColor: Colors.grey,
+      radius: 10,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 9.0, horizontal: 10),
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             summaryRowModel(
                 keyText: "Event name",
                 valueText:
-                    "${summaryController.eventApiData.value.data!.name}"),
+                    summaryController.eventApiData.value.data!.name ?? ""),
             summaryRowModel(
                 keyText: "Date",
                 valueText:
-                    "${summaryController.eventApiData.value.data!.date}"),
+                    summaryController.eventApiData.value.data!.date ?? ""),
             summaryRowModel(
                 keyText: "Time",
                 valueText:
-                    "${summaryController.eventApiData.value.data!.time}"),
-            summaryRowModel(
-                keyText: "No. of people",
-                valueText:
-                    "${summaryController.eventApiData.value.data!.name}"),
+                    summaryController.eventApiData.value.data!.time ?? ""),
           ],
         ),
       ),
@@ -40,21 +36,35 @@ Widget summaryWidget() {
 }
 
 Widget planeSummaryWidget() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      WinngooText(
-        text: "Plane Details",
-        weight: FontWeight.w600,
-      ),
-      const SizedBox(
-        height: 10,
-      ),
-      summaryRowModel(keyText: "Plane name", valueText: "Birthday event"),
-      summaryRowModel(keyText: "Date", valueText: "02/02/2024"),
-      summaryRowModel(keyText: "Time", valueText: "7.00 AM"),
-      summaryRowModel(keyText: "No. of people", valueText: "05"),
-    ],
+  return Obx(
+    () => Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const WinngooText(
+          text: "Plane Details",
+          weight: FontWeight.w600,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        summaryRowModel(keyText: "Plane name", valueText: "PREMIUM"),
+        summaryRowModel(
+            keyText: "No of person",
+            valueText:
+                "${summaryController.priceApiData.value.data!.minQuantity ?? ""} - ${summaryController.priceApiData.value.data!.maxQuantity ?? ""} "),
+        summaryRowModel(
+            keyText: "Amount",
+            valueText: summaryController.priceApiData.value.data!.price ?? ""),
+        summaryRowModel(
+            keyText: "VAT",
+            valueText: summaryController.priceApiData.value.data!.vat ?? ""),
+        const Divider(),
+        summaryRowModel(
+            keyText: "TOTAL AMOUNT",
+            valueText:
+                summaryController.priceApiData.value.data!.priceWithVat ?? ""),
+      ],
+    ),
   );
 }
 

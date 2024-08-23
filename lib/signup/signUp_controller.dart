@@ -112,9 +112,7 @@ class SignUpController extends GetxController {
 
   countryApi() async {
     var res = await getMethod(
-      endPoint: "countries",
-      setLoader: (s) {},
-    );
+        endPoint: "countries", setLoader: (s) {}, success: (s) {});
 
     if (res.toString().isNotEmpty) {
       countryApiData.value = countryModelData(res);
