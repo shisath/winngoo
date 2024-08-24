@@ -70,7 +70,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                           child: WinngooText(
                             text: "Your events",
                             fontSize: headingSize,
-                            weight: FontWeight.w500,
+                            weight: FontWeight.w600,
                           ),
                         ),
                       ],

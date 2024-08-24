@@ -24,7 +24,7 @@ Widget recommendWidget() {
               WinngooText(
                 text: "Recommend",
                 fontSize: headingSize,
-                weight: FontWeight.w500,
+                weight: FontWeight.w600,
               ),
               buttonWidgetSmall(
                   width: 150.00,
