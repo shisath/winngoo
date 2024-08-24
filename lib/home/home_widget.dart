@@ -29,7 +29,7 @@ Widget homeWidget() {
                     onPress: () {
                       Get.toNamed("/joinMeeting");
                     },
-                    text: "Join event"),
+                    text: "JOIN EVENT"),
                 const WinngooText(
                   text: "OR",
                 ),
@@ -40,7 +40,7 @@ Widget homeWidget() {
                         Get.toNamed("/addEventScreen");
                         // addEventController.eventListApi();
                       },
-                      text: "Create event"),
+                      text: "CREAT EVENT"),
                 ),
                 const WinngooText(
                   align: TextAlign.center,

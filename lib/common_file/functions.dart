@@ -8,8 +8,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:winggoo/common_file/widgets.dart';
 
-///Global Colors
+///Get storage
+GetStorage localStorage = GetStorage();
 
+///Global Colors
 Color? primaryColor = const Color(0xff5669FF);
 Color? primaryColor2 = const Color(0xff3D50DF);
 Color? secondarycolor = const Color(0xff4a5fed);
@@ -261,31 +263,30 @@ Future<dynamic> getMethod({
   required Function(bool) setLoader,
   required Function(bool) success,
 }) async {
-  print('1');
+  print('post 1');
   setLoader(true);
 
-  GetStorage localStorage = GetStorage();
   final String? token = localStorage.read('api_token');
-  print('2');
+  print('post 2');
   print(" token done $token");
-  print('3');
+  print('post 3');
   var headers = {'Authorization': 'Bearer $token'};
-  print('4');
+  print('post 4');
   var request = http.Request('GET',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'));
-  print('4');
+  print('post 4');
   request.body = '''''';
   request.headers.addAll(headers);
-  print('5');
+  print('post 5');
   http.StreamedResponse response = await request.send();
-  print('6');
+  print('post 6');
   setLoader(false);
 
   if (response.statusCode == 200) {
-    print('7');
+    print('post 7');
     var responseBody = await response.stream.bytesToString();
     success(true);
-    print('8');
+    print('post 8');
     print("${responseBody}");
 
     return responseBody;

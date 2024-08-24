@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
@@ -12,13 +13,16 @@ class SummaryController extends GetxController {
   var priceApiData = PriceData().obs;
 
   eventApi() async {
+    final String? eventId = localStorage.read('selectedEventId');
+    print('eventApi running ${addEventController.selectedId.value}');
     var res = await getMethod(
-        endPoint: 'events/${addEventController.selectedId.value}',
+        endPoint: 'events/$eventId',
         setLoader: (l) {
           loader.value = l;
         },
         success: (s) {
           if (s == true) {
+            print('pricing Api');
             summaryController.priceApi();
           }
         });
@@ -30,9 +34,9 @@ class SummaryController extends GetxController {
   }
 
   priceApi() async {
-    print('sk runniung');
+    final String? selectedPlane = localStorage.read('selectedPlaneId');
     var res = await getMethod(
-        endPoint: 'prices/${chooseYourPlaneController.selectedPlane.value}',
+        endPoint: 'prices/$selectedPlane',
         setLoader: (l) {
           loader.value = l;
         },

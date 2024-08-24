@@ -35,28 +35,28 @@ class SignUpController extends GetxController {
   final confirmPasswordFocusNode = FocusNode();
   final countryFocusNode = FocusNode();
 
-  @override
-  void dispose() {
-    fullNameController.dispose();
-    surNameController.dispose();
-    emailController.dispose();
-    confirmEmailController.dispose();
-    phoneNumber.dispose();
-    yourPasswordController.dispose();
-    confirmPasswordController.dispose();
-    enterOTPController.dispose();
-    countryController.dispose();
-    fullnameFocusNode.dispose();
-    surnameFocusNode.dispose();
-    emailFocusNode.dispose();
-    confirmEmailFocusNode.dispose();
-    mobileNumberFocusNode.dispose();
-    enterOTPFocusNode.dispose();
-    passwordFocusNode.dispose();
-    confirmPasswordFocusNode.dispose();
-    countryFocusNode.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   fullNameController.dispose();
+  //   surNameController.dispose();
+  //   emailController.dispose();
+  //   confirmEmailController.dispose();
+  //   phoneNumber.dispose();
+  //   yourPasswordController.dispose();
+  //   confirmPasswordController.dispose();
+  //   enterOTPController.dispose();
+  //   countryController.dispose();
+  //   fullnameFocusNode.dispose();
+  //   surnameFocusNode.dispose();
+  //   emailFocusNode.dispose();
+  //   confirmEmailFocusNode.dispose();
+  //   mobileNumberFocusNode.dispose();
+  //   enterOTPFocusNode.dispose();
+  //   passwordFocusNode.dispose();
+  //   confirmPasswordFocusNode.dispose();
+  //   countryFocusNode.dispose();
+  //   super.dispose();
+  // }
 
   signUpApi() async {
     signUpLoader.value = true;
@@ -112,7 +112,15 @@ class SignUpController extends GetxController {
 
   countryApi() async {
     var res = await getMethod(
-        endPoint: "countries", setLoader: (s) {}, success: (s) {});
+        endPoint: "countries",
+        setLoader: (s) {
+          signUpLoader.value = s;
+        },
+        success: (s) {
+          if (s == true) {
+            Get.toNamed("/signUp");
+          }
+        });
 
     if (res.toString().isNotEmpty) {
       countryApiData.value = countryModelData(res);

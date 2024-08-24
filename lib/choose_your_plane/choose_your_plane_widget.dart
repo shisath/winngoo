@@ -16,7 +16,8 @@ Widget choosePlaneWidget() {
   return SingleChildScrollView(
     child: Obx(
       () => chooseYourPlaneConroller.planeApiData.value.data == null
-          ? const Center(
+          ? const Align(
+              alignment: Alignment.center,
               child: WinngooText(
                 text: "No plane Available",
                 color: Colors.black,
@@ -33,16 +34,21 @@ Widget choosePlaneWidget() {
                       (index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 10),
+                          horizontal: 10.0, vertical: 10),
                       child: planeCard(
                         widget: Column(
                           children: [
+                            iconTextModel(content: "HD Vedio Call"),
                             iconTextModel(
-                              content:
-                                  "No. of persons  ${chooseYourPlaneConroller.planeApiData.value.data![index].minQuantity.toString()} - ${chooseYourPlaneConroller.planeApiData.value.data![index].maxQuantity.toString()} ",
+                              content: "Screen Sharing",
                             ),
                             iconTextModel(
                               content: "Unlimited chatting",
+                            ),
+                            iconTextModel(content: "Infinite Messaging"),
+                            iconTextModel(
+                              content:
+                                  "Up to ${chooseYourPlaneConroller.planeApiData.value.data![index].maxQuantity.toString()} Participants",
                             ),
                             iconTextModel(
                               content: "Unlimited call durations",
@@ -57,7 +63,9 @@ Widget choosePlaneWidget() {
                               chooseYourPlaneConroller
                                   .planeApiData.value.data![index].id
                                   .toString();
-                          print("choose 1");
+                          localStorage.write('selectedPlaneId',
+                              chooseYourPlaneConroller.selectedPlane.value);
+
                           summaryController.eventApi();
                         },
                       ),
@@ -67,26 +75,6 @@ Widget choosePlaneWidget() {
     ),
   );
 }
-
-// Widget choosePlaneWidgets() {
-//   return SingleChildScrollView(
-//     child: Obx(
-//       () => Column(
-//         children: [
-//           for (var i
-//               in chooseYourPlaneConroller.planeApiData.value.data ?? []) ...[
-//             planeCard(widget:  iconTextModel(content: "" ),
-//                amount: i["amount"],
-//               onPressed: () {
-//                 Get.toNamed("/summary");
-//               },
-//             )
-//           ]
-//         ],
-//       ),
-//     ),
-//   );
-// }
 
 Widget planeCard(
     {required dynamic amount,
@@ -115,7 +103,7 @@ Widget planeCard(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     WinngooText(
-                      text: "Premium",
+                      text: " Premium",
                       weight: FontWeight.w600,
                       color: Colors.white,
                       fontSize: headingSize,
@@ -124,7 +112,7 @@ Widget planeCard(
                       height: 5,
                     ),
                     WinngooText(
-                      text: "\$$amount/Yr",
+                      text: " \$$amount/Yr",
                       weight: FontWeight.w600,
                       color: Colors.white,
                       fontSize: 22,
@@ -133,17 +121,6 @@ Widget planeCard(
                   ],
                 ),
               ),
-
-              // Expanded(
-              //     flex: 3,
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //       children: [
-              //         for (var i in spec) ...[
-              //           iconTextModel(content: i),
-              //         ]
-              //       ],
-              //     )),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

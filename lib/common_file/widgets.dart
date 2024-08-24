@@ -186,6 +186,8 @@ Widget buttonWidget(
                     height: 24,
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      strokeWidth: 4.0,
+                      // color: Colors.red,
                     ))
                 : (icon ??
                     const Icon(

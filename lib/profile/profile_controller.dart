@@ -40,16 +40,22 @@ class ProfileController extends GetxController {
     final String? token = localStorage.read('api_token');
 
     var a = await postMethod(
-        success: (s) {},
-        endPoint: "logout",
-        token: token,
-        setLoader: (s) {},
-        body: {});
+      endPoint: "logout",
+      token: token,
+      setLoader: (s) {},
+      body: {},
+      success: (s) {
+        if (s == true) {
+          localStorage.remove('api_token');
+          localStorage.remove('selectedEventId');
+          localStorage.remove('selectedPlaneId');
+          Get.offNamed("/signIn");
+          // Get.reload();
+        }
+      },
+    );
 
-    if (a.toString().isNotEmpty) {
-      localStorage.remove('api_token');
-      Get.offNamed("/signIn");
-    }
+    if (a.toString().isNotEmpty) {}
   }
 
 // postProfile() async {

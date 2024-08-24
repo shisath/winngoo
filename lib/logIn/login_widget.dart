@@ -143,13 +143,24 @@ logInWidget({required BuildContext context}) {
                   ),
                   TextButton(
                     onPressed: () {
-                      Get.toNamed("/signUp");
+                      signUpController.countryApi();
                     },
-                    child: Text(
-                      "Sign up",
-                      style:
-                          TextStyle(color: primaryColor, fontSize: contentSize),
-                    ),
+                    child: signUpController.signUpLoader.value
+                        ? const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 17.0),
+                            child: SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  color: Colors.red,
+                                  strokeWidth: 3.0,
+                                )),
+                          )
+                        : Text(
+                            "Sign up",
+                            style: TextStyle(
+                                color: primaryColor, fontSize: contentSize),
+                          ),
                   ),
                 ],
               ),

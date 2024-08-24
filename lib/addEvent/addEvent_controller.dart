@@ -10,7 +10,6 @@ import '../common_file/getXcontroller.dart';
 import 'model/eventList.dart';
 
 class AddEventController extends GetxController {
-  GetStorage localStorage = GetStorage();
   TextEditingController emailController = TextEditingController();
   TextEditingController linkController = TextEditingController();
   TextEditingController eventNameController = TextEditingController();
@@ -77,7 +76,6 @@ class AddEventController extends GetxController {
   }
 
   createEventApi() async {
-    GetStorage localStorage = GetStorage();
     final String? token = localStorage.read('api_token');
     postMethod(
         success: (s) {},
@@ -89,7 +87,6 @@ class AddEventController extends GetxController {
           "date": eventDateController.text,
           "time": eventTimeController.text,
           "user_id": logInController.membersApiData.value.data![0].id.toString()
-          //
         },
         setLoader: (s) {
           loader.value = s;

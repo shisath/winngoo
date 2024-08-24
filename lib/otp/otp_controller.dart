@@ -12,11 +12,11 @@ class OtpController extends GetxController {
   RxBool loader = false.obs;
   Timer? _timer;
 
-  @override
-  void onInit() {
-    super.onInit();
-    // startTimer();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   // startTimer();
+  // }
 
   void startTimer() {
     countdown.value = 30;
@@ -38,7 +38,6 @@ class OtpController extends GetxController {
   }
 
   otpVerification() async {
-    GetStorage localStorage = GetStorage();
     final String? token = localStorage.read('api_token');
 
     var res = await postMethod(

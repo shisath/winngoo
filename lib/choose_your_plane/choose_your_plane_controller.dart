@@ -26,11 +26,14 @@ class ChooseYourPlaneController extends GetxController {
         setLoader: (s) {
           loader.value = s;
         },
-        success: (s) {});
+        success: (s) {
+          if (s == true) {
+            Get.toNamed("/chooseYourPlane");
+          }
+        });
 
     if (res.toString().isNotEmpty) {
       planeApiData.value = planeDetailsData(res);
-      Get.toNamed("/chooseYourPlane");
 
       print('plane details ${planeApiData.value.data![0].minQuantity}');
     }

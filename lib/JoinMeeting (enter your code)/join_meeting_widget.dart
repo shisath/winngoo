@@ -17,25 +17,12 @@ Widget joinMeetingWidget({required BuildContext contex}) {
             height: 40,
           ),
           textField(
-              heading: 'Enter Your Code',
+              heading: 'Enter your meeting code',
               controller: joinMeetingController.enterCode,
               label: "Enter your code",
               hint: "",
               context: contex,
-              validate: (Sg) {}),
-          const SizedBox(
-            height: 20,
-          ),
-          const WinngooText(
-            text: "OR",
-          ),
-          textField(
-              heading: 'Enter Your Link',
-              controller: joinMeetingController.enterCode,
-              label: "Enter your Link",
-              hint: "",
-              context: contex,
-              validate: (Stng) {
+              validate: (s) {
                 return null;
               }),
           const SizedBox(

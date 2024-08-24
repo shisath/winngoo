@@ -22,6 +22,9 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      logInController.membersApi();
+    });
     return Scaffold(
       endDrawer: const CustomeDrawer(),
       body: Obx(

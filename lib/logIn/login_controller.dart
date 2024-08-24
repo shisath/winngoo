@@ -27,24 +27,24 @@ class LogInController extends GetxController {
     mailController.text = "sk@sk.com";
     passwordController.text = "111111";
   }
+  //
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   // Initialize your controllers and focus nodes
+  //   mailController = TextEditingController();
+  //   passwordController = TextEditingController();
+  //
+  //   mailFocusNode = FocusNode();
+  //   passwordFocusNode = FocusNode();
+  // }
 
-  @override
-  void onInit() {
-    super.onInit();
-    // Initialize your controllers and focus nodes
-    mailController = TextEditingController();
-    passwordController = TextEditingController();
-
-    mailFocusNode = FocusNode();
-    passwordFocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    mailFocusNode.dispose();
-    passwordFocusNode.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   mailFocusNode.dispose();
+  //   passwordFocusNode.dispose();
+  //   super.dispose();
+  // }
 
   signInApi() async {
     try {

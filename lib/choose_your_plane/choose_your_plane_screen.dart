@@ -17,6 +17,10 @@ class ChooseYourPlaneScreen extends StatefulWidget {
 class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      chooseYourPlaneConroller.planeApi();
+    });
+
     return Scaffold(
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),

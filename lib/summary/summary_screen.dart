@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:winggoo/common_file/getXcontroller.dart%20';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/summary/summary_widget.dart';
@@ -11,6 +12,10 @@ class SummaryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      summaryController.eventApi();
+    });
+
     return Scaffold(
       floatingActionButton: buttonWidget(
           onPress: () {
