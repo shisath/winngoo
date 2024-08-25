@@ -43,14 +43,15 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
                           children: [
                             Image.asset(
                               chooseYourPlanePng,
-                              height: 120,
+                              height: 140,
+                              width: 160,
                             ),
-                            WinngooText(
-                              text: "Choose Your Plane",
-                              color: Colors.white,
-                              weight: FontWeight.w600,
-                              fontSize: contentSize,
-                            ),
+                            // WinngooText(
+                            //   text: "Choose Your Plane",
+                            //   color: Colors.white,
+                            //   weight: FontWeight.w600,
+                            //   fontSize: contentSize,
+                            // ),
                             const SizedBox(
                               height: 10,
                             )

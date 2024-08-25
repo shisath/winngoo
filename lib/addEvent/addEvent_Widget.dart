@@ -129,8 +129,6 @@ Widget eventListboxModel({
         localStorage.write('selectedEventId', id.toString());
 
         print('selected id sk $id');
-
-        // addEventController.eventListApi();
       },
       child: WinngooBox(
         width: MediaQuery.sizeOf(Get.context!).width,

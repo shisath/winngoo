@@ -38,9 +38,8 @@ Widget homeWidget() {
                       isLoading: addEventController.refreshLoader.value,
                       onPress: () {
                         Get.toNamed("/addEventScreen");
-                        // addEventController.eventListApi();
                       },
-                      text: "CREAT EVENT"),
+                      text: "CREATE EVENT"),
                 ),
                 const WinngooText(
                   align: TextAlign.center,

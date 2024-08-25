@@ -1,6 +1,8 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
+import '../common_file/functions.dart';
+import 'model/privacyModel.dart';
 
-class Documentcontroller extends GetxController {
+class DocumentController extends GetxController {
   List<Map<String, dynamic>> content = [
     {
       "aboutUs": [
@@ -130,4 +132,34 @@ class Documentcontroller extends GetxController {
       ]
     }
   ];
+  var privacyData = PrivacyModelData().obs;
+  var termsData = PrivacyModelData().obs;
+  var aboutData = PrivacyModelData().obs;
+
+  privacyApi() async {
+    final res = await getMethod(
+        endPoint: "privacy", setLoader: (s) {}, success: (s) {});
+
+    if (res.toString().isEmpty) {
+      privacyData.value = privacyModelData(res);
+    }
+  }
+
+  termsApi() async {
+    final res =
+        await getMethod(endPoint: "terms", setLoader: (s) {}, success: (s) {});
+
+    if (res.toString().isEmpty) {
+      privacyData.value = privacyModelData(res);
+    }
+  }
+
+  aboutUsApi() async {
+    final res = await getMethod(
+        endPoint: "aboutus", setLoader: (s) {}, success: (s) {});
+
+    if (res.toString().isEmpty) {
+      privacyData.value = privacyModelData(res);
+    }
+  }
 }

@@ -76,6 +76,7 @@ class AddEventController extends GetxController {
   }
 
   createEventApi() async {
+    print("Event create api");
     final String? token = localStorage.read('api_token');
     postMethod(
         success: (s) {},
@@ -96,6 +97,7 @@ class AddEventController extends GetxController {
   }
 
   eventListApi() async {
+    print("Event list api");
     addEventController.refreshLoader.value = true;
     print("api token ${logInController.token.value}");
     var res = await getMethod(

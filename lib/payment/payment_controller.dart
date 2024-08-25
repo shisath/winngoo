@@ -5,13 +5,13 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:winggoo/common_file/functions.dart';
 
 import '../common_file/getXcontroller.dart ';
+import '../documents/model/privacyModel.dart';
 import 'model/discountApply.dart';
 
 class PaymentController extends GetxController {
   final GetStorage localStorage = GetStorage();
   var discountApplyApi = DiscountApplyModel().obs;
   RxString totalAmount = "0.0".obs;
-
   RxBool loader = false.obs;
 
   TextEditingController couponCode = TextEditingController();
@@ -115,16 +115,3 @@ class PaymentController extends GetxController {
     }
   }
 }
-// body: {
-// "amount": totalAmount.value.toString(),
-// "currency": "usd",
-// "card_name": cdCardHolderName.text,
-// "card_number": cdCardNumber.text,
-// "cvv": cvv.text,
-// "expiry_month": validityDate.text.split("-")[0].toString(),
-// "expiry_year": validityDate.text.split("-")[1].toString(),
-// "token": "tok_visa", // Use a valid test token from Stripe
-// "user_id":
-// logInController.membersApiData.value.data![0].user_id?.text,
-// "event_id": addEventController.selectedId.value.text
-// },

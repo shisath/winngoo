@@ -33,7 +33,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut(() => PaymentController());
     Get.lazyPut(() => ProfileController());
     Get.lazyPut(() => SummaryController());
-    Get.lazyPut(() => Documentcontroller());
+    Get.lazyPut(() => DocumentController());
     Get.lazyPut(() => JoinMeetingController());
     Get.lazyPut(() => ConferenceController());
   }
@@ -70,7 +70,7 @@ final enterNewPasswordController = Get.find<EnterNewPasswordController>();
 final chooseYourPlaneController = Get.find<ChooseYourPlaneController>();
 final paymentController = Get.find<PaymentController>();
 final profileController = Get.find<ProfileController>();
-final docController = Get.find<Documentcontroller>();
+final docController = Get.find<DocumentController>();
 final joinMeetingController = Get.find<JoinMeetingController>();
 final conferenceController = Get.find<ConferenceController>();
 final summaryController = Get.find<SummaryController>();

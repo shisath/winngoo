@@ -41,7 +41,7 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
                       Get.toNamed("/profile");
                     },
                     icon: Icons.person_outline,
-                    title: "profile"),
+                    title: "Profile"),
                 iconButton(
                     onpress: () {
                       Get.back();

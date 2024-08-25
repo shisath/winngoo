@@ -13,6 +13,7 @@ class SummaryController extends GetxController {
   var priceApiData = PriceData().obs;
 
   eventApi() async {
+    print('summary event Api running');
     final String? eventId = localStorage.read('selectedEventId');
     print('eventApi running ${addEventController.selectedId.value}');
     var res = await getMethod(
@@ -28,12 +29,11 @@ class SummaryController extends GetxController {
         });
     if (res.toString().isNotEmpty) {
       eventApiData.value = eventData(res);
-
-      print("sk donr ${eventApiData.value.data!.name}");
     }
   }
 
   priceApi() async {
+    print('summary price');
     final String? selectedPlane = localStorage.read('selectedPlaneId');
     var res = await getMethod(
         endPoint: 'prices/$selectedPlane',
@@ -51,7 +51,6 @@ class SummaryController extends GetxController {
       priceApiData.value = priceData(res);
       paymentController.totalAmount.value =
           priceApiData.value.data!.priceWithVat.toString();
-      print("sk donrs ${priceApiData.value.data!.minQuantity}");
     }
   }
 }

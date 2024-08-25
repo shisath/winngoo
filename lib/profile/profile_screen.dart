@@ -1,12 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
-
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_dialogBox.dart';
@@ -131,22 +129,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                         )),
-                    Positioned(
-                      top: MediaQuery.sizeOf(context).height * 0.04,
-                      width: MediaQuery.sizeOf(context).width * 1.3,
-                      child: GestureDetector(
-                        onTap: () {
-                          showDialogBox(type: 'galary');
-                        },
-                        child: const CircleAvatar(
-                          radius: 18,
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            // shadows: [Shadow(color: Colors.black)],
-                            weight: 1,
-                            Icons.camera_alt_rounded,
-                            color: Colors.black54,
-                            size: 25,
+                    Obx(
+                      () => Positioned(
+                        top: MediaQuery.sizeOf(context).height * 0.04,
+                        width: MediaQuery.sizeOf(context).width * 1.3,
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialogBox(type: 'galary');
+                          },
+                          child: CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.white,
+                            child: profileController.loader.value
+                                ? SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Colors.red),
+                                      strokeWidth: 3.0,
+                                    ))
+                                : Icon(
+                                    // shadows: [Shadow(color: Colors.black)],
+                                    weight: 1,
+                                    Icons.camera_alt_rounded,
+                                    color: Colors.black54,
+                                    size: 25,
+                                  ),
                           ),
                         ),
                       ),

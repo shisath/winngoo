@@ -20,6 +20,8 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
+
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,

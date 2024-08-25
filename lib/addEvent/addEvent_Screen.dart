@@ -39,7 +39,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                 snackBar(msg: "Please select an event", isBadReqested: true);
               }
             },
-            text: "Next",
+            text: "NEXT",
             isLoading: chooseYourPlaneController.loader.value),
         appBar: buildAppBar(),
         endDrawer: const CustomeDrawer(),
