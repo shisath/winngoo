@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:winggoo/common_file/functions.dart';
 
@@ -193,17 +192,15 @@ Widget eventListboxModel({
                       ),
                     ],
                   ),
-                  if (addEventController
-                          .eventListApiData.value.data![index].user!.meetingCode
-                          .toString()
-                          .isNotEmpty &&
+                  if (addEventController.eventListApiData.value.data![index]
+                              .transactions!.length >
+                          0 &&
                       addEventController.eventListApiData.value.data![index]
-                              .user!.meetingCode !=
-                          null) ...[
+                          .transactions!.isNotEmpty) ...[
                     IconButton(
                         onPressed: () async {
                           await Share.share(
-                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].user!.updatedAt.toString().substring(0, 10)} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: 256255 \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
+                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].user!.createdAt.toString().substring(0, 10)} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: 256255 \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
                         },
                         icon: const Icon(Icons.share))
                   ]
