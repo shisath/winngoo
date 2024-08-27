@@ -200,7 +200,7 @@ Widget eventListboxModel({
                     IconButton(
                         onPressed: () async {
                           await Share.share(
-                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].user!.createdAt.toString().substring(0, 10)} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: 256255 \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
+                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].user!.createdAt.toString().substring(0, 10)} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: ${addEventController.eventListApiData.value.data![index].user!.meetingCode.toString()} \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
                         },
                         icon: const Icon(Icons.share))
                   ]

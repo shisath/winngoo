@@ -207,10 +207,10 @@ Future<String> postMethod({
 
       if (jsonResponse.containsKey('error')) {
         final errors = jsonResponse['error'];
-      }
-
-      if (jsonResponse.containsKey('error')) {
-        final errors = jsonResponse['error'];
+        if (jsonResponse.containsKey('error')) {
+          final errors = jsonResponse['error'];
+          snackBar(isBadReqested: true, msg: errors);
+        }
 
         if (errors.containsKey('card_number')) {
           final emailError = errors['card_number']
