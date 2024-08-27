@@ -556,8 +556,9 @@ void showDialogBox({required String type}) {
                             width: 100.00,
                             height: 30.00,
                             onPress: () async {
+                              profileController.getProfilePicture();
                               Navigator.of(context).pop();
-                              await profileController.cameraPicker();
+                              // await profileController.cameraPicker();
                             },
                             text: "Take a photo"),
                         buttonWidgetSmall(
@@ -572,14 +573,8 @@ void showDialogBox({required String type}) {
                       ],
                     ),
                   ),
-                  buttonWidgetSmall(
-                      buttonTextSize: contentSize - 2,
-                      width: 100.00,
-                      height: 30.00,
-                      onPress: () {
-                        Navigator.of(context).pop();
-                      },
-                      text: "Cancel"),
+
+                  ///text field
                 ],
               ),
             ),

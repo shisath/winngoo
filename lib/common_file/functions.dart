@@ -167,6 +167,10 @@ Future<String> postMethod({
         String successMessage = jsonResponse["message"];
         snackBar(isBadReqested: false, msg: successMessage);
       }
+      if (jsonResponse.toString().contains("error")) {
+        String successMessage = jsonResponse["error"];
+        snackBar(isBadReqested: false, msg: successMessage);
+      }
       print("print 4");
 
       ///Routes
@@ -208,11 +212,6 @@ Future<String> postMethod({
       if (jsonResponse.containsKey('error')) {
         final errors = jsonResponse['error'];
 
-        if (errors.containsKey('card_number')) {
-          final emailError = errors['card_number']
-              [0]; // Access the first error message for email
-          snackBar(isBadReqested: true, msg: emailError);
-        }
         if (errors.containsKey('card_number')) {
           final emailError = errors['card_number']
               [0]; // Access the first error message for email
@@ -271,30 +270,30 @@ Future<dynamic> getMethod({
   required Function(bool) setLoader,
   required Function(bool) success,
 }) async {
-  print('post 1');
+  print('get 1');
   setLoader(true);
 
   final String? token = localStorage.read('api_token');
-  print('post 2');
-  print(" token done $token");
-  print('post 3');
+  print('get 2');
+  print('get 3');
   var headers = {'Authorization': 'Bearer $token'};
-  print('post 4');
+  print('get 4');
   var request = http.Request('GET',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'));
-  print('post 4');
+  print('get 4');
   request.body = '''''';
   request.headers.addAll(headers);
-  print('post 5');
+  print('get 5');
   http.StreamedResponse response = await request.send();
-  print('post 6');
-  setLoader(false);
+  print('get 6');
+  print('get 66 ${response.statusCode}');
+  // setLoader(false);
 
   if (response.statusCode == 200) {
-    print('post 7');
+    print('get 7');
     var responseBody = await response.stream.bytesToString();
     success(true);
-    print('post 8');
+    print('get 8');
     print("${responseBody}");
 
     return responseBody;

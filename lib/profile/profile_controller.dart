@@ -1,18 +1,24 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/widgets.dart';
+
+import 'model/getImageModel.dart';
 
 class ProfileController extends GetxController {
   GetStorage localStorage = GetStorage();
   TextEditingController signInMailController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
+  RxString networkImage = "".obs;
+  var getImageData = GetImageModel().obs;
   var selectedMedia = Rxn<XFile>();
   RxBool loader = false.obs;
   final ImagePicker _imagePicker = ImagePicker();
@@ -76,6 +82,7 @@ class ProfileController extends GetxController {
 
       final String? token = localStorage.read('api_token');
       final imageFile = File(selectedMedia.value!.path);
+      String fileName = path.basename(imageFile.path);
 
       if (token == null || selectedMedia.value == null) {
         print("Token or image is missing");
@@ -89,12 +96,13 @@ class ProfileController extends GetxController {
         Uri.parse(
             'https://winngoogala.winngooconsultancy.in/api/profile-photo'),
       );
-
+      print('final name $fileName');
       // If you have the mime type of the file, uncomment the content type part.
       request.files.add(await http.MultipartFile.fromPath(
         'photo',
 
         // "/data/user/0/com.example.winngoo/cache/7817122b-8be5-4ebc-bd9b-2bca8c7a5738/IMG-20240820-WA0008.jpg"
+
         imageFile.path,
         // contentType: MediaType.parse(mimeType),
       ));
@@ -107,6 +115,7 @@ class ProfileController extends GetxController {
 
         loader.value = false;
         var jsonResponse = jsonDecode(responseBody);
+        await getProfilePicture();
         snackBar(msg: jsonResponse['message'], isBadReqested: false);
       } else {
         loader.value = false;
@@ -121,14 +130,33 @@ class ProfileController extends GetxController {
   }
 
   getProfilePicture() async {
-    var res = getMethod(
-        endPoint: "profile_get",
-        setLoader: (s) {
-          if (s == true) {
-            loader.value = s;
-          }
-        },
-        success: (s) {});
-    if (res == "") {}
+    final String? token = localStorage.read('api_token');
+
+    var headers = {'Authorization': 'Bearer $token'};
+    var request = http.Request('GET',
+        Uri.parse('https://winngoogala.winngooconsultancy.in/api/profile-get'));
+    request.body = '''''';
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      var responseBody = await response.stream.bytesToString();
+
+      getImageData.value = getImageModel(responseBody);
+      // String localFilePath = getImageData.value.photoUrl.toString();
+
+      networkImage.value = getImageData.value.photoUrl.toString();
+      // Check if the file exists at the path
+
+      // // Assign the path to the XFile object
+      //
+      // selectedMedia.value = XFile(localFilePath);
+      // print('Profile picture stored: ${selectedMedia.value!.path}');
+      //
+      // print('Profile picture stored: ${selectedMedia.value!.path}');
+    } else {
+      print('bad responde get image ${response.reasonPhrase}');
+    }
   }
 }

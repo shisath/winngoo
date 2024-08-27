@@ -22,20 +22,22 @@ class _AddEventScreenState extends State<AddEventScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      addEventController.refreshLoader.value = true;
       addEventController.eventListApi();
       addEventController.getRandomImage();
+      addEventController.refreshLoader.value = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      addEventController.refreshLoader.value = true;
-      // addEventController.cleaner();
-      // addEventController.eventListApi();
-      // addEventController.getRandomImage();
-      addEventController.refreshLoader.value = false;
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //
+    //   // addEventController.cleaner();
+    //   // addEventController.eventListApi();
+    //   // addEventController.getRandomImage();
+    //
+    // });
 
     return Obx(
       () => Scaffold(

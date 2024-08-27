@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
+
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_dialogBox.dart';
@@ -19,10 +19,17 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
-  Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      logInController.membersApi();
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await logInController.membersApi();
+      await profileController.getProfilePicture();
     });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: const CustomeDrawer(),
       body: Obx(
@@ -111,21 +118,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: CircleAvatar(
                             radius: 75,
                             child: ClipOval(
-                              child:
-                                  profileController.selectedMedia.value != null
-                                      ? Image.file(
-                                          File(profileController
-                                              .selectedMedia.value!.path),
-                                          fit: BoxFit.cover,
-                                          width: 140,
-                                          height: 150,
-                                        )
-                                      : Image.asset(
-                                          winngooLogo,
-                                          fit: BoxFit.cover,
-                                          height: 150,
-                                          width: 150,
-                                        ),
+                              child: profileController
+                                      .networkImage.value.isNotEmpty
+                                  ? Image.network(
+                                      profileController.networkImage.value,
+                                      fit: BoxFit.cover,
+                                      height: 150,
+                                      width: 150,
+                                    )
+                                  : Image.asset(
+                                      winngooLogo,
+                                      fit: BoxFit.cover,
+                                      height: 150,
+                                      width: 150,
+                                    ),
                             ),
                           ),
                         )),

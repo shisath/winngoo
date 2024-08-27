@@ -41,7 +41,7 @@ class Data {
   String? updatedAt;
   String? user_id;
   Null? inviteCode;
-  Null? invitedBy;
+  String? invitedBy;
 
   Data(
       {this.id,
