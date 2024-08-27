@@ -111,6 +111,8 @@ class PaymentController extends GetxController {
         success: (s) {
           if (s == true) {
             Navigator.of(Get.context!).pop();
+
+            Get.offAll('/addEventScreen');
           }
         });
 

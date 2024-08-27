@@ -78,7 +78,11 @@ class AddEventController extends GetxController {
     print("Event create api");
     final String? token = localStorage.read('api_token');
     postMethod(
-        success: (s) {},
+        success: (s) async {
+          if (s == true) {
+            await eventListApi();
+          }
+        },
         statusCode: 201,
         endPoint: "eventscreate",
         token: token,
@@ -91,8 +95,6 @@ class AddEventController extends GetxController {
         setLoader: (s) {
           loader.value = s;
         });
-
-    await eventListApi();
   }
 
   eventListApi() async {
