@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
-import '../common_file/functions.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 import '../common_file/winngoo_widgets/winngoo_drawer.dart';
@@ -16,11 +14,14 @@ class ChooseYourPlaneScreen extends StatefulWidget {
 
 class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
   @override
-  Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      chooseYourPlaneConroller.planeApi();
-    });
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    chooseYourPlaneConroller.planeApi();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),

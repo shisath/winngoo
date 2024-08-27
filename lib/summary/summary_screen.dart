@@ -7,15 +7,26 @@ import 'package:winggoo/summary/summary_widget.dart';
 
 import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 
-class SummaryScreen extends StatelessWidget {
+class SummaryScreen extends StatefulWidget {
   const SummaryScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<SummaryScreen> createState() => _SummaryScreenState();
+}
+
+class _SummaryScreenState extends State<SummaryScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       summaryController.eventApi();
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: buttonWidget(
           onPress: () {

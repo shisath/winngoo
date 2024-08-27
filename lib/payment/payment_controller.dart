@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/widgets.dart';
 
 import '../common_file/getXcontroller.dart ';
-import '../documents/model/privacyModel.dart';
 import 'model/discountApply.dart';
 
 class PaymentController extends GetxController {
@@ -85,7 +85,9 @@ class PaymentController extends GetxController {
 
   makePaymentApi() async {
     final String? token = localStorage.read('api_token');
+    final String? userId = localStorage.read('userId');
     print("date   ${validityDate.text.split("-")[0].toString()}");
+    print("date   ${validityDate.text.split("-")[1].toString()}");
     print("date   ${validityDate.text.split("-")[1].toString()}");
     var res = await postMethod(
         endPoint: "make-payment",
@@ -98,9 +100,9 @@ class PaymentController extends GetxController {
           "expiry_month": validityDate.text.split("-")[0].toString(),
           "expiry_year": validityDate.text.split("-")[1].toString(),
           "token": "tok_visa",
-          "user_id":
-              logInController.membersApiData.value.data![0].user_id.toString(),
-          "event_id": addEventController.selectedId.value
+          "user_id": userId,
+          "event_id": addEventController.selectedId.value,
+          "price_id": chooseYourPlaneController.selectedPlane.value
         },
         token: token,
         setLoader: (s) {},
@@ -112,6 +114,20 @@ class PaymentController extends GetxController {
       Navigator.of(Get.context!).pop();
 
       cleaner();
+    }
+  }
+
+  void validation() {
+    if (cdCardHolderName.text == "") {
+      snackBar(msg: "Please enter card holder name", isBadReqested: true);
+    } else if (cdCardNumber.text == "") {
+      snackBar(msg: "Please enter card number", isBadReqested: true);
+    } else if (validityDate.text == "") {
+      snackBar(msg: "Please select valid date", isBadReqested: true);
+    } else if (cvv.text == "") {
+      snackBar(msg: "Please enter cvv number", isBadReqested: true);
+    } else {
+      makePaymentApi();
     }
   }
 }

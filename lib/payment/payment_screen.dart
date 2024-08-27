@@ -17,11 +17,16 @@ class PaymentScreen extends StatefulWidget {
 
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       paymentController.cleaner();
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       // floatingActionButton: buttonWidget(
       //     onPress: () {

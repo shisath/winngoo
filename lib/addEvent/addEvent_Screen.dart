@@ -18,13 +18,22 @@ class AddEventScreen extends StatefulWidget {
 
 class _AddEventScreenState extends State<AddEventScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      addEventController.eventListApi();
+      addEventController.getRandomImage();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       addEventController.refreshLoader.value = true;
       // addEventController.cleaner();
-      addEventController.eventListApi();
-
-      addEventController.getRandomImage();
+      // addEventController.eventListApi();
+      // addEventController.getRandomImage();
       addEventController.refreshLoader.value = false;
     });
 

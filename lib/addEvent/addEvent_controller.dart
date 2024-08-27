@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/images.dart';
 
