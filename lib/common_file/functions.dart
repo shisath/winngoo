@@ -153,8 +153,12 @@ Future<String> postMethod({
       // solosathish7@gmail.com
       // sk123123
       success(true);
-
+      print("post response ${jsonResponse.toString()}");
       print("print 3");
+      if (jsonResponse.toString().contains("success")) {
+        String successMessage = jsonResponse["success"];
+        snackBar(isBadReqested: false, msg: successMessage);
+      }
       if (jsonResponse.toString().contains("message")) {
         String successMessage = jsonResponse["message"];
         snackBar(isBadReqested: false, msg: successMessage);

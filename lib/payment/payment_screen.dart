@@ -38,7 +38,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       appBar: buildAppBar(),
       endDrawer: const CustomeDrawer(),
       body: Obx(
-        () => paymentController.loader.value
+        () => paymentController.makePaymentLoader.value
             ? const SizedBox(
                 width: 24,
                 height: 24,

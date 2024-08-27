@@ -12,7 +12,7 @@ class PaymentController extends GetxController {
   final GetStorage localStorage = GetStorage();
   var discountApplyApi = DiscountApplyModel().obs;
   RxString totalAmount = "0.0".obs;
-  RxBool loader = false.obs;
+  RxBool makePaymentLoader = false.obs;
 
   TextEditingController couponCode = TextEditingController();
   TextEditingController cdCardHolderName = TextEditingController();
@@ -50,7 +50,7 @@ class PaymentController extends GetxController {
         body: {"discount_id": couponCode.text},
         token: token,
         setLoader: (s) {
-          loader.value = s;
+          makePaymentLoader.value = s;
         });
     if (res.isNotEmpty) {
       discountApplyApi.value = discountApplyModel(res);
@@ -105,14 +105,16 @@ class PaymentController extends GetxController {
           "price_id": chooseYourPlaneController.selectedPlane.value
         },
         token: token,
-        setLoader: (s) {},
+        setLoader: (s) {
+          makePaymentLoader.value = s;
+        },
         success: (s) {
-          // if (s == true) {}
+          if (s == true) {
+            Navigator.of(Get.context!).pop();
+          }
         });
 
     if (res.toString().isNotEmpty) {
-      Navigator.of(Get.context!).pop();
-
       cleaner();
     }
   }

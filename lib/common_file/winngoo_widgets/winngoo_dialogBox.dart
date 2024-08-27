@@ -283,16 +283,20 @@ Future dialogBox({required String type}) {
                   const SizedBox(
                     height: 10,
                   ),
-                  Center(
-                      child: buttonWidget(
-                          onPress: () {
-                            paymentController.validation();
+                  Obx(
+                    () => Center(
+                        child: buttonWidget(
+                            isLoading:
+                                paymentController.makePaymentLoader.value,
+                            onPress: () {
+                              paymentController.validation();
 
-                            // if (debitCardKey.currentState?.validate() == true) {
-                            //    paymentController.makePaymentApi();
-                            // }
-                          },
-                          text: "PAY NOW")),
+                              // if (debitCardKey.currentState?.validate() == true) {
+                              //    paymentController.makePaymentApi();
+                              // }
+                            },
+                            text: "PAY NOW")),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
