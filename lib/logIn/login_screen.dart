@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:winggoo/LogIn/login_widget.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
+
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
 
@@ -37,6 +39,10 @@ class _LogInScreenState extends State<LogInScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: logInWidget(context: context),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            WinngooText(text: "Version : 1.0.1")
           ],
         ),
       ),

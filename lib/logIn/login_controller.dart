@@ -24,8 +24,8 @@ class LogInController extends GetxController {
   late FocusNode passwordFocusNode = FocusNode();
 
   cleaner() {
-    mailController.text = "sk@sk.com";
-    passwordController.text = "111111";
+    mailController.text = "";
+    passwordController.text = "";
   }
 
   //

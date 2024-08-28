@@ -30,7 +30,7 @@ var psycoPng = "assets/psyco.png";
 ///validation
 String? validatePhoneNumber(String? value) {
   final specificStartUKPhoneRegExp = RegExp(
-      r'^(?:\+4477|077)\d{8}$'); // UK mobile number starting with +4477 or 077
+      r'^(?:\+4477|077|044)\d{8}$'); // UK mobile number starting with +4477 or 077
   if (value == null || value.isEmpty) {
     return 'This field cannot be empty';
   } else if (!specificStartUKPhoneRegExp.hasMatch(value)) {

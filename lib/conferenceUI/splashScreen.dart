@@ -36,11 +36,11 @@ class SplashScreen extends StatelessWidget {
 
     return Obx(
       () => AnimatedSplashScreen(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         // pageTransitionType: PageTransitionType.bottomToTopPop,
         nextRoute: "/conference",
         // curve: Curves.easeIn,
-        animationDuration: const Duration(seconds: 10),
+        animationDuration: const Duration(seconds: 30),
         splash: Stack(
           children: [
             Center(
@@ -64,8 +64,8 @@ class SplashScreen extends StatelessWidget {
         ),
         centered: true,
         splashIconSize: 500,
-        splashTransition: SplashTransition.fadeTransition,
-        duration: 20,
+        splashTransition: SplashTransition.decoratedBoxTransition,
+        duration: 3800,
       ),
     );
   }

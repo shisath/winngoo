@@ -35,6 +35,18 @@ class SignUpController extends GetxController {
   final confirmPasswordFocusNode = FocusNode();
   final countryFocusNode = FocusNode();
 
+  cleaner() {
+    fullNameController.text = "";
+    surNameController.text = "";
+    emailController.text = "";
+    confirmEmailController.text = "";
+    phoneNumber.text = "";
+    yourPasswordController.text = "";
+    confirmPasswordController.text = "";
+    enterOTPController.text = "";
+    countryController.text = "";
+  }
+
   // @override
   // void dispose() {
   //   fullNameController.dispose();
@@ -86,7 +98,7 @@ class SignUpController extends GetxController {
       String successMessage = jsonResponse["message"];
 
       snackBar(isBadReqested: false, msg: successMessage);
-
+      cleaner();
       Get.toNamed("/signIn");
     } else {
       String responseBody = await response.stream.bytesToString();

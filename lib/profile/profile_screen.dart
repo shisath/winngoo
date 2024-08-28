@@ -19,17 +19,17 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await logInController.membersApi();
-      await profileController.getProfilePicture();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await logInController.membersApi();
+        await profileController.getProfilePicture();
+      });
+    }
+
     return Scaffold(
       endDrawer: const CustomeDrawer(),
       body: Obx(
