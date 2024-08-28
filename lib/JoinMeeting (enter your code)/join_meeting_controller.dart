@@ -8,7 +8,7 @@ import '../conferenceUI/vedioConferenceScreen.dart';
 class JoinMeetingController extends GetxController {
   TextEditingController enterCode = TextEditingController();
   TextEditingController enterLink = TextEditingController();
-
+  RxBool loader = false.obs;
   final emailFocusNode = FocusNode();
   final linkFocusNode = FocusNode();
 
@@ -20,7 +20,9 @@ class JoinMeetingController extends GetxController {
         endPoint: "invitations/use",
         body: {"invite_code": "FJA58U5349"},
         token: token,
-        setLoader: (s) {},
+        setLoader: (s) {
+          loader.value = s;
+        },
         success: (s) {
           if (s == true) {
             Get.to(

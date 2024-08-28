@@ -193,6 +193,8 @@ Future<String> postMethod({
       var jsonResponse = jsonDecode(responseBody);
       print("bad response1 $jsonResponse");
       success(false);
+      setLoader(false);
+
       // String successMessage = jsonResponse["message"];
       // print("bad response2 $successMessage");
 
@@ -207,6 +209,7 @@ Future<String> postMethod({
 
       if (jsonResponse.containsKey('error')) {
         final errors = jsonResponse['error'];
+
         if (jsonResponse.containsKey('error')) {
           final errors = jsonResponse['error'];
           snackBar(isBadReqested: true, msg: errors);
@@ -255,7 +258,6 @@ Future<String> postMethod({
           snackBar(isBadReqested: true, msg: confirmEmailError);
         }
       }
-      setLoader(false);
 
       return responseBody;
     }

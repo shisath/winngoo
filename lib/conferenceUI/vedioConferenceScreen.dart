@@ -5,6 +5,8 @@ import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/conferenceUI/splashScreen.dart';
 import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
 
+import '../common_file/winngoo_widgets/floatingBubbleButton.dart';
+
 class VideoConferencePage extends StatefulWidget {
   final String conferenceID;
   final String userName;
@@ -72,33 +74,25 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
                     showMicrophoneState: true,
                   )),
             ),
-            Positioned(
-              left: _position.dx,
-              top: _position.dy,
-              child: Draggable(
-                feedback: _buildDraggableButton(), // The actual button
-                childWhenDragging: Container(), // What is shown when dragging
-                onDragUpdate: (details) {
-                  setState(() {
-                    _position = details.globalPosition;
-                  });
-                }, // What is shown while dragging
-                child: _buildDraggableButton(),
-              ),
-            ),
+            // Positioned(
+            //   left: _position.dx,
+            //   top: _position.dy,
+            //   child: Draggable(
+            //     feedback: _buildDraggableButton(), // The actual button
+            //     childWhenDragging: Container(), // What is shown when dragging
+            //     onDragUpdate: (details) {
+            //       setState(() {
+            //         _position = details.globalPosition;
+            //       });
+            //     }, // What is shown while dragging
+            //     child: _buildDraggableButton(),
+            //   ),
+            // ),
+
+            DraggableBubbleScreen()
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildDraggableButton() {
-    return ElevatedButton(
-      onPressed: () {
-        // Your button action here
-        Get.toNamed('/splash');
-      },
-      child: Text('Drag Me'),
     );
   }
 }

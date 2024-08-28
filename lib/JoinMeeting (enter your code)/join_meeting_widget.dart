@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:winggoo/common_file/widgets.dart';
-
 import '../common_file/getXcontroller.dart';
+import '../conferenceUI/vedioConferenceScreen.dart';
 
 Widget joinMeetingWidget({required BuildContext contex}) {
-  final codeKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> codeKey = GlobalKey<FormState>();
   return SingleChildScrollView(
     child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 13.00),
@@ -33,13 +34,24 @@ Widget joinMeetingWidget({required BuildContext contex}) {
           const SizedBox(
             height: 30,
           ),
-          buttonWidget(
-              onPress: () async {
-                if (codeKey.currentState?.validate() == true) {
-                  joinMeetingController.meetingCodeValidation();
-                }
-              },
-              text: "Join"),
+          Obx(
+            () => buttonWidget(
+                isLoading: joinMeetingController.loader.value,
+                onPress: () async {
+                  // Get.to(
+                  //   VideoConferencePage(
+                  //     conferenceID: joinMeetingController.enterCode.text,
+                  //     userId: "sathish",
+                  //     userName: "kumar",
+                  //   ),
+                  // );
+
+                  if (codeKey.currentState?.validate() == true) {
+                    joinMeetingController.meetingCodeValidation();
+                  }
+                },
+                text: "Join"),
+          ),
         ],
       ),
     ),

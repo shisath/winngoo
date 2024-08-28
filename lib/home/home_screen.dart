@@ -17,29 +17,32 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(showLeadingIcon: false),
-      endDrawer: const CustomeDrawer(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            headingContainer(
-                context: context,
-                widget: Padding(
-                  padding: const EdgeInsets.only(left: 22),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      headingContainer(
-                        context: context,
-                        widget: Center(child: Image.asset(conferencePng)),
-                      ),
-                    ],
-                  ),
-                )),
-            homeWidget()
-          ],
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+        appBar: buildAppBar(showLeadingIcon: false),
+        endDrawer: const CustomeDrawer(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              headingContainer(
+                  context: context,
+                  widget: Padding(
+                    padding: const EdgeInsets.only(left: 22),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        headingContainer(
+                          context: context,
+                          widget: Center(child: Image.asset(conferencePng)),
+                        ),
+                      ],
+                    ),
+                  )),
+              homeWidget()
+            ],
+          ),
         ),
       ),
     );

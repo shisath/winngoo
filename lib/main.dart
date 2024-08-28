@@ -35,7 +35,7 @@ String initialRoute() {
   final token = localStorage.read('api_token'); // Read token from storage
 
   if (token != null) {
-    return '/addEventScreen'; // Navigate to Home if token exists
+    return '/homeScreen'; // Navigate to Home if token exists
   } else {
     return '/signIn'; // Navigate to Login if no token
   }
