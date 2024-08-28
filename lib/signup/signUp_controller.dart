@@ -70,8 +70,8 @@ class SignUpController extends GetxController {
       "email": emailController.text,
       "confirm_email": confirmEmailController.text,
       "mobile_number": phoneNumber.text,
-      "country": "India",
-      "agreement": true,
+      "country": countryController.text,
+      "agreement": isChecked.value,
       "password": yourPasswordController.text,
       "password_confirmation": confirmPasswordController.text
     });

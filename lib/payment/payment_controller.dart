@@ -5,7 +5,6 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/widgets.dart';
 
-import '../common_file/getXcontroller.dart ';
 import 'model/discountApply.dart';
 
 class PaymentController extends GetxController {
@@ -86,6 +85,8 @@ class PaymentController extends GetxController {
   makePaymentApi() async {
     final String? token = localStorage.read('api_token');
     final String? userId = localStorage.read('userId');
+    final String? selectedPlaneId = localStorage.read('selectedPlaneId');
+    final String? eventId = localStorage.read('selectedEventId');
     print("date   ${validityDate.text.split("-")[0].toString()}");
     print("date   ${validityDate.text.split("-")[1].toString()}");
     print("date   ${validityDate.text.split("-")[1].toString()}");
@@ -101,8 +102,8 @@ class PaymentController extends GetxController {
           "expiry_year": validityDate.text.split("-")[1].toString(),
           "token": "tok_visa",
           "user_id": userId,
-          "event_id": addEventController.selectedId.value,
-          "price_id": chooseYourPlaneController.selectedPlane.value
+          "event_id": eventId,
+          "price_id": selectedPlaneId
         },
         token: token,
         setLoader: (s) {
@@ -111,8 +112,8 @@ class PaymentController extends GetxController {
         success: (s) {
           if (s == true) {
             Navigator.of(Get.context!).pop();
-
-            Get.offAll('/addEventScreen');
+            print('sk moved');
+            Get.offAllNamed('/addEventScreen');
           }
         });
 

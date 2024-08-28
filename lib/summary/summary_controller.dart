@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../common_file/functions.dart';
 import '../common_file/getXcontroller.dart';
@@ -42,6 +41,7 @@ class SummaryController extends GetxController {
         },
         success: (s) {
           if (s == true) {
+            print(' moved sk');
             Get.toNamed("/summary");
           }
         });

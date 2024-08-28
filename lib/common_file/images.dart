@@ -23,3 +23,4 @@ const babyPng = "assets/baby.png";
 const cakePng = "assets/cake.jpg";
 const ribbonPng = "assets/ribbon.jpg";
 const weddingPng = "assets/wedding.jpg";
+const winngooSplashPng = "assets/splashImage.png";

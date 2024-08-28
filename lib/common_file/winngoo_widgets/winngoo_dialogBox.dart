@@ -126,7 +126,7 @@ Future dialogBox({required String type}) {
                               addEventController.cleaner();
                               Navigator.of(context).pop();
                             },
-                            text: "Submit")),
+                            text: "SUBMIT")),
                   ),
                   const SizedBox(
                     height: 10,
@@ -137,7 +137,8 @@ Future dialogBox({required String type}) {
           ),
         );
       } else if (type == "credit Card") {
-        final debitCardKey = GlobalKey<FormState>();
+        // final debitCardKey = GlobalKey<FormState>();
+
         return Padding(
           padding: EdgeInsets.only(
               top: 10,
@@ -542,8 +543,9 @@ void showDialogBox({required String type}) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   WinngooText(
-                    text: "Choose your image",
+                    text: "Choose Your Profile Image Source",
                     fontSize: headingSize,
+                    align: TextAlign.center,
                     weight: FontWeight.w600,
                   ),
                   Padding(
@@ -556,9 +558,9 @@ void showDialogBox({required String type}) {
                             width: 100.00,
                             height: 30.00,
                             onPress: () async {
-                              profileController.getProfilePicture();
+                              // profileController.getProfilePicture();
                               Navigator.of(context).pop();
-                              // await profileController.cameraPicker();
+                              await profileController.cameraPicker();
                             },
                             text: "Take a photo"),
                         buttonWidgetSmall(

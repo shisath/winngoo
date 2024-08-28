@@ -1,13 +1,16 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/conferenceUI/vedioConferenceScreen.dart';
 
+import '../common_file/functions.dart';
+
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  SplashScreen({super.key});
+
+  final String? userId = localStorage.read('userId');
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +34,39 @@ class SplashScreen extends StatelessWidget {
       lottieAssetPath = "assets/lottie/flower2.json";
     }
 
-    return AnimatedSplashScreen(
-      backgroundColor: Colors.transparent,
-      // pageTransitionType: PageTransitionType.bottomToTopPop,
-      nextRoute: "/conference",
-      // curve: Curves.easeIn,
-      animationDuration: const Duration(seconds: 3),
-      splash: Stack(
-        children: [
-          Center(
-            child: LottieBuilder.asset(lottieAssetPath
-                // backgroundLoading: false,
-                ),
-          ),
-          // Center(
-          //   child: LottieBuilder.asset(
-          //     "assets/lottie/flower2.json",
-          //     // backgroundLoading: false,
-          //   ),
-          // )
-        ],
+    return Obx(
+      () => AnimatedSplashScreen(
+        backgroundColor: Colors.transparent,
+        // pageTransitionType: PageTransitionType.bottomToTopPop,
+        nextRoute: "/conference",
+        // curve: Curves.easeIn,
+        animationDuration: const Duration(seconds: 10),
+        splash: Stack(
+          children: [
+            Center(
+              child: LottieBuilder.asset(lottieAssetPath
+                  // backgroundLoading: false,
+                  ),
+            ),
+            // Center(
+            //   child: LottieBuilder.asset(
+            //     "assets/lottie/flower2.json",
+            //     // backgroundLoading: false,
+            //   ),
+            // )
+          ],
+        ),
+        nextScreen: VideoConferencePage(
+          conferenceID: joinMeetingController.enterCode.text,
+          userId: userId.toString(),
+          userName: logInController.membersApiData.value.data![0].firstName
+              .toString(),
+        ),
+        centered: true,
+        splashIconSize: 500,
+        splashTransition: SplashTransition.fadeTransition,
+        duration: 20,
       ),
-      nextScreen: VideoConferencePage(
-        conferenceID: joinMeetingController.enterCode.text,
-        userId: joinMeetingController.enterCode.text,
-        userName: joinMeetingController.enterCode.text,
-      ),
-      centered: true,
-      splashIconSize: 500,
-      splashTransition: SplashTransition.fadeTransition,
-      duration: 20,
     );
   }
 }

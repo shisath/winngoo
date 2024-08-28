@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:winggoo/common_file/functions.dart';
 
 class DraggableBubbleScreen extends StatefulWidget {
@@ -175,7 +174,7 @@ Widget textDecoreButton(
       child: Container(
         alignment: Alignment.center,
         child: Padding(
-          padding: EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(6.0),
           child: Text(
             text,
             style: TextStyle(

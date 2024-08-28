@@ -17,7 +17,10 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    chooseYourPlaneConroller.planeApi();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      chooseYourPlaneConroller.planeApi();
+    });
   }
 
   @override

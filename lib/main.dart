@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/logIn/login_screen.dart';
 
 import 'LogIn/login_controller.dart';
@@ -26,17 +25,7 @@ class MyApp extends StatelessWidget {
       home: const LogInScreen(),
       initialBinding: HomeBinding(),
       getPages: routes,
-      initialRoute: initialRoute(),
+      initialRoute: '/winngooSplash',
     );
-  }
-}
-
-String initialRoute() {
-  final token = localStorage.read('api_token'); // Read token from storage
-
-  if (token != null) {
-    return '/homeScreen'; // Navigate to Home if token exists
-  } else {
-    return '/signIn'; // Navigate to Login if no token
   }
 }

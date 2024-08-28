@@ -15,10 +15,12 @@ class JoinMeetingController extends GetxController {
   meetingCodeValidation() async {
     final String? token = localStorage.read('api_token');
 
-    var res = postMethod(
+    postMethod(
         statusCode: 201,
         endPoint: "invitations/use",
-        body: {"invite_code": "FJA58U5349"},
+        body: {
+          "invite_code": enterCode.text,
+        },
         token: token,
         setLoader: (s) {
           loader.value = s;

@@ -121,24 +121,36 @@ Widget planeCard(
                   ],
                 ),
               ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: 30,
-                    width: MediaQuery.sizeOf(Get.context!).width * 0.5,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  10), // Rectangular border radius
-                            ),
-                            backgroundColor: Colors.grey),
-                        onPressed: onPressed,
-                        child: const WinngooText(
-                          text: "BUY NOW",
-                          color: Colors.white,
-                        )),
+              Obx(
+                () => Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 30,
+                      width: MediaQuery.sizeOf(Get.context!).width * 0.5,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    10), // Rectangular border radius
+                              ),
+                              backgroundColor: Colors.grey),
+                          onPressed: onPressed,
+                          child: summaryController.loader.value
+                              ? SizedBox(
+                                  width: 18,
+                                  height: 18,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                    strokeWidth: 3.0,
+                                    // color: Colors.red,
+                                  ))
+                              : WinngooText(
+                                  text: "BUY NOW",
+                                  color: Colors.white,
+                                )),
+                    ),
                   ),
                 ),
               )

@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:winggoo/choose_your_plane/choose_your_plane_screen.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
+import 'package:winggoo/common_file/winngooSplashScreen.dart';
 
 import '../JoinMeeting (enter your code)/join_meeting_screen.dart';
 import '../LogIn/login_screen.dart';
@@ -116,7 +117,12 @@ final routes = [
       binding: HomeBinding()),
   GetPage(
       name: '/splash',
-      page: () => const SplashScreen(),
+      page: () => SplashScreen(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
+  GetPage(
+      name: '/winngooSplash',
+      page: () => WinngooSplash(),
       transition: Transition.fadeIn,
       binding: HomeBinding()),
   GetPage(

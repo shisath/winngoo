@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:winggoo/common_file/functions.dart';
+
 import '../common_file/getXcontroller.dart';
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
@@ -82,26 +83,27 @@ Widget yourEventWidget() {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 10),
                   child: eventListboxModel(
-                      id: addEventController.eventListApiData.value.data![index].id!
+                      id: addEventController
+                          .eventListApiData.value.data![index].id!
                           .toInt(),
                       userData: addEventController
                           .eventListApiData.value.data![index].user
                           .toString(),
                       index: index,
                       image: winngooLogo,
-                      isPaid: addEventController.eventListApiData.value
-                              .data![index].user!.meetingCode
-                              .toString()
-                              .isNotEmpty
+                      isPaid: (addEventController.eventListApiData.value
+                                      .data![index].transactions!.length >
+                                  0 &&
+                              addEventController.eventListApiData.value
+                                  .data![index].transactions!.isNotEmpty)
                           ? true
                           : false,
-                      title: addEventController.eventListApiData.value.data![index].name
+                      title: addEventController
+                          .eventListApiData.value.data![index].name
                           .toString(),
-                      date: addEventController.eventListApiData.value.data![index].date
-                          .toString(),
-                      inviteCode: addEventController
-                          .eventListApiData.value.data![index].user!.meetingCode
-                          .toString()),
+                      date: addEventController.eventListApiData.value.data![index].date.toString(),
+                      inviteCode: addEventController.eventListApiData.value.data![index].user!.meetingCode.toString(),
+                      time: addEventController.eventListApiData.value.data![index].time.toString()),
                 );
               })),
     ),
@@ -113,6 +115,7 @@ Widget eventListboxModel({
   required bool isPaid,
   required String title,
   required String date,
+  required String time,
   required int index,
   required int id,
   required String inviteCode,
@@ -121,10 +124,15 @@ Widget eventListboxModel({
   return Obx(
     () => GestureDetector(
       onTap: () {
-        addEventController.isSelectedEvent.value = index.toString();
-        addEventController.isRecomeded.value = -1;
-        addEventController.selectedId.value = id.toString();
-        localStorage.write('selectedEventId', id.toString());
+        if (addEventController
+            .eventListApiData.value.data![index].transactions!.isNotEmpty) {
+          snackBar(msg: "Event already paid", isBadReqested: true);
+        } else {
+          addEventController.isSelectedEvent.value = index.toString();
+          addEventController.isRecomeded.value = -1;
+          addEventController.selectedId.value = id.toString();
+          localStorage.write('selectedEventId', id.toString());
+        }
 
         print('selected id sk $id');
       },
@@ -141,6 +149,7 @@ Widget eventListboxModel({
             addEventController.isSelectedEvent.value == index.toString()
                 ? 2.0
                 : 1.2,
+
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Row(
@@ -185,11 +194,30 @@ Widget eventListboxModel({
                       WinngooText(
                         text: title,
                       ),
-                      WinngooText(
-                        text: date,
-                        fontSize: contentSize - 3,
+                      Row(
+                        children: [
+                          WinngooText(
+                            text: date,
+                            fontSize: contentSize - 3,
+                          ),
+                          WinngooText(
+                            text: " - ${time}",
+                            fontSize: contentSize - 3,
+                          ),
+                        ],
                       ),
                     ],
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: WinngooText(
+                      text: isPaid ? "Paid" : "UnPaid",
+                      color: isPaid ? Colors.green : Colors.red,
+                    ),
                   ),
                   if (addEventController.eventListApiData.value.data![index]
                               .transactions!.length >
@@ -204,13 +232,6 @@ Widget eventListboxModel({
                         icon: const Icon(Icons.share))
                   ]
                 ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: WinngooText(
-                  text: isPaid ? "Paid" : "UnPaid",
-                  color: isPaid ? Colors.green : Colors.red,
-                ),
               )
             ],
           ),

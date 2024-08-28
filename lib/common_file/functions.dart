@@ -208,22 +208,25 @@ Future<String> postMethod({
       }
 
       if (jsonResponse.containsKey('error')) {
-        final errors = jsonResponse['error'];
-
         if (jsonResponse.containsKey('error')) {
           final errors = jsonResponse['error'];
           snackBar(isBadReqested: true, msg: errors);
         }
+      }
+
+      if (jsonResponse.containsKey('errors')) {
+        final errors = jsonResponse['errors'];
 
         if (errors.containsKey('card_number')) {
           final emailError = errors['card_number']
               [0]; // Access the first error message for email
           snackBar(isBadReqested: true, msg: emailError);
         }
-      }
-
-      if (jsonResponse.containsKey('errors')) {
-        final errors = jsonResponse['errors'];
+        if (errors.containsKey('cvv')) {
+          final emailError =
+              errors['cvv'][0]; // Access the first error message for email
+          snackBar(isBadReqested: true, msg: emailError);
+        }
 
         if (errors.containsKey('email')) {
           final emailError =
@@ -290,18 +293,30 @@ Future<dynamic> getMethod({
   print('get 6');
   print('get 66 ${response.statusCode}');
   // setLoader(false);
-
+  setLoader(false);
   if (response.statusCode == 200) {
     print('get 7');
     var responseBody = await response.stream.bytesToString();
     success(true);
+
     print('get 8');
     print("${responseBody}");
 
     return responseBody;
   } else {
     success(false);
-    print(response.reasonPhrase);
+
+    print("BAD STATEMENT ERROR ${response.reasonPhrase}");
     return snackBar(isBadReqested: true, msg: "Please Contact Admin");
+  }
+}
+
+Object? initialRoute() {
+  final token = localStorage.read('api_token'); // Read token from storage
+  print('initial rout');
+  if (token != null) {
+    return Get.offNamed('/homeScreen'); // Navigate to Home if token exists
+  } else {
+    return Get.offNamed('/signIn'); // Navigate to Login if no token
   }
 }

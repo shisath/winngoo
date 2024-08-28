@@ -27,6 +27,7 @@ class LogInController extends GetxController {
     mailController.text = "sk@sk.com";
     passwordController.text = "111111";
   }
+
   //
   // @override
   // void onInit() {
@@ -51,7 +52,7 @@ class LogInController extends GetxController {
       print("sin in wrk 1");
 
       print(logInLoader.value);
-      final String? token = localStorage.read('api_token');
+      // final String? token = localStorage.read('api_token');
       dynamic res = await postMethod(
           success: (s) {},
           token: "",

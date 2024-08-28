@@ -28,8 +28,8 @@ class Data {
   int? id;
   String? title;
   String? content;
-  Null? createdAt;
-  Null? updatedAt;
+  Null createdAt;
+  Null updatedAt;
 
   Data({this.id, this.title, this.content, this.createdAt, this.updatedAt});
 

@@ -20,9 +20,11 @@ class _AddEventScreenState extends State<AddEventScreen> {
   @override
   void initState() {
     super.initState();
-
+    chooseYourPlaneController.loader.value = false;
+    print('choose loader ${chooseYourPlaneController.loader.value}');
     WidgetsBinding.instance.addPostFrameCallback((_) {
       addEventController.refreshLoader.value = true;
+
       addEventController.eventListApi();
       addEventController.getRandomImage();
       addEventController.refreshLoader.value = false;
@@ -31,66 +33,59 @@ class _AddEventScreenState extends State<AddEventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //
-    //   // addEventController.cleaner();
-    //   // addEventController.eventListApi();
-    //   // addEventController.getRandomImage();
-    //
-    // });
-
-    return Obx(
-      () => Scaffold(
-        floatingActionButton: buttonWidget(
-            onPress: () async {
-              if (addEventController.selectedId.isNotEmpty &&
-                  addEventController.isSelectedEvent.isNotEmpty) {
-                await chooseYourPlaneController.planeApi();
-              } else {
-                snackBar(msg: "Please select an event", isBadReqested: true);
-              }
-            },
-            text: "NEXT",
-            isLoading: chooseYourPlaneController.loader.value),
-        appBar: buildAppBar(),
-        endDrawer: const CustomeDrawer(),
-        body: Obx(
-          () => addEventController.refreshLoader.value
-              ? const SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  ))
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    headingContainer(
-                      context: context,
-                      widget: Stack(
-                        children: [
-                          Center(child: Image.asset(celebrationPng)),
-                        ],
-                      ),
-                    ),
-                    recommendWidget(),
-                    Column(
+    return Scaffold(
+      floatingActionButton: Obx(
+        () => buttonWidget(
+          isLoading: chooseYourPlaneController.loader.value,
+          onPress: () async {
+            if (addEventController.selectedId.isNotEmpty &&
+                addEventController.isSelectedEvent.isNotEmpty) {
+              await chooseYourPlaneController.planeApi();
+            } else {
+              snackBar(msg: "Please select an event", isBadReqested: true);
+            }
+          },
+          text: "NEXT",
+        ),
+      ),
+      appBar: buildAppBar(),
+      endDrawer: const CustomeDrawer(),
+      body: Obx(
+        () => addEventController.refreshLoader.value
+            ? const SizedBox(
+                width: 24,
+                height: 24,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ))
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  headingContainer(
+                    context: context,
+                    widget: Stack(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: WinngooText(
-                            text: "Your events",
-                            fontSize: headingSize,
-                            weight: FontWeight.w600,
-                          ),
-                        ),
+                        Center(child: Image.asset(celebrationPng)),
                       ],
                     ),
-                    yourEventWidget(),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.08),
-                  ],
-                ),
-        ),
+                  ),
+                  recommendWidget(),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: WinngooText(
+                          text: "Your events",
+                          fontSize: headingSize,
+                          weight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  yourEventWidget(),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                ],
+              ),
       ),
     );
   }

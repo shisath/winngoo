@@ -34,13 +34,13 @@ class Data {
   String? surname;
   String? mobileNumber;
   String? email;
-  Null? emailVerifiedAt;
+  Null emailVerifiedAt;
   String? country;
   String? agreement;
   String? createdAt;
   String? updatedAt;
   String? user_id;
-  Null? inviteCode;
+  Null inviteCode;
   String? invitedBy;
 
   Data(

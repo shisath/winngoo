@@ -123,8 +123,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   ? Image.network(
                                       profileController.networkImage.value,
                                       fit: BoxFit.cover,
-                                      height: 150,
-                                      width: 150,
+                                      height: 140,
+                                      width: 140,
                                     )
                                   : Image.asset(
                                       winngooLogo,

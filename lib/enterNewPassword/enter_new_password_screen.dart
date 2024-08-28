@@ -32,8 +32,6 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
               }
 
               return;
-
-              enterNewPasswordController.resetPassword();
             },
             text: "DONE"),
         body: SingleChildScrollView(

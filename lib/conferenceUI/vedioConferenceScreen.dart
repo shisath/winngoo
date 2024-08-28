@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
-import 'package:winggoo/common_file/widgets.dart';
-import 'package:winggoo/conferenceUI/splashScreen.dart';
 import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
 
 import '../common_file/winngoo_widgets/floatingBubbleButton.dart';
@@ -23,7 +20,7 @@ class VideoConferencePage extends StatefulWidget {
 }
 
 class _VideoConferencePageState extends State<VideoConferencePage> {
-  Offset _position = Offset(100, 100);
+  // Offset _position = Offset(100, 100);
 
   @override
   Widget build(BuildContext context) {
