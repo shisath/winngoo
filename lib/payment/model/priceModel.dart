@@ -34,8 +34,8 @@ class Data {
   int? maxQuantity;
   String? price;
   String? priceWithVat;
-  Null? createdAt;
-  Null? updatedAt;
+  Null createdAt;
+  Null updatedAt;
 
   Data(
       {this.id,

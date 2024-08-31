@@ -33,6 +33,7 @@ resetPasswordWidget({required BuildContext context}) {
                 // } else {
                 return null;
               }
+              return null;
             },
             controller: resetPasswordController.emailController,
             // focusNode: signUpController.emailFocusNode,
@@ -60,6 +61,7 @@ resetPasswordWidget({required BuildContext context}) {
                 // } else {
                 return null;
               }
+              return null;
             },
             controller: resetPasswordController.phoneNumberController,
             onFieldSubmited: (val) {}),
