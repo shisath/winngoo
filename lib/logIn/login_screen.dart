@@ -22,28 +22,34 @@ class _LogInScreenState extends State<LogInScreen> {
       logInController.cleaner();
     });
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        automaticallyImplyLeading: false,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            headingContainer(context: context, widget: Image.asset(loginPng)),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: logInWidget(context: context),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            WinngooText(text: "Version : 1.0.1")
-          ],
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (s) {
+        true; // Allow the pop action (close the app).
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: primaryColor,
+          automaticallyImplyLeading: false,
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              headingContainer(context: context, widget: Image.asset(loginPng)),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: logInWidget(context: context),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              WinngooText(text: "Version : 1.0.3")
+            ],
+          ),
         ),
       ),
     );

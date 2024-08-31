@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:winggoo/common_file/getXcontroller.dart%20';
 
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
@@ -15,6 +16,15 @@ class JoinMeetingScreen extends StatefulWidget {
 }
 
 class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      joinMeetingController.enterCode.clear();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

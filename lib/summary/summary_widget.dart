@@ -19,15 +19,15 @@ Widget summaryWidget() {
             summaryRowModel(
                 keyText: "Event name",
                 valueText:
-                    summaryController.eventApiData.value.data!.name ?? ""),
+                    summaryController.eventApiData.value.data?.name ?? ""),
             summaryRowModel(
                 keyText: "Date",
                 valueText:
-                    summaryController.eventApiData.value.data!.date ?? ""),
+                    summaryController.eventApiData.value.data?.date ?? ""),
             summaryRowModel(
                 keyText: "Time",
                 valueText:
-                    summaryController.eventApiData.value.data!.time ?? ""),
+                    summaryController.eventApiData.value.data?.time ?? ""),
           ],
         ),
       ),
@@ -51,18 +51,18 @@ Widget planeSummaryWidget() {
         summaryRowModel(
             keyText: "No of person",
             valueText:
-                "${summaryController.priceApiData.value.data!.minQuantity ?? ""} - ${summaryController.priceApiData.value.data!.maxQuantity ?? ""} "),
+                "${summaryController.priceApiData.value.data?.minQuantity ?? ""} - ${summaryController.priceApiData.value.data!.maxQuantity ?? ""} "),
         summaryRowModel(
             keyText: "Amount",
-            valueText: summaryController.priceApiData.value.data!.price ?? ""),
+            valueText: summaryController.priceApiData.value.data?.price ?? ""),
         summaryRowModel(
             keyText: "VAT",
-            valueText: summaryController.priceApiData.value.data!.vat ?? ""),
+            valueText: summaryController.priceApiData.value.data?.vat ?? ""),
         const Divider(),
         summaryRowModel(
             keyText: "TOTAL AMOUNT",
             valueText:
-                summaryController.priceApiData.value.data!.priceWithVat ?? ""),
+                summaryController.priceApiData.value.data?.priceWithVat ?? ""),
       ],
     ),
   );

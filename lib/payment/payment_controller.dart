@@ -12,7 +12,6 @@ class PaymentController extends GetxController {
   var discountApplyApi = DiscountApplyModel().obs;
   RxString totalAmount = "0.0".obs;
   RxBool makePaymentLoader = false.obs;
-
   TextEditingController couponCode = TextEditingController();
   TextEditingController cdCardHolderName = TextEditingController();
   TextEditingController cdCardNumber = TextEditingController();
@@ -31,13 +30,13 @@ class PaymentController extends GetxController {
   final FocusNode nBCardNumberfocusNode = FocusNode();
 
   cleaner() {
-    cdCardHolderName.text = "";
-    cdCardNumber.text = "";
-    validityDate.text = "";
-    cvv.text = "";
-    accountNumber.text = "";
-    ifscCode.text = "";
-    nBCardNumber.text = "";
+    cdCardHolderName.clear();
+    cdCardNumber.clear();
+    validityDate.clear();
+    cvv.clear();
+    accountNumber.clear();
+    ifscCode.clear();
+    nBCardNumber.clear();
   }
 
   discountApply() async {
@@ -51,7 +50,7 @@ class PaymentController extends GetxController {
         setLoader: (s) {
           makePaymentLoader.value = s;
         });
-    if (res.isNotEmpty) {
+    if (res!.isNotEmpty) {
       discountApplyApi.value = discountApplyModel(res);
       if (discountApplyApi.value.discount!.value != null) {
         print(

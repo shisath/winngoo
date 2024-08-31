@@ -19,17 +19,17 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
-  Widget build(BuildContext context) {
-    @override
-    void initState() {
-      // TODO: implement initState
-      super.initState();
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await logInController.membersApi();
-        await profileController.getProfilePicture();
-      });
-    }
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await logInController.membersApi();
+      await profileController.getProfilePicture();
+    });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: const CustomeDrawer(),
       body: Obx(
@@ -62,37 +62,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               summaryRowModel(
                                   keyText: "User ID",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].user_id ??
+                                          .value.data?[0].user_id ??
                                       "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Name",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].firstName ??
+                                          .value.data?[0].firstName ??
                                       "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Country",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].country ??
+                                          .value.data?[0].country ??
                                       "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Phone number",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].mobileNumber ??
+                                          .value.data?[0].mobileNumber ??
                                       "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Email",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].email ??
+                                          .value.data?[0].email ??
                                       "",
                                   color: Colors.white),
                               summaryRowModel(
                                   keyText: "Create at",
                                   valueText: logInController.membersApiData
-                                          .value.data![0].createdAt
+                                          .value.data?[0].createdAt
                                           .toString()
                                           .substring(0, 10) ??
                                       "",

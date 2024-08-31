@@ -34,7 +34,7 @@ Widget forgotPasswordWidget({required BuildContext context}) {
             ),
             validate: (value) {
               if (value == null || value.isEmpty) {
-                return "Gmail can't be empty";
+                return "*This field is required";
               } else {
                 return null;
               }

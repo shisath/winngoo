@@ -19,8 +19,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      signUpController.countryApi();
       signUpController.cleaner();
+      signUpController.countryApi();
     });
 
     return Scaffold(

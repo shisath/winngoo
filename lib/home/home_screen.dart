@@ -19,6 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
+      onPopInvoked: (bool didPop) {
+        if (didPop) {
+          false; // Return true to allow the pop (close the app).
+        }
+        true; // Return false to prevent the pop.
+      },
       child: Scaffold(
         appBar: buildAppBar(showLeadingIcon: false),
         endDrawer: const CustomeDrawer(),

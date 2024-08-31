@@ -120,6 +120,7 @@ class ProfileController extends GetxController {
       } else {
         loader.value = false;
         print("Failed with status code: ${response.statusCode}");
+        print("Failed upload profile pic: ${response.stream.bytesToString()}");
         print("Reason: ${response.reasonPhrase}");
       }
     } catch (e) {

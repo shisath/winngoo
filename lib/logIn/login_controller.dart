@@ -94,6 +94,8 @@ class LogInController extends GetxController {
     if (res.toString().isNotEmpty) {
       membersApiData.value = membersData(res);
       localStorage.write('userId', membersApiData.value.data![0].user_id);
+      localStorage.write('member_id', membersApiData.value.data![0].id);
+      localStorage.write('userName', membersApiData.value.data![0].firstName);
       print('user Id ${membersApiData.value.data![0].user_id}');
     }
   }

@@ -16,10 +16,9 @@ otpWidget() {
           "Verification",
           style: TextStyle(fontSize: headingSize),
         ),
-        Text(
-          "We’ve send you the verification code\n on satz@gmail.com",
-          style: TextStyle(fontSize: contentSize),
-        ),
+        richText(
+            text1: "We’ve send you the verification code\non ",
+            text2: '${forgotPasswordController.mailController.text}'),
         const SizedBox(
           height: 50,
         ),
@@ -62,6 +61,7 @@ otpWidget() {
                         text2: " RESEND",
                         color2: primaryColor)
                     .onTap(() {
+                    forgotPasswordController.forgotPassword();
                     otpController.startTimer();
                   })
                 : richText(

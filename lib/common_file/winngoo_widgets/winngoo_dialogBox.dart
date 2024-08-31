@@ -154,8 +154,9 @@ Future dialogBox({required String type}) {
                   textField(
                       context: context,
                       heading: "Card Holder Name",
+                      keyboardType: TextInputType.name,
                       headingSize: contentSize,
-                      label: "",
+                      label: " ",
                       hint: " ",
                       suffixIcon: const Icon(
                         Icons.credit_card_sharp,
@@ -175,6 +176,7 @@ Future dialogBox({required String type}) {
                             paymentController.validityDatefocusNode);
                       }),
                   textField(
+                      keyboardType: TextInputType.number,
                       context: context,
                       heading: "Card number",
                       headingSize: contentSize,
@@ -229,6 +231,7 @@ Future dialogBox({required String type}) {
                           child: AbsorbPointer(
                             absorbing: true,
                             child: textField(
+                                keyboardType: TextInputType.number,
                                 context: context,
                                 heading: "Valid Thru",
                                 headingSize: contentSize,
@@ -258,6 +261,7 @@ Future dialogBox({required String type}) {
                       SizedBox(
                         width: 150,
                         child: textField(
+                          keyboardType: TextInputType.number,
                           obscureText: true,
                           context: context,
                           heading: "CVV",

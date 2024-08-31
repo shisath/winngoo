@@ -23,7 +23,11 @@ import '../shedule_date_time/shedule_date_time_Screen.dart';
 import '../signup/signUp_screen.dart';
 import '../summary/summary_screen.dart';
 import '../thankYou/screen.dart';
+import 'functions.dart';
 
+final String? userId = localStorage.read('userId');
+final String? token = localStorage.read('api_token');
+final String? userName = localStorage.read('userName');
 final routes = [
   GetPage(
       name: '/signIn',
@@ -129,8 +133,8 @@ final routes = [
       name: '/conference',
       page: () => VideoConferencePage(
             conferenceID: joinMeetingController.enterCode.text,
-            userId: joinMeetingController.enterCode.text,
-            userName: joinMeetingController.enterCode.text,
+            userId: userId.toString(),
+            userName: userName.toString(),
           ),
       transition: Transition.fadeIn,
       binding: HomeBinding()),

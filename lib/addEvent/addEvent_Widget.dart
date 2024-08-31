@@ -102,7 +102,7 @@ Widget yourEventWidget() {
                           .eventListApiData.value.data![index].name
                           .toString(),
                       date: addEventController.eventListApiData.value.data![index].date.toString(),
-                      inviteCode: addEventController.eventListApiData.value.data![index].user!.meetingCode.toString(),
+                      inviteCode: addEventController.eventListApiData.value.data![index].meetingCode.toString(),
                       time: addEventController.eventListApiData.value.data![index].time.toString()),
                 );
               })),
@@ -227,7 +227,7 @@ Widget eventListboxModel({
                     IconButton(
                         onPressed: () async {
                           await Share.share(
-                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].user!.createdAt.toString().substring(0, 10)} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: ${addEventController.eventListApiData.value.data![index].user!.meetingCode.toString()} \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
+                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].date} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: ${addEventController.eventListApiData.value.data![index].meetingCode.toString()} \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
                         },
                         icon: const Icon(Icons.share))
                   ]

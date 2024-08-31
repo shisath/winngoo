@@ -34,9 +34,9 @@ class AddEventController extends GetxController {
   final eventImageFocusNode = FocusNode();
 
   cleaner() {
-    eventNameController.text = "";
-    eventTimeController.text = "";
-    eventDateController.text = "";
+    eventNameController.clear();
+    eventTimeController.clear();
+    eventDateController.clear();
     isSelectedEvent.value = "";
     selectedId.value = "";
   }
@@ -77,6 +77,12 @@ class AddEventController extends GetxController {
   createEventApi() async {
     print("Event create api");
     final String? token = localStorage.read('api_token');
+    final String? memberId = localStorage.read('member_id').toString();
+
+    print('name ${eventNameController.text}');
+    print('date ${eventDateController.text}');
+    print('time ${eventTimeController.text}');
+    print('userId ${memberId}');
     postMethod(
         success: (s) async {
           if (s == true) {
@@ -90,7 +96,7 @@ class AddEventController extends GetxController {
           "name": eventNameController.text,
           "date": eventDateController.text,
           "time": eventTimeController.text,
-          "user_id": logInController.membersApiData.value.data![0].id.toString()
+          "user_id": int.parse(memberId!)
         },
         setLoader: (s) {
           loader.value = s;

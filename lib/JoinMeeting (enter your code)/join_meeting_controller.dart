@@ -13,7 +13,9 @@ class JoinMeetingController extends GetxController {
   final linkFocusNode = FocusNode();
 
   meetingCodeValidation() async {
+    final String? userId = localStorage.read('userId');
     final String? token = localStorage.read('api_token');
+    final String? userName = localStorage.read('userName');
 
     postMethod(
         statusCode: 201,
@@ -30,8 +32,8 @@ class JoinMeetingController extends GetxController {
             Get.to(
               VideoConferencePage(
                 conferenceID: joinMeetingController.enterCode.text,
-                userId: "sathish",
-                userName: "kumar",
+                userId: userId.toString(),
+                userName: userName.toString(),
               ),
             );
           }

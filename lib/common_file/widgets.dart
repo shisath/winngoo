@@ -255,6 +255,7 @@ Widget textField(
     prefixIcon,
     suffixIcon,
     obscureText,
+    TextInputType? keyboardType,
     void Function()? ontab,
     void Function(String)? onFieldSubmited,
     required BuildContext context,
@@ -290,7 +291,8 @@ Widget textField(
               prefix: label == "Mobile No" ? const Text("+ ") : const Text("")),
           validator: validate,
           autovalidateMode: AutovalidateMode.onUserInteraction,
-          keyboardType: getInputSettings(type: label)["keyboardType"],
+          keyboardType:
+              keyboardType ?? getInputSettings(type: label)["keyboardType"],
           inputFormatters: getInputSettings(type: label)["inputFormatters"],
           onFieldSubmitted: onFieldSubmited,
         ),

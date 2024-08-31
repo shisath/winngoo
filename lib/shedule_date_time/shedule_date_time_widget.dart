@@ -149,7 +149,7 @@ timePicker() async {
     final dt =
         DateTime(now.year, now.month, now.day, picked.hour, picked.minute);
 
-    var time = DateFormat('HH:MM');
+    var time = DateFormat('HH:mm');
 
     var formated = time.format(dt);
     // sheduleDateTimeController.hours.value = time.split(":")[0];
@@ -160,5 +160,6 @@ timePicker() async {
     // sheduleDateTimeController.day.value = time.split(":")[1].substring(2, 5);
 
     addEventController.eventTimeController.text = formated;
+    print('event Time ${formated}');
   }
 }

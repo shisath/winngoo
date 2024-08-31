@@ -36,15 +36,15 @@ class SignUpController extends GetxController {
   final countryFocusNode = FocusNode();
 
   cleaner() {
-    fullNameController.text = "";
-    surNameController.text = "";
-    emailController.text = "";
-    confirmEmailController.text = "";
-    phoneNumber.text = "";
-    yourPasswordController.text = "";
-    confirmPasswordController.text = "";
-    enterOTPController.text = "";
-    countryController.text = "";
+    fullNameController.clear();
+    surNameController.clear();
+    emailController.clear();
+    confirmEmailController.clear();
+    phoneNumber.clear();
+    yourPasswordController.clear();
+    confirmPasswordController.clear();
+    enterOTPController.clear();
+    countryController.clear();
   }
 
   // @override

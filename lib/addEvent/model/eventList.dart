@@ -31,6 +31,7 @@ class EventList {
 class Data {
   int? id;
   String? name;
+  String? meetingCode;
   String? date;
   String? time;
   String? userId;
@@ -42,6 +43,7 @@ class Data {
   Data(
       {this.id,
       this.name,
+      this.meetingCode,
       this.date,
       this.time,
       this.userId,
@@ -53,6 +55,7 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    meetingCode = json['meeting_code'];
     date = json['date'];
     time = json['time'];
     userId = json['user_id'];
@@ -71,6 +74,7 @@ class Data {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
+    data['meeting_code'] = this.meetingCode;
     data['date'] = this.date;
     data['time'] = this.time;
     data['user_id'] = this.userId;
@@ -93,10 +97,9 @@ class User {
   String? surname;
   String? mobileNumber;
   String? email;
-  String? meetingCode;
   String? priceId;
   String? profilePhoto;
-  Null emailVerifiedAt;
+  String? emailVerifiedAt;
   String? country;
   String? agreement;
   String? createdAt;
@@ -110,7 +113,6 @@ class User {
       this.surname,
       this.mobileNumber,
       this.email,
-      this.meetingCode,
       this.priceId,
       this.profilePhoto,
       this.emailVerifiedAt,
@@ -127,7 +129,6 @@ class User {
     surname = json['surname'];
     mobileNumber = json['mobile_number'];
     email = json['email'];
-    meetingCode = json['meeting_code'];
     priceId = json['price_id'];
     profilePhoto = json['profile_photo'];
     emailVerifiedAt = json['email_verified_at'];
@@ -146,7 +147,6 @@ class User {
     data['surname'] = this.surname;
     data['mobile_number'] = this.mobileNumber;
     data['email'] = this.email;
-    data['meeting_code'] = this.meetingCode;
     data['price_id'] = this.priceId;
     data['profile_photo'] = this.profilePhoto;
     data['email_verified_at'] = this.emailVerifiedAt;

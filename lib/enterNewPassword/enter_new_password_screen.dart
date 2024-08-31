@@ -17,6 +17,17 @@ class EnterNewPasswordScreen extends StatefulWidget {
 
 class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      enterNewPasswordController.emailController.clear();
+      enterNewPasswordController.passwordController.clear();
+      enterNewPasswordController.confirmPasswordController.clear();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(

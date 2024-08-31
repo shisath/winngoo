@@ -15,6 +15,15 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      forgotPasswordController.mailController.clear();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
