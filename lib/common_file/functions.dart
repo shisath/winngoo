@@ -355,7 +355,7 @@ Future<String?> postMethod({
       setLoader(false);
 
       // Handle error responses
-      if (jsonResponse.containsKey("message")) {
+      if (jsonResponse.containsKey("message") && endPoint != 'register') {
         snackBar(isBadReqested: true, msg: jsonResponse["message"]);
       } else if (jsonResponse.containsKey("error")) {
         snackBar(isBadReqested: true, msg: jsonResponse["error"]);

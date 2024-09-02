@@ -61,10 +61,10 @@ class _DraggableBubbleScreenState extends State<DraggableBubbleScreen> {
                 textDecoreButton(
                     onPress: () {
                       Get.toNamed('/splash', arguments: {
-                        'isCakeMode': true,
+                        'isCakeMode': false,
                         'isBabyShowering': false,
                         'isInaug': false,
-                        'isWedding': false,
+                        'isWedding': true,
                       });
                     },
                     text: 'WEDDING CELEB'),

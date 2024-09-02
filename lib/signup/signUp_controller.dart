@@ -70,7 +70,38 @@ class SignUpController extends GetxController {
   //   super.dispose();
   // }
 
-  signUpApi() async {
+  signUpApi() {
+    print("confirm password ${confirmPasswordController.text}");
+    postMethod(
+        statusCode: 201,
+        endPoint: 'register',
+        body: {
+          "first_name": fullNameController.text,
+          "surname": surNameController.text,
+          "email": emailController.text,
+          "confirm_email": confirmEmailController.text,
+          "mobile_number": phoneNumber.text,
+          "country": countryController.text,
+          "agreement": isChecked.value,
+          "password": yourPasswordController.text,
+          "confirmed_password": confirmPasswordController.text
+        },
+        token: '',
+        setLoader: (s) {
+          signUpLoader.value = s;
+        },
+        success: (bool) {
+          if (bool == true) {
+            cleaner();
+            Get.offNamed("/signIn");
+          }
+        });
+    // if (res.toString() != null) {
+    //   print(res);
+    // }
+  }
+
+  signUpApis() async {
     signUpLoader.value = true;
     print("running");
     var headers = {'Content-Type': 'application/json'};

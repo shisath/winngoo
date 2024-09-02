@@ -290,7 +290,7 @@ Widget textField(
               hint: hint,
               prefix: label == "Mobile No" ? const Text("+ ") : const Text("")),
           validator: validate,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          // autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType:
               keyboardType ?? getInputSettings(type: label)["keyboardType"],
           inputFormatters: getInputSettings(type: label)["inputFormatters"],

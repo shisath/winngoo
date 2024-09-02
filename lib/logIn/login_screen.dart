@@ -25,7 +25,7 @@ class _LogInScreenState extends State<LogInScreen> {
     return PopScope(
       canPop: true,
       onPopInvoked: (s) {
-        true; // Allow the pop action (close the app).
+        false; // Allow the pop action (close the app).
       },
       child: Scaffold(
         appBar: AppBar(
@@ -44,9 +44,9 @@ class _LogInScreenState extends State<LogInScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: logInWidget(context: context),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               WinngooText(text: "Version : 1.0.3")
             ],
           ),

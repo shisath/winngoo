@@ -65,7 +65,7 @@ class SplashScreen extends StatelessWidget {
         centered: true,
         splashIconSize: 500,
         splashTransition: SplashTransition.decoratedBoxTransition,
-        duration: 3800,
+        duration: 3000,
       ),
     );
   }
