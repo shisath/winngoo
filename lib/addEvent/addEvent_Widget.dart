@@ -67,8 +67,9 @@ Widget yourEventWidget() {
   return Obx(
         () =>
         Expanded(
-          child: (addEventController.eventListApiData.value.data!.isEmpty ||
-              addEventController.eventListApiData.value.data == null)
+          child: (addEventController.eventListApiData.value.data == null ||
+              addEventController.eventListApiData.value.data!.isEmpty
+          )
               ? const Center(
             child: WinngooText(
               text: "No Events Available",

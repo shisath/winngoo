@@ -118,7 +118,7 @@ class AddEventController extends GetxController {
       eventListApiData.value = eventListData(res);
       addEventController.refreshLoader.value = false;
 
-      print("sk donr ${eventListApiData.value.data?[0].name}");
+      // print("sk donr ${eventListApiData.value.data?[0].name}");
     }
   }
 }

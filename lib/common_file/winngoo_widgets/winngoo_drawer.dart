@@ -65,7 +65,7 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
                     title: "Privacy & Policy"),
                 iconButton(
                     onpress: () {
-                      Navigator.of(context).pop();
+                      // Navigator.of(context).pop();
                       showDialogBox(type: "logout");
                     },
                     icon: Icons.logout,

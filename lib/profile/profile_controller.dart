@@ -54,7 +54,7 @@ class ProfileController extends GetxController {
 
   logOut() async {
     final String? token = localStorage.read('api_token');
-
+    print("logout token ${token}");
     var a = await postMethod(
       endPoint: "logout",
       token: token,
@@ -65,7 +65,7 @@ class ProfileController extends GetxController {
           localStorage.remove('api_token');
           localStorage.remove('selectedEventId');
           localStorage.remove('selectedPlaneId');
-          Get.offNamed("/signIn");
+          Get.offAllNamed("/signIn");
           // Get.reload();
         }
       },

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:winggoo/common_file/functions.dart';
 
 import '../common_file/images.dart';
 import '../common_file/widgets.dart';
-import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 import 'Home_widget.dart';
 
 final homeformKey = GlobalKey<FormState>();
@@ -19,12 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: true,
-      onPopInvoked: (s) {
-        false; // Return false to prevent the pop.
+      onPopInvoked: (popDisposition) {
+        SystemNavigator.pop(); // Exit the app when the back button is pressed
       },
       child: Scaffold(
-        appBar: buildAppBar(showLeadingIcon: false),
-        endDrawer: const CustomeDrawer(),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: primaryColor,
+        ),
+        // appBar: buildAppBar(showLeadingIcon: false),
+        // endDrawer: const CustomeDrawer(),
         body: SingleChildScrollView(
           child: Column(
             children: [

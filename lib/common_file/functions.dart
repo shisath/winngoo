@@ -313,7 +313,7 @@ Future<String?> postMethod({
       if (token != null && token.isNotEmpty) 'Authorization': 'Bearer $token',
     };
 
-    print("Headers: $headers");
+    // print("Headers: $headers");
 
     var request = http.Request(
       'POST',
@@ -353,7 +353,7 @@ Future<String?> postMethod({
     } else {
       success(false);
       setLoader(false);
-
+      print("logout res ${response.reasonPhrase}");
       // Handle error responses
       if (jsonResponse.containsKey("message") && endPoint != 'register') {
         snackBar(isBadReqested: true, msg: jsonResponse["message"]);

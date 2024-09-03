@@ -524,6 +524,7 @@ void showDialogBox({required String type}) {
                             height: 30.00,
                             onPress: () {
                               Navigator.of(context).pop();
+
                               profileController.logOut();
                             },
                             text: "Yes, Logout")
@@ -555,18 +556,18 @@ void showDialogBox({required String type}) {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        buttonWidgetSmall(
-                            buttonTextSize: contentSize - 2,
-                            width: 100.00,
-                            height: 30.00,
-                            onPress: () async {
-                              // profileController.getProfilePicture();
-                              Navigator.of(context).pop();
-                              await profileController.cameraPicker();
-                            },
-                            text: "Take a photo"),
+                        // buttonWidgetSmall(
+                        //     buttonTextSize: contentSize - 2,
+                        //     width: 100.00,
+                        //     height: 30.00,
+                        //     onPress: () async {
+                        //       // profileController.getProfilePicture();
+                        //       Navigator.of(context).pop();
+                        //       await profileController.cameraPicker();
+                        //     },
+                        //     text: "Take a photo"),
                         buttonWidgetSmall(
                             buttonTextSize: contentSize - 2,
                             width: 100.00,
