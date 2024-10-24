@@ -19,6 +19,9 @@ class _LogInScreenState extends State<LogInScreen> {
   Widget build(BuildContext context) {
     // Clear controllers whenever you need, for example, before the build
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      logInController.mailController.text = 'sksk@1234gmail.com';
+      logInController.passwordController.text = '111111';
+
       logInController.cleaner();
     });
 

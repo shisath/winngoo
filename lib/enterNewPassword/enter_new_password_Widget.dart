@@ -22,22 +22,25 @@ Widget enterNewPassword({required BuildContext context}) {
             "Your New password must contain atleast 8 characters with contains numbers, symbols, captial letters and alphabtes",
             style: TextStyle(fontSize: contentSize),
           ),
-          textField(
-              context: context,
-              heading: "Enter email",
-              label: "",
-              hint: "",
-              prefixIcon: const Icon(
-                Icons.mail,
-                color: Colors.grey,
-              ),
-              validate: validateEmail,
-              controller: enterNewPasswordController.emailController,
-              focusNode: enterNewPasswordController.emailFocusNode,
-              onFieldSubmited: (val) {
-                FocusScope.of(Get.context!)
-                    .requestFocus(enterNewPasswordController.passwordFocusNode);
-              }),
+          AbsorbPointer(
+            absorbing: true,
+            child: textField(
+                context: context,
+                heading: "Email",
+                label: "",
+                hint: "",
+                prefixIcon: const Icon(
+                  Icons.mail,
+                  color: Colors.grey,
+                ),
+                validate: validateEmail,
+                controller: forgotPasswordController.mailController,
+                focusNode: enterNewPasswordController.emailFocusNode,
+                onFieldSubmited: (val) {
+                  FocusScope.of(Get.context!).requestFocus(
+                      enterNewPasswordController.passwordFocusNode);
+                }),
+          ),
           textField(
               context: context,
               obscureText: enterNewPasswordController.passwordObsecure.value,

@@ -36,6 +36,7 @@ Widget choosePlaneWidget() {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10),
                       child: planeCard(
+                        index: index,
                         widget: Column(
                           children: [
                             iconTextModel(content: "HD Vedio Call"),
@@ -67,6 +68,8 @@ Widget choosePlaneWidget() {
                               chooseYourPlaneConroller.selectedPlane.value);
 
                           summaryController.eventApi();
+                          chooseYourPlaneConroller.toggleLoader(
+                              index, summaryController.loader.value);
                         },
                       ),
                     );
@@ -79,7 +82,9 @@ Widget choosePlaneWidget() {
 Widget planeCard(
     {required dynamic amount,
     required void Function()? onPressed,
-    required Widget widget
+    required Widget widget,
+    required int index
+
     // required String title,
     }) {
   return Padding(
@@ -126,9 +131,9 @@ Widget planeCard(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SizedBox(
-                      height: 30,
-                      width: MediaQuery.sizeOf(Get.context!).width * 0.5,
-                      child: ElevatedButton(
+                        height: 30,
+                        width: MediaQuery.sizeOf(Get.context!).width * 0.5,
+                        child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -136,21 +141,29 @@ Widget planeCard(
                               ),
                               backgroundColor: Colors.grey),
                           onPressed: onPressed,
-                          child: summaryController.loader.value
-                              ? SizedBox(
-                                  width: 18,
-                                  height: 18,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.white),
-                                    strokeWidth: 3.0,
-                                    // color: Colors.red,
-                                  ))
+                          child: (chooseYourPlaneConroller.loaders.isNotEmpty &&
+                                  index <
+                                      chooseYourPlaneConroller.loaders.length)
+                              ? chooseYourPlaneConroller.loaders[index]
+                                  ? SizedBox(
+                                      width: 18,
+                                      height: 18,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                Colors.white),
+                                        strokeWidth: 3.0,
+                                        // color: Colors.red,
+                                      ))
+                                  : WinngooText(
+                                      text: "BUY NOW",
+                                      color: Colors.white,
+                                    )
                               : WinngooText(
                                   text: "BUY NOW",
                                   color: Colors.white,
-                                )),
-                    ),
+                                ),
+                        )),
                   ),
                 ),
               )

@@ -69,6 +69,7 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
                       showDialogBox(type: "logout");
                     },
                     icon: Icons.logout,
+                    color: Colors.red,
                     title: "Log out"),
               ],
             ),
@@ -82,7 +83,8 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
 Widget iconButton(
     {required IconData icon,
     required String title,
-    required void Function()? onpress}) {
+    required void Function()? onpress,
+    color}) {
   return IconButton(
     onPressed: onpress,
     icon: Padding(
@@ -91,14 +93,14 @@ Widget iconButton(
         children: [
           Icon(
             icon,
-            color: Colors.white,
+            color: color ?? Colors.white,
           ),
           const SizedBox(
             width: 15,
           ),
           WinngooText(
             text: title,
-            color: Colors.white,
+            color: color ?? Colors.white,
           ),
         ],
       ),

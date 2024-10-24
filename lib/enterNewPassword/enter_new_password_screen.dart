@@ -21,6 +21,8 @@ class _EnterNewPasswordScreenState extends State<EnterNewPasswordScreen> {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // enterNewPasswordController.emailController.text =
+      //     forgotPasswordController.mailController.text;
       enterNewPasswordController.emailController.clear();
       enterNewPasswordController.passwordController.clear();
       enterNewPasswordController.confirmPasswordController.clear();

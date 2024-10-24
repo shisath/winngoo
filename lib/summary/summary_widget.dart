@@ -54,15 +54,20 @@ Widget planeSummaryWidget() {
                 "${summaryController.priceApiData.value.data?.minQuantity ?? ""} - ${summaryController.priceApiData.value.data!.maxQuantity ?? ""} "),
         summaryRowModel(
             keyText: "Amount",
-            valueText: summaryController.priceApiData.value.data?.price ?? ""),
+            valueText:
+                "\$ ${summaryController.priceApiData.value.data?.price ?? " "}"),
         summaryRowModel(
             keyText: "VAT",
-            valueText: summaryController.priceApiData.value.data?.vat ?? ""),
+            valueText:
+                "\$ ${summaryController.priceApiData.value.data?.vat ?? " "}"),
         const Divider(),
         summaryRowModel(
             keyText: "TOTAL AMOUNT",
             valueText:
-                summaryController.priceApiData.value.data?.priceWithVat ?? ""),
+                "\$ ${summaryController.priceApiData.value.data?.priceWithVat ?? ""}",
+            weight: true,
+            valColor: Colors.blueAccent,
+            keyColor: Colors.blueAccent),
       ],
     ),
   );
@@ -72,7 +77,9 @@ Widget planeSummaryWidget() {
 Widget summaryRowModel({
   required String keyText,
   required String valueText,
-  color,
+  weight = false,
+  keyColor,
+  valColor,
 }) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -82,7 +89,8 @@ Widget summaryRowModel({
       children: [
         WinngooText(
           text: keyText,
-          color: color ?? Colors.black,
+          color: keyColor ?? Colors.black,
+          weight: weight ? FontWeight.bold : FontWeight.w500,
         ).w(130),
         SizedBox(
           width: MediaQuery.sizeOf(Get.context!).width * 0.1,
@@ -90,7 +98,8 @@ Widget summaryRowModel({
         Flexible(
             child: WinngooText(
           text: valueText,
-          color: color ?? Colors.black,
+          color: valColor ?? Colors.black,
+          weight: weight ? FontWeight.bold : FontWeight.w500,
         )),
       ],
     ),

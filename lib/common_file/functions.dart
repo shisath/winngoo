@@ -391,30 +391,31 @@ Future<dynamic> getMethod({
   required Function(bool) setLoader,
   required Function(bool) success,
 }) async {
-  print('get 1');
+  // print('get 1');
   setLoader(true);
 
   final String? token = localStorage.read('api_token');
-  print('get 2');
-  print('get 3');
+  // print('get 2');
+  // print('get 3');
   var headers = {'Authorization': 'Bearer $token'};
-  print('get 4');
+  // print('get 4');
   var request = http.Request('GET',
       Uri.parse('https://winngoogala.winngooconsultancy.in/api/$endPoint'));
-  print('get 4');
+
+  // print('get 4');
   request.body = '''''';
   request.headers.addAll(headers);
-  print('get 5');
+  // print('get 5');
   http.StreamedResponse response = await request.send();
-  print('get 6');
+  // print('get 6');
 
   setLoader(false);
   if (response.statusCode == 200) {
-    print('get 7');
+    // print('get 7');
     var responseBody = await response.stream.bytesToString();
 
-    print('get 8');
-    print("${responseBody}");
+    // print('get 8');
+    // print("${responseBody}");
     success(true);
     return responseBody;
   } else {

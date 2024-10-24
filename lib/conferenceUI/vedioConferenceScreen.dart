@@ -33,10 +33,10 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
         child: Stack(
           children: [
             ZegoUIKitPrebuiltVideoConference(
-              appID: 1517700734,
+              appID: 1510024281,
               // Fill in the appID that you get from ZEGOCLOUD Admin Console.
               appSign:
-                  "fae3dc443e57f3fac65a25002565475620ecc17cbca729f278940c388f763668",
+                  '8c3d731b4a393bdfa2f522a74ff0373822e958bfb4fc09f56286be477038952c',
               // Fill in the appSign that you get from ZEGOCLOUD Admin Console.
               userID: widget.userId,
               userName: widget.userName,

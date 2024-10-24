@@ -199,9 +199,10 @@ signUpWidget({required BuildContext context}) {
                 height: 10,
               ),
               textField(
+                  keyboardType: TextInputType.phone,
                   context: context,
                   label: "Mobile No",
-                  hint: " ",
+                  hint: "",
                   prefixIcon: const Icon(
                     Icons.phone,
                     color: Colors.grey,
@@ -284,40 +285,47 @@ signUpWidget({required BuildContext context}) {
                   height: 15,
                 ),
               ],
-              Obx(
-                () => Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 5.0, vertical: 2.0),
-                  child: DropdownButtonFormField(
-                    focusNode: signUpController.countryFocusNode,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'This field cannot be empty';
-                      } else {
-                        return null;
-                      }
-                    },
-                    decoration: inputDecoration(
-                        prefixIcon: const Icon(
-                          Icons.circle,
-                          color: Colors.grey,
-                        ),
-                        label: 'Country',
-                        hint: '',
-                        prefix: const Text("")),
-                    items: signUpController.countryApiData.value.data!
-                        .map((country) {
-                      return DropdownMenuItem<String>(
-                        value: country.name,
-                        child: Text(country.name.toString()),
-                      );
-                    }).toList(),
-                    onChanged: (s) {
-                      signUpController.countryController.text = s!;
-                    },
-                  ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 3.0, vertical: 2.0),
+                child: DropdownButtonFormField(
+                  focusNode: signUpController.countryFocusNode,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'This field cannot be empty';
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: inputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.circle,
+                        color: Colors.grey,
+                      ),
+                      label: 'Country',
+                      hint: '',
+                      prefix: const Text("")),
+
+                  items: [
+                    DropdownMenuItem<String>(
+                      value: 'UK',
+                      child: Text('United Kingdom'),
+                    )
+                  ],
+
+                  // signUpController.countryApiData.value.data!
+                  //     .map((country) {
+                  //   return DropdownMenuItem<String>(
+                  //     value: country.name,
+                  //     child: Text(country.name.toString()),
+                  //   );
+                  // }).toList(),
+                  onChanged: (s) {
+                    signUpController.countryController.text = s!;
+                  },
                 ),
               ),
+
               const SizedBox(
                 height: 10,
               ),

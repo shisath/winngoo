@@ -23,6 +23,7 @@ otpWidget() {
           height: 50,
         ),
         PinCodeTextField(
+          keyboardType: TextInputType.phone,
           onChanged: (a) {
             otpController.verificationCode.text = a;
           },

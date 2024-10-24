@@ -255,6 +255,7 @@ Widget textField(
     prefixIcon,
     suffixIcon,
     obscureText,
+    keyboardLength,
     TextInputType? keyboardType,
     void Function()? ontab,
     void Function(String)? onFieldSubmited,
@@ -281,7 +282,8 @@ Widget textField(
           obscureText: obscureText ?? false,
           onTap: ontab,
           focusNode: focusNode,
-          maxLength: getInputSettings(type: label)["maxLength"],
+          maxLength:
+              keyboardLength ?? getInputSettings(type: label)["maxLength"],
           controller: controller,
           decoration: inputDecoration(
               prefixIcon: prefixIcon,

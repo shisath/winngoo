@@ -27,7 +27,7 @@ logInWidget({required BuildContext context}) {
           ),
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         Form(
           key: signInformKey,
@@ -105,7 +105,7 @@ logInWidget({required BuildContext context}) {
           ),
         ),
         const SizedBox(
-          height: 30,
+          height: 20,
         ),
         buttonWidget(
           isLoading: logInController.logInLoader.value,
@@ -121,7 +121,7 @@ logInWidget({required BuildContext context}) {
           text: "SIGN IN",
         ),
         const SizedBox(
-          height: 40,
+          height: 20,
         ),
         Center(
           child: Column(
@@ -132,7 +132,7 @@ logInWidget({required BuildContext context}) {
                 style: TextStyle(fontSize: contentSize),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -168,7 +168,7 @@ logInWidget({required BuildContext context}) {
           ),
         ),
         const SizedBox(
-          height: 40,
+          height: 20,
         ),
       ],
     ),

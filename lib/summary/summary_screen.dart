@@ -4,6 +4,7 @@ import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/summary/summary_widget.dart';
 
+import '../choose_your_plane/choose_your_plane_widget.dart';
 import '../common_file/getXcontroller.dart ';
 import '../common_file/winngoo_widgets/winngoo_drawer.dart';
 
@@ -22,6 +23,9 @@ class _SummaryScreenState extends State<SummaryScreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       summaryController.eventApi();
+      chooseYourPlaneController.loaders.assignAll(List.generate(
+          chooseYourPlaneConroller.planeApiData.value.data?.length ?? 2,
+          (_) => false));
     });
   }
 

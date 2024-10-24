@@ -15,6 +15,7 @@ import '../documents/terms&cond_screen.dart';
 import '../enterNewPassword/enter_new_password_screen.dart';
 import '../forgotPassword/forgot_password_screen.dart';
 import '../home/home_screen.dart';
+import '../media/video_player.dart';
 import '../otp/otp_screen.dart';
 import '../payment/payment_screen.dart';
 import '../profile/profile_screen.dart';
@@ -129,6 +130,13 @@ final routes = [
       page: () => WinngooSplash(),
       transition: Transition.fadeIn,
       binding: HomeBinding()),
+
+  GetPage(
+    name: '/videoPlayer',
+    page: () => SamplePlayer(),
+    transition: Transition.fadeIn,
+  ),
+  // binding: HomeBinding()),
   GetPage(
       name: '/conference',
       page: () => VideoConferencePage(

@@ -20,6 +20,19 @@ class ChooseYourPlaneController extends GetxController {
   final hoursFocuNode = FocusNode();
   final minuteFocuNode = FocusNode();
 
+  RxList<bool> loaders =
+      RxList<bool>(); // List to manage loader state for each button
+
+  // Initialize the loaders list with false for each button
+  void initializeLoaders(int count) {
+    loaders.assignAll(List.generate(count, (_) => false));
+  }
+
+  // To toggle the loader at a specific index
+  void toggleLoader(int index, bool isLoading) {
+    loaders[index] = isLoading;
+  }
+
   planeApi() async {
     var res = await getMethod(
         endPoint: "prices",

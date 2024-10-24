@@ -14,10 +14,10 @@ class SummaryController extends GetxController {
   RxBool priceResponseLoader = false.obs;
 
   eventApi() async {
-    print('summary event Api running');
+    print('summary event Api enter');
     final String? eventId = localStorage.read('selectedEventId');
-    print('eventId $eventId');
-    print('eventApi running ${addEventController.selectedId.value}');
+    // print('eventId $eventId');
+    // print('eventApi running ${addEventController.selectedId.value}');
     var res = await getMethod(
         endPoint: 'events/$eventId',
         setLoader: (l) {
@@ -30,14 +30,15 @@ class SummaryController extends GetxController {
           }
         });
     if (res.toString().isNotEmpty && eventResponseLoader.value == true) {
-      print('event api summary ${res}');
+      print('summary event api res ${res}');
+
       eventApiData.value = eventData(res);
-      summaryController.priceApi();
+      await summaryController.priceApi();
     }
   }
 
   priceApi() async {
-    print('summary price');
+    print('summary price api enter');
     final String? selectedPlane = localStorage.read('selectedPlaneId');
     var res = await getMethod(
         endPoint: 'prices/$selectedPlane',
@@ -46,7 +47,6 @@ class SummaryController extends GetxController {
         },
         success: (s) {
           if (s == true) {
-            print(' moved sk');
             priceResponseLoader.value = s;
           }
         });
@@ -56,8 +56,10 @@ class SummaryController extends GetxController {
       priceApiData.value = priceData(res);
       paymentController.totalAmount.value =
           priceApiData.value.data!.priceWithVat.toString();
-      print('navigated to summary');
-      Get.toNamed("/summary");
+      print('navigated to summary screen');
+      Future.delayed(Duration(milliseconds: 1300), () {
+        Get.toNamed("/summary");
+      });
     }
   }
 }

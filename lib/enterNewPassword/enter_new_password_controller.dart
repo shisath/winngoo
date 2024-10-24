@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 
+import '../common_file/getXcontroller.dart ';
+
 class EnterNewPasswordController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -23,7 +25,7 @@ class EnterNewPasswordController extends GetxController {
       endPoint: 'reset-password',
       body: {
         // "token": "vIqvZlO6ebH7tGJXB2KiXUmYEl3oqdVKvAq8Ne",
-        "email": emailController.text,
+        "email": forgotPasswordController.mailController.text,
         "password": passwordController.text,
         "password_confirmation": confirmPasswordController.text
       },

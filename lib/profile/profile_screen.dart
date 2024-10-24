@@ -64,31 +64,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   valueText: logInController.membersApiData
                                           .value.data?[0].user_id ??
                                       "",
-                                  color: Colors.white),
+                                  keyColor: Colors.white,
+                                  valColor: Colors.white),
                               summaryRowModel(
                                   keyText: "Name",
                                   valueText: logInController.membersApiData
                                           .value.data?[0].firstName ??
                                       "",
-                                  color: Colors.white),
+                                  keyColor: Colors.white,
+                                  valColor: Colors.white),
                               summaryRowModel(
                                   keyText: "Country",
                                   valueText: logInController.membersApiData
                                           .value.data?[0].country ??
                                       "",
-                                  color: Colors.white),
+                                  keyColor: Colors.white,
+                                  valColor: Colors.white),
                               summaryRowModel(
                                   keyText: "Phone number",
                                   valueText: logInController.membersApiData
                                           .value.data?[0].mobileNumber ??
                                       "",
-                                  color: Colors.white),
+                                  keyColor: Colors.white,
+                                  valColor: Colors.white),
                               summaryRowModel(
                                   keyText: "Email",
                                   valueText: logInController.membersApiData
                                           .value.data?[0].email ??
                                       "",
-                                  color: Colors.white),
+                                  keyColor: Colors.white,
+                                  valColor: Colors.white),
                               summaryRowModel(
                                   keyText: "Create at",
                                   valueText: logInController.membersApiData
@@ -96,7 +101,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           .toString()
                                           .substring(0, 10) ??
                                       "",
-                                  color: Colors.white),
+                                  keyColor: Colors.white,
+                                  valColor: Colors.white),
                             ],
                           ),
                         ),

@@ -51,12 +51,12 @@ class AddEventController extends GetxController {
       "image": weddingPng,
     },
     {
-      "title": "Baby Shower",
-      "image": babyPng,
+      "title": "Christmas Celebration",
+      "image": christmasPng,
     },
     {
-      "title": "Shop Inauguration",
-      "image": ribbonPng,
+      "title": "Corporate Event Celebration",
+      "image": eventPng,
     },
   ].obs;
 

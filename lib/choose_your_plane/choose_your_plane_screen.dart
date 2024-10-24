@@ -20,6 +20,10 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       chooseYourPlaneConroller.planeApi();
+      // summaryController.priceResponseLoader.value = false;
+      // summaryController.eventResponseLoader.value = false;
+      chooseYourPlaneConroller.initializeLoaders(
+          chooseYourPlaneConroller.planeApiData.value.data?.length ?? 2);
     });
   }
 

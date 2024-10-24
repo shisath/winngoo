@@ -17,7 +17,7 @@ class JoinMeetingController extends GetxController {
     final String? token = localStorage.read('api_token');
     final String? userName = localStorage.read('userName');
 
-    postMethod(
+    await postMethod(
         statusCode: 201,
         endPoint: "invitations/use",
         body: {
@@ -27,8 +27,9 @@ class JoinMeetingController extends GetxController {
         setLoader: (s) {
           loader.value = s;
         },
-        success: (s) {
+        success: (s) async {
           if (s == true) {
+            await conferenceController.videoGetMethod();
             Get.to(
               VideoConferencePage(
                 conferenceID: joinMeetingController.enterCode.text,

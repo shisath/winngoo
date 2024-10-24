@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../common_file/functions.dart';
 import 'model/privacyModel.dart';
 
@@ -7,29 +8,56 @@ class DocumentController extends GetxController {
     {
       "aboutUs": [
         {
-          "heading": "Welcome to Winngoo Consultancy Services!",
+          "heading": "Mission",
           "content":
-              "At Winngoo Consultancy Services, we are passionate about transforming the way people connect. Our flagship product, WINNGOO GALA, is designed to make online meetings and collaborations seamless, efficient, and enjoyable. Whether you’re hosting a virtual conference, a team meeting, or a casual catch-up, our app provides robust features and a user-friendly experience to meet your needs.",
+              "Bringing celebrations to your screen, so absolutely there is no reason to quit or miss out on celebrations because of distance or lack of time.",
         },
         {
-          "heading": "Our Mission",
+          "heading": "About",
           "content":
-              "Our mission is to empower individuals and businesses to communicate effortlessly and effectively, no matter where they are. We believe that technology should enhance human connection, and we are committed to delivering innovative solutions that make virtual interactions as natural as face-to-face meetings."
+              "Are you worried about not taking part in celebrations that mean the most to you? Then stop worrying from now on. We are introducing the Winngoo gala. With Winngoo Gala, we are bringing celebrations to your screen. Distance loses its meaning when it comes to celebration with the Winngoo Gala. Celebrate every special occasion with your loved ones. Winngoo Gala creates a path for you. From birthday parties to baby showers, including professional events, you can celebrate every event with the Winngoo Gala. \nWe created the Winngoo Gala for the purpose of reducing the distance between your loved ones. This app is specially designed to create a stopper for people who are worrying due to separation from their family and friends. We also consider people who don’t have much time to organize get-together parties. So to diminish all the problems and chaos we are proudly launching the Winngoo Gala. Winngoo Gala never allows you to miss out on any celebrations."
         },
         {
-          "heading": "What We Offer",
-          "content":
-              "WINNGOO GALA : A cutting-edge conference call application with features like high-definition video and audio, real-time collaboration tools, and secure, reliable connections. Designed for teams of all sizes, our app ensures that your virtual meetings are productive and professional"
+          "heading": "Features of Winngoo Gala",
+          "content": [
+            {
+              "content":
+                  "High-Definition Video Call: Experience the lively moment with a high-definition video call."
+            },
+            {
+              "content":
+                  "Quality Audio Call: We worked hard to enhance your audio quality."
+            },
+            {
+              "content":
+                  "Extraordinary Features: Virtual Cake Cutting, Ring Exchange for Wedding Anniversary, Baby Showers, and much more. "
+            },
+            {
+              "content":
+                  "Premium Plans: You can unlock more exciting things with premium plans. Also, with the premium plan, you can invite more guests to your events."
+            },
+            {
+              "content":
+                  "Innovation: With advanced engineering, our experts created awesome software to bring celebrations to your screen."
+            },
+          ],
         },
         {
-          "heading": "Additional Applications",
-          "content":
-              "Beyond our conference call app, we are dedicated to developing a range of applications that cater to various needs. From productivity tools to lifestyle apps, our goal is to provide solutions that enhance your everyday experiences"
-        },
-        {
-          "heading": "Our Values",
-          "content":
-              "Beyond our conference call app, we are dedicated to developing a range of applications that cater to various needs. From productivity tools to lifestyle apps, our goal is to provide solutions that enhance your everyday experiences"
+          "heading": "Events",
+          "content": [
+            {
+              "content":
+                  "Birthday Parties: Celebrate your birthday parties with an exciting virtual cake-cutting ceremony. So hereafter, don’t worry about taking part in your loved ones' birthday celebration",
+            },
+            {
+              "content":
+                  "Wedding Anniversaries: Getting scolding from your wife that you're unable to attend your wedding anniversary? Then celebrate it with the Winngoo Gala by exchanging the ring virtually. ",
+            },
+            {
+              "content":
+                  "Corporate Events: Celebrate the corporate events virtually with the Winngoo Gala. We help you to celebrate every special occasion."
+            },
+          ],
         },
       ],
       "terms&condition": [
@@ -81,54 +109,97 @@ class DocumentController extends GetxController {
       ],
       "privacyPolicy": [
         {
-          "heading": "",
-          "content": "Effective Date: [13/08/2024]",
+          "heading": "Overview",
+          "content":
+              "This mentioned privacy policy details the practices we have within our firm, why we collect some of your data, how we make use of them, the rights you have over us as a user, and also the prohibited activities that you must not commit as a user of our service and product. Please read this policy till the end. If you do not agree with this policy then you are kindly advised not to use our product.",
         },
         {
-          "heading": "Introduction",
+          "heading": "Who are We?",
           "content":
-              "Welcome to Winngoo Consultancy Services!. We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our application, WINNGOO GALA. Please read this policy carefully."
+              "“We” the Winngoo successful business model in the United Kingdom. We own lots of products at the Winngoo groups. Winngoo Gala is one among them. We value your privacy and safeguard it like an asset. We take care of your privacy as ours. "
         },
         {
-          "heading": "Information We Collect",
-          "content":
-              "We may collect personal information such as your name, email address, phone number, and other contact details when you register for an account or interact with our app. We also collect information about how you use our app, including your IP address, device information, and usage patterns. We use cookies and similar tracking technologies to enhance your experience, analyze usage, and provide personalized content."
+          "heading": "The Information We Gather About You",
+          "content": [
+            {
+              "content":
+                  "For a smooth function and customized service, we require some of your personal data which includes your name, mail ID, mobile number also some technical information like your system or the device details. "
+            },
+            {
+              "content":
+                  "Data for identification: this data includes your full name, email ID, contact number, and similar data. These details will be gathered when you register with us. "
+            },
+            {
+              "content":
+                  "Technical-based data: this is the data that we collect based on your device or system which are your IP address, your user name, login details, your location, and similar data. "
+            },
+          ],
         },
         {
-          "heading": "How We Use Your Information",
-          "content":
-              "We use your information to operate, maintain, and enhance our app, and to provide customer support. We may use your contact information to send you updates, promotional materials, and other information related to our services. We analyze usage data to understand how our app is used and to improve its performance and user experience."
+          "heading": "How We Get This Information?",
+          "content": [
+            {
+              "content":
+                  "Cookies: Cookies are small units that have the usage of storing information. This information includes the above-mentioned data. Through these cookies, we collect and store your data. This helps us to know your preferences and choices. With this data, we provide you with customized services and promote advertisements based on your necessities and interests. "
+            },
+            {
+              "content":
+                  "Third Parties: We work with certain third parties. These third parties are meant to support and provide necessary services. We might share and gather your information from them. Before agreeing to our privacy policy you are requested to read their policies and know their practices."
+            },
+          ],
         },
         {
-          "heading": "How We Share Your Information",
-          "content":
-              "We may share your information with third-party service providers who perform services on our behalf, such as payment processing and analytics. We may disclose your information if required by law, or if we believe that such disclosure is necessary to comply with legal obligations, enforce our terms, or protect the rights, property, or safety of our users. In the event of a merger, acquisition, or sale of all or a portion of our business, your information may be transferred to the acquiring entity."
+          "heading": "Know How We Use Your Data",
+          "content": [
+            {
+              "content":
+                  "To Provide Better Service: With this collected information we analyze your preference and interest so based on that we provide you with the right service. "
+            },
+            {
+              "content":
+                  "Digital Promotion: We own the right to send you direct marketing advertisements by email, SMS, letters, or telephone. If you feel it's unnecessary or unwanted you can opt out of the emails or messages by clicking the “unsubscribe” icons over the emails or contacting us directly. Our third parties or service providers may also make use of information to promote and advertise similar products and services."
+            },
+            {
+              "content":
+                  "To Make Our Products And Service Better: We use cookies to monitor your access and analyze your usage of our website. This helps us to develop our products and their uses. "
+            },
+            {
+              "content":
+                  "To Learn More From You: We use your information to train ourselves to provide you with the necessary services. With all your information and queries we tend to learn our lacks and strength."
+            },
+            {
+              "content":
+                  "To Strengthen Our Accuracy: Data is a crucial asset for any business. So we always make sure the information we gather is accurate and up-to-date."
+            },
+          ],
         },
         {
-          "heading": "Your Rights and Choices",
-          "content":
-              "You have the right to access and update your personal information. You can do this by logging into your account or contacting us directly. You can opt out of receiving promotional communications from us by following the unsubscribe instructions in the emails or by contacting us. You can request the deletion of your personal information by contacting us. We will process your request in accordance with applicable laws."
+          "heading": "Consent",
+          "content": [
+            {
+              "content":
+                  "By monitoring your access and preferences we send you marketing advertisements about our products and services."
+            },
+            {
+              "content":
+                  "We share your details with our partners who may also send you marketing texts to advertise similar products and services. "
+            },
+            {
+              "content":
+                  "Based on your personal information and gathering details about your preferences we might conduct market analyses. "
+            },
+            {
+              "content":
+                  "We also track your location to deliver the messages of the offers and discounts on your specific destiny."
+            },
+          ],
         },
         {
-          "heading": "Security",
+          "heading":
+              "Rights of the User sathish kuardonense====================================",
           "content":
-              "We take reasonable measures to protect your information from unauthorized access, disclosure, or destruction. However, no security measures are completely foolproof, and we cannot guarantee the security of your information."
+              "Right to the information: From our side, you own the right to be clarified with the information we process about you."
         },
-        {
-          "heading": "Children's Privacy",
-          "content":
-              "Our app is not intended for use by children under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have collected personal information from a child, we will take steps to delete that information."
-        },
-        {
-          "heading": "Changes to This Privacy Policy",
-          "content":
-              "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this Privacy Policy periodically to stay informed about how we are protecting your information."
-        },
-        {
-          "heading": "Contact Us",
-          "content":
-              "If you have any questions or concerns about this Privacy Policy or our practices, please contact us at:\n[Your Company Address]\n[Your Company Email]\n[Your Company Phone Number]"
-        }
       ]
     }
   ];

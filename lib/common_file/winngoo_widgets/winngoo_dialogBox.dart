@@ -152,14 +152,15 @@ Future dialogBox({required String type}) {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   textField(
+                      keyboardLength: 15,
                       context: context,
                       heading: "Card Holder Name",
                       keyboardType: TextInputType.name,
                       headingSize: contentSize,
-                      label: " ",
-                      hint: " ",
+                      label: "",
+                      hint: "",
                       suffixIcon: const Icon(
-                        Icons.credit_card_sharp,
+                        Icons.person,
                         color: Colors.grey,
                       ),
                       validate: (value) {
@@ -176,12 +177,13 @@ Future dialogBox({required String type}) {
                             paymentController.validityDatefocusNode);
                       }),
                   textField(
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.phone,
+                      keyboardLength: 16,
                       context: context,
                       heading: "Card number",
                       headingSize: contentSize,
                       label: "",
-                      hint: " ",
+                      hint: "",
                       suffixIcon: const Icon(
                         Icons.credit_card_sharp,
                         color: Colors.grey,
@@ -261,12 +263,13 @@ Future dialogBox({required String type}) {
                       SizedBox(
                         width: 150,
                         child: textField(
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.phone,
+                          keyboardLength: 3,
                           obscureText: true,
                           context: context,
                           heading: "CVV",
                           headingSize: contentSize,
-                          label: "235****",
+                          label: "23**",
                           hint: "",
                           suffixIcon: const Icon(
                             Icons.vpn_key,

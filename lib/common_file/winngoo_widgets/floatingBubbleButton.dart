@@ -41,7 +41,7 @@ class _DraggableBubbleScreenState extends State<DraggableBubbleScreen> {
         ),
         if (_showIcons)
           Positioned(
-            left: _position.dx, // Adjust icon position relative to bubble
+            left: _position.dx - 30, // Adjust icon position relative to bubble
             top: _position.dy + 70,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -49,45 +49,49 @@ class _DraggableBubbleScreenState extends State<DraggableBubbleScreen> {
                 textDecoreButton(
                     onPress: () {
                       _showIcons = !_showIcons;
+
+                      Get.toNamed('/videoPlayer');
                       // Your button action here
-                      Get.toNamed('/splash', arguments: {
-                        'isCakeMode': true,
-                        'isBabyShowering': false,
-                        'isInaug': false,
-                        'isWedding': false,
-                      });
+
+                      // Get.toNamed('/splash', arguments: {
+                      //   'isCakeMode': true,
+                      //   'isBabyShowering': false,
+                      //   'isInaug': false,
+                      //   'isWedding': false,
+                      // });
                     },
-                    text: 'BIRTHDAY CELEB'),
-                textDecoreButton(
-                    onPress: () {
-                      Get.toNamed('/splash', arguments: {
-                        'isCakeMode': false,
-                        'isBabyShowering': false,
-                        'isInaug': false,
-                        'isWedding': true,
-                      });
-                    },
-                    text: 'WEDDING CELEB'),
-                textDecoreButton(
-                    onPress: () {
-                      Get.toNamed('/splash', arguments: {
-                        'isCakeMode': false,
-                        'isBabyShowering': true,
-                        'isInaug': false,
-                        'isWedding': false,
-                      });
-                    },
-                    text: 'BABY SHOWERING'),
-                textDecoreButton(
-                    onPress: () {
-                      Get.toNamed('/splash', arguments: {
-                        'isCakeMode': false,
-                        'isBabyShowering': false,
-                        'isInaug': true,
-                        'isWedding': false,
-                      });
-                    },
-                    text: 'INAUGRATION'),
+                    text: 'BIRTHDAY CELEBRATION'),
+                // textDecoreButton(
+                //     onPress: () {
+                //       // VideoPlayerScreen
+                //       Get.toNamed('/splash', arguments: {
+                //         'isCakeMode': false,
+                //         'isBabyShowering': false,
+                //         'isInaug': false,
+                //         'isWedding': true,
+                //       });
+                //     },
+                //     text: 'WEDDING CELEB'),
+                // textDecoreButton(
+                //     onPress: () {
+                //       Get.toNamed('/splash', arguments: {
+                //         'isCakeMode': false,
+                //         'isBabyShowering': true,
+                //         'isInaug': false,
+                //         'isWedding': false,
+                //       });
+                //     },
+                //     text: 'BABY SHOWERING'),
+                // textDecoreButton(
+                //     onPress: () {
+                //       Get.toNamed('/splash', arguments: {
+                //         'isCakeMode': false,
+                //         'isBabyShowering': false,
+                //         'isInaug': true,
+                //         'isWedding': false,
+                //       });
+                //     },
+                //     text: 'INAUGRATION'),
 
                 // Add more icons as needed
               ],
