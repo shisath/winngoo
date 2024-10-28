@@ -28,7 +28,7 @@ class Data {
   String? name;
   String? date;
   String? time;
-  String? userId;
+  int? userId;
   String? createdAt;
   String? updatedAt;
 

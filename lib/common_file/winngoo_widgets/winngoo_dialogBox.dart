@@ -517,7 +517,9 @@ void showDialogBox({required String type}) {
                             buttonTextSize: contentSize - 2,
                             width: 100.00,
                             height: 30.00,
-                            onPress: () {
+                            onPress: () async {
+                              await futureDelay(Duration(milliseconds: 500));
+
                               Navigator.of(context).pop();
                             },
                             text: "Cancel"),
@@ -525,7 +527,9 @@ void showDialogBox({required String type}) {
                             buttonTextSize: contentSize - 2,
                             width: 100.00,
                             height: 30.00,
-                            onPress: () {
+                            onPress: () async {
+                              await futureDelay(Duration(milliseconds: 500));
+
                               Navigator.of(context).pop();
 
                               profileController.logOut();

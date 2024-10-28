@@ -30,64 +30,64 @@ class MembersData {
 
 class Data {
   int? id;
+  String? userId;
   String? firstName;
   String? surname;
   String? mobileNumber;
   String? email;
-  Null emailVerifiedAt;
+  String? profilePhoto;
+  Null? emailVerifiedAt;
   String? country;
-  String? agreement;
+  int? agreement;
   String? createdAt;
   String? updatedAt;
-  String? user_id;
-  Null inviteCode;
-  String? invitedBy;
+  int? invitedBy;
 
   Data(
       {this.id,
+      this.userId,
       this.firstName,
       this.surname,
       this.mobileNumber,
       this.email,
+      this.profilePhoto,
       this.emailVerifiedAt,
       this.country,
       this.agreement,
       this.createdAt,
       this.updatedAt,
-      this.user_id,
-      this.inviteCode,
       this.invitedBy});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     firstName = json['first_name'];
     surname = json['surname'];
     mobileNumber = json['mobile_number'];
     email = json['email'];
+    profilePhoto = json['profile_photo'];
     emailVerifiedAt = json['email_verified_at'];
     country = json['country'];
     agreement = json['agreement'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    user_id = json['user_id'];
-    inviteCode = json['invite_code'];
     invitedBy = json['invited_by'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
+    data['user_id'] = this.userId;
     data['first_name'] = this.firstName;
     data['surname'] = this.surname;
     data['mobile_number'] = this.mobileNumber;
     data['email'] = this.email;
+    data['profile_photo'] = this.profilePhoto;
     data['email_verified_at'] = this.emailVerifiedAt;
     data['country'] = this.country;
     data['agreement'] = this.agreement;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
-    data['user_id'] = this.user_id;
-    data['invite_code'] = this.inviteCode;
     data['invited_by'] = this.invitedBy;
     return data;
   }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:winggoo/common_file/functions.dart';
 import 'package:winggoo/common_file/getXcontroller.dart';
 import 'package:winggoo/common_file/images.dart';
 import 'package:winggoo/common_file/widgets.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
-import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/payment/payment_widget.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -35,7 +33,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       //     text: "CONTINUE"),
 
       resizeToAvoidBottomInset: true,
-      appBar: buildAppBar(),
+      appBar: appBar(title: "Payment"),
       endDrawer: const CustomeDrawer(),
       body: Obx(
         () => paymentController.makePaymentLoader.value
@@ -56,11 +54,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       const SizedBox(
                         height: 5,
                       ),
-                      WinngooText(
-                        text: "Payment",
-                        weight: FontWeight.w600,
-                        fontSize: headingSize,
-                      ),
+                      // WinngooText(
+                      //   text: "Payment",
+                      //   weight: FontWeight.w600,
+                      //   fontSize: headingSize,
+                      // ),
                       Center(
                         child: Image.asset(
                           paymentPng,

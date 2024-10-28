@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
 
-import '../common_file/getXcontroller.dart ';
-import '../conferenceUI/vedioConferenceScreen.dart';
-
 class JoinMeetingController extends GetxController {
   TextEditingController enterCode = TextEditingController();
   TextEditingController enterLink = TextEditingController();
@@ -29,14 +26,7 @@ class JoinMeetingController extends GetxController {
         },
         success: (s) async {
           if (s == true) {
-            await conferenceController.videoGetMethod();
-            Get.to(
-              VideoConferencePage(
-                conferenceID: joinMeetingController.enterCode.text,
-                userId: userId.toString(),
-                userName: userName.toString(),
-              ),
-            );
+            Get.toNamed('/conference');
           }
         });
   }

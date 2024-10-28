@@ -7,7 +7,7 @@ class videoCategory {
   int? id;
   String? title;
   String? url;
-  String? categoryId;
+  int? categoryId;
   String? createdAt;
   String? updatedAt;
 

@@ -59,6 +59,19 @@ class DocumentController extends GetxController {
             },
           ],
         },
+        {
+          "heading": "Ways to Contact Us",
+          "content": [
+            {
+              "content":
+                  "To clarify all your doubts or to know more about our products and services you can contact us through the listed address"
+            },
+            {
+              "content":
+                  "Email ID – winngoo.in@gmail.com \nCall –  73958 94320 \nAddress –  No 17, New no.45 (Old, 1, Lattice Brg Rd, padmanabha Street, Adyar, Chennai, Tamil Nadu - 600020"
+            },
+          ]
+        },
       ],
       "terms&condition": [
         {
@@ -116,7 +129,7 @@ class DocumentController extends GetxController {
         {
           "heading": "Who are We?",
           "content":
-              "“We” the Winngoo successful business model in the United Kingdom. We own lots of products at the Winngoo groups. Winngoo Gala is one among them. We value your privacy and safeguard it like an asset. We take care of your privacy as ours. "
+              "'We'the Winngoo successful business model in the United Kingdom. We own lots of products at the Winngoo groups. Winngoo Gala is one among them. We value your privacy and safeguard it like an asset. We take care of your privacy as ours. "
         },
         {
           "heading": "The Information We Gather About You",
@@ -195,10 +208,38 @@ class DocumentController extends GetxController {
           ],
         },
         {
-          "heading":
-              "Rights of the User sathish kuardonense====================================",
+          "heading": "Rights of the User",
+          "content": [
+            {
+              "content":
+                  "Right to the information: From our side, you own the right to be clarified with the information we process about you."
+            },
+            {
+              "content":
+                  "Right to access: You have complete access to the information that we store about you."
+            },
+            {
+              "content":
+                  "Right to edit: At any point in time with written content, you will be able to edit all your personal details."
+            },
+            {
+              "content":
+                  "Right to erase: If you wish not to disclose your details then with written consent you can request us to delete your details."
+            },
+            {
+              "content":
+                  "Right to restrict cookies: You can control the cookies through browser settings. However, disabling the entire cookies might lower your browsing experience. "
+            },
+            {
+              "content":
+                  "Right to communicate: For any sort of questions or doubts clarification, you can contact us at any time. "
+            },
+          ]
+        },
+        {
+          "heading": "Policy Changes",
           "content":
-              "Right to the information: From our side, you own the right to be clarified with the information we process about you."
+              "The future always holds mystery! So keeping that in mind we might update or change this privacy policy. As a user, we advise you to keep an eye on this policy from time to time. For your convenience the changes will be posted on this page mentioning the effective date. So kindly review the policies once in a while. ",
         },
       ]
     }

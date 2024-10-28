@@ -34,7 +34,7 @@ class Data {
   String? meetingCode;
   String? date;
   String? time;
-  String? userId;
+  int? userId;
   String? createdAt;
   String? updatedAt;
   User? user;
@@ -101,10 +101,10 @@ class User {
   String? profilePhoto;
   String? emailVerifiedAt;
   String? country;
-  String? agreement;
+  int? agreement;
   String? createdAt;
   String? updatedAt;
-  String? invitedBy;
+  int? invitedBy;
 
   User(
       {this.id,
@@ -163,7 +163,7 @@ class Transactions {
   int? id;
   String? stripeTransactionId;
   String? userId;
-  String? eventId;
+  int? eventId;
   String? amount;
   String? currency;
   String? status;

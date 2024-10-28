@@ -25,8 +25,8 @@ class PriceData {
 
 class Data {
   int? id;
-  String? minQuantity;
-  String? maxQuantity;
+  int? minQuantity;
+  int? maxQuantity;
   String? price;
   String? priceWithVat;
   String? vat;

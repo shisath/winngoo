@@ -178,23 +178,28 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
 
 import 'customFlickController.dart';
 
-class SamplePlayer extends StatefulWidget {
+class VideoPlayer extends StatefulWidget {
   @override
-  _SamplePlayerState createState() => _SamplePlayerState();
+  _VideoPlayerState createState() => _VideoPlayerState();
 }
 
-class _SamplePlayerState extends State<SamplePlayer> {
+class _VideoPlayerState extends State<VideoPlayer> {
   late FlickManager flickManager;
+
+  // 'https://winngoogala.winngooconsultancy.in/celebrate/birthday/Birthday  (3).mp4'
 
   @override
   void initState() {
     super.initState();
+
+    print('video url ${mediaController.videoUrl.value}');
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(
-          'https://winngoogala.winngooconsultancy.in/celebrate/birthday/Birthday  (3).mp4')),
+      videoPlayerController: VideoPlayerController.networkUrl(
+          Uri.parse(mediaController.videoUrl.value)),
     );
 
     flickManager.flickVideoManager!.videoPlayerController!.addListener(() {

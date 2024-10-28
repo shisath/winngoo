@@ -18,6 +18,7 @@ Widget joinMeetingWidget({required BuildContext contex}) {
           Form(
             key: codeKey,
             child: textField(
+                keyboardType: TextInputType.phone,
                 heading: 'Enter your meeting code',
                 controller: joinMeetingController.enterCode,
                 label: "Enter your code",
@@ -45,6 +46,7 @@ Widget joinMeetingWidget({required BuildContext contex}) {
                   //     userName: "kumar",
                   //   ),
                   // );
+                  joinMeetingController.meetingCodeValidation();
 
                   if (codeKey.currentState?.validate() == true) {
                     joinMeetingController.meetingCodeValidation();

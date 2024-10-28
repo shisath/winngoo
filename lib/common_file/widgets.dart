@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_box.dart';
 import 'package:winggoo/common_file/winngoo_widgets/winngoo_drawer.dart';
+import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 
 import 'functions.dart';
 
@@ -444,7 +445,10 @@ Widget smallBoxWidget(
   );
 }
 
-AppBar buildAppBar({bool? showLeadingIcon}) {
+AppBar appBar({
+  bool? showLeadingIcon,
+  String? title,
+}) {
   return AppBar(
     backgroundColor: primaryColor,
     leading: showLeadingIcon ?? true
@@ -458,6 +462,11 @@ AppBar buildAppBar({bool? showLeadingIcon}) {
             ))
         : null,
     automaticallyImplyLeading: false,
+    title: WinngooText(
+      text: title ?? "",
+      color: Colors.white,
+      fontSize: headingSize,
+    ),
     actions: [
       Builder(
         builder: (BuildContext context) {

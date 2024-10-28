@@ -83,7 +83,7 @@ class AddEventController extends GetxController {
     print('date ${eventDateController.text}');
     print('time ${eventTimeController.text}');
     print('userId ${memberId}');
-    postMethod(
+    await postMethod(
         success: (s) async {
           if (s == true) {
             await eventListApi();

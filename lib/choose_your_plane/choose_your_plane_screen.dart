@@ -30,7 +30,7 @@ class _ChooseYourPlaneScreenState extends State<ChooseYourPlaneScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: appBar(title: "Choose your plan"),
       endDrawer: const CustomeDrawer(),
       body: Stack(
         children: [

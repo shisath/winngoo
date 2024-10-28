@@ -9,6 +9,7 @@ import '../documents/documentController.dart';
 import '../enterNewPassword/enter_new_password_controller.dart';
 import '../forgotPassword/forgot_password_controller.dart';
 import '../home/home_controller.dart';
+import '../media/mediaController.dart';
 import '../otp/otp_controller.dart';
 import '../payment/payment_controller.dart';
 import '../profile/profile_controller.dart';
@@ -36,6 +37,7 @@ class HomeBinding extends Bindings {
     Get.lazyPut(() => DocumentController());
     Get.lazyPut(() => JoinMeetingController());
     Get.lazyPut(() => ConferenceController());
+    Get.lazyPut(() => MediaController());
   }
 }
 
@@ -74,3 +76,4 @@ final docController = Get.find<DocumentController>();
 final joinMeetingController = Get.find<JoinMeetingController>();
 final conferenceController = Get.find<ConferenceController>();
 final summaryController = Get.find<SummaryController>();
+final mediaController = Get.find<MediaController>();

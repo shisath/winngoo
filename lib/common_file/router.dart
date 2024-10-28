@@ -130,13 +130,11 @@ final routes = [
       page: () => WinngooSplash(),
       transition: Transition.fadeIn,
       binding: HomeBinding()),
-
   GetPage(
-    name: '/videoPlayer',
-    page: () => SamplePlayer(),
-    transition: Transition.fadeIn,
-  ),
-  // binding: HomeBinding()),
+      name: '/videoPlayer',
+      page: () => VideoPlayer(),
+      transition: Transition.fadeIn,
+      binding: HomeBinding()),
   GetPage(
       name: '/conference',
       page: () => VideoConferencePage(

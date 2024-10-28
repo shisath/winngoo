@@ -28,7 +28,9 @@ Widget recommendWidget() {
               buttonWidgetSmall(
                   width: 150.00,
                   height: 30.00,
-                  onPress: () {
+                  onPress: () async {
+                    await futureDelay(Duration(milliseconds: 200));
+
                     dialogBox(type: "add event");
                     addEventController.eventNameController.text = "";
                   },
@@ -46,12 +48,14 @@ Widget recommendWidget() {
         ),
         SizedBox(
             height: 61,
-            width: MediaQuery.sizeOf(Get.context!).width,
+            width: MediaQuery
+                .sizeOf(Get.context!)
+                .width,
             child: ListView(
                 scrollDirection: Axis.horizontal,
                 // Set to horizontal for horizontal scrolling
                 children:
-                    List.generate(addEventController.recomeded.length, (index) {
+                List.generate(addEventController.recomeded.length, (index) {
                   final a = addEventController.recomeded[index];
 
                   return circleAvatarWidget(png: a["image"], index: index);
@@ -63,51 +67,55 @@ Widget recommendWidget() {
 
 Widget yourEventWidget() {
   return Obx(
-    () => Expanded(
-      child: (addEventController.eventListApiData.value.data == null ||
+        () =>
+        Expanded(
+          child: (addEventController.eventListApiData.value.data == null ||
               addEventController.eventListApiData.value.data!.isEmpty)
-          ? const Center(
-              child: WinngooText(
-                text: "No Events Available",
-                color: Colors.black,
-                // weight: FontWeight.w600,
-              ),
-            )
-          : ListView(
+              ? const Center(
+            child: WinngooText(
+              text: "No Events Available",
+              color: Colors.black,
+              // weight: FontWeight.w600,
+            ),
+          )
+              : ListView(
               scrollDirection: Axis.vertical,
               children: List.generate(
                   addEventController.eventListApiData.value.data!.length,
-                  (index) {
-                // dynamic i =
-                //     addEventController.eventListApiData.value.s![index];
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10),
-                  child: eventListboxModel(
-                      id: addEventController
-                          .eventListApiData.value.data![index].id!
-                          .toInt(),
-                      userData: addEventController
-                          .eventListApiData.value.data![index].user
-                          .toString(),
-                      index: index,
-                      image: winngooLogo,
-                      isPaid: (addEventController.eventListApiData.value
-                                      .data![index].transactions!.length >
-                                  0 &&
+                      (index) {
+                    // dynamic i =
+                    //     addEventController.eventListApiData.value.s![index];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10),
+                      child: eventListboxModel(
+                          id: addEventController
+                              .eventListApiData.value.data![index].id!
+                              .toInt(),
+                          userData: addEventController
+                              .eventListApiData.value.data![index].user
+                              .toString(),
+                          index: index,
+                          image: winngooLogo,
+                          isPaid: (addEventController.eventListApiData.value
+                              .data![index].transactions!.length >
+                              0 &&
                               addEventController.eventListApiData.value
                                   .data![index].transactions!.isNotEmpty)
-                          ? true
-                          : false,
-                      title: addEventController
-                          .eventListApiData.value.data![index].name
-                          .toString(),
-                      date: addEventController.eventListApiData.value.data![index].date.toString(),
-                      inviteCode: addEventController.eventListApiData.value.data![index].meetingCode.toString(),
-                      time: addEventController.eventListApiData.value.data![index].time.toString()),
-                );
-              })),
-    ),
+                              ? true
+                              : false,
+                          title: addEventController
+                              .eventListApiData.value.data![index].name
+                              .toString(),
+                          date: addEventController.eventListApiData.value
+                              .data![index].date.toString(),
+                          inviteCode: addEventController.eventListApiData.value
+                              .data![index].meetingCode.toString(),
+                          time: addEventController.eventListApiData.value
+                              .data![index].time.toString()),
+                    );
+                  })),
+        ),
   );
 }
 
@@ -123,125 +131,138 @@ Widget eventListboxModel({
   required String userData,
 }) {
   return Obx(
-    () => GestureDetector(
-      onTap: () {
-        if (addEventController.eventListApiData.value.data!.isEmpty ||
-            addEventController.eventListApiData.value.data == null) {
-          snackBar(msg: "Please create a new event", isBadReqested: true);
-        } else if (addEventController
-            .eventListApiData.value.data![index].transactions!.isNotEmpty) {
-          snackBar(msg: "Event already paid", isBadReqested: true);
-        } else {
-          addEventController.isSelectedEvent.value = index.toString();
-          addEventController.isRecomeded.value = -1;
-          addEventController.selectedId.value = id.toString();
-          localStorage.write('selectedEventId', id.toString());
-        }
+        () =>
+        GestureDetector(
+          onTap: () {
+            if (addEventController.eventListApiData.value.data!.isEmpty ||
+                addEventController.eventListApiData.value.data == null) {
+              snackBar(msg: "Please create a new event", isBadReqested: true);
+            } else if (addEventController
+                .eventListApiData.value.data![index].transactions!.isNotEmpty) {
+              snackBar(msg: "Event already paid", isBadReqested: true);
+            } else {
+              addEventController.isSelectedEvent.value = index.toString();
+              addEventController.isRecomeded.value = -1;
+              addEventController.selectedId.value = id.toString();
+              localStorage.write('selectedEventId', id.toString());
+            }
 
-        print('selected id sk $id');
-      },
-      child: WinngooBox(
-        width: MediaQuery.sizeOf(Get.context!).width,
-        borderColor:
+            print('selected id sk $id');
+          },
+          child: WinngooBox(
+            width: MediaQuery
+                .sizeOf(Get.context!)
+                .width,
+            borderColor:
             addEventController.isSelectedEvent.value == index.toString()
                 ? const Color(0xff5669FF)
                 : Colors.grey,
-        // height: 65,
-        radius: 10,
+            // height: 65,
+            radius: 10,
 
-        borderWidth:
+            borderWidth:
             addEventController.isSelectedEvent.value == index.toString()
                 ? 2.0
                 : 1.2,
 
-        child: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    // width: 150, // Diameter of the circle
-                    // height: 150, // Diameter of the circle
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: addEventController.isSelectedEvent.value ==
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        // width: 150, // Diameter of the circle
+                        // height: 150, // Diameter of the circle
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: addEventController.isSelectedEvent.value ==
                                 index.toString()
-                            ? const Color(0xff5669FF)
-                            : Colors.black12,
-                        // Outline color
-                        width: 2, // Outline width
-                      ),
-                    ),
-                    child: CircleAvatar(
-                      radius: 20,
-                      child: ClipOval(
-                        child: Image.asset(
-                          addEventController.randomImage.value,
-                          fit: BoxFit.cover,
-                          height: 150,
-                          width: 150,
+                                ? const Color(0xff5669FF)
+                                : Colors.black12,
+                            // Outline color
+                            width: 2, // Outline width
+                          ),
+                        ),
+                        child: CircleAvatar(
+                          radius: 20,
+                          child: ClipOval(
+                            child: Image.asset(
+                              addEventController.randomImage.value,
+                              fit: BoxFit.cover,
+                              height: 150,
+                              width: 150,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      WinngooText(
-                        text: title,
+                      const SizedBox(
+                        width: 10,
                       ),
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           WinngooText(
-                            text: date,
-                            fontSize: contentSize - 3,
+                            text: title,
                           ),
-                          WinngooText(
-                            text: " - ${time}",
-                            fontSize: contentSize - 3,
+                          Row(
+                            children: [
+                              WinngooText(
+                                text: date,
+                                fontSize: contentSize - 3,
+                              ),
+                              WinngooText(
+                                text: " - ${time}",
+                                fontSize: contentSize - 3,
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ],
                   ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: WinngooText(
+                          text: isPaid ? "Paid" : "UnPaid",
+                          color: isPaid ? Colors.green : Colors.red,
+                        ),
+                      ),
+                      if (addEventController.eventListApiData.value.data![index]
+                          .transactions!.length >
+                          0 &&
+                          addEventController.eventListApiData.value.data![index]
+                              .transactions!.isNotEmpty) ...[
+                        IconButton(
+                            onPressed: () async {
+                              await Share.share(
+                                  "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController
+                                      .eventListApiData.value.data![index]
+                                      .date} \nTime:  ${addEventController
+                                      .eventListApiData.value.data![index]
+                                      .time} \nMeeting Code: ${addEventController
+                                      .eventListApiData.value.data![index]
+                                      .meetingCode
+                                      .toString()} \nOrganizer: ${addEventController
+                                      .eventListApiData.value.data![index].user!
+                                      .firstName
+                                      .toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
+                            },
+                            icon: const Icon(Icons.share))
+                      ]
+                    ],
+                  )
                 ],
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: WinngooText(
-                      text: isPaid ? "Paid" : "UnPaid",
-                      color: isPaid ? Colors.green : Colors.red,
-                    ),
-                  ),
-                  if (addEventController.eventListApiData.value.data![index]
-                              .transactions!.length >
-                          0 &&
-                      addEventController.eventListApiData.value.data![index]
-                          .transactions!.isNotEmpty) ...[
-                    IconButton(
-                        onPressed: () async {
-                          await Share.share(
-                              "Join us for Celebrate the event through the WINNGOO GALA! \nDate: ${addEventController.eventListApiData.value.data![index].date} \nTime:  ${addEventController.eventListApiData.value.data![index].time} \nMeeting Code: ${addEventController.eventListApiData.value.data![index].meetingCode.toString()} \nOrganizer: ${addEventController.eventListApiData.value.data![index].user!.firstName.toString()} \nPlease confirm your attendance! For any questions or rescheduling, let me know. \nLooking forward to seeing you there");
-                        },
-                        icon: const Icon(Icons.share))
-                  ]
-                ],
-              )
-            ],
+            ),
           ),
         ),
-      ),
-    ),
   );
 }
 
@@ -268,36 +289,66 @@ circleAvatarWidget({
   required int index,
 }) {
   return Obx(
-    () => Padding(
+        () =>
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: GestureDetector(
+            onTap: () {
+              addEventController.isRecomeded.value = index;
+              addEventController.eventNameController.text =
+                  addEventController.recomeded[index]["title"].toString();
+              dialogBox(type: "add event");
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      width: addEventController.isRecomeded.value == index
+                          ? 3
+                          : 1,
+                      color: addEventController.isRecomeded.value == index
+                          ? const Color(0xff5669FF)
+                          : Colors.grey.withOpacity(0.5)),
+                  borderRadius: const BorderRadius.all(Radius.circular(30))),
+              child: CircleAvatar(
+                minRadius: 25.0, maxRadius: 25.0,
+                child: ClipOval(
+                  child: Image.asset(
+                    png,
+                    fit: BoxFit.cover,
+                    height: 130,
+                    width: 130,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+  );
+}
+
+circleAvatarWidgets({
+  required String png,
+  required void Function() onSelect
+}) {
+  return
+    Padding(
       padding: const EdgeInsets.all(5.0),
       child: GestureDetector(
-        onTap: () {
-          addEventController.isRecomeded.value = index;
-          addEventController.eventNameController.text =
-              addEventController.recomeded[index]["title"].toString();
-          dialogBox(type: "add event");
-        },
+        onTap: onSelect,
         child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(
-                  width: addEventController.isRecomeded.value == index ? 3 : 1,
-                  color: addEventController.isRecomeded.value == index
-                      ? const Color(0xff5669FF)
-                      : Colors.grey.withOpacity(0.5)),
-              borderRadius: const BorderRadius.all(Radius.circular(30))),
+
           child: CircleAvatar(
-            radius: 30,
+            minRadius: 25.0, maxRadius: 25.0,
             child: ClipOval(
               child: Image.asset(
                 png,
                 fit: BoxFit.cover,
-                height: 100,
-                width: 100,
+                height: 130,
+                width: 130,
               ),
             ),
           ),
         ),
       ),
-    ),
-  );
+    );
 }

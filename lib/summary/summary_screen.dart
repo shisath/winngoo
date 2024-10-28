@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:winggoo/common_file/widgets.dart';
-import 'package:winggoo/common_file/winngoo_widgets/winngoo_text.dart';
 import 'package:winggoo/summary/summary_widget.dart';
 
 import '../choose_your_plane/choose_your_plane_widget.dart';
@@ -37,7 +36,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
             Get.toNamed("/payment");
           },
           text: "CONTINUE"),
-      appBar: buildAppBar(),
+      appBar: appBar(title: "Summary"),
       endDrawer: const CustomeDrawer(),
       body: SingleChildScrollView(
         child: Padding(
@@ -46,13 +45,13 @@ class _SummaryScreenState extends State<SummaryScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 5,
-              ),
-              const WinngooText(
-                text: "SUMMARY",
-                weight: FontWeight.w600,
-              ),
+              // const SizedBox(
+              //   height: 5,
+              // ),
+              // const WinngooText(
+              //   text: "SUMMARY",
+              //   weight: FontWeight.w600,
+              // ),
               const SizedBox(
                 height: 10,
               ),

@@ -24,7 +24,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
     print('choose loader ${chooseYourPlaneController.loader.value}');
     WidgetsBinding.instance.addPostFrameCallback((_) {
       addEventController.refreshLoader.value = true;
-
+      addEventController.isSelectedEvent.value = "";
       addEventController.eventListApi();
       addEventController.getRandomImage();
       addEventController.refreshLoader.value = false;
@@ -48,7 +48,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
           text: "NEXT",
         ),
       ),
-      appBar: buildAppBar(),
+      appBar: appBar(title: "Home"),
       endDrawer: const CustomeDrawer(),
       body: Obx(
         () => addEventController.refreshLoader.value
@@ -83,7 +83,7 @@ class _AddEventScreenState extends State<AddEventScreen> {
                     ],
                   ),
                   yourEventWidget(),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.08),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.10),
                 ],
               ),
       ),

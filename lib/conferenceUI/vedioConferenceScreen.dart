@@ -53,7 +53,8 @@ class _VideoConferencePageState extends State<VideoConferencePage> {
                       title: "Leave",
                       cancelButtonName: "Cancel",
                       confirmButtonName: "Confirm",
-                      message: "Are you sure to leave the meeting ?"),
+                      message:
+                          "Access to the meeting code will be invalid once you leave"),
                   // avatarBuilder: (BuildContext context, Size size,
                   //     ZegoUIKitUser? user, Map<String, dynamic> extraInfo) {
                   //   return CircleAvatar(

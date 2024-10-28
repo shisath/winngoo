@@ -28,7 +28,7 @@ class _JoinMeetingScreenState extends State<JoinMeetingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(showLeadingIcon: true),
+      appBar: appBar(showLeadingIcon: true),
       endDrawer: const CustomeDrawer(),
       body: Column(
         children: [

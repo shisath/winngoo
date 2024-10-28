@@ -32,47 +32,74 @@ class TermsAndConditionScreen extends StatelessWidget {
               color: const Color(0xff5669FF),
               weight: FontWeight.w600,
               fontSize: headingSize)),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-        ),
-        child: ListView.builder(
-            itemCount: termsCondList.length,
-            itemBuilder: (context, index) {
-              final item = termsCondList[index];
-              return documentModelCard(
-                  title: item["heading"].toString(),
-                  content: item["content"].toString());
-            }),
-      ),
+      body: documentModelCard(
+          length: docController.content[0]['terms&condition'].length,
+          listData: docController.content[0]['terms&condition']),
     );
   }
 }
 
-// 0xff5669FF
-Widget documentModelCard({
-  required String title,
-  required String content,
+Padding documentModelCard({
+  required int length,
+  required dynamic listData,
 }) {
   return Padding(
-    padding: const EdgeInsets.only(top: 15),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(
-          height: 10,
-        ),
-        WinngooText(
-            text: title,
-            color: Colors.black,
-            weight: FontWeight.w600,
-            fontSize: headingSize - 2),
-        const SizedBox(
-          height: 10,
-        ),
-        WinngooText(
-            text: content, color: Colors.black, fontSize: contentSize - 2),
-      ],
+    padding: const EdgeInsets.symmetric(
+      horizontal: 15,
+    ),
+    child: ListView.builder(
+      itemCount: length,
+      itemBuilder: (context, index) {
+        var item = listData[index];
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              WinngooText(
+                  text: item["heading"],
+                  color: Colors.black,
+                  weight: FontWeight.w600,
+                  fontSize: headingSize - 2),
+              SizedBox(height: 3),
+              if (item["content"] is String)
+                WinngooText(
+                    align: TextAlign.justify,
+                    text: item["content"],
+                    color: Colors.black,
+                    fontSize: contentSize - 2)
+
+              // / Display simple string content
+              else if (item["content"] is List) ...[
+                for (var feature in item["content"])
+                  Padding(
+                    padding: const EdgeInsets.only(top: 7.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3.0, right: 5),
+                          child: Icon(
+                            Icons.star,
+                            size: contentSize - 1,
+                          ),
+                        ),
+                        Flexible(
+                          child: WinngooText(
+                              align: TextAlign.justify,
+                              text: feature["content"],
+                              color: Colors.black,
+                              fontSize: contentSize - 2),
+                        ),
+                      ],
+                    ),
+                  )
+              ],
+              SizedBox(height: 16),
+            ],
+          ),
+        );
+      },
     ),
   );
 }

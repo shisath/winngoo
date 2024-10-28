@@ -46,7 +46,7 @@ class _LogInScreenState extends State<LogInScreen> {
             //   height: 10,
             // ),
 
-            WinngooText(text: "Version : 2.0.1")
+            WinngooText(text: "Version : 3.0.0")
           ],
         ),
       ),

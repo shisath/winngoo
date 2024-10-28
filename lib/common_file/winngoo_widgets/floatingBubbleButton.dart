@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:winggoo/common_file/functions.dart';
+import 'package:winggoo/common_file/getXcontroller.dart';
+import 'package:winggoo/common_file/images.dart';
+
+import '../../addEvent/addEvent_Widget.dart';
 
 class DraggableBubbleScreen extends StatefulWidget {
   @override
@@ -8,7 +11,7 @@ class DraggableBubbleScreen extends StatefulWidget {
 }
 
 class _DraggableBubbleScreenState extends State<DraggableBubbleScreen> {
-  Offset _position = Offset(100, 100); // Initial position of the bubble
+  Offset _position = Offset(10, 50); // Initial position of the bubble
   bool _showIcons = false; // Control whether to show icons or not
 
   @override
@@ -41,57 +44,47 @@ class _DraggableBubbleScreenState extends State<DraggableBubbleScreen> {
         ),
         if (_showIcons)
           Positioned(
-            left: _position.dx - 30, // Adjust icon position relative to bubble
-            top: _position.dy + 70,
+            left: _position.dx - 5, // Adjust icon position relative to bubble
+            top: _position.dy + 55,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                textDecoreButton(
-                    onPress: () {
-                      _showIcons = !_showIcons;
-
-                      Get.toNamed('/videoPlayer');
-                      // Your button action here
-
-                      // Get.toNamed('/splash', arguments: {
-                      //   'isCakeMode': true,
-                      //   'isBabyShowering': false,
-                      //   'isInaug': false,
-                      //   'isWedding': false,
-                      // });
-                    },
-                    text: 'BIRTHDAY CELEBRATION'),
-                // textDecoreButton(
-                //     onPress: () {
-                //       // VideoPlayerScreen
-                //       Get.toNamed('/splash', arguments: {
-                //         'isCakeMode': false,
-                //         'isBabyShowering': false,
-                //         'isInaug': false,
-                //         'isWedding': true,
-                //       });
-                //     },
-                //     text: 'WEDDING CELEB'),
-                // textDecoreButton(
-                //     onPress: () {
-                //       Get.toNamed('/splash', arguments: {
-                //         'isCakeMode': false,
-                //         'isBabyShowering': true,
-                //         'isInaug': false,
-                //         'isWedding': false,
-                //       });
-                //     },
-                //     text: 'BABY SHOWERING'),
-                // textDecoreButton(
-                //     onPress: () {
-                //       Get.toNamed('/splash', arguments: {
-                //         'isCakeMode': false,
-                //         'isBabyShowering': false,
-                //         'isInaug': true,
-                //         'isWedding': false,
-                //       });
-                //     },
-                //     text: 'INAUGRATION'),
+                circleAvatarWidgets(
+                    png: christmasIcon,
+                    onSelect: () async {
+                      await mediaController.videoGetMethod(category: "3");
+                      setState(() {
+                        _showIcons =
+                            !_showIcons; // Toggle icon visibility on tap
+                      });
+                    }),
+                circleAvatarWidgets(
+                    png: cakeIcon,
+                    onSelect: () async {
+                      await mediaController.videoGetMethod(category: "1");
+                      setState(() {
+                        _showIcons =
+                            !_showIcons; // Toggle icon visibility on tap
+                      });
+                    }),
+                circleAvatarWidgets(
+                    png: corporateIcon,
+                    onSelect: () async {
+                      await mediaController.videoGetMethod(category: "2");
+                      setState(() {
+                        _showIcons =
+                            !_showIcons; // Toggle icon visibility on tap
+                      });
+                    }),
+                circleAvatarWidgets(
+                    png: weddingIcon,
+                    onSelect: () async {
+                      await mediaController.videoGetMethod(category: "4");
+                      setState(() {
+                        _showIcons =
+                            !_showIcons; // Toggle icon visibility on tap
+                      });
+                    }),
 
                 // Add more icons as needed
               ],

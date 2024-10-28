@@ -101,6 +101,10 @@ Map<String, dynamic> getInputSettings({required String type}) {
   };
 }
 
+Future<void> futureDelay(Duration delay) async {
+  await Future.delayed(delay);
+}
+
 // Future<String?> postMethod({
 //   required String endPoint,
 //   required Map<String, dynamic> body,

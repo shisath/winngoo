@@ -26,17 +26,19 @@ Widget homeWidget() {
                   text: "Let’s connect with winngoo gala",
                 ),
                 buttonWidget(
-                    onPress: () {
+                    onPress: () async {
+                      await futureDelay(Duration(milliseconds: 300));
                       Get.toNamed("/joinMeeting");
                     },
-                    text: "JOIN EVENT"),
+                    text: "JOIN CELEBRATION"),
                 const WinngooText(
                   text: "OR",
                 ),
                 Obx(
                   () => buttonWidget(
                       isLoading: addEventController.refreshLoader.value,
-                      onPress: () {
+                      onPress: () async {
+                        await futureDelay(Duration(milliseconds: 300));
                         Get.toNamed("/addEventScreen");
                       },
                       text: "CREATE EVENT"),

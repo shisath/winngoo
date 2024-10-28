@@ -20,7 +20,7 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
       child: Padding(
         padding: const EdgeInsets.only(top: 50),
         child: SizedBox(
-          height: 350,
+          height: 400,
           child: Drawer(
             width: MediaQuery.sizeOf(context).width * 0.66,
             backgroundColor: primaryColor,
@@ -30,46 +30,66 @@ class _CustomeDrawerState extends State<CustomeDrawer> {
                 iconButton(
                     onpress: () async {
                       await addEventController.eventListApi();
+                      await futureDelay(Duration(milliseconds: 500));
+
                       Navigator.of(context).pop();
-                      Get.offAllNamed("/homeScreen");
+                      Get.offAllNamed("/addEventScreen");
                     },
                     icon: Icons.home,
                     title: "Home"),
                 iconButton(
-                    onpress: () {
+                    onpress: () async {
+                      await futureDelay(Duration(milliseconds: 500));
+                      Navigator.of(context).pop();
+
+                      Get.offAllNamed("/homeScreen");
+                    },
+                    icon: Icons.celebration,
+                    title: "Join Celebration"),
+                iconButton(
+                    onpress: () async {
+                      await futureDelay(Duration(milliseconds: 500));
                       Navigator.of(context).pop();
                       Get.toNamed("/profile");
                     },
                     icon: Icons.person_outline,
                     title: "Profile"),
                 iconButton(
-                    onpress: () {
+                    onpress: () async {
+                      await futureDelay(Duration(milliseconds: 500));
+
                       Navigator.of(context).pop();
                       Get.toNamed("/privacy");
                     },
                     icon: Icons.info_outline,
                     title: "About us"),
                 iconButton(
-                    onpress: () {
+                    onpress: () async {
+                      await futureDelay(Duration(milliseconds: 500));
+
                       Navigator.of(context).pop();
                       Get.toNamed("/terms&cond");
                     },
                     icon: Icons.article_outlined,
                     title: "Terms and Conditions"),
                 iconButton(
-                    onpress: () {
+                    onpress: () async {
+                      await futureDelay(Duration(milliseconds: 500));
+
                       Navigator.of(context).pop();
                       Get.toNamed('/privacyPolicy');
                     },
                     icon: Icons.privacy_tip_outlined,
                     title: "Privacy & Policy"),
                 iconButton(
-                    onpress: () {
+                    onpress: () async {
+                      await futureDelay(Duration(milliseconds: 500));
+
                       // Navigator.of(context).pop();
                       showDialogBox(type: "logout");
                     },
                     icon: Icons.logout,
-                    color: Colors.red,
+                    color: Colors.white,
                     title: "Log out"),
               ],
             ),
